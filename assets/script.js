@@ -196,4 +196,65 @@ document.addEventListener("DOMContentLoaded", function () {
   container.style.maxWidth = "1920px";
   container.style.margin = "0 auto";
 });
-/*****************reservar ahora ****************/
+/*****************desayunos ****************/
+// Inicialización del slider 3D
+document.addEventListener("DOMContentLoaded", function () {
+  // Configuración del slider
+  const glide = new Glide(".glide", {
+    type: "carousel",
+    perView: 1,
+    focusAt: "center",
+    gap: 40,
+    animationDuration: 800,
+    peek: {
+      before: 100,
+      after: 100,
+    },
+    breakpoints: {
+      768: {
+        peek: {
+          before: 50,
+          after: 50,
+        },
+      },
+    },
+  }).mount();
+
+  // Efecto 3D para las slides
+  const slides = document.querySelectorAll(".dg-slide-content");
+  slides.forEach((slide) => {
+    slide.addEventListener("mousemove", (e) => {
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
+      slide.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) scale(1.05)`;
+    });
+
+    slide.addEventListener("mouseleave", () => {
+      slide.style.transform = "rotateY(0) rotateX(0)";
+    });
+  });
+
+  // Control de la galería
+  const gallery = document.getElementById("desayunosGallery");
+  const closeBtn = document.querySelector(".dg-close-btn");
+
+  // Función para abrir la galería (debe llamarse desde tu botón "Ver más")
+  window.openDesayunosGallery = function () {
+    gallery.style.display = "block";
+    document.body.style.overflow = "hidden";
+  };
+
+  // Función para cerrar la galería
+  closeBtn.addEventListener("click", function () {
+    gallery.style.display = "none";
+    document.body.style.overflow = "auto";
+  });
+
+  // Cerrar al hacer clic fuera del contenido
+  gallery.addEventListener("click", function (e) {
+    if (e.target === gallery) {
+      gallery.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  });
+});

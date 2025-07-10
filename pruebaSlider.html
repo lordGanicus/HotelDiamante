@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paquetes Especiales</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prata&display=swap"
-      rel="stylesheet"
-    />
+    <title>Galería de Desayunos</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
       rel="stylesheet"
@@ -21,125 +17,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.core.min.css"
     />
-
     <style>
-      :root {
-        --azul-principal: #012555;
-        --boton-color: #012555;
-        --boton-texto: white;
-        --boton-borde-hover: #012555;
-        --boton-fondo-hover: white;
-        --boton-texto-hover: #012555;
-        --icon-color: white;
-        --icon-border-color: white;
-
-        --ps-bg-color: #000;
-        --ps-text-color: #fff;
-        --ps-card-bg: #fff;
-        --ps-card-text: #333;
-        --ps-link-color: #012555;
-        --ps-accent-color: #4d0c0c;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        color: #000;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .btn {
-        font-size: 16px;
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: var(--boton-color);
-        color: var(--boton-texto);
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        border: 2px solid var(--boton-color);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-        transition: background-color 0.3s ease, color 0.3s ease,
-          border-color 0.3s ease;
-      }
-
-      .btn:hover {
-        background-color: #0140a3;
-        transform: translateY(-2px);
-      }
-
-      /* Sección Desayunos */
-      .desayunos-section {
-        position: relative;
-        padding: 80px 0;
-        background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752155548/88636be3-0e7b-4134-895d-68834d37d678.png");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-      }
-
-      .desayunos-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-      }
-
-      .desayunos-card {
-        position: relative;
-        z-index: 2;
-        max-width: 450px;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 15px;
-        padding: 35px;
-        text-align: center;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(4px);
-      }
-
-      .desayunos-title {
-        font-family: "Prata", serif;
-        font-size: 28px;
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 20px;
-        width: 10rem;
-        position: relative;
-        left: 30%;
-      }
-
-      .desayunos-description {
-        font-size: 15px;
-        color: #000;
-        margin-bottom: 25px;
-        padding: 0 20px;
-      }
-
-      .desayunos-version {
-        font-style: italic;
-        color: #333;
-        font-size: 13px;
-        margin-bottom: 25px;
-      }
-      /**********desauino************/
       /* Reset para encapsulación */
       .dg-container * {
         margin: 0;
@@ -155,6 +33,7 @@
         --dg-text-color: #fff;
         --dg-btn-bg: rgba(255, 255, 255, 0.8);
         --dg-btn-color: #333;
+        --dg-frame-size: 40px; /* Tamaño del marco de vidrio */
 
         position: fixed;
         top: 0;
@@ -203,16 +82,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        perspective: 1000px;
+        perspective: 1200px;
+        padding: var(--dg-frame-size); /* Espacio para el marco */
       }
 
       .dg-slide-content {
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         position: relative;
         transform-style: preserve-3d;
-        transition: transform 0.5s;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
         border-radius: 15px;
         overflow: hidden;
       }
@@ -224,9 +104,27 @@
         border-radius: 15px;
       }
 
-      /* Efecto 3D al pasar el mouse */
+      /* Efecto 3D mejorado */
       .dg-slide-content:hover {
-        transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+        transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+      }
+
+      /* Efecto de profundidad 3D */
+      .dg-slide-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 50%
+        );
+        z-index: 1;
+        pointer-events: none;
+        border-radius: 15px;
       }
 
       .dg-glide__arrows {
@@ -243,34 +141,37 @@
       .dg-glide__arrow {
         background: var(--dg-btn-bg);
         border: none;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: all 0.3s;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       .dg-glide__arrow:hover {
-        transform: scale(1.1);
+        transform: scale(1.15);
         background: white;
       }
 
       .dg-glide__arrow i {
-        font-size: 20px;
+        font-size: 24px;
         color: var(--dg-btn-color);
       }
 
       .dg-title {
         color: var(--dg-text-color);
-        font-size: 24px;
+        font-size: 32px;
         margin-bottom: 30px;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
 
       /* Bullets de navegación */
@@ -280,39 +181,85 @@
         left: 50%;
         transform: translateX(-50%);
         display: flex;
-        gap: 10px;
+        gap: 12px;
         z-index: 2;
       }
 
       .dg-glide__bullet {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.5);
         border: none;
         cursor: pointer;
         transition: all 0.3s;
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       .dg-glide__bullet:hover,
       .dg-glide__bullet--active {
         background: white;
-        transform: scale(1.2);
+        transform: scale(1.3);
       }
 
-      /* Efecto vidrio templado */
-      .dg-glass-effect {
+      /* Efecto vidrio templado mejorado */
+      .dg-glass-frame {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--dg-glass-bg);
+        width: calc(100% + var(--dg-frame-size) * 2);
+        height: calc(100% + var(--dg-frame-size) * 2);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.05) 50%,
+          rgba(255, 255, 255, 0.1) 100%
+        );
         border: 1px solid var(--dg-glass-border);
         backdrop-filter: blur(15px);
-        box-shadow: var(--dg-glass-shadow);
+        box-shadow: var(--dg-glass-shadow),
+          inset 0 0 20px rgba(255, 255, 255, 0.1);
         z-index: -1;
-        border-radius: 15px;
+        border-radius: 25px;
+        transform: translate(
+          calc(var(--dg-frame-size) * -1),
+          calc(var(--dg-frame-size) * -1)
+        );
+        pointer-events: none;
+      }
+
+      /* Efecto de reflexión en el marco */
+      .dg-glass-frame::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30%;
+        height: 30%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 60%
+        );
+        border-radius: 50%;
+        filter: blur(5px);
+      }
+
+      /* Animación de transición 3D entre slides */
+      .glide__slide--active .dg-slide-content {
+        animation: slideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      @keyframes slideIn {
+        0% {
+          opacity: 0;
+          transform: translateZ(-200px) rotateY(45deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateZ(0) rotateY(0);
+        }
       }
 
       /* Responsive */
@@ -322,44 +269,46 @@
         }
 
         .dg-slide-content {
-          width: 300px;
-          height: 300px;
+          width: 350px;
+          height: 350px;
+        }
+
+        .dg-glass-frame {
+          --dg-frame-size: 30px;
         }
 
         .dg-glide__arrow {
-          width: 40px;
-          height: 40px;
+          width: 50px;
+          height: 50px;
         }
 
         .dg-title {
-          font-size: 20px;
+          font-size: 24px;
           margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .dg-slide-content {
+          width: 280px;
+          height: 280px;
+        }
+
+        .dg-glass-frame {
+          --dg-frame-size: 20px;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Contenedor completamente encapsulado -->
-    <section class="desayunos-section">
-      <div class="container">
-        <div class="desayunos-card">
-          <h2 class="desayunos-title">Desayunos a tu Estilo</h2>
-          <p class="desayunos-description">
-            Cada mañana en Diamante Azul te espera un desayuno variado con
-            frutas frescas, panes artesanales, jugos naturales y opciones
-            calientes para comenzar bien el día..
-          </p>
-          <a href="#" class="btn" onclick="openDesayunosGallery()">Ver más</a>
-        </div>
-      </div>
-    </section>
+    <!-- Contenedor encapsulado para la galería -->
     <div class="dg-container" id="desayunosGallery">
       <div class="dg-gallery">
         <span class="dg-close-btn">&times;</span>
         <h2 class="dg-title">Desayunos Continentales</h2>
 
         <div class="dg-glide glide">
-          <div class="dg-glass-effect"></div>
+          <div class="dg-glass-frame"></div>
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li class="dg-slide glide__slide">
@@ -435,70 +384,117 @@
         </div>
       </div>
     </div>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
 
-  <script>
-    // Inicialización del slider 3D
-    document.addEventListener("DOMContentLoaded", function () {
-      // Configuración del slider
-      const glide = new Glide(".glide", {
-        type: "carousel",
-        perView: 1,
-        focusAt: "center",
-        gap: 40,
-        animationDuration: 800,
-        peek: {
-          before: 100,
-          after: 100,
-        },
-        breakpoints: {
-          768: {
-            peek: {
-              before: 50,
-              after: 50,
+    <!-- Botón para abrir la galería (puedes colocarlo donde necesites) -->
+    <button
+      onclick="openDesayunosGallery()"
+      style="
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 100;
+      "
+    >
+      Ver Galería
+    </button>
+
+    <!-- Script de Glide.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
+    <script>
+      // Inicialización del slider 3D
+      document.addEventListener("DOMContentLoaded", function () {
+        // Configuración del slider mejorado
+        const glide = new Glide(".glide", {
+          type: "carousel",
+          perView: 1,
+          focusAt: "center",
+          gap: 60,
+          animationDuration: 1000,
+          animationTimingFunc: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          peek: {
+            before: 120,
+            after: 120,
+          },
+          breakpoints: {
+            768: {
+              peek: {
+                before: 80,
+                after: 80,
+              },
+              gap: 40,
+            },
+            480: {
+              peek: {
+                before: 40,
+                after: 40,
+              },
+              gap: 20,
             },
           },
-        },
-      }).mount();
+        }).mount();
 
-      // Efecto 3D para las slides
-      const slides = document.querySelectorAll(".dg-slide-content");
-      slides.forEach((slide) => {
-        slide.addEventListener("mousemove", (e) => {
-          const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-          const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
-          slide.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) scale(1.05)`;
+        // Efecto 3D mejorado para las slides
+        const slides = document.querySelectorAll(".dg-slide-content");
+        slides.forEach((slide) => {
+          slide.addEventListener("mousemove", (e) => {
+            const rect = slide.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const xAxis = (centerX - x) / 15;
+            const yAxis = (centerY - y) / 15;
+
+            slide.style.transform = `rotateY(${xAxis}deg) rotateX(${-yAxis}deg) scale(1.05)`;
+            slide.style.boxShadow = `${-xAxis * 2}px ${
+              yAxis * 2
+            }px 30px rgba(0,0,0,0.3)`;
+          });
+
+          slide.addEventListener("mouseleave", () => {
+            slide.style.transform = "rotateY(0) rotateX(0) scale(1)";
+            slide.style.boxShadow = "0 25px 50px rgba(0, 0, 0, 0.5)";
+          });
         });
 
-        slide.addEventListener("mouseleave", () => {
-          slide.style.transform = "rotateY(0) rotateX(0)";
-        });
-      });
+        // Control de la galería
+        const gallery = document.getElementById("desayunosGallery");
+        const closeBtn = document.querySelector(".dg-close-btn");
 
-      // Control de la galería
-      const gallery = document.getElementById("desayunosGallery");
-      const closeBtn = document.querySelector(".dg-close-btn");
+        // Función para abrir la galería
+        window.openDesayunosGallery = function () {
+          gallery.style.display = "flex";
+          document.body.style.overflow = "hidden";
 
-      // Función para abrir la galería (debe llamarse desde tu botón "Ver más")
-      window.openDesayunosGallery = function () {
-        gallery.style.display = "block";
-        document.body.style.overflow = "hidden";
-      };
+          // Reiniciar la posición del slider al abrir
+          glide.go("=0");
 
-      // Función para cerrar la galería
-      closeBtn.addEventListener("click", function () {
-        gallery.style.display = "none";
-        document.body.style.overflow = "auto";
-      });
+          // Forzar redibujado para asegurar la animación
+          setTimeout(() => {
+            gallery.style.opacity = "1";
+          }, 10);
+        };
 
-      // Cerrar al hacer clic fuera del contenido
-      gallery.addEventListener("click", function (e) {
-        if (e.target === gallery) {
+        // Función para cerrar la galería
+        closeBtn.addEventListener("click", function () {
           gallery.style.display = "none";
           document.body.style.overflow = "auto";
-        }
+        });
+
+        // Cerrar al hacer clic fuera del contenido
+        gallery.addEventListener("click", function (e) {
+          if (e.target === gallery) {
+            gallery.style.display = "none";
+            document.body.style.overflow = "auto";
+          }
+        });
       });
-    });
-  </script>
+    </script>
+  </body>
 </html>
