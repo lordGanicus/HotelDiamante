@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paquetes Especiales</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --azul-principal: #012555;
+        --boton-color: #012555;
+        --boton-texto: white;
+        --boton-borde-hover: #012555;
+        --boton-fondo-hover: white;
+        --boton-texto-hover: #012555;
+        --icon-color: white;
+        --icon-border-color: white;
+
+        --ps-bg-color: #000;
+        --ps-text-color: #fff;
+        --ps-card-bg: #fff;
+        --ps-card-text: #333;
+        --ps-link-color: #012555;
+        --ps-accent-color: #4d0c0c;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #000;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        font-size: 16px;
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: var(--boton-color);
+        color: var(--boton-texto);
+        text-decoration: none;
+        border-radius: 10px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 2px solid var(--boton-color);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #0140a3;
+        transform: translateY(-2px);
+      }
+
+      /* Sección Desayunos */
+      .desayunos-section {
+        position: relative;
+        padding: 80px 0;
+        background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752155548/88636be3-0e7b-4134-895d-68834d37d678.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+
+      .desayunos-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+      }
+
+      .desayunos-card {
+        position: relative;
+        z-index: 2;
+        max-width: 450px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 35px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+      }
+
+      .desayunos-title {
+        font-family: "Prata", serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 20px;
+        width: 10rem;
+        position: relative;
+        left: 30%;
+      }
+
+      .desayunos-description {
+        font-size: 15px;
+        color: #000;
+        margin-bottom: 25px;
+        padding: 0 20px;
+      }
+
+      .desayunos-version {
+        font-style: italic;
+        color: #333;
+        font-size: 13px;
+        margin-bottom: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor completamente encapsulado -->
+    <section class="desayunos-section">
+      <div class="container">
+        <div class="desayunos-card">
+          <h2 class="desayunos-title">Desayunos a tu Estilo</h2>
+          <p class="desayunos-description">
+            Cada mañana en Diamante Azul te espera un desayuno variado con
+            frutas frescas, panes artesanales, jugos naturales y opciones
+            calientes para comenzar bien el día..
+          </p>
+          <a href="#" class="btn">Ver más</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

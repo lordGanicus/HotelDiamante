@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pantalla de Carga</title>
+    <style>
+      /* Estilos encapsulados */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #012555;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        overflow: hidden;
+      }
+
+      .loading-logo {
+        width: 120px;
+        height: 120px;
+        margin-top: 120px; /* Logo más abajo */
+        z-index: 2;
+        /* Logo de ejemplo - reemplaza con el tuyo */
+        background-image: url("assets/img/logo/image.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .progress-container {
+        position: absolute;
+        width: 3px; /* Línea un poco más gruesa */
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .progress-bar-top {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(0, 71, 135, 1) 100%
+        ); /* Degradado blanco a azul fuerte */
+        top: 0;
+        animation: fillTop 2s ease-in-out forwards;
+      }
+
+      .progress-bar-bottom {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(
+          to top,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(0, 71, 135, 1) 100%
+        ); /* Degradado blanco a azul fuerte */
+        bottom: 0;
+        animation: fillBottom 2s ease-in-out forwards;
+      }
+
+      .loading-percentage {
+        position: absolute;
+        color: white;
+        font-family: "Arial", sans-serif;
+        font-size: 1.5rem;
+        bottom: 30%;
+        z-index: 3;
+      }
+
+      .welcome-text {
+        position: absolute;
+        top: 20%;
+        color: white;
+        font-family: "Arial", sans-serif;
+        font-size: 2rem;
+        z-index: 3;
+      }
+
+      .welcome-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #012555;
+        color: white;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-family: "Arial", sans-serif;
+        font-size: 3rem;
+        z-index: 10000;
+      }
+
+      @keyframes fillTop {
+        0% {
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          height: 50%;
+          opacity: 1;
+        }
+      }
+
+      @keyframes fillBottom {
+        0% {
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          height: 50%;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="progress-container">
+        <div class="progress-bar-top"></div>
+        <div class="progress-bar-bottom"></div>
+      </div>
+      <div class="loading-logo"></div>
+      <div class="loading-percentage" id="percentage">0%</div>
+    </div>
+
+    <!-- Pantalla Welcome (oculta inicialmente) -->
+    <div class="welcome-screen" id="welcomeScreen">Welcome</div>
+
+    <script>
+      (function () {
+        // Animación del porcentaje
+        let percentage = 0;
+        const percentageElement = document.getElementById("percentage");
+        const percentageInterval = setInterval(() => {
+          percentage += 1;
+          percentageElement.textContent = percentage + "%";
+
+          if (percentage >= 100) {
+            clearInterval(percentageInterval);
+
+            // Mostrar pantalla Welcome después de completar
+            setTimeout(function () {
+              document.getElementById("loadingScreen").style.display = "none";
+              document.getElementById("welcomeScreen").style.display = "flex";
+
+              // Ocultar pantalla Welcome después de 1 segundo
+              setTimeout(function () {
+                document.getElementById("welcomeScreen").style.display = "none";
+              }, 1000);
+            }, 200);
+          }
+        }, 30); // Ajusta este valor para cambiar la velocidad del porcentaje
+
+        // Asegurar que las barras lleguen exactamente al logo
+        const logo = document.querySelector(".loading-logo");
+        const logoPosition = logo.offsetTop + logo.offsetHeight / 2;
+        const screenHeight = window.innerHeight;
+
+        document.styleSheets[0].insertRule(
+          `@keyframes fillTop { 0% { height: 0; } 100% { height: ${logoPosition}px; } }`,
+          document.styleSheets[0].cssRules.length
+        );
+
+        document.styleSheets[0].insertRule(
+          `@keyframes fillBottom { 0% { height: 0; } 100% { height: ${
+            screenHeight - logoPosition - logo.offsetHeight / 2
+          }px; } }`,
+          document.styleSheets[0].cssRules.length
+        );
+      })();
+    </script>
+  </body>
+</html>

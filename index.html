@@ -1,0 +1,396 @@
+<!-- === LIVE PREVIEW === -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Diamante Azul</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Google Fonts prata -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,300;0,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Garamond&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar" id="navbar">
+        <img
+          class="logo-navbar"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hotel.svg/512px-Hotel.svg.png"
+          alt="Logo Hotel"
+        />
+        <a href="#">Inicio</a>
+        <a href="#">Habitaciones</a>
+        <a href="#">Servicios</a>
+        <a href="#">Paquetes</a>
+        <a href="#">Reservar</a>
+      </div>
+      <div class="menu-overlay" id="menuOverlay">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <ul>
+          <li>Inicio</li>
+          <li>Habitaciones</li>
+          <li>Servicios</li>
+          <li>Desayuno Ejecutivo</li>
+          <li>Paquetes</li>
+          <li>Reservar</li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <section class="hero-section">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Hotel 1" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/image.png" alt="Hotel 2" />
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Hotel 3" />
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="menu-button" id="openMenu">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+            alt="Menu"
+          />
+        </div>
+
+        <a href="#" class="btn-reservar-top">Reservar</a>
+
+        <div class="hero-content">
+          <h1>Hotel Diamante Azul</h1>
+          <p>Tu descanso, nuestra prioridad</p>
+        </div>
+
+        <div class="logo-central">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Hotel.svg/512px-Hotel.svg.png"
+            alt="Logo Hotel"
+          />
+        </div>
+      </section>
+      <!-- SECCION DE INFORMACION -->
+
+      <section class="info-section-main">
+        <div class="info-section">
+          <div class="info-rect">
+            <h2>DIAMANTE AZUL</h2>
+            <h3>Elegancia que reluce en el corazón de La Paz</h3>
+            <p>
+              Céntrico, acogedor y con todo lo que necesitas para una gran
+              estadía.
+            </p>
+
+            <div class="icons-container">
+              <i class="fas fa-wifi"></i>
+              <i class="fas fa-stopwatch"></i>
+              <i class="fas fa-car"></i>
+              <i class="fas fa-utensils"></i>
+              <i class="fas fa-bed"></i>
+              <i class="fas fa-concierge-bell"></i>
+
+              <!-- Segunda línea vertical -->
+              <div class="line-vertical"></div>
+            </div>
+
+            <div class="line-divider"></div>
+          </div>
+
+          <div class="slider-container">
+            <div class="swiper mySwiper1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="assets/img/image copy.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/image.png" alt="" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/img/image copy.png" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCION DE HABITACIONES -->
+      <section class="habitaciones-section">
+        <div class="habitaciones-header">
+          <h2>Habitaciones</h2>
+          <p>
+            Contamos con ambientes agradables en diferentes categorías de
+            habitaciones
+          </p>
+        </div>
+
+        <div class="habitaciones-swiper swiper">
+          <div class="swiper-wrapper">
+            <!-- Habitación Twin -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Twin" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Twin</h3>
+                  <p>
+                    Dos camas individuales en un espacio cómodo, todo lo
+                    necesario para tu descanso.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Individual -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Individual" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Individual</h3>
+                  <p>
+                    Espacio práctico y bien equipado, pensado para una estancia
+                    individual tranquila y confortable.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Triple -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Triple" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Triple</h3>
+                  <p>
+                    Espacio cálido y práctico, ideal para tres huéspedes en
+                    busca de una opción accesible y confortable.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Matrimonial Estándar -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Matrimonial Estándar" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Matrimonial Estándar</h3>
+                  <p>
+                    Ambiente armonioso que combina comodidad y estilo en un
+                    espacio acogedor y sofisticado.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Matrimonial Deluxe -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Matrimonial Deluxe" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Matrimonial Deluxe</h3>
+                  <p>
+                    Cama matrimonial, diseño refinado y un ambiente pensado para
+                    el descanso en pareja.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Familiar Deluxe -->
+            <div class="swiper-slide">
+              <img src="assets/img/image copy.png" alt="Familiar Deluxe" />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Familiar Deluxe</h3>
+                  <p>
+                    Perfecta para compartir en familia, con amplias camas,
+                    muebles modernos y detalles acogedores.
+                  </p>
+                  <button class="btn-reservar">Reservar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="habitaciones-nav">
+            <button class="habitacion-nav-btn habitacion-prev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="habitacion-nav-btn habitacion-next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- SECCION DE PAQUETES -->
+      <section class="paquetes-especiales-container">
+        <div class="ps-bg-overlay" id="psBackgroundOverlay"></div>
+        <div class="ps-gradient-overlay"></div>
+        <div class="ps-floating-hearts" id="psFloatingHearts"></div>
+
+        <div class="ps-content">
+          <div class="ps-header">
+            <h2 class="ps-main-title">PAQUETES<br />ESPECIALES</h2>
+            <p class="ps-description">
+              Elige entre nuestros paquetes exclusivos, desde románticos escapes
+              hasta una velada romántica con tu persona especial, diseñados para
+              crear momentos inolvidables con comodidad y estilo.
+            </p>
+          </div>
+
+          <div class="ps-slider-container">
+            <div class="ps-slider" id="psSlider">
+              <div class="ps-package-card">
+                <div class="ps-package-content">
+                  <div
+                    class="ps-package-image"
+                    style="
+                      background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1752154193/e61e1a27-df09-4a8a-9128-2442bbec2e25.png');
+                    "
+                  ></div>
+                  <div class="ps-package-details">
+                    <h2 class="ps-package-title">PAQUETE ESCAPADA ROMÁNTICA</h2>
+                    <p class="ps-package-desc">
+                      Vive una escapada romántica de pasión, confort y magia,
+                      creando momentos únicos.
+                    </p>
+                    <a href="#" class="ps-detail-link">VER DETALLE</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ps-package-card">
+                <div class="ps-package-content">
+                  <div
+                    class="ps-package-image"
+                    style="
+                      background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1752179988/Miel1_sjyclt.jpg');
+                    "
+                  ></div>
+                  <div class="ps-package-details">
+                    <h2 class="ps-package-title">UNA VELADA, MIL RECUERDOS</h2>
+                    <p class="ps-package-desc">
+                      Disfruta de una noche inolvidable llena de romanticismo y
+                      detalles especiales.
+                    </p>
+                    <a href="#" class="ps-detail-link">VER DETALLE</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ps-slider-controls">
+              <button class="ps-slider-btn" id="psPrevBtn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+                </svg>
+              </button>
+              <button class="ps-slider-btn" id="psNextBtn">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="ps-slide-name ps-name-left">
+              ESCAPADA<br />ROMÁNTICA
+            </div>
+            <div class="ps-slide-name ps-name-right">
+              UNA VELADA<br />MIL RECUERDOS
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECCION DE desayuno 
+      <section class="desayunos-section">
+        <div class="container">
+          <div class="desayunos-card">
+            <h2 class="desayunos-title">Desayunos a tu Estilo</h2>
+            <p class="desayunos-description">
+              Cada mañana en Diamante Azul te espera un desayuno con frutas
+              frescas, para cubrirnos, jugar una tierra y obtener chismes para
+              comenzar bien el día.
+            </p>
+            <p class="desayunos-version">Versión</p>
+            <a href="#" class="btn">Ver más</a>
+          </div>
+        </div>
+      </section>
+-->
+      <!-- Sección Experiencia Turística 
+      <section class="turismo-section">
+        <div class="container">
+          <div class="turismo-card">
+            <div class="turismo-content">
+              <h3 class="turismo-subtitle">Tu Experiencia Turística</h3>
+              <h2 class="turismo-title">Comienza Aquí</h2>
+              <p class="turismo-description">
+                Haz de tu estadía una aventura cultural. El Hotel Diamante Azul
+                te conecta con museos, centros históricos y espacios turísticos
+                ideales para recorrer y disfrutar.
+              </p>
+            </div>
+            <div class="turismo-image">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752158869/a4c1abcb-89e5-4935-a8ac-968d89cdf7ba.png"
+                alt="Experiencia turística"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      -->
+    </main>
+
+    <a href="#" class="whatsapp-button" target="_blank" rel="noopener">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+        alt="WhatsApp"
+      />
+    </a>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/assets/script.js"></script>
+  </body>
+</html>
