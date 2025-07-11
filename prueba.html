@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ubicación - Hotel Diamante Azul</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Estilos encapsulados con prefijo ubi- */
+      .ubi-container {
+        --ubi-azul-oscuro: #012555;
+        --ubi-azul-claro: #0251bb;
+        --ubi-gris-fondo: #d9d9d9;
+        --ubi-texto-color: #000000;
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        background-color: white;
+      }
+
+      /* Sección Ubicación */
+      .ubi-location-section {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+        background-color: white;
+      }
+
+      .ubi-content-wrapper {
+        position: relative;
+        max-width: 1200px;
+        width: 100%;
+        height: 600px;
+        display: flex;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .ubi-text-content {
+        position: relative;
+        width: 50%;
+        height: 100%;
+        padding: 40px;
+        z-index: 2;
+        background-color: white;
+      }
+
+      .ubi-map-container {
+        position: relative;
+        width: 50%;
+        height: 100%;
+      }
+
+      .ubi-map-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--ubi-gris-fondo);
+        right: 0;
+      }
+
+      .ubi-title {
+        font-family: "Prata", serif;
+        font-size: 48px;
+        font-weight: 400;
+        background: linear-gradient(
+          180deg,
+          var(--ubi-azul-oscuro) 0%,
+          var(--ubi-azul-claro) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        margin-bottom: 40px;
+      }
+
+      .ubi-gps-label {
+        position: absolute;
+        right: 40px;
+        top: 40px;
+        font-family: "Prociono", serif;
+        font-size: 32px;
+        color: var(--ubi-texto-color);
+      }
+
+      .ubi-description {
+        font-family: "Garamond", serif;
+        font-size: 28px;
+        color: var(--ubi-texto-color);
+        margin-bottom: 40px;
+        line-height: 1.3;
+      }
+
+      .ubi-info-item {
+        position: relative;
+        font-family: "Garamond", serif;
+        font-size: 24px;
+        color: var(--ubi-texto-color);
+        margin-bottom: 25px;
+        padding-left: 70px;
+        display: flex;
+        align-items: center;
+        min-height: 60px;
+      }
+
+      .ubi-icon {
+        position: absolute;
+        left: 0;
+        font-size: 36px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ubi-azul-oscuro);
+      }
+
+      /* Estilos específicos para el mapa */
+      .ubi-map-iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .ubi-content-wrapper {
+          flex-direction: column;
+          height: auto;
+        }
+
+        .ubi-text-content,
+        .ubi-map-container {
+          width: 100%;
+        }
+
+        .ubi-map-container {
+          height: 400px;
+        }
+
+        .ubi-title {
+          font-size: 36px;
+        }
+
+        .ubi-description {
+          font-size: 22px;
+        }
+
+        .ubi-info-item {
+          font-size: 18px;
+        }
+
+        .ubi-gps-label {
+          position: relative;
+          right: auto;
+          top: auto;
+          margin-bottom: 20px;
+          text-align: right;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .ubi-title {
+          font-size: 28px;
+        }
+
+        .ubi-description {
+          font-size: 18px;
+          margin-bottom: 30px;
+        }
+
+        .ubi-info-item {
+          font-size: 16px;
+          padding-left: 50px;
+          min-height: 50px;
+        }
+
+        .ubi-icon {
+          font-size: 28px;
+          width: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body class="ubi-container">
+    <section class="ubi-location-section">
+      <div class="ubi-content-wrapper">
+        <!-- Contenido de texto -->
+        <div class="ubi-text-content">
+          <h1 class="ubi-title">Ubicación Actual</h1>
+          <span class="ubi-gps-label">GPS</span>
+
+          <p class="ubi-description">
+            Hotel Diamante Azul, con una ubicación céntrica en la ciudad de La
+            Paz
+          </p>
+
+          <!-- Información de ubicación -->
+          <div class="ubi-info-item">
+            <div class="ubi-icon">
+              <i class="fas fa-walking"></i>
+            </div>
+            <span>19 min a pie de Estación Teleférico Cementerio</span>
+          </div>
+
+          <div class="ubi-info-item">
+            <div class="ubi-icon">
+              <i class="fas fa-subway"></i>
+            </div>
+            <span>3 km de Estación Teleférico Buenos Aires</span>
+          </div>
+
+          <div class="ubi-info-item">
+            <div class="ubi-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <span>Disposición de Vehículo las 24 hrs</span>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="ubi-map-container">
+          <div class="ubi-map-background"></div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d759.0951631492228!2d-68.14077640656336!3d-16.49578748076804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f2075b47d6931%3A0x3b41ec08cde88085!2sHotel%20Diamante%20Azul!5e0!3m2!1ses-419!2sbo!4v1752249799346!5m2!1ses-419!2sbo"
+            class="ubi-map-iframe"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

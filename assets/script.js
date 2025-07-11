@@ -312,3 +312,70 @@ const dyGallery = {
 document.addEventListener("DOMContentLoaded", function () {
   dyGallery.init();
 });
+/************************turismo******************* */
+document.addEventListener("DOMContentLoaded", function () {
+  const coin = document.querySelector(".trm-coin");
+  const frontImg = document.querySelector(".trm-coin-front img");
+  const backImg = document.querySelector(".trm-coin-back img");
+
+  const images = [
+    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752239491/3e221f4a-fd00-4b5b-a847-725e236270b8.png",
+    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752239508/ee574d0a-d0c9-4d22-923e-b52d20a59060.png",
+    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752239527/276d065c-d764-46e7-84ac-5d9963078f83.png",
+    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752239541/eeb577b7-8525-4cf1-906d-065e1201a39d.png",
+    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752239562/d9cdedb1-081d-4d9b-8621-1a7464ffca41.png",
+  ];
+
+  let currentIndex = 0;
+
+  // Inicializar con la primera imagen en el frente y la segunda en el dorso
+  frontImg.src = images[0];
+  backImg.src = images[1];
+  currentIndex = 1;
+
+  function rotateCoin() {
+    // Agregar clase para girar (180 grados)
+    coin.classList.add("rotated");
+
+    // Al terminar la animación
+    coin.addEventListener(
+      "transitionend",
+      function handler(e) {
+        // Solo nos interesa el evento de transformación
+        if (e.propertyName !== "transform") return;
+
+        // Remover el event listener para evitar múltiples llamadas
+        coin.removeEventListener("transitionend", handler);
+
+        // Quitar transición momentáneamente para reiniciar sin animación
+        coin.style.transition = "none";
+
+        // Cambiar las imágenes:
+        // 1. La imagen del frente se convierte en la que estaba en el dorso
+        frontImg.src = backImg.src;
+
+        // 2. Avanzar al siguiente índice
+        currentIndex = (currentIndex + 1) % images.length;
+
+        // 3. Cargar la siguiente imagen en el dorso
+        backImg.src = images[currentIndex];
+
+        // 4. Remover la clase de rotación para volver a la posición inicial
+        coin.classList.remove("rotated");
+
+        // Forzar un reflow para que el navegador registre el cambio
+        void coin.offsetWidth;
+
+        // Restaurar la transición
+        coin.style.transition = "transform 3s ease-in-out";
+
+        // Iniciar la siguiente rotación después de un pequeño retraso
+        setTimeout(rotateCoin, 100);
+      },
+      { once: false }
+    );
+  }
+
+  // Iniciar la primera rotación después de un breve retraso
+  setTimeout(rotateCoin, 1000);
+});
