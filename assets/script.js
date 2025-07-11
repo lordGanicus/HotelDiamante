@@ -197,64 +197,118 @@ document.addEventListener("DOMContentLoaded", function () {
   container.style.margin = "0 auto";
 });
 /*****************desayunos ****************/
-// Inicialización del slider 3D
-document.addEventListener("DOMContentLoaded", function () {
-  // Configuración del slider
-  const glide = new Glide(".glide", {
-    type: "carousel",
-    perView: 1,
-    focusAt: "center",
-    gap: 40,
-    animationDuration: 800,
-    peek: {
-      before: 100,
-      after: 100,
-    },
-    breakpoints: {
-      768: {
-        peek: {
-          before: 50,
-          after: 50,
-        },
-      },
-    },
-  }).mount();
+// Namespace para evitar conflictos
+const dyGallery = {
+  init: function () {
+    this.container = document.getElementById("dyGalleryContainer");
+    this.openBtn = document.getElementById("dyOpenBtn");
+    this.closeBtn = document.getElementById("dyCloseBtn");
+    this.prevBtn = document.getElementById("dyPrevBtn");
+    this.nextBtn = document.getElementById("dyNextBtn");
+    this.indicators = document.querySelectorAll(".dy-indicator");
+    this.slides = document.querySelectorAll(".dy-slide");
 
-  // Efecto 3D para las slides
-  const slides = document.querySelectorAll(".dg-slide-content");
-  slides.forEach((slide) => {
-    slide.addEventListener("mousemove", (e) => {
-      const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-      const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
-      slide.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) scale(1.05)`;
+    this.currentSlide = 0;
+    this.totalSlides = this.slides.length;
+
+    this.setupEvents();
+    this.showSlide(this.currentSlide);
+  },
+
+  setupEvents: function () {
+    // Abrir galería
+    this.openBtn.addEventListener("click", () => {
+      this.container.classList.add("dy-active");
+      document.body.style.overflow = "hidden";
+      this.showSlide(this.currentSlide);
     });
 
-    slide.addEventListener("mouseleave", () => {
-      slide.style.transform = "rotateY(0) rotateX(0)";
-    });
-  });
-
-  // Control de la galería
-  const gallery = document.getElementById("desayunosGallery");
-  const closeBtn = document.querySelector(".dg-close-btn");
-
-  // Función para abrir la galería (debe llamarse desde tu botón "Ver más")
-  window.openDesayunosGallery = function () {
-    gallery.style.display = "block";
-    document.body.style.overflow = "hidden";
-  };
-
-  // Función para cerrar la galería
-  closeBtn.addEventListener("click", function () {
-    gallery.style.display = "none";
-    document.body.style.overflow = "auto";
-  });
-
-  // Cerrar al hacer clic fuera del contenido
-  gallery.addEventListener("click", function (e) {
-    if (e.target === gallery) {
-      gallery.style.display = "none";
+    // Cerrar galería
+    this.closeBtn.addEventListener("click", () => {
+      this.container.classList.remove("dy-active");
       document.body.style.overflow = "auto";
-    }
-  });
+    });
+
+    // Navegación
+    this.prevBtn.addEventListener("click", () => {
+      this.currentSlide =
+        (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.showSlide(this.currentSlide);
+    });
+
+    this.nextBtn.addEventListener("click", () => {
+      this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+      this.showSlide(this.currentSlide);
+    });
+
+    // Indicadores
+    this.indicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => {
+        this.currentSlide = parseInt(indicator.getAttribute("data-slide"));
+        this.showSlide(this.currentSlide);
+      });
+    });
+
+    // Efecto 3D con movimiento del mouse
+    const slideContents = document.querySelectorAll(".dy-slide-content");
+
+    slideContents.forEach((content) => {
+      content.addEventListener("mousemove", (e) => {
+        const rect = content.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = (x - centerX) / 20;
+        const rotateX = (centerY - y) / 20;
+
+        content.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(30px)`;
+
+        const mainImage = content.querySelector(".dy-main-image");
+        mainImage.style.transform = `translate(-50%, -50%) translateZ(40px)`;
+        mainImage.style.boxShadow = `${-rotateY * 5}px ${
+          rotateX * 5
+        }px 50px rgba(0,0,0,0.5)`;
+      });
+
+      content.addEventListener("mouseleave", () => {
+        content.style.transform = "rotateY(0) rotateX(0) translateZ(0)";
+
+        const mainImage = content.querySelector(".dy-main-image");
+        mainImage.style.transform = "translate(-50%, -50%)";
+        mainImage.style.boxShadow = "0 30px 50px rgba(0, 0, 0, 0.4)";
+      });
+    });
+  },
+
+  showSlide: function (index) {
+    // Ocultar todas las slides
+    this.slides.forEach((slide) => {
+      slide.style.display = "none";
+      slide.style.opacity = "0";
+      slide.style.transform = "translateZ(-300px) rotateY(30deg)";
+    });
+
+    // Mostrar slide actual con animación
+    this.slides[index].style.display = "block";
+    setTimeout(() => {
+      this.slides[index].style.opacity = "1";
+      this.slides[index].style.transform = "translateZ(0) rotateY(0)";
+    }, 10);
+
+    // Actualizar indicadores
+    this.indicators.forEach((indicator, i) => {
+      if (i === index) {
+        indicator.classList.add("dy-active");
+      } else {
+        indicator.classList.remove("dy-active");
+      }
+    });
+  },
+};
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener("DOMContentLoaded", function () {
+  dyGallery.init();
 });

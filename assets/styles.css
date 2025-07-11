@@ -7,6 +7,11 @@
   --boton-texto-hover: #012555;
   --icon-color: white;
   --icon-border-color: white;
+  --azul-secundario: #0140a3;
+  --texto-color: #000;
+
+  --trm-gris-claro: #d9d9d9;
+  --trm-gris-oscuro: #737373;
 
   --ps-bg-color: #000;
   --ps-text-color: #fff;
@@ -14,6 +19,16 @@
   --ps-card-text: #333;
   --ps-link-color: #012555;
   --ps-accent-color: #4d0c0c;
+
+  --dy-glass-bg: rgba(255, 255, 255, 0.15);
+  --dy-glass-border: rgba(255, 255, 255, 0.2);
+  --dy-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --dy-text-color: #fff;
+  --dy-btn-bg: rgba(255, 255, 255, 0.8);
+  --dy-btn-color: #333;
+  --dy-frame-size: 40px;
+  --dy-reflect-height: 150px;
+  --dy-image-size: 500px;
 }
 * {
   margin: 0;
@@ -1001,4 +1016,626 @@ header {
     display: none;
   }
 }
-/********/
+/****************************DESAYUNOS************************/
+/********************** Sección DESAYUNOS***************** */
+.dtn-main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.dtn-btn {
+  font-size: 16px;
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: var(--boton-color);
+  color: var(--boton-texto);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid var(--boton-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.dtn-btn:hover {
+  background-color: var(--boton-fondo-hover);
+  color: var(--boton-texto-hover);
+  border-color: var(--boton-borde-hover);
+  transform: translateY(-2px);
+}
+
+/* Sección Desayunos */
+.dtn-breakfast-section {
+  position: relative;
+  padding: 80px 0;
+  background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752155548/88636be3-0e7b-4134-895d-68834d37d678.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dtn-breakfast-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.dtn-breakfast-card {
+  position: relative;
+  z-index: 2;
+  max-width: 450px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 35px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.dtn-breakfast-title {
+  font-family: "Prata", serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+  width: 10rem;
+  position: relative;
+  left: 30%;
+}
+
+.dtn-breakfast-description {
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+
+.dtn-breakfast-version {
+  font-style: italic;
+  color: #333;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dtn-breakfast-card {
+    padding: 25px;
+  }
+
+  .dtn-breakfast-title {
+    font-size: 24px;
+    left: 25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dtn-breakfast-title {
+    left: 20%;
+    width: auto;
+  }
+
+  .dtn-breakfast-description {
+    padding: 0 10px;
+  }
+}
+/********************** Sección DESAYUNOS SLIDER***************** */
+.dy-section-gallery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dy-section-gallery.dy-active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Botón de cerrar */
+.dy-close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 32px;
+  color: var(--dy-text-color);
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.3s;
+  background: none;
+  border: none;
+}
+
+.dy-close-btn:hover {
+  transform: rotate(90deg);
+}
+
+/* Título */
+.dy-gallery-title {
+  position: absolute;
+  top: 30px;
+  color: var(--dy-text-color);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+/* Contenedor del slider */
+.dy-slider-container {
+  width: 90%;
+  max-width: 1000px;
+  height: 70vh;
+  position: relative;
+  perspective: 2000px;
+}
+
+/* Slides */
+.dy-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dy-slide-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Imagen principal */
+.dy-main-image {
+  position: absolute;
+  width: var(--dy-image-size);
+  height: var(--dy-image-size);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  transition: all 0.8s;
+}
+
+/* Efecto de reflexión */
+.dy-reflection {
+  position: absolute;
+  width: var(--dy-image-size);
+  height: var(--dy-reflect-height);
+  left: 50%;
+  top: calc(50% + calc(var(--dy-image-size) / 2));
+  transform: translateX(-50%) rotateX(80deg) scaleY(0.8);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), transparent);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    transparent
+  );
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  opacity: 0.7;
+  z-index: 1;
+  filter: blur(2px);
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+}
+
+.dy-reflection img {
+  width: 100%;
+  height: var(--dy-image-size);
+  object-fit: cover;
+  transform: translateY(calc(var(--dy-image-size) / -1.5));
+  border-radius: 20px;
+}
+
+/* Marco de vidrio */
+.dy-glass-frame {
+  position: absolute;
+  width: calc(var(--dy-image-size) + var(--dy-frame-size) * 2);
+  height: calc(var(--dy-image-size) + var(--dy-frame-size) * 2);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--dy-glass-bg);
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--dy-glass-border);
+  box-shadow: var(--dy-glass-shadow), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  z-index: 0;
+  overflow: hidden;
+}
+
+.dy-glass-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+}
+
+/* Efectos de luz en el vidrio */
+.dy-glass-frame::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  filter: blur(5px);
+}
+
+/* Controles de navegación */
+.dy-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: var(--dy-btn-bg);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.dy-nav-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: white;
+}
+
+.dy-nav-btn i {
+  font-size: 24px;
+  color: var(--dy-btn-color);
+}
+
+.dy-prev-btn {
+  left: 20px;
+}
+
+.dy-next-btn {
+  right: 20px;
+}
+
+/* Indicadores */
+.dy-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 10;
+}
+
+.dy-indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.dy-indicator.dy-active {
+  background: white;
+  transform: scale(1.3);
+}
+
+/* Efecto 3D al mover el mouse */
+.dy-slide-content:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateZ(30px);
+}
+
+.dy-slide-content:hover .dy-main-image {
+  transform: translate(-50%, -50%) translateZ(40px);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.5);
+}
+
+/* Botón para abrir la galería */
+.dy-open-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 12px 24px;
+  background: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  z-index: 100;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  font-family: "Prata", serif;
+}
+
+.dy-open-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animación de entrada */
+@keyframes dy-slideIn {
+  0% {
+    opacity: 0;
+    transform: translateZ(-300px) rotateY(30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0) rotateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dy-container {
+    --dy-image-size: 350px;
+    --dy-reflect-height: 100px;
+    --dy-frame-size: 30px;
+  }
+
+  .dy-gallery-title {
+    font-size: 1.8rem;
+    top: 20px;
+  }
+
+  .dy-nav-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dy-container {
+    --dy-image-size: 280px;
+    --dy-reflect-height: 80px;
+    --dy-frame-size: 20px;
+  }
+
+  .dy-gallery-title {
+    font-size: 1.5rem;
+  }
+
+  .dy-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dy-nav-btn i {
+    font-size: 18px;
+  }
+}
+/*******************TURISMO********************/
+.trm-tourism-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    75deg,
+    rgba(1, 37, 85, 1) 0%,
+    rgba(1, 48, 111, 1) 41%,
+    rgba(2, 59, 136, 1) 57%,
+    rgba(34, 115, 222, 1) 88%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.trm-tourism-rectangle {
+  position: absolute;
+  width: 100%;
+  height: 375px;
+  background: linear-gradient(
+    180deg,
+    var(--trm-gris-claro) 0%,
+    var(--trm-gris-oscuro) 100%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.trm-tourism-content {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  gap: 40px;
+}
+
+.trm-text-content {
+  max-width: 600px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.trm-tourism-subtitle {
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--texto-color);
+  margin-bottom: 10px;
+}
+
+.trm-tourism-title {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--texto-color);
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.trm-tourism-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: var(--color);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* Slider de imágenes */
+.trm-slider-container {
+  position: relative;
+  width: 599px;
+  height: 568px;
+  perspective: 2000px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.trm-coin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 3s ease-in-out;
+}
+
+.trm-coin-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.trm-coin-front {
+  transform: rotateY(0deg);
+}
+
+.trm-coin-back {
+  transform: rotateY(180deg);
+}
+
+.trm-coin.rotated {
+  transform: rotateY(180deg);
+}
+
+.trm-coin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Botón */
+.trm-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: var(--azul-principal);
+  color: var(--boton-texto);
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--azul-principal);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.trm-btn:hover {
+  background-color: var(--azul-secundario);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .trm-tourism-content {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .trm-text-content {
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .trm-slider-container {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trm-tourism-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .trm-tourism-description {
+    font-size: 18px;
+  }
+
+  .trm-slider-container {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .trm-tourism-section {
+    padding: 60px 20px;
+  }
+
+  .trm-tourism-title {
+    font-size: 28px;
+  }
+
+  .trm-tourism-description {
+    font-size: 16px;
+  }
+
+  .trm-slider-container {
+    width: 280px;
+    height: 280px;
+  }
+}

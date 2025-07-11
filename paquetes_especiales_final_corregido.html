@@ -23,66 +23,57 @@
     />
 
     <style>
-      :root {
-        --azul-principal: #012555;
-        --boton-color: #012555;
-        --boton-texto: white;
-        --boton-borde-hover: #012555;
-        --boton-fondo-hover: white;
-        --boton-texto-hover: #012555;
-        --icon-color: white;
-        --icon-border-color: white;
+      /* Estilos encapsulados con prefijo dtn- */
+      .dtn-container {
+        --dtn-azul-principal: #012555;
+        --dtn-boton-color: #012555;
+        --dtn-boton-texto: white;
+        --dtn-boton-borde-hover: #012555;
+        --dtn-boton-fondo-hover: white;
+        --dtn-boton-texto-hover: #012555;
+        --dtn-icon-color: white;
+        --dtn-icon-border-color: white;
 
-        --ps-bg-color: #000;
-        --ps-text-color: #fff;
-        --ps-card-bg: #fff;
-        --ps-card-text: #333;
-        --ps-link-color: #012555;
-        --ps-accent-color: #4d0c0c;
-      }
-      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-
-      body {
         font-family: "Poppins", sans-serif;
         color: #000;
         line-height: 1.6;
         overflow-x: hidden;
       }
 
-      .container {
+      .dtn-main-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
       }
 
-      .btn {
+      .dtn-btn {
         font-size: 16px;
         display: inline-block;
         padding: 12px 25px;
-        background-color: var(--boton-color);
-        color: var(--boton-texto);
+        background-color: var(--dtn-boton-color);
+        color: var(--dtn-boton-texto);
         text-decoration: none;
         border-radius: 10px;
         font-weight: 500;
         transition: all 0.3s ease;
-        border: 2px solid var(--boton-color);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+        border: 2px solid var(--dtn-boton-color);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+          0px 4px 4px rgba(0, 0, 0, 0.4);
         transition: background-color 0.3s ease, color 0.3s ease,
           border-color 0.3s ease;
+        cursor: pointer;
       }
 
-      .btn:hover {
+      .dtn-btn:hover {
         background-color: #0140a3;
         transform: translateY(-2px);
       }
 
       /* Sección Desayunos */
-      .desayunos-section {
+      .dtn-breakfast-section {
         position: relative;
         padding: 80px 0;
         background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752155548/88636be3-0e7b-4134-895d-68834d37d678.png");
@@ -91,7 +82,7 @@
         background-attachment: fixed;
       }
 
-      .desayunos-section::before {
+      .dtn-breakfast-section::before {
         content: "";
         position: absolute;
         top: 0;
@@ -102,7 +93,7 @@
         z-index: 1;
       }
 
-      .desayunos-card {
+      .dtn-breakfast-card {
         position: relative;
         z-index: 2;
         max-width: 450px;
@@ -115,7 +106,7 @@
         backdrop-filter: blur(4px);
       }
 
-      .desayunos-title {
+      .dtn-breakfast-title {
         font-family: "Prata", serif;
         font-size: 28px;
         font-weight: 700;
@@ -126,379 +117,69 @@
         left: 30%;
       }
 
-      .desayunos-description {
+      .dtn-breakfast-description {
         font-size: 15px;
         color: #000;
         margin-bottom: 25px;
         padding: 0 20px;
       }
 
-      .desayunos-version {
+      .dtn-breakfast-version {
         font-style: italic;
         color: #333;
         font-size: 13px;
         margin-bottom: 25px;
       }
-      /**********desauino************/
-      /* Reset para encapsulación */
-      .dg-container * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Prata", serif;
-      }
-
-      .dg-container {
-        --dg-glass-bg: rgba(255, 255, 255, 0.15);
-        --dg-glass-border: rgba(255, 255, 255, 0.2);
-        --dg-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        --dg-text-color: #fff;
-        --dg-btn-bg: rgba(255, 255, 255, 0.8);
-        --dg-btn-color: #333;
-
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 9999;
-        display: none;
-        backdrop-filter: blur(10px);
-        overflow: hidden;
-      }
-
-      .dg-gallery {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .dg-close-btn {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        font-size: 28px;
-        color: var(--dg-text-color);
-        cursor: pointer;
-        z-index: 10;
-        transition: transform 0.3s;
-      }
-
-      .dg-close-btn:hover {
-        transform: rotate(90deg);
-      }
-
-      .dg-glide {
-        width: 80%;
-        max-width: 900px;
-        position: relative;
-      }
-
-      .dg-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        perspective: 1000px;
-      }
-
-      .dg-slide-content {
-        width: 400px;
-        height: 400px;
-        position: relative;
-        transform-style: preserve-3d;
-        transition: transform 0.5s;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        border-radius: 15px;
-        overflow: hidden;
-      }
-
-      .dg-slide-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 15px;
-      }
-
-      /* Efecto 3D al pasar el mouse */
-      .dg-slide-content:hover {
-        transform: rotateY(10deg) rotateX(5deg) scale(1.05);
-      }
-
-      .dg-glide__arrows {
-        position: absolute;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 0 20px;
-        z-index: 2;
-      }
-
-      .dg-glide__arrow {
-        background: var(--dg-btn-bg);
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
-      }
-
-      .dg-glide__arrow:hover {
-        transform: scale(1.1);
-        background: white;
-      }
-
-      .dg-glide__arrow i {
-        font-size: 20px;
-        color: var(--dg-btn-color);
-      }
-
-      .dg-title {
-        color: var(--dg-text-color);
-        font-size: 24px;
-        margin-bottom: 30px;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      /* Bullets de navegación */
-      .dg-glide__bullets {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        z-index: 2;
-      }
-
-      .dg-glide__bullet {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .dg-glide__bullet:hover,
-      .dg-glide__bullet--active {
-        background: white;
-        transform: scale(1.2);
-      }
-
-      /* Efecto vidrio templado */
-      .dg-glass-effect {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--dg-glass-bg);
-        border: 1px solid var(--dg-glass-border);
-        backdrop-filter: blur(15px);
-        box-shadow: var(--dg-glass-shadow);
-        z-index: -1;
-        border-radius: 15px;
-      }
 
       /* Responsive */
       @media (max-width: 768px) {
-        .dg-glide {
-          width: 95%;
+        .dtn-breakfast-card {
+          padding: 25px;
         }
 
-        .dg-slide-content {
-          width: 300px;
-          height: 300px;
+        .dtn-breakfast-title {
+          font-size: 24px;
+          left: 25%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .dtn-breakfast-title {
+          left: 20%;
+          width: auto;
         }
 
-        .dg-glide__arrow {
-          width: 40px;
-          height: 40px;
-        }
-
-        .dg-title {
-          font-size: 20px;
-          margin-bottom: 20px;
+        .dtn-breakfast-description {
+          padding: 0 10px;
         }
       }
     </style>
   </head>
-  <body>
-    <!-- Contenedor completamente encapsulado -->
-    <section class="desayunos-section">
-      <div class="container">
-        <div class="desayunos-card">
-          <h2 class="desayunos-title">Desayunos a tu Estilo</h2>
-          <p class="desayunos-description">
+  <body class="dtn-container">
+    <!-- Sección de Desayunos completamente encapsulada -->
+    <section class="dtn-breakfast-section">
+      <div class="dtn-main-container">
+        <div class="dtn-breakfast-card">
+          <h2 class="dtn-breakfast-title">Desayunos a tu Estilo</h2>
+          <p class="dtn-breakfast-description">
             Cada mañana en Diamante Azul te espera un desayuno variado con
             frutas frescas, panes artesanales, jugos naturales y opciones
-            calientes para comenzar bien el día..
+            calientes para comenzar bien el día.
           </p>
-          <a href="#" class="btn" onclick="openDesayunosGallery()">Ver más</a>
+          <button class="dtn-btn" onclick="openDesayunosGallery()">
+            Ver más
+          </button>
         </div>
       </div>
     </section>
-    <div class="dg-container" id="desayunosGallery">
-      <div class="dg-gallery">
-        <span class="dg-close-btn">&times;</span>
-        <h2 class="dg-title">Desayunos Continentales</h2>
 
-        <div class="dg-glide glide">
-          <div class="dg-glass-effect"></div>
-          <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-              <li class="dg-slide glide__slide">
-                <div class="dg-slide-content">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752155517/29d867a5-def7-45f3-a8d4-baf0dced9ff1.png"
-                    alt="Desayuno 1"
-                    class="dg-slide-img"
-                  />
-                </div>
-              </li>
-              <li class="dg-slide glide__slide">
-                <div class="dg-slide-content">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181742/f16b37f8-efc2-41cf-bc61-687096ef1419.png"
-                    alt="Desayuno 2"
-                    class="dg-slide-img"
-                  />
-                </div>
-              </li>
-              <li class="dg-slide glide__slide">
-                <div class="dg-slide-content">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181767/455bb74c-dede-40ee-acc6-49d9472b0bc9.png"
-                    alt="Desayuno 3"
-                    class="dg-slide-img"
-                  />
-                </div>
-              </li>
-              <li class="dg-slide glide__slide">
-                <div class="dg-slide-content">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181787/63aedc2e-3c1b-4d01-9cf7-69fc87d2e1b9.png"
-                    alt="Desayuno 4"
-                    class="dg-slide-img"
-                  />
-                </div>
-              </li>
-              <li class="dg-slide glide__slide">
-                <div class="dg-slide-content">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181808/36507c21-fee3-49c7-b5a0-297a9a7088e4.png"
-                    alt="Desayuno 5"
-                    class="dg-slide-img"
-                  />
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="dg-glide__arrows" data-glide-el="controls">
-            <button
-              class="dg-glide__arrow glide__arrow--left"
-              data-glide-dir="<"
-            >
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <button
-              class="dg-glide__arrow glide__arrow--right"
-              data-glide-dir=">"
-            >
-              <i class="fas fa-chevron-right"></i>
-            </button>
-          </div>
-
-          <div class="dg-glide__bullets" data-glide-el="controls[nav]">
-            <button class="dg-glide__bullet" data-glide-dir="=0"></button>
-            <button class="dg-glide__bullet" data-glide-dir="=1"></button>
-            <button class="dg-glide__bullet" data-glide-dir="=2"></button>
-            <button class="dg-glide__bullet" data-glide-dir="=3"></button>
-            <button class="dg-glide__bullet" data-glide-dir="=4"></button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
+    <script>
+      // Función para abrir la galería (debe implementarse según tus necesidades)
+      function openDesayunosGallery() {
+        console.log("Abrir galería de desayunos");
+        // Aquí iría el código para mostrar tu galería de desayunos
+      }
+    </script>
   </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
-
-  <script>
-    // Inicialización del slider 3D
-    document.addEventListener("DOMContentLoaded", function () {
-      // Configuración del slider
-      const glide = new Glide(".glide", {
-        type: "carousel",
-        perView: 1,
-        focusAt: "center",
-        gap: 40,
-        animationDuration: 800,
-        peek: {
-          before: 100,
-          after: 100,
-        },
-        breakpoints: {
-          768: {
-            peek: {
-              before: 50,
-              after: 50,
-            },
-          },
-        },
-      }).mount();
-
-      // Efecto 3D para las slides
-      const slides = document.querySelectorAll(".dg-slide-content");
-      slides.forEach((slide) => {
-        slide.addEventListener("mousemove", (e) => {
-          const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
-          const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
-          slide.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) scale(1.05)`;
-        });
-
-        slide.addEventListener("mouseleave", () => {
-          slide.style.transform = "rotateY(0) rotateX(0)";
-        });
-      });
-
-      // Control de la galería
-      const gallery = document.getElementById("desayunosGallery");
-      const closeBtn = document.querySelector(".dg-close-btn");
-
-      // Función para abrir la galería (debe llamarse desde tu botón "Ver más")
-      window.openDesayunosGallery = function () {
-        gallery.style.display = "block";
-        document.body.style.overflow = "hidden";
-      };
-
-      // Función para cerrar la galería
-      closeBtn.addEventListener("click", function () {
-        gallery.style.display = "none";
-        document.body.style.overflow = "auto";
-      });
-
-      // Cerrar al hacer clic fuera del contenido
-      gallery.addEventListener("click", function (e) {
-        if (e.target === gallery) {
-          gallery.style.display = "none";
-          document.body.style.overflow = "auto";
-        }
-      });
-    });
-  </script>
 </html>

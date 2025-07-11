@@ -342,22 +342,129 @@
           </div>
         </div>
       </section>
-      <!-- SECCION DE desayuno 
-      <section class="desayunos-section">
-        <div class="container">
-          <div class="desayunos-card">
-            <h2 class="desayunos-title">Desayunos a tu Estilo</h2>
-            <p class="desayunos-description">
-              Cada mañana en Diamante Azul te espera un desayuno con frutas
-              frescas, para cubrirnos, jugar una tierra y obtener chismes para
-              comenzar bien el día.
+      <!-- SECCION DE desayuno -->
+      <section class="dtn-breakfast-section">
+        <div class="dtn-main-container">
+          <div class="dtn-breakfast-card">
+            <h2 class="dtn-breakfast-title">Desayunos a tu Estilo</h2>
+            <p class="dtn-breakfast-description">
+              Cada mañana en Diamante Azul te espera un desayuno variado con
+              frutas frescas, panes artesanales, jugos naturales y opciones
+              calientes para comenzar bien el día.
             </p>
-            <p class="desayunos-version">Versión</p>
-            <a href="#" class="btn">Ver más</a>
+            <button class="dtn-btn" id="dyOpenBtn">Ver más</button>
           </div>
         </div>
       </section>
--->
+      <section class="dy-section-gallery dy-container" id="dyGalleryContainer">
+        <button class="dy-close-btn" id="dyCloseBtn">&times;</button>
+        <h1 class="dy-gallery-title">Desayunos Continentales</h1>
+
+        <div class="dy-slider-container">
+          <div class="dy-glass-frame"></div>
+
+          <!-- Slide 1 -->
+          <div class="dy-slide" id="dySlide1">
+            <div class="dy-slide-content">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752155517/29d867a5-def7-45f3-a8d4-baf0dced9ff1.png"
+                alt="Desayuno 1"
+                class="dy-main-image"
+              />
+              <div class="dy-reflection">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752155517/29d867a5-def7-45f3-a8d4-baf0dced9ff1.png"
+                  alt="Reflejo Desayuno 1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="dy-slide" id="dySlide2">
+            <div class="dy-slide-content">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181742/f16b37f8-efc2-41cf-bc61-687096ef1419.png"
+                alt="Desayuno 2"
+                class="dy-main-image"
+              />
+              <div class="dy-reflection">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181742/f16b37f8-efc2-41cf-bc61-687096ef1419.png"
+                  alt="Reflejo Desayuno 2"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="dy-slide" id="dySlide3">
+            <div class="dy-slide-content">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181767/455bb74c-dede-40ee-acc6-49d9472b0bc9.png"
+                alt="Desayuno 3"
+                class="dy-main-image"
+              />
+              <div class="dy-reflection">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181767/455bb74c-dede-40ee-acc6-49d9472b0bc9.png"
+                  alt="Reflejo Desayuno 3"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="dy-slide" id="dySlide4">
+            <div class="dy-slide-content">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181787/63aedc2e-3c1b-4d01-9cf7-69fc87d2e1b9.png"
+                alt="Desayuno 4"
+                class="dy-main-image"
+              />
+              <div class="dy-reflection">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181787/63aedc2e-3c1b-4d01-9cf7-69fc87d2e1b9.png"
+                  alt="Reflejo Desayuno 4"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="dy-slide" id="dySlide5">
+            <div class="dy-slide-content">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181808/36507c21-fee3-49c7-b5a0-297a9a7088e4.png"
+                alt="Desayuno 5"
+                class="dy-main-image"
+              />
+              <div class="dy-reflection">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752181808/36507c21-fee3-49c7-b5a0-297a9a7088e4.png"
+                  alt="Reflejo Desayuno 5"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles -->
+          <button class="dy-nav-btn dy-prev-btn" id="dyPrevBtn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="dy-nav-btn dy-next-btn" id="dyNextBtn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="dy-indicators" id="dyIndicators">
+            <button class="dy-indicator dy-active" data-slide="0"></button>
+            <button class="dy-indicator" data-slide="1"></button>
+            <button class="dy-indicator" data-slide="2"></button>
+            <button class="dy-indicator" data-slide="3"></button>
+            <button class="dy-indicator" data-slide="4"></button>
+          </div>
+        </div>
+      </section>
       <!-- Sección Experiencia Turística 
       <section class="turismo-section">
         <div class="container">
