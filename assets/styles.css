@@ -97,14 +97,14 @@ header {
 }
 .logo-central {
   position: absolute;
-  bottom: 40px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   user-select: none;
 }
 .logo-central img {
-  width: 100px;
+  width: 350px;
   max-width: 20vw;
   height: auto;
 }
@@ -186,6 +186,12 @@ header {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+.menu-overlay li img {
+  width: 80%;
+  text-align: center;
+
+  border-radius: 5px;
+}
 .menu-overlay li:hover {
   color: var(--boton-fondo-hover);
 }
@@ -207,7 +213,7 @@ header {
   color: white;
   display: flex;
   align-items: center;
-  height: 70px;
+  height: 90px;
   padding: 0 30px 0 50px;
   transition: top 0.3s ease;
   z-index: 100;
@@ -1793,5 +1799,203 @@ header {
   .ubi-icon {
     font-size: 28px;
     width: 40px;
+  }
+}
+/**********************fotter*********************/
+.ft-footer-section {
+  width: 100%;
+  color: var(--text-color-white);
+}
+
+.ft-top-section {
+  background: linear-gradient(rgba(4, 34, 76, 0.8), rgba(4, 34, 76, 0.8)),
+    url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752251649/cf81664a-3719-46a0-a193-52d8e22eed7c.png");
+  background-size: cover;
+  background-position: center;
+  padding: 40px 5%;
+}
+
+.ft-content-wrapper {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.ft-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  grid-column: 1 / -1;
+}
+
+.ft-logo {
+  max-width: 250px;
+  height: auto;
+}
+
+.ft-column {
+  padding: 0 10px;
+}
+
+.ft-column-left {
+  text-align: left;
+}
+
+.ft-column-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ft-column-right {
+  text-align: right;
+}
+
+.ft-title {
+  font-family: "Prociono", serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--gris-claro);
+}
+
+.ft-contact-info {
+  font-family: "Prociono", serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ft-contact-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.ft-contact-icon-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.ft-contact-icon {
+  width: 36px;
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: var(--azul-principal);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.ft-contact-info a {
+  color: var(--text-color-white);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.ft-contact-info a:hover {
+  color: var(--gris-claro);
+  text-decoration: underline;
+}
+
+.ft-social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.ft-social-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--icon-border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-color);
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: transparent;
+}
+
+.ft-social-icon:hover {
+  background-color: var(--icon-color);
+  color: var(--azul-principal);
+}
+
+.ft-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-color-white);
+  opacity: 0.3;
+  margin: 0;
+}
+
+.ft-copyright-section {
+  width: 100%;
+  background-color: var(--azul-principal);
+  padding: 12px 0;
+}
+
+.ft-copyright {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Prociono", serif;
+  font-size: 14px;
+  padding: 0 5%;
+}
+
+.ft-copyright span {
+  font-family: "Lora", serif;
+}
+
+/* Estilo específico para el teléfono */
+.ft-phone-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+  .ft-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .ft-column-left,
+  .ft-column-center,
+  .ft-column-right {
+    text-align: center;
+  }
+
+  .ft-contact-icon-container,
+  .ft-phone-container {
+    justify-content: center;
+  }
+
+  .ft-social-icons {
+    justify-content: center;
+  }
+}
+
+/* Responsive - Móvil */
+@media (max-width: 768px) {
+  .ft-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .ft-column {
+    padding: 0;
   }
 }

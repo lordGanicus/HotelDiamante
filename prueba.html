@@ -3,242 +3,313 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ubicación - Hotel Diamante Azul</title>
+    <title>Footer - Hotel Diamante Azul</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      /* Estilos encapsulados con prefijo ubi- */
-      .ubi-container {
-        --ubi-azul-oscuro: #012555;
-        --ubi-azul-claro: #0251bb;
-        --ubi-gris-fondo: #d9d9d9;
-        --ubi-texto-color: #000000;
+      /* Estilos encapsulados con prefijo ft- */
+      .ft-container {
+        --azul-principal: #012555;
+        --boton-color: #012555;
+        --boton-texto: white;
+        --boton-borde-hover: #012555;
+        --boton-fondo-hover: white;
+        --boton-texto-hover: #012555;
+        --icon-color: white;
+        --icon-border-color: white;
+        --azul-secundario: #0140a3;
+        --azul-terciario: #0251bb;
+        --texto-color: #000;
+        --text-color-white: white;
+        --gris-claro: #d9d9d9;
+        --gris-oscuro: #737373;
 
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: Arial, sans-serif;
-        background-color: white;
       }
 
-      /* Sección Ubicación */
-      .ubi-location-section {
-        position: relative;
+      /* Sección Footer */
+      .ft-footer-section {
         width: 100%;
-        min-height: 100vh;
+        color: var(--text-color-white);
+      }
+
+      .ft-top-section {
+        background: linear-gradient(rgba(4, 34, 76, 0.8), rgba(4, 34, 76, 0.8)),
+          url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752251649/cf81664a-3719-46a0-a193-52d8e22eed7c.png");
+        background-size: cover;
+        background-position: center;
+        padding: 40px 5%;
+      }
+
+      .ft-content-wrapper {
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+      }
+
+      .ft-logo-container {
+        width: 100%;
         display: flex;
-        align-items: center;
         justify-content: center;
-        padding: 80px 20px;
-        background-color: white;
+        margin-bottom: 30px;
+        grid-column: 1 / -1;
       }
 
-      .ubi-content-wrapper {
-        position: relative;
-        max-width: 1200px;
-        width: 100%;
-        height: 600px;
+      .ft-logo {
+        max-width: 250px;
+        height: auto;
+      }
+
+      .ft-column {
+        padding: 0 10px;
+      }
+
+      .ft-column-left {
+        text-align: left;
+      }
+
+      .ft-column-center {
+        text-align: center;
         display: flex;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
       }
 
-      .ubi-text-content {
-        position: relative;
-        width: 50%;
-        height: 100%;
-        padding: 40px;
-        z-index: 2;
-        background-color: white;
+      .ft-column-right {
+        text-align: right;
       }
 
-      .ubi-map-container {
-        position: relative;
-        width: 50%;
-        height: 100%;
-      }
-
-      .ubi-map-background {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: var(--ubi-gris-fondo);
-        right: 0;
-      }
-
-      .ubi-title {
-        font-family: "Prata", serif;
-        font-size: 48px;
-        font-weight: 400;
-        background: linear-gradient(
-          180deg,
-          var(--ubi-azul-oscuro) 0%,
-          var(--ubi-azul-claro) 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        color: transparent;
-        margin-bottom: 40px;
-      }
-
-      .ubi-gps-label {
-        position: absolute;
-        right: 40px;
-        top: 40px;
+      .ft-title {
         font-family: "Prociono", serif;
-        font-size: 32px;
-        color: var(--ubi-texto-color);
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: var(--gris-claro);
       }
 
-      .ubi-description {
-        font-family: "Garamond", serif;
-        font-size: 28px;
-        color: var(--ubi-texto-color);
-        margin-bottom: 40px;
-        line-height: 1.3;
+      .ft-contact-info {
+        font-family: "Prociono", serif;
+        font-size: 16px;
+        line-height: 1.5;
       }
 
-      .ubi-info-item {
-        position: relative;
-        font-family: "Garamond", serif;
-        font-size: 24px;
-        color: var(--ubi-texto-color);
-        margin-bottom: 25px;
-        padding-left: 70px;
+      .ft-contact-item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+      }
+
+      .ft-contact-icon-container {
         display: flex;
         align-items: center;
-        min-height: 60px;
+        margin-bottom: 5px;
       }
 
-      .ubi-icon {
-        position: absolute;
-        left: 0;
-        font-size: 36px;
-        width: 60px;
+      .ft-contact-icon {
+        width: 36px;
+        height: 36px;
+        background-color: white;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--ubi-azul-oscuro);
+        margin-right: 12px;
+        color: var(--azul-principal);
+        font-size: 16px;
+        flex-shrink: 0;
       }
 
-      /* Estilos específicos para el mapa */
-      .ubi-map-iframe {
-        position: absolute;
+      .ft-contact-info a {
+        color: var(--text-color-white);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .ft-contact-info a:hover {
+        color: var(--gris-claro);
+        text-decoration: underline;
+      }
+
+      .ft-social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .ft-social-icon {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--icon-border-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--icon-color);
+        font-size: 16px;
+        transition: all 0.3s;
+        background-color: transparent;
+      }
+
+      .ft-social-icon:hover {
+        background-color: var(--icon-color);
+        color: var(--azul-principal);
+      }
+
+      .ft-divider {
         width: 100%;
-        height: 100%;
-        border: none;
+        height: 1px;
+        background-color: var(--text-color-white);
+        opacity: 0.3;
+        margin: 0;
       }
 
-      /* Responsive */
+      .ft-copyright-section {
+        width: 100%;
+        background-color: var(--azul-principal);
+        padding: 12px 0;
+      }
+
+      .ft-copyright {
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: "Prociono", serif;
+        font-size: 14px;
+        padding: 0 5%;
+      }
+
+      .ft-copyright span {
+        font-family: "Lora", serif;
+      }
+
+      /* Estilo específico para el teléfono */
+      .ft-phone-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 5px;
+      }
+
+      /* Responsive - Tablet */
       @media (max-width: 992px) {
-        .ubi-content-wrapper {
-          flex-direction: column;
-          height: auto;
+        .ft-content-wrapper {
+          grid-template-columns: 1fr;
         }
 
-        .ubi-text-content,
-        .ubi-map-container {
-          width: 100%;
+        .ft-column-left,
+        .ft-column-center,
+        .ft-column-right {
+          text-align: center;
         }
 
-        .ubi-map-container {
-          height: 400px;
+        .ft-contact-icon-container,
+        .ft-phone-container {
+          justify-content: center;
         }
 
-        .ubi-title {
-          font-size: 36px;
-        }
-
-        .ubi-description {
-          font-size: 22px;
-        }
-
-        .ubi-info-item {
-          font-size: 18px;
-        }
-
-        .ubi-gps-label {
-          position: relative;
-          right: auto;
-          top: auto;
-          margin-bottom: 20px;
-          text-align: right;
+        .ft-social-icons {
+          justify-content: center;
         }
       }
 
-      @media (max-width: 576px) {
-        .ubi-title {
-          font-size: 28px;
+      /* Responsive - Móvil */
+      @media (max-width: 768px) {
+        .ft-content-wrapper {
+          grid-template-columns: 1fr;
         }
 
-        .ubi-description {
-          font-size: 18px;
-          margin-bottom: 30px;
-        }
-
-        .ubi-info-item {
-          font-size: 16px;
-          padding-left: 50px;
-          min-height: 50px;
-        }
-
-        .ubi-icon {
-          font-size: 28px;
-          width: 40px;
+        .ft-column {
+          padding: 0;
         }
       }
     </style>
   </head>
-  <body class="ubi-container">
-    <section class="ubi-location-section">
-      <div class="ubi-content-wrapper">
-        <!-- Contenido de texto -->
-        <div class="ubi-text-content">
-          <h1 class="ubi-title">Ubicación Actual</h1>
-          <span class="ubi-gps-label">GPS</span>
-
-          <p class="ubi-description">
-            Hotel Diamante Azul, con una ubicación céntrica en la ciudad de La
-            Paz
-          </p>
-
-          <!-- Información de ubicación -->
-          <div class="ubi-info-item">
-            <div class="ubi-icon">
-              <i class="fas fa-walking"></i>
-            </div>
-            <span>19 min a pie de Estación Teleférico Cementerio</span>
+  <body class="ft-container">
+    <footer class="ft-footer-section">
+      <!-- Sección superior (con fondo de imagen) -->
+      <div class="ft-top-section">
+        <div class="ft-content-wrapper">
+          <!-- Logo central -->
+          <div class="ft-logo-container">
+            <img
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+              alt="Hotel Diamante Azul"
+              class="ft-logo"
+            />
           </div>
 
-          <div class="ubi-info-item">
-            <div class="ubi-icon">
-              <i class="fas fa-subway"></i>
+          <!-- Columna izquierda - Dirección -->
+          <div class="ft-column ft-column-left">
+            <h3 class="ft-title">Direction</h3>
+            <div class="ft-contact-info">
+              <div class="ft-contact-item">
+                <div class="ft-contact-icon-container">
+                  <div class="ft-contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div>Av. Illampu, Pasaje Aroma 449,<br />La Paz, Bolivia</div>
+                </div>
+              </div>
+              <div class="ft-contact-item">
+                <div class="ft-contact-icon-container">
+                  <div class="ft-contact-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <div>rcp.diamanteazul@gmail.com</div>
+                </div>
+              </div>
             </div>
-            <span>3 km de Estación Teleférico Buenos Aires</span>
           </div>
 
-          <div class="ubi-info-item">
-            <div class="ubi-icon">
-              <i class="fas fa-car"></i>
+          <!-- Columna central - Iconos -->
+          <div class="ft-column ft-column-center">
+            <h3 class="ft-title">HOTEL</h3>
+            <div class="ft-social-icons">
+              <a href="#" class="ft-social-icon"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="ft-social-icon"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="ft-social-icon"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <a href="#" class="ft-social-icon"
+                ><i class="fab fa-tiktok"></i
+              ></a>
             </div>
-            <span>Disposición de Vehículo las 24 hrs</span>
           </div>
-        </div>
 
-        <!-- Mapa -->
-        <div class="ubi-map-container">
-          <div class="ubi-map-background"></div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d759.0951631492228!2d-68.14077640656336!3d-16.49578748076804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f2075b47d6931%3A0x3b41ec08cde88085!2sHotel%20Diamante%20Azul!5e0!3m2!1ses-419!2sbo!4v1752249799346!5m2!1ses-419!2sbo"
-            class="ubi-map-iframe"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+          <!-- Columna derecha - Contacto -->
+          <div class="ft-column ft-column-right">
+            <h3 class="ft-title">Contacto</h3>
+            <div class="ft-phone-container">
+              <div class="ft-contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>(±93) 69951699</div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+
+      <!-- Línea divisoria y sección de copyright -->
+      <div class="ft-divider"></div>
+      <div class="ft-copyright-section">
+        <div class="ft-copyright">
+          <p class="ft-copyright-text">
+            © 2025 <span>DIAMANTES</span>® • 507.73 • derechos reservados
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
