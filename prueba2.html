@@ -12,19 +12,20 @@
     />
 
     <style>
+      /* Reset solo para elementos dentro del contenedor ps-paquetes */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: "Garamond", serif;
       }
 
-      body {
-        font-family: "Garamond", serif;
-
+      /* Estilos encapsulados */
+      .ps-paquetes {
         overflow-x: hidden;
       }
 
-      .hero {
+      .ps-paquetes .ps-hero {
         width: 100%;
         height: 120vh;
         background: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752496911/811d58fa-8f0b-4cbe-9466-2b2f231b3b4a.png")
@@ -33,7 +34,7 @@
         position: relative;
       }
 
-      .circle-img {
+      .ps-paquetes .ps-circle-img {
         position: absolute;
         top: 90%;
         left: -150px;
@@ -41,17 +42,16 @@
         height: 1000px;
         border-radius: 55%;
         overflow: hidden;
-        /* box-shadow: -30px 30px 80px rgba(0, 0, 0, 0.35);*/
         z-index: 3;
       }
 
-      .circle-img img {
+      .ps-paquetes .ps-circle-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .title {
+      .ps-paquetes .ps-title {
         text-align: center;
         font-family: "Merriweather", serif;
         font-size: 60px;
@@ -61,7 +61,7 @@
         z-index: 5;
       }
 
-      .content {
+      .ps-paquetes .ps-content {
         display: flex;
         justify-content: center;
         max-width: 1400px;
@@ -72,7 +72,7 @@
         left: 15%;
       }
 
-      .card-services {
+      .ps-paquetes .ps-card-services {
         background: #140a6b;
         border-radius: 30px;
         padding: 50px;
@@ -81,19 +81,19 @@
         width: 480px;
       }
 
-      .service-item {
+      .ps-paquetes .ps-service-item {
         display: flex;
         align-items: center;
         margin-bottom: 30px;
         font-size: 28px;
       }
 
-      .service-item i {
+      .ps-paquetes .ps-service-item i {
         font-size: 34px;
         margin-right: 20px;
       }
 
-      .btn-reservar {
+      .ps-paquetes .ps-btn-reservar {
         display: block;
         width: 250px;
         margin: 40px auto 80px;
@@ -110,10 +110,11 @@
         position: relative;
       }
 
-      .btn-reservar:hover {
+      .ps-paquetes .ps-btn-reservar:hover {
         background-color: #0243a0;
       }
-      .main-paquetes {
+
+      .ps-paquetes .ps-main-paquetes {
         background: linear-gradient(
           180deg,
           #9f0a0b 0%,
@@ -124,15 +125,16 @@
           #fafafa 30%
         );
       }
+
       @media (max-width: 1200px) {
-        .circle-img {
+        .ps-paquetes .ps-circle-img {
           width: 600px;
           height: 600px;
           top: 350px;
           left: -120px;
         }
 
-        .card-services {
+        .ps-paquetes .ps-card-services {
           width: 400px;
           padding: 40px;
         }
@@ -140,47 +142,54 @@
     </style>
   </head>
   <body>
-    <div class="hero">
-      <div class="circle-img">
-        <img
-          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752499492/84d36eb0-f549-4d53-84e9-ce07489f91e4.png"
-          alt="Habitación Decorada"
-        />
-      </div>
-    </div>
-    <div class="main-paquetes">
-      <h1 class="title">Servicio Incluidos :</h1>
-
-      <div class="content">
-        <div class="card-services">
-          <div class="service-item">
-            <i class="bi bi-house-heart-fill"></i> Habitación Matrimonial
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-flower3"></i> Pétalos de Rosa
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-tropical-storm"></i> Decorado de toallas
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-lightbulb-fill"></i> Velas
-          </div>
-
-          <div class="service-item"><i class="bi bi-cup-straw"></i> Vino</div>
-
-          <div class="service-item">
-            <i class="bi bi-shower"></i> Baño Privado
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-clock-fill"></i> 2 Horas
-          </div>
+    <!-- Contenedor principal de paquetes -->
+    <section class="ps-paquetes">
+      <div class="ps-hero">
+        <div class="ps-circle-img">
+          <img
+            src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752499492/84d36eb0-f549-4d53-84e9-ce07489f91e4.png"
+            alt="Habitación Decorada"
+          />
         </div>
       </div>
-      <a href="#" class="btn-reservar">Reservar</a>
-    </div>
+
+      <div class="ps-main-paquetes">
+        <h1 class="ps-title">Servicio Incluidos :</h1>
+
+        <div class="ps-content">
+          <div class="ps-card-services">
+            <div class="ps-service-item">
+              <i class="bi bi-house-heart-fill"></i> Habitación Matrimonial
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-flower3"></i> Pétalos de Rosa
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-tropical-storm"></i> Decorado de toallas
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-lightbulb-fill"></i> Velas
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-cup-straw"></i> Vino
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-shower"></i> Baño Privado
+            </div>
+
+            <div class="ps-service-item">
+              <i class="bi bi-clock-fill"></i> 2 Horas
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="ps-btn-reservar">Reservar</a>
+      </div>
+    </section>
   </body>
 </html>
