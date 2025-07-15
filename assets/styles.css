@@ -231,12 +231,12 @@ header {
   font-size: 18px;
   text-decoration: none;
   margin-left: 30px;
-}/*
+}
 @media (min-width: 768px) {
-  .hide-buttom {
+  .menu-button {
     display: none;
   }
-}*/
+}
 @media (max-width: 768px) {
   .nav-movil {
     display: none;
@@ -2182,11 +2182,10 @@ header {
   background: linear-gradient(
     180deg,
     #9f0a0b 0%,
-    #b51c1d 10%,
-    #c74c4d 15%,
-    #d77c7d 20%,
-    #e7abac 25%,
-    #fafafa 30%
+    #bd585a9d 44%,
+    #cb80807c 72%,
+    #ddadad73 86%,
+    #fff9f93a 100%
   );
 }
 .service-icon {
@@ -2371,5 +2370,169 @@ header {
     .ps-paquetes .ps-service-item {
       font-size: 16px;
     }
+  }
+}
+/****************************Paquetes**************************/
+/* Contenedor principal */
+.prd-romantic-escape-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Fondo con gradiente */
+.prd-background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.prd-background-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Contenedor de tarjetas */
+.prd-cards-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  padding: 0 50px;
+}
+
+/* Estilos de tarjeta */
+.prd-romantic-card {
+  position: relative;
+  width: 526px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.prd-card-image-container {
+  position: relative;
+  width: 526px;
+  height: 540px;
+  margin-bottom: -80px; /* Hace que el card suba sobre la imagen */
+  z-index: 2;
+}
+
+.prd-card-circle-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.prd-card-content {
+  width: 100%;
+  height: 500px;
+  background: var(--azul-principal); /* 20% de opacidad */
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 12px 6px 30px rgba(0, 0, 0, 0.6); /* sombra más pronunciada hacia la derecha */
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 1;
+  margin-top: -100px; /* Ajuste para superponer la imagen */
+}
+
+.prd-card-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  margin-top: 35%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.prd-card-description {
+  font-size: 24px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.prd-card-tittle,
+.prd-card-description {
+  margin: auto 15%;
+}
+
+/* Efecto hover */
+.prd-romantic-card:hover .prd-card-circle-image {
+  filter: brightness(0.6);
+  transition: filter 0.3s ease;
+}
+
+.prd-view-detail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: white;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+.prd-view-detail:hover {
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+.prd-romantic-card:hover .prd-view-detail {
+  opacity: 1;
+}
+
+.prd-arrow-icon {
+  width: 30px;
+  height: 30px;
+  filter: invert(1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .prd-cards-container {
+    flex-direction: column;
+    gap: 80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .prd-romantic-card {
+    width: 90%;
+    max-width: 450px;
+  }
+
+  .prd-card-image-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+
+  .prd-card-content {
+    height: auto;
+    padding: 30px 20px;
+    margin-top: -70px;
   }
 }

@@ -2,185 +2,256 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Servicios Incluidos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap Icons -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-
+    <title>Escapada Romántica</title>
     <style>
+      /* Reset y estilos base */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-
-      body {
         font-family: "Garamond", serif;
-
-        overflow-x: hidden;
       }
 
-      .hero {
-        width: 100%;
-        height: 120vh;
-        background: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752496911/811d58fa-8f0b-4cbe-9466-2b2f231b3b4a.png")
-          no-repeat center center;
-        background-size: cover;
+      /* Contenedor principal */
+      .prd-romantic-escape-section {
         position: relative;
-      }
-
-      .circle-img {
-        position: absolute;
-        top: 90%;
-        left: -150px;
-        width: 950px;
-        height: 1000px;
-        border-radius: 55%;
+        width: 100%;
+        height: 100vh;
         overflow: hidden;
-        /* box-shadow: -30px 30px 80px rgba(0, 0, 0, 0.35);*/
-        z-index: 3;
       }
 
-      .circle-img img {
+      /* Fondo con gradiente */
+      .prd-background-image {
+        position: absolute;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752584645/imageBackground_arlicx.webp");
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
       }
 
-      .title {
-        text-align: center;
-        font-family: "Merriweather", serif;
-        font-size: 60px;
-        color: #fff;
-        -webkit-text-stroke: 1px #00000099;
-        position: relative;
-        z-index: 5;
-      }
-
-      .content {
-        display: flex;
-        justify-content: center;
-        max-width: 1400px;
-        margin: 50px auto;
-        position: relative;
-        z-index: 5;
-        padding-right: 40px;
-        left: 15%;
-      }
-
-      .card-services {
-        background: #140a6b;
-        border-radius: 30px;
-        padding: 50px;
-        box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.6);
-        color: #fff;
-        width: 480px;
-      }
-
-      .service-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        font-size: 28px;
-      }
-
-      .service-item i {
-        font-size: 34px;
-        margin-right: 20px;
-      }
-
-      .btn-reservar {
-        display: block;
-        width: 250px;
-        margin: 40px auto 80px;
-        padding: 20px;
-        text-align: center;
-        background-color: #012555;
-        color: #fff;
-        font-size: 36px;
-        border-radius: 20px;
-        border: 2px solid #000;
-        text-decoration: none;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.65);
-        z-index: 5;
-        position: relative;
-      }
-
-      .btn-reservar:hover {
-        background-color: #0243a0;
-      }
-      .main-paquetes {
+      .prd-background-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
         background: linear-gradient(
           180deg,
-          #9f0a0b 0%,
-          #b51c1d 10%,
-          #c74c4d 15%,
-          #d77c7d 20%,
-          #e7abac 25%,
-          #fafafa 30%
+          rgba(166, 123, 146, 0.22) 0%,
+          rgba(81, 29, 41, 0.58) 34%,
+          rgba(101, 34, 38, 0.8) 65%,
+          rgba(22, 14, 50, 0.8) 95%,
+          rgba(0, 0, 0, 0.7) 100%
         );
+        z-index: 2;
       }
+
+      /* Contenedor de tarjetas */
+      .prd-cards-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        padding: 0 50px;
+      }
+
+      /* Estilos de tarjeta */
+      .prd-romantic-card {
+        position: relative;
+        width: 526px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .prd-card-image-container {
+        position: relative;
+        width: 526px;
+        height: 540px;
+        margin-bottom: -80px; /* Hace que el card suba sobre la imagen */
+        z-index: 2;
+      }
+
+      .prd-card-circle-image {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .prd-card-content {
+        width: 100%;
+        height: 412px;
+        background: rgba(13, 7, 44, 0.4); /* 20% de opacidad */
+        backdrop-filter: blur(5px);
+        border-radius: 30px;
+        padding: 40px 30px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        color: white;
+        position: relative;
+        z-index: 1;
+        margin-top: -100px; /* Ajuste para superponer la imagen */
+      }
+
+      .prd-card-title {
+        font-size: 36px;
+        margin-bottom: 20px;
+        font-family: "Merriweather", serif;
+        font-weight: 400;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        margin-top: 35%;
+      }
+
+      .prd-card-description {
+        font-size: 24px;
+        line-height: 1.4;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Efecto hover */
+      .prd-romantic-card:hover .prd-card-circle-image {
+        opacity: 0.7;
+      }
+
+      .prd-view-detail {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 32px;
+        color: white;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      }
+      .prd-view-detail:hover {
+        cursor: pointer;
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+      }
+      .prd-romantic-card:hover .prd-view-detail {
+        opacity: 1;
+      }
+
+      .prd-arrow-icon {
+        width: 30px;
+        height: 30px;
+        filter: invert(1);
+      }
+
+      /* Responsive */
       @media (max-width: 1200px) {
-        .circle-img {
-          width: 600px;
-          height: 600px;
-          top: 350px;
-          left: -120px;
+        .prd-cards-container {
+          flex-direction: column;
+          gap: 80px;
+          padding-top: 100px;
+          padding-bottom: 100px;
         }
 
-        .card-services {
-          width: 400px;
-          padding: 40px;
+        .prd-romantic-card {
+          width: 90%;
+          max-width: 450px;
+        }
+
+        .prd-card-image-container {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1/1;
+        }
+
+        .prd-card-content {
+          height: auto;
+          padding: 30px 20px;
+          margin-top: -70px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="hero">
-      <div class="circle-img">
-        <img
-          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752499492/84d36eb0-f549-4d53-84e9-ce07489f91e4.png"
-          alt="Habitación Decorada"
-        />
-      </div>
-    </div>
-    <div class="main-paquetes">
-      <h1 class="title">Servicio Incluidos :</h1>
+    <section class="prd-romantic-escape-section">
+      <!-- Fondo con imagen y overlay -->
+      <div class="prd-background-image"></div>
+      <div class="prd-background-overlay"></div>
 
-      <div class="content">
-        <div class="card-services">
-          <div class="service-item">
-            <i class="bi bi-house-heart-fill"></i> Habitación Matrimonial
+      <!-- Contenedor de tarjetas -->
+      <div class="prd-cards-container">
+        <!-- Tarjeta 1 -->
+        <div class="prd-romantic-card">
+          <div class="prd-card-image-container">
+            <img
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752584996/a5a37794-214f-4cbc-b964-8f9875816a47.png"
+              alt="Escapada Romántica"
+              class="prd-card-circle-image"
+            />
+            <div class="prd-view-detail">
+              Ver Detalle
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTUgMTJoMTRNOSA1bDcgNy03IDd6Ii8+PC9zdmc+"
+                class="prd-arrow-icon"
+                alt="flecha"
+              />
+            </div>
           </div>
-
-          <div class="service-item">
-            <i class="bi bi-flower3"></i> Pétalos de Rosa
+          <div class="prd-card-content">
+            <h2 class="prd-card-title">Paquete Escapada Romántica</h2>
+            <p class="prd-card-description">
+              Haz de tu escapada un recuerdo inolvidable con el amor de tu vida
+            </p>
           </div>
+        </div>
 
-          <div class="service-item">
-            <i class="bi bi-tropical-storm"></i> Decorado de toallas
+        <!-- Tarjeta 2 -->
+        <div class="prd-romantic-card">
+          <div class="prd-card-image-container">
+            <img
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752585275/00ec77d5-64dd-4cbb-9976-db4ae52f1615.png"
+              alt="Velada Romántica"
+              class="prd-card-circle-image"
+            />
+            <div class="prd-view-detail">
+              Ver Detalle
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTUgMTJoMTRNOSA1bDcgNy03IDd6Ii8+PC9zdmc+"
+                class="prd-arrow-icon"
+                alt="flecha"
+              />
+            </div>
           </div>
-
-          <div class="service-item">
-            <i class="bi bi-lightbulb-fill"></i> Velas
-          </div>
-
-          <div class="service-item"><i class="bi bi-cup-straw"></i> Vino</div>
-
-          <div class="service-item">
-            <i class="bi bi-shower"></i> Baño Privado
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-clock-fill"></i> 2 Horas
+          <div class="prd-card-content">
+            <h2 class="prd-card-title">
+              Velada Romántica con tu Persona Especial
+            </h2>
+            <p class="prd-card-description">
+              Haz de esta velada un recuerdo que vivirá para siempre.
+            </p>
           </div>
         </div>
       </div>
-      <a href="#" class="btn-reservar">Reservar</a>
-    </div>
+    </section>
+
+    <script>
+      // JavaScript para el efecto hover y redirección
+      document.querySelectorAll(".prd-romantic-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          // Aquí puedes agregar la lógica de redirección
+          // Por ejemplo: window.location.href = 'paquetes.html';
+          console.log("Redirigiendo a detalles del paquete");
+        });
+      });
+    </script>
   </body>
 </html>

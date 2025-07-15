@@ -10,12 +10,14 @@ const swiper = new Swiper(".mySwiper", {
   },
 });
 /*****************menu ****************/
-const openMenu = document.getElementById("openMenu");
+const openMenus = document.querySelectorAll(".openMenu");
 const closeMenu = document.getElementById("closeMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 
-openMenu.addEventListener("click", () => {
-  menuOverlay.classList.add("active");
+openMenus.forEach((button) => {
+  button.addEventListener("click", () => {
+    menuOverlay.classList.add("active");
+  });
 });
 
 closeMenu.addEventListener("click", () => {
