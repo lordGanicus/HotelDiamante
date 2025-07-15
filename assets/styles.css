@@ -233,9 +233,9 @@ header {
   margin-left: 30px;
 }
 @media (min-width: 768px) {
-  .menu-button {
+  /*.menu-button {
     display: none;
-  }
+  }*/
 }
 @media (max-width: 768px) {
   .nav-movil {
@@ -2024,13 +2024,21 @@ header {
   background-size: cover;
   position: relative;
 }
+.ps-paquetes .ps-hero-2 {
+  width: 100%;
+  height: 100vh;
+  background: url("./img/paquetes/portadapaquete2.jpeg") no-repeat center center;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
 
 .ps-paquetes .ps-circle-img {
   position: absolute;
   top: 90%;
   left: -150px;
-  width: 950px;
-  height: 1000px;
+  width: 1080px;
+  height: 1200px;
   border-radius: 55%;
   overflow: hidden;
   z-index: 3;
@@ -2044,7 +2052,8 @@ header {
 
 .ps-paquetes .ps-title {
   text-align: center;
-  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-family: "Prata", serif;
   font-size: 60px;
   color: #fff;
   -webkit-text-stroke: 1px #00000099;
@@ -2205,7 +2214,28 @@ header {
     max-width: 620px;
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
+  .ps-paquetes .ps-card-services {
+    width: 400px;
+    padding: 40px;
+  }
+
+  .ps-paquetes .ps-circle-img {
+    width: 900px;
+    height: 1000px;
+    left: -200px;
+  }
+  .ps-paquetes .ps-content {
+    left: 22%;
+  }
+}
+/* Versión para tablets (768px - 1024px) */
+@media (max-width: 1023px) {
+  .ps-paquetes .ps-hero-2 {
+    background-position: 65% center;
+    height: 90vh;
+  }
+
   .ps-paquetes .ps-circle-img {
     display: none;
   }
@@ -2227,13 +2257,6 @@ header {
     border-radius: 18px;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
   }
-  .ps-paquetes .ps-card-services {
-    width: 400px;
-    padding: 40px;
-  }
-}
-/* Versión para tablets (768px - 1024px) */
-@media (max-width: 1024px) {
   .ps-paquetes .ps-hero {
     height: 80vh;
   }
@@ -2282,6 +2305,14 @@ header {
 
 /* Versión para móviles (hasta 767px) */
 @media (max-width: 767px) {
+  #tittle-desayuno {
+    left: 0;
+    text-align: center;
+  }
+  .ps-paquetes .ps-hero-2 {
+    background-position: 62% center;
+    height: 70vh;
+  }
   .hero-content p {
     display: none;
   }
@@ -2372,13 +2403,14 @@ header {
     }
   }
 }
-/****************************Paquetes**************************/
+/****************************Paquetes redireccion**************************/
 /* Contenedor principal */
 .prd-romantic-escape-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+
   overflow: hidden;
+  padding-bottom: 2%;
 }
 
 /* Fondo con gradiente */
@@ -2439,7 +2471,7 @@ header {
 
 .prd-card-content {
   width: 100%;
-  height: 500px;
+  height: auto;
   background: var(--azul-principal); /* 20% de opacidad */
   backdrop-filter: blur(5px);
   border-radius: 30px;
@@ -2460,8 +2492,8 @@ header {
   font-weight: 400;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   margin-top: 35%;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 .prd-card-description {
@@ -2472,9 +2504,12 @@ header {
 
 .prd-card-tittle,
 .prd-card-description {
-  margin: auto 15%;
+  margin: auto 10%;
 }
-
+#tittle-desayuno {
+  text-align: center;
+  font-size: 48px;
+}
 /* Efecto hover */
 .prd-romantic-card:hover .prd-card-circle-image {
   filter: brightness(0.6);
@@ -2534,5 +2569,90 @@ header {
     height: auto;
     padding: 30px 20px;
     margin-top: -70px;
+  }
+}
+@media (max-width: 768px) {
+  .prd-romantic-escape-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+
+  .prd-cards-container {
+    flex-direction: column;
+    gap: 60px;
+    padding: 20px;
+    height: auto;
+  }
+
+  .prd-romantic-card {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 40px;
+  }
+
+  .prd-card-image-container {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    margin-bottom: -50px;
+  }
+
+  .prd-card-circle-image {
+    border-width: 3px;
+  }
+
+  .prd-card-content {
+    width: 100%;
+    height: auto;
+    padding: 25px 15px;
+    margin-top: -70px;
+    backdrop-filter: none;
+  }
+
+  .prd-card-title {
+    font-size: 24px;
+    margin-top: 35%;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  .prd-card-description {
+    font-size: 18px;
+  }
+
+  .prd-view-detail {
+    font-size: 24px;
+  }
+
+  .prd-arrow-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .prd-romantic-card {
+    max-width: 300px;
+  }
+
+  .prd-card-title {
+    font-size: 20px;
+    margin-top: 20%;
+  }
+
+  .prd-card-description {
+    font-size: 16px;
+  }
+
+  .prd-view-detail {
+    font-size: 20px;
+  }
+  .prd-card-title {
+    font-size: 24px;
+    margin-top: 45%;
+    margin-right: 5%;
+    margin-left: 5%;
   }
 }
