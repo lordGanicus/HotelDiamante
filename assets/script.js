@@ -8,6 +8,11 @@ const swiper = new Swiper(".mySwiper", {
     el: ".swiper-pagination",
     clickable: true,
   },
+  // Añade estas opciones clave:
+  slidesPerView: 1, // Muestra solo 1 slide
+  spaceBetween: 0, // Elimina espacios entre slides
+  centeredSlides: true, // Centra el slide activo (opcional)
+  setWrapperSize: false, // Evita que Swiper fuerce el ancho
 });
 /*****************menu ****************/
 const openMenus = document.querySelectorAll(".openMenu");

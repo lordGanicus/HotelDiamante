@@ -1,3 +1,368 @@
+<style>
+  .hr-hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+  .hr-swiper {
+    height: 100%;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .hr-swiper-slide img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hr-hero-content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    padding: 0 15px;
+    user-select: none;
+  }
+  .hr-hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+  .hr-hero-content p {
+    font-size: 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  }
+  .hr-logo-central {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    user-select: none;
+  }
+  .hr-logo-central img {
+    width: 350px;
+    max-width: 20vw;
+    height: auto;
+  }
+  .hr-menu-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    z-index: 20;
+    cursor: pointer;
+    user-select: none;
+  }
+  .hr-menu-button img {
+    width: 40px;
+    filter: brightness(0) invert(1);
+  }
+  .hr-btn-reservar-top {
+    position: absolute;
+    top: 35px;
+    right: 30px;
+    z-index: 20;
+    background-color: var(--boton-color);
+    color: var(--boton-texto);
+    padding: 12px 25px;
+    font-size: 16px;
+    border: 2px solid var(--boton-color);
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+    user-select: none;
+  }
+  .hr-btn-reservar-top:hover {
+    background-color: var(--boton-fondo-hover);
+    color: var(--boton-texto-hover);
+    border-color: var(--boton-borde-hover);
+  }
+  .hr-whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    user-select: none;
+  }
+  .hr-whatsapp-button img {
+    width: 60px;
+  }
+
+  .hr-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--azul-principal);
+    color: white;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    user-select: none;
+  }
+  .hr-menu-overlay.active {
+    display: flex;
+  }
+  .hr-menu-overlay ul {
+    list-style: none;
+    width: 100%;
+    max-width: 400px;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .hr-menu-overlay li {
+    font-size: 28px;
+    margin: 25px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .hr-menu-overlay li img {
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .hr-menu-overlay li:hover {
+    color: var(--boton-fondo-hover);
+  }
+  .hr-close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+  }
+
+  .hr-navbar {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    background-color: var(--boton-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 90px;
+    padding: 0 30px 0 50px;
+    transition: top 0.3s ease;
+    z-index: 100;
+    user-select: none;
+  }
+  .hr-navbar.show {
+    top: 0;
+  }
+  .hr-navbar img.hr-logo-navbar {
+    width: 130px;
+    height: auto;
+    margin-right: auto;
+  }
+  .hr-navbar a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 30px;
+  }
+  @media (min-width: 768px) {
+    /*.hr-menu-button {
+    display: none;
+  }*/
+  }
+  @media (max-width: 768px) {
+    .hr-nav-movil {
+      display: none;
+    }
+    .hr-navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0 20px;
+    }
+    .hr-navbar a {
+      font-size: 16px;
+      margin: 0 10px;
+    }
+    .hr-navbar img.hr-logo-navbar {
+      width: 100px;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  /* Responsive hero content */
+  @media (max-width: 1024px) {
+    .hr-hero-content h1 {
+      font-size: 32px;
+    }
+    .hr-hero-content p {
+      font-size: 18px;
+    }
+    .hr-btn-reservar-top {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    .hr-menu-button img {
+      width: 35px;
+    }
+    .hr-logo-central img {
+      width: 80px;
+    }
+  }
+
+  /* Para móviles */
+  @media (max-width: 480px) {
+    .hr-hero-content {
+      top: 40%;
+      padding: 0 10px;
+    }
+    .hr-hero-content h1 {
+      font-size: 24px;
+    }
+    .hr-hero-content p {
+      font-size: 14px;
+    }
+    .hr-btn-reservar-top {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+    .hr-menu-button {
+      top: 20px;
+      left: 15px;
+    }
+    .hr-menu-button img {
+      width: 30px;
+    }
+    .hr-logo-central img {
+      width: 60px;
+    }
+  }
+</style>
+
+<header>
+  <div class="hr-navbar" id="hr-navbar">
+    <div class="hr-menu-button hr-openMenu" id="hr-openMenu">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+        alt="Menu"
+      />
+    </div>
+    <img
+      class="hr-logo-navbar"
+      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+      alt="Logo Hotel"
+    />
+    <a href="#" class="hr-nav-movil">Inicio</a>
+    <a href="#" class="hr-nav-movil">Habitaciones</a>
+    <a href="#" class="hr-nav-movil">Servicios</a>
+    <a href="#" class="hr-nav-movil">Paquetes</a>
+    <a href="#">Reservar</a>
+  </div>
+  <div class="hr-menu-overlay" id="hr-menuOverlay">
+    <div class="hr-close-menu" id="hr-closeMenu">&times;</div>
+    <ul>
+      <li>
+        <img
+          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+          alt="logo"
+        />
+      </li>
+      <li>Inicio</li>
+      <li>Habitaciones</li>
+      <li>Servicios</li>
+      <li>Desayuno Ejecutivo</li>
+      <li>Paquetes</li>
+      <li>Reservar</li>
+    </ul>
+  </div>
+</header>
+<!-- Contenedor portada habitaciones -->
+<section class="hr-hero-section">
+  <div class="hr-swiper mySwiper">
+    <div class="hr-swiper-wrapper">
+      <div class="hr-swiper-slide">
+        <img
+          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+          alt="Habitaciones"
+        />
+      </div>
+      <div class="hr-swiper-slide">
+        <img
+          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+          alt="Habitaciones"
+        />
+      </div>
+    </div>
+    <div class="hr-swiper-pagination"></div>
+  </div>
+
+  <div class="hr-menu-button hr-openMenu" id="hr-openMenu">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+      alt="Menu"
+    />
+  </div>
+
+  <a href="#" class="hr-btn-reservar-top">Reservar</a>
+
+  <div class="hr-hero-content"></div>
+
+  <div class="hr-logo-central">
+    <img src="https://res.cloudina098da085c4.png" alt="Logo Hotel" />
+  </div>
+</section>
+
+<script>
+  /**************************************slider de portada */
+  const hrSwiper = new Swiper(".hr-swiper", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: ".hr-swiper-pagination",
+      clickable: true,
+    },
+  });
+  /*****************menu ****************/
+  const hrOpenMenus = document.querySelectorAll(".hr-openMenu");
+  const hrCloseMenu = document.getElementById("hr-closeMenu");
+  const hrMenuOverlay = document.getElementById("hr-menuOverlay");
+
+  hrOpenMenus.forEach((button) => {
+    button.addEventListener("click", () => {
+      hrMenuOverlay.classList.add("active");
+    });
+  });
+
+  hrCloseMenu.addEventListener("click", () => {
+    hrMenuOverlay.classList.remove("active");
+  });
+
+  const hrNavbar = document.getElementById("hr-navbar");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      hrNavbar.classList.add("show");
+      document.querySelector(".hr-btn-reservar-top").style.display = "none";
+    } else {
+      hrNavbar.classList.remove("show");
+      document.querySelector(".hr-btn-reservar-top").style.display = "block";
+    }
+  });
+</script>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -625,6 +990,560 @@
             );
           });
         });
+      });
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Premium</title>
+    <!-- Incluir Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <style>
+      /* ==================== ESTILOS GENERALES ==================== */
+      :root {
+        --boton-color: #012555;
+        --boton-texto: white;
+        --boton-fondo-hover: #563e9c;
+        --boton-texto-hover: white;
+        --boton-borde-hover: #563e9c;
+        --azul-principal: #012555;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow-x: hidden;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* ==================== HEADER ==================== */
+      .hr-header {
+        position: relative;
+        z-index: 1000;
+      }
+
+      .hr-navbar {
+        position: fixed;
+        top: -100px;
+        left: 0;
+        width: 100%;
+        background-color: var(--boton-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        height: 90px;
+        padding: 0 30px 0 50px;
+        transition: top 0.3s ease;
+        z-index: 100;
+        user-select: none;
+      }
+
+      .hr-navbar.show {
+        top: 0;
+      }
+
+      .hr-navbar-logo {
+        width: 130px;
+        height: auto;
+        margin-right: auto;
+      }
+
+      .hr-nav-link {
+        color: white;
+        font-size: 18px;
+        text-decoration: none;
+        margin-left: 30px;
+        transition: color 0.3s ease;
+      }
+
+      .hr-nav-link:hover {
+        color: #e8d3a2;
+      }
+
+      .hr-menu-button {
+        position: fixed;
+        top: 30px;
+        left: 30px;
+        z-index: 20;
+        cursor: pointer;
+        user-select: none;
+        display: none;
+        background: rgba(1, 37, 85, 0.7);
+        border-radius: 50%;
+        padding: 5px;
+        transition: all 0.3s ease;
+      }
+
+      .hr-menu-button:hover {
+        background: var(--boton-color);
+      }
+
+      .hr-menu-button img {
+        width: 30px;
+        filter: brightness(0) invert(1);
+      }
+
+      .hr-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--azul-principal);
+        color: white;
+        z-index: 1000;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+        user-select: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .hr-menu-overlay.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .hr-menu-list {
+        list-style: none;
+        width: 100%;
+        max-width: 400px;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .hr-menu-item {
+        font-size: 28px;
+        margin: 25px 0;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .hr-menu-item:not(:first-child):after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .hr-menu-item:hover {
+        color: #e8d3a2;
+      }
+
+      .hr-menu-logo {
+        width: 80%;
+        max-width: 200px;
+        margin-bottom: 30px;
+      }
+
+      .hr-close-menu {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 40px;
+        cursor: pointer;
+        color: white;
+        transition: transform 0.3s ease;
+      }
+
+      .hr-close-menu:hover {
+        transform: rotate(90deg);
+      }
+
+      /* ==================== HERO SECTION ==================== */
+      .hr-hero-section {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .hr-swiper-container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .hr-swiper-slide {
+        width: 100%;
+        height: 100%;
+      }
+
+      .hr-swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hr-hero-content {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-align: center;
+        z-index: 10;
+        padding: 0 15px;
+        user-select: none;
+      }
+
+      .hr-hero-title {
+        font-size: 40px;
+        margin-bottom: 10px;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+      }
+
+      .hr-hero-subtitle {
+        font-size: 20px;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+      }
+
+      .hr-hero-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        user-select: none;
+      }
+
+      .hr-hero-logo img {
+        width: 350px;
+        max-width: 20vw;
+        height: auto;
+      }
+
+      .hr-hero-reservar {
+        position: fixed;
+        top: 35px;
+        right: 30px;
+        z-index: 20;
+        background-color: var(--boton-color);
+        color: var(--boton-texto);
+        padding: 12px 25px;
+        font-size: 16px;
+        border: 2px solid var(--boton-color);
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        user-select: none;
+        display: block;
+      }
+
+      .hr-hero-reservar:hover {
+        background-color: var(--boton-fondo-hover);
+        color: var(--boton-texto-hover);
+        border-color: var(--boton-borde-hover);
+      }
+
+      /* Estilos para la paginación de Swiper */
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.5);
+        opacity: 1;
+      }
+
+      .swiper-pagination-bullet-active {
+        background: white;
+      }
+
+      /* ==================== RESPONSIVE ==================== */
+      @media (max-width: 1024px) {
+        .hr-hero-title {
+          font-size: 32px;
+        }
+
+        .hr-hero-subtitle {
+          font-size: 18px;
+        }
+
+        .hr-hero-reservar {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+
+        .hr-hero-logo img {
+          width: 80px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hr-nav-mobile-hidden {
+          display: none;
+        }
+
+        .hr-navbar {
+          justify-content: space-between;
+          padding: 0 20px;
+          height: 70px;
+        }
+
+        .hr-navbar-logo {
+          width: 100px;
+          margin: 0;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .hr-nav-link {
+          font-size: 16px;
+          margin: 0 10px;
+        }
+
+        .hr-menu-button {
+          display: block;
+        }
+
+        .hr-hero-reservar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hr-hero-content {
+          top: 40%;
+          padding: 0 10px;
+        }
+
+        .hr-hero-title {
+          font-size: 24px;
+        }
+
+        .hr-hero-subtitle {
+          font-size: 14px;
+        }
+
+        .hr-menu-button {
+          top: 20px;
+          left: 15px;
+        }
+
+        .hr-menu-button img {
+          width: 25px;
+        }
+
+        .hr-hero-logo img {
+          width: 60px;
+        }
+
+        .hr-menu-item {
+          font-size: 22px;
+          margin: 15px 0;
+        }
+
+        .hr-close-menu {
+          top: 20px;
+          right: 20px;
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hr-header">
+      <div class="hr-navbar" id="navbar">
+        <div class="hr-menu-button openMenu" id="openMenu">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+            alt="Menu"
+          />
+        </div>
+        <img
+          class="hr-navbar-logo"
+          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+          alt="Logo Hotel"
+        />
+        <a href="#" class="hr-nav-link hr-nav-mobile-hidden">Inicio</a>
+        <a href="#" class="hr-nav-link hr-nav-mobile-hidden">Habitaciones</a>
+        <a href="#" class="hr-nav-link hr-nav-mobile-hidden">Servicios</a>
+        <a href="#" class="hr-nav-link hr-nav-mobile-hidden">Paquetes</a>
+        <a href="#" class="hr-nav-link">Reservar</a>
+      </div>
+      <div class="hr-menu-overlay" id="menuOverlay">
+        <div class="hr-close-menu" id="closeMenu">&times;</div>
+        <ul class="hr-menu-list">
+          <li class="hr-menu-item">
+            <img
+              class="hr-menu-logo"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+              alt="logo"
+            />
+          </li>
+          <li class="hr-menu-item">Inicio</li>
+          <li class="hr-menu-item">Habitaciones</li>
+          <li class="hr-menu-item">Servicios</li>
+          <li class="hr-menu-item">Desayuno Ejecutivo</li>
+          <li class="hr-menu-item">Paquetes</li>
+          <li class="hr-menu-item">Reservar</li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- Contenedor portada habitaciones -->
+      <section class="hr-hero-section">
+        <div class="hr-swiper-container">
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="hr-swiper-slide swiper-slide">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+                  alt="Habitaciones"
+                />
+              </div>
+              <div class="hr-swiper-slide swiper-slide">
+                <img
+                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+                  alt="Habitaciones"
+                />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <a href="#" class="hr-hero-reservar">Reservar</a>
+
+        <div class="hr-hero-content">
+          <h1 class="hr-hero-title">Hotel Premium</h1>
+          <p class="hr-hero-subtitle">Experiencia de lujo y confort</p>
+        </div>
+
+        <div class="hr-hero-logo">
+          <img
+            src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+            alt="Logo Hotel"
+          />
+        </div>
+      </section>
+    </main>
+
+    <!-- Incluir Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      // Inicializar Swiper
+      document.addEventListener("DOMContentLoaded", function () {
+        // Configuración del slider
+        const swiper = new Swiper(".mySwiper", {
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+        });
+
+        // Mostrar/ocultar navbar al hacer scroll
+        const navbar = document.getElementById("navbar");
+        const reservarTop = document.querySelector(".hr-hero-reservar");
+        let lastScrollTop = 0;
+
+        window.addEventListener("scroll", function () {
+          let scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          if (scrollTop > lastScrollTop) {
+            // Scroll hacia abajo
+            navbar.classList.remove("show");
+            if (scrollTop > 100) {
+              reservarTop.style.display = "none";
+            }
+          } else {
+            // Scroll hacia arriba
+            if (scrollTop > 100) {
+              navbar.classList.add("show");
+            } else {
+              navbar.classList.remove("show");
+              reservarTop.style.display = "block";
+            }
+          }
+
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        // Mostrar navbar al cargar la página si no está en la parte superior
+        if (window.pageYOffset > 100) {
+          navbar.classList.add("show");
+          reservarTop.style.display = "none";
+        }
+
+        // Menú móvil
+        const openMenus = document.querySelectorAll(".openMenu");
+        const closeMenu = document.getElementById("closeMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+
+        openMenus.forEach((button) => {
+          button.addEventListener("click", () => {
+            menuOverlay.classList.add("active");
+            document.body.style.overflow = "hidden"; // Bloquear scroll
+          });
+        });
+
+        closeMenu.addEventListener("click", () => {
+          menuOverlay.classList.remove("active");
+          document.body.style.overflow = ""; // Restaurar scroll
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const menuItems = document.querySelectorAll(".hr-menu-item");
+        menuItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            if (!this.querySelector("img")) {
+              // No cerrar si es el logo
+              menuOverlay.classList.remove("active");
+              document.body.style.overflow = ""; // Restaurar scroll
+            }
+          });
+        });
+
+        // Ocultar botón reservar en móviles
+        function handleResize() {
+          if (window.innerWidth <= 768) {
+            reservarTop.style.display = "none";
+          } else {
+            if (window.pageYOffset > 100) {
+              reservarTop.style.display = "none";
+            } else {
+              reservarTop.style.display = "block";
+            }
+          }
+        }
+
+        window.addEventListener("resize", handleResize);
+        handleResize(); // Ejecutar al cargar
       });
     </script>
   </body>

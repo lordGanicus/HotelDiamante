@@ -46,51 +46,65 @@
     />
   </head>
   <body>
-    <header>
-      <div class="navbar" id="navbar">
-        <img
-          class="logo-navbar"
-          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
-          alt="Logo Hotel"
-        />
-        <a href="#">Inicio</a>
-        <a href="#">Habitaciones</a>
-        <a href="#">Servicios</a>
-        <a href="#">Paquetes</a>
-        <a href="#">Reservar</a>
-      </div>
-      <div class="menu-overlay" id="menuOverlay">
-        <div class="close-menu" id="closeMenu">&times;</div>
-        <ul>
-          <li>
-            <img
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
-              alt=""
-            />
-          </li>
-          <li>Inicio</li>
-          <li>Habitaciones</li>
-          <li>Servicios</li>
-          <li>Desayuno Ejecutivo</li>
-          <li>Paquetes</li>
-          <li>Reservar</li>
-        </ul>
-      </div>
-    </header>
     <main>
+      <header>
+        <div class="navbar" id="navbar">
+          <div class="menu-button openMenu" id="openMenu">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+              alt="Menu"
+            />
+          </div>
+          <img
+            class="logo-navbar"
+            src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+            alt="Logo Hotel"
+          />
+          <a href="#" class="nav-movil">Inicio</a>
+          <a href="#" class="nav-movil">Habitaciones</a>
+          <a href="#" class="nav-movil">Servicios</a>
+          <a href="#" class="nav-movil">Paquetes</a>
+          <a href="#">Reservar</a>
+        </div>
+        <div class="menu-overlay" id="menuOverlay">
+          <div class="close-menu" id="closeMenu">&times;</div>
+          <ul>
+            <li>
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+                alt="logo"
+              />
+            </li>
+            <li>Inicio</li>
+            <li>Habitaciones</li>
+            <li>Servicios</li>
+            <li>Desayuno Ejecutivo</li>
+            <li>Paquetes</li>
+            <li>Reservar</li>
+          </ul>
+        </div>
+      </header>
+      <!-- Contenedor portada habitaciones -->
       <section class="hero-section">
         <div class="swiper mySwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="/diamante azul.png" alt="Hotel 1" />
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+                alt="Habitaciones"
+              />
+            </div>
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752781111/diamante_azul_jxc463.png"
+                alt="Habitaciones"
+              />
             </div>
           </div>
-          <!-- cierro swiper-wrapper -->
           <div class="swiper-pagination"></div>
         </div>
-        <!-- cierro swiper -->
 
-        <div class="menu-button" id="openMenu">
+        <div class="menu-button openMenu" id="openMenu">
           <img
             src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
             alt="Menu"
@@ -99,16 +113,10 @@
 
         <a href="#" class="btn-reservar-top">Reservar</a>
 
-        <div class="hero-content">
-          <h1>Hotel Diamante Azul</h1>
-          <p>Tu descanso, nuestra prioridad</p>
-        </div>
+        <div class="hero-content"></div>
 
         <div class="logo-central">
-          <img
-            src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
-            alt="Logo Hotel"
-          />
+          <img src="https://res.cloudina098da085c4.png" alt="Logo Hotel" />
         </div>
       </section>
       <!-- informacionde la habitacion -->
