@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habitaciones - Sección HBI</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Estilos específicos para la sección HBI */
+      .hbi-section {
+        width: 100%;
+        background: linear-gradient(135deg, #0c1b33 0%, #1a2d4e 100%);
+        padding: 60px 20px;
+        color: #fff;
+        font-family: "Garamond", serif;
+      }
+
+      .hbi-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .hbi-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .hbi-title {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .hbi-subtitle {
+        font-size: 1.2rem;
+        color: #d1d5db;
+        line-height: 1.6;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Galería principal */
+      .hbi-gallery {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        transition: all 0.6s ease-in-out;
+      }
+
+      /* Imágenes de fondo según habitación */
+      .hbi-section-single {
+        background: url("https://res.cloudinary.com/dvmov11mg/image/upload/v1752170663/01_qvqijt.png")
+          center center / cover no-repeat;
+      }
+      .hbi-section-twin {
+        background: url("https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png")
+          center center / cover no-repeat;
+      }
+      .hbi-section-triple {
+        background: url("https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png")
+          center center / cover no-repeat;
+      }
+      .hbi-section-deluxe {
+        background: url("https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png")
+          center center / cover no-repeat;
+      }
+      .hbi-section-family {
+        background: url("https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png")
+          center center / cover no-repeat;
+      }
+
+      .hbi-gallery-items {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+      }
+
+      .hbi-gallery-item {
+        flex: 1;
+        height: 100%;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hbi-gallery-item:last-child {
+        border-right: none;
+      }
+
+      .hbi-gallery-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0.8;
+        transition: opacity 0.4s ease;
+      }
+
+      .hbi-gallery-item:hover::before {
+        opacity: 0.5;
+      }
+
+      .hbi-item-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 2;
+        text-transform: uppercase;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .hbi-item-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 80%;
+        position: relative;
+        z-index: 2;
+        opacity: 0.8;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .hbi-more-link {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .hbi-more-link i {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .hbi-gallery-item:hover .hbi-more-link {
+        opacity: 1;
+      }
+
+      .hbi-more-link:hover i {
+        transform: translateX(5px);
+      }
+
+      .hbi-info-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(20, 25, 40, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 20;
+        pointer-events: none;
+      }
+
+      .hbi-info-content {
+        max-width: 700px;
+        text-align: center;
+        transform: translateY(30px);
+        transition: transform 0.5s ease;
+      }
+
+      .hbi-room-name {
+        font-size: 2.8rem;
+        margin-bottom: 25px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #e8d3a2;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hbi-room-desc {
+        font-size: 1.25rem;
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 35px;
+      }
+
+      .hbi-btn {
+        background: linear-gradient(135deg, #9c7b4d 0%, #c9a87a 100%);
+        color: white;
+        border: none;
+        padding: 14px 38px;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        box-shadow: 0 4px 15px rgba(156, 123, 77, 0.3);
+      }
+
+      .hbi-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(156, 123, 77, 0.4);
+        background: linear-gradient(135deg, #b08d5b 0%, #d8b98a 100%);
+      }
+
+      .hbi-gallery-item:hover .hbi-info-overlay {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .hbi-gallery-item:hover .hbi-info-content {
+        transform: translateY(0);
+      }
+
+      /* Slider para móviles y tablets */
+      .hbi-mobile-slider {
+        display: none;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .hbi-slider-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hbi-slider-track {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .hbi-slide {
+        min-width: 100%;
+        position: relative;
+      }
+
+      .hbi-slide-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hbi-slide-content {
+        padding: 25px 20px;
+        background: rgba(20, 25, 40, 0.95);
+        color: white;
+      }
+
+      .hbi-slide-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #e8d3a2;
+        text-align: center;
+      }
+
+      .hbi-slide-desc {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        line-height: 1.6;
+        text-align: center;
+        color: #d1d5db;
+      }
+
+      .hbi-slide-btn-container {
+        text-align: center;
+      }
+
+      .hbi-slider-nav {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0 15px;
+        background: rgba(15, 20, 35, 0.9);
+        position: relative;
+      }
+
+      .hbi-slider-dots {
+        display: flex;
+        gap: 12px;
+      }
+
+      .hbi-slider-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .hbi-slider-dot.active {
+        background: #e8d3a2;
+        transform: scale(1.2);
+      }
+
+      .hbi-slider-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: #e8d3a2;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      /* Footer */
+      .hbi-footer {
+        text-align: center;
+        padding: 30px 0 0;
+        color: #9c9ca5;
+        font-size: 1rem;
+        margin-top: 50px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .hbi-title {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hbi-gallery {
+          height: 500px;
+        }
+
+        .hbi-room-name {
+          font-size: 2.2rem;
+        }
+
+        .hbi-room-desc {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hbi-title {
+          font-size: 2.5rem;
+        }
+
+        .hbi-gallery {
+          display: none;
+        }
+
+        .hbi-mobile-slider {
+          display: block;
+        }
+
+        .hbi-slide-title {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hbi-section {
+          padding: 40px 15px;
+        }
+
+        .hbi-title {
+          font-size: 2rem;
+          margin-bottom: 15px;
+        }
+
+        .hbi-subtitle {
+          font-size: 1rem;
+        }
+
+        .hbi-slide-img {
+          height: 250px;
+        }
+
+        .hbi-slide-title {
+          font-size: 1.4rem;
+        }
+
+        .hbi-slide-desc {
+          font-size: 1rem;
+        }
+
+        .hbi-btn {
+          padding: 12px 30px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sección HBI - Galería de Habitaciones -->
+    <div class="hbi-section">
+      <div class="hbi-container">
+        <div class="hbi-header">
+          <h1 class="hbi-title">Nuestras Habitaciones</h1>
+          <p class="hbi-subtitle">
+            Espacios diseñados para tu máximo confort y disfrute
+          </p>
+        </div>
+
+        <!-- Galería principal (desktop) -->
+        <div class="hbi-gallery hbi-section-single">
+          <div class="hbi-gallery-items">
+            <!-- Habitación Individual -->
+            <div class="hbi-gallery-item" data-section="single">
+              <h2 class="hbi-item-title">Individual</h2>
+              <p class="hbi-item-desc">Espacio práctico y bien equipado</p>
+              <a href="#" class="hbi-more-link"
+                >Detalles <i class="fas fa-chevron-right"></i
+              ></a>
+
+              <div class="hbi-info-overlay">
+                <div class="hbi-info-content">
+                  <h2 class="hbi-room-name">Habitación Individual</h2>
+                  <p class="hbi-room-desc">
+                    Espacio práctico y bien equipado, pensado para una estancia
+                    individual tranquila y confortable. Perfecta para viajeros
+                    que buscan privacidad y todas las comodidades en un espacio
+                    compacto pero funcional.
+                  </p>
+                  <button class="hbi-btn">Reservar Ahora</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Twin -->
+            <div class="hbi-gallery-item" data-section="twin">
+              <h2 class="hbi-item-title">Twin</h2>
+              <p class="hbi-item-desc">Dos camas individuales</p>
+              <a href="#" class="hbi-more-link"
+                >Detalles <i class="fas fa-chevron-right"></i
+              ></a>
+
+              <div class="hbi-info-overlay">
+                <div class="hbi-info-content">
+                  <h2 class="hbi-room-name">Habitación Twin</h2>
+                  <p class="hbi-room-desc">
+                    Dos camas individuales en un espacio cómodo con todo lo
+                    necesario para tu descanso. Ideal para amigos o compañeros
+                    de viaje que valoran su espacio personal sin sacrificar la
+                    comodidad.
+                  </p>
+                  <button class="hbi-btn">Reservar Ahora</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Triple -->
+            <div class="hbi-gallery-item" data-section="triple">
+              <h2 class="hbi-item-title">Triple</h2>
+              <p class="hbi-item-desc">Ideal para tres huéspedes</p>
+              <a href="#" class="hbi-more-link"
+                >Detalles <i class="fas fa-chevron-right"></i
+              ></a>
+
+              <div class="hbi-info-overlay">
+                <div class="hbi-info-content">
+                  <h2 class="hbi-room-name">Habitación Triple</h2>
+                  <p class="hbi-room-desc">
+                    Espacio cálido y práctico, ideal para tres huéspedes en
+                    busca de una opción accesible y confortable. Con
+                    distribución inteligente que maximiza el espacio sin
+                    comprometer la comodidad.
+                  </p>
+                  <button class="hbi-btn">Reservar Ahora</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Matrimonial Deluxe -->
+            <div class="hbi-gallery-item" data-section="deluxe">
+              <h2 class="hbi-item-title">Deluxe</h2>
+              <p class="hbi-item-desc">Diseño refinado</p>
+              <a href="#" class="hbi-more-link"
+                >Detalles <i class="fas fa-chevron-right"></i
+              ></a>
+
+              <div class="hbi-info-overlay">
+                <div class="hbi-info-content">
+                  <h2 class="hbi-room-name">Habitación Matrimonial Deluxe</h2>
+                  <p class="hbi-room-desc">
+                    Cama matrimonial, diseño refinado y un ambiente pensado para
+                    el descanso en pareja. Perfecta para una escapada romántica
+                    con todas las comodidades de un hotel de lujo.
+                  </p>
+                  <button class="hbi-btn">Reservar Ahora</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Familiar Deluxe -->
+            <div class="hbi-gallery-item" data-section="family">
+              <h2 class="hbi-item-title">Familiar</h2>
+              <p class="hbi-item-desc">Perfecta para compartir</p>
+              <a href="#" class="hbi-more-link"
+                >Detalles <i class="fas fa-chevron-right"></i
+              ></a>
+
+              <div class="hbi-info-overlay">
+                <div class="hbi-info-content">
+                  <h2 class="hbi-room-name">Habitación Familiar Deluxe</h2>
+                  <p class="hbi-room-desc">
+                    Perfecta para compartir en familia, con amplias camas,
+                    muebles modernos y detalles acogedores. Espacio generoso que
+                    incluye área de estar separada para mayor comodidad durante
+                    su estadía.
+                  </p>
+                  <button class="hbi-btn">Reservar Ahora</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider para móviles y tablets -->
+        <div class="hbi-mobile-slider">
+          <div class="hbi-slider-wrapper">
+            <div class="hbi-slider-track">
+              <!-- Slide 1 - Individual -->
+              <div class="hbi-slide">
+                <img
+                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170663/01_qvqijt.png"
+                  alt="Habitación Individual"
+                  class="hbi-slide-img"
+                />
+                <div class="hbi-slide-content">
+                  <h2 class="hbi-slide-title">Habitación Individual</h2>
+                  <p class="hbi-slide-desc">
+                    Espacio práctico y bien equipado, pensado para una estancia
+                    individual tranquila y confortable.
+                  </p>
+                  <div class="hbi-slide-btn-container">
+                    <button class="hbi-btn">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 - Twin -->
+              <div class="hbi-slide">
+                <img
+                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png"
+                  alt="Habitación Twin"
+                  class="hbi-slide-img"
+                />
+                <div class="hbi-slide-content">
+                  <h2 class="hbi-slide-title">Habitación Twin</h2>
+                  <p class="hbi-slide-desc">
+                    Dos camas individuales en un espacio cómodo con todo lo
+                    necesario para tu descanso.
+                  </p>
+                  <div class="hbi-slide-btn-container">
+                    <button class="hbi-btn">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 - Triple -->
+              <div class="hbi-slide">
+                <img
+                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png"
+                  alt="Habitación Triple"
+                  class="hbi-slide-img"
+                />
+                <div class="hbi-slide-content">
+                  <h2 class="hbi-slide-title">Habitación Triple</h2>
+                  <p class="hbi-slide-desc">
+                    Espacio cálido y práctico, ideal para tres huéspedes en
+                    busca de una opción accesible y confortable.
+                  </p>
+                  <div class="hbi-slide-btn-container">
+                    <button class="hbi-btn">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4 - Deluxe -->
+              <div class="hbi-slide">
+                <img
+                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
+                  alt="Habitación Deluxe"
+                  class="hbi-slide-img"
+                />
+                <div class="hbi-slide-content">
+                  <h2 class="hbi-slide-title">Habitación Deluxe</h2>
+                  <p class="hbi-slide-desc">
+                    Cama matrimonial, diseño refinado y un ambiente pensado para
+                    el descanso en pareja.
+                  </p>
+                  <div class="hbi-slide-btn-container">
+                    <button class="hbi-btn">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5 - Familiar -->
+              <div class="hbi-slide">
+                <img
+                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                  alt="Habitación Familiar"
+                  class="hbi-slide-img"
+                />
+                <div class="hbi-slide-content">
+                  <h2 class="hbi-slide-title">Habitación Familiar</h2>
+                  <p class="hbi-slide-desc">
+                    Perfecta para compartir en familia, con amplias camas,
+                    muebles modernos y detalles acogedores.
+                  </p>
+                  <div class="hbi-slide-btn-container">
+                    <button class="hbi-btn">Reservar Ahora</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación del slider -->
+          <div class="hbi-slider-nav">
+            <div class="hbi-slider-dots">
+              <div class="hbi-slider-dot active" data-index="0"></div>
+              <div class="hbi-slider-dot" data-index="1"></div>
+              <div class="hbi-slider-dot" data-index="2"></div>
+              <div class="hbi-slider-dot" data-index="3"></div>
+              <div class="hbi-slider-dot" data-index="4"></div>
+            </div>
+            <div class="hbi-slider-line"></div>
+          </div>
+        </div>
+
+        <div class="hbi-footer">
+          <p>© 2023 Hotel Premium. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Efecto para desktop
+        const hbiGalleryItems = document.querySelectorAll(".hbi-gallery-item");
+        const hbiGallery = document.querySelector(".hbi-gallery");
+
+        if (hbiGalleryItems.length > 0) {
+          hbiGalleryItems.forEach((item) => {
+            item.addEventListener("mouseenter", function () {
+              const section = this.getAttribute("data-section");
+              hbiGallery.className = "hbi-gallery";
+              hbiGallery.classList.add(`hbi-section-${section}`);
+
+              this.classList.add("active");
+            });
+
+            item.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+              hbiGallery.className = "hbi-gallery hbi-section-single";
+            });
+          });
+        }
+
+        // Slider para móviles
+        const hbiSliderTrack = document.querySelector(".hbi-slider-track");
+        const hbiSlides = document.querySelectorAll(".hbi-slide");
+        const hbiDots = document.querySelectorAll(".hbi-slider-dot");
+        const hbiLine = document.querySelector(".hbi-slider-line");
+
+        if (hbiSliderTrack && hbiSlides.length > 0) {
+          let currentIndex = 0;
+          let slideWidth = hbiSlides[0].clientWidth;
+          const totalSlides = hbiSlides.length;
+
+          // Actualizar dimensiones al cambiar tamaño de ventana
+          function updateDimensions() {
+            slideWidth = hbiSlides[0].clientWidth;
+            hbiSliderTrack.style.transform = `translateX(-${
+              currentIndex * slideWidth
+            }px)`;
+            updateLine();
+          }
+
+          // Actualizar línea indicadora
+          function updateLine() {
+            const lineWidth = 100 / totalSlides;
+            hbiLine.style.width = `${lineWidth}%`;
+            hbiLine.style.left = `${currentIndex * lineWidth}%`;
+          }
+
+          // Mover al slide específico
+          function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            currentIndex = index;
+            hbiSliderTrack.style.transform = `translateX(-${
+              currentIndex * slideWidth
+            }px)`;
+
+            // Actualizar dots
+            hbiDots.forEach((dot, i) => {
+              dot.classList.toggle("active", i === currentIndex);
+            });
+
+            updateLine();
+          }
+
+          // Configurar dots
+          hbiDots.forEach((dot, index) => {
+            dot.addEventListener("click", () => goToSlide(index));
+          });
+
+          // Configurar línea inicial
+          updateLine();
+
+          // Auto-desplazamiento
+          let sliderInterval = setInterval(() => {
+            goToSlide(currentIndex + 1);
+          }, 5000);
+
+          // Pausar auto-desplazamiento al interactuar
+          hbiSliderTrack.addEventListener("mouseenter", () =>
+            clearInterval(sliderInterval)
+          );
+          hbiSliderTrack.addEventListener("mouseleave", () => {
+            sliderInterval = setInterval(() => {
+              goToSlide(currentIndex + 1);
+            }, 5000);
+          });
+
+          // Touch events para móviles
+          let startX = 0;
+          let currentX = 0;
+          let isDragging = false;
+
+          hbiSliderTrack.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            currentX = startX;
+            isDragging = true;
+            clearInterval(sliderInterval);
+          });
+
+          hbiSliderTrack.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+            const diff = startX - currentX;
+            hbiSliderTrack.style.transform = `translateX(calc(-${
+              currentIndex * slideWidth
+            }px - ${diff}px))`;
+          });
+
+          hbiSliderTrack.addEventListener("touchend", () => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            const diff = startX - currentX;
+            // Si el desplazamiento es significativo, cambiar de slide
+            if (Math.abs(diff) > 50) {
+              if (diff > 0) {
+                goToSlide(currentIndex + 1); // Deslizar izquierda
+              } else {
+                goToSlide(currentIndex - 1); // Deslizar derecha
+              }
+            } else {
+              // Volver a la posición actual si no hay suficiente desplazamiento
+              goToSlide(currentIndex);
+            }
+
+            // Reanudar auto-desplazamiento
+            sliderInterval = setInterval(() => {
+              goToSlide(currentIndex + 1);
+            }, 5000);
+          });
+
+          // Actualizar dimensiones al cambiar tamaño de ventana
+          window.addEventListener("resize", updateDimensions);
+        }
+      });
+    </script>
+  </body>
+</html>

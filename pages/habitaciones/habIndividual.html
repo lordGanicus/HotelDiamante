@@ -40,6 +40,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
   </head>
   <body>
     <header>
@@ -79,10 +83,12 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <img src="/diamante azul.png" alt="Hotel 1" />
-           
+            </div>
           </div>
+          <!-- cierro swiper-wrapper -->
           <div class="swiper-pagination"></div>
         </div>
+        <!-- cierro swiper -->
 
         <div class="menu-button" id="openMenu">
           <img
@@ -105,10 +111,555 @@
           />
         </div>
       </section>
+      <!-- informacionde la habitacion -->
+      <!-- Primera sección (hbt-section) -->
+      <section class="hbt-section">
+        <!-- Vector superior -->
+        <div class="hbt-vector-top">
+          <svg
+            width="784"
+            height="477"
+            viewBox="0 0 784 477"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
+              fill="url(#paint0_linear_top)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_top"
+                x1="847.931"
+                y1="1606.99"
+                x2="-602.388"
+                y2="1978.5"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#202B60" />
+                <stop offset="0.225962" stop-color="#712B8D" />
+                <stop offset="0.398536" stop-color="#BF7EEB" />
+                <stop offset="0.658654" stop-color="#012555" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <!-- Vector inferior -->
+        <div class="hbt-vector-bottom">
+          <svg
+            width="784"
+            height="477"
+            viewBox="0 0 784 477"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
+              fill="url(#paint0_linear_bottom)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_bottom"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+                gradientUnits="objectBoundingBox"
+              >
+                <stop offset="2%" stop-color="#012555" />
+                <stop offset="15%" stop-color="#012555" />
+                <stop offset="50%" stop-color="#712B8D" />
+                <stop offset="70%" stop-color="#BF7EEB" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <!-- Contenido de habitacion -->
+        <div class="hbt-container">
+          <h2 class="hbt-main-title">Habitacion individual</h2>
 
+          <!-- Versión desktop/tablet -->
+          <div class="hbt-rooms-container">
+            <!-- Habitación Individual -->
+            <div class="hbt-room-wrapper">
+              <div class="hbt-room-card">
+                <div class="hbt-room-image-container">
+                  <img
+                    class="hbt-room-image"
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752759984/12bf2a33-41e1-40c9-ab70-37520f919773.png"
+                    alt="Habitación Individual"
+                  />
+                  <div class="hbt-room-type-button">Estandar</div>
+                </div>
+                <div class="hbt-room-details">
+                  <h3>Habitación Individual Estandar</h3>
+
+                  <ul class="hbt-amenities-list">
+                    <li class="hbt-amenity">
+                      <i class="fas fa-hotel"></i>
+                      <span>Vista al Interior del Hotel</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-wifi"></i>
+                      <span>Wifi</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-key"></i>
+                      <span>Acceso con llave</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-tv"></i>
+                      <span>TV de pantalla plana</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-coffee"></i>
+                      <span>Desayuno</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-bath"></i>
+                      <span>Baño Privado</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button class="hbt-reserve-button">RESERVAR AHORA</button>
+            </div>
+
+            <!-- Habitación Triple -->
+            <div class="hbt-room-wrapper">
+              <div class="hbt-room-card">
+                <div class="hbt-room-image-container">
+                  <img
+                    class="hbt-room-image"
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752760002/b1153e07-9203-4089-944d-49cb78cf145c.png"
+                    alt="Habitación Triple"
+                  />
+                  <div class="hbt-room-type-button">Deluxe</div>
+                </div>
+                <div class="hbt-room-details">
+                  <h3>Habitacion Individual Deluxe</h3>
+                  <ul class="hbt-amenities-list">
+                    <li class="hbt-amenity">
+                      <i class="fas fa-city"></i>
+                      <span>Vista Hacia la Ciudad</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-wifi"></i>
+                      <span>Wifi</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-key"></i>
+                      <span>Acceso con llave</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-tv"></i>
+                      <span>TV Smart</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-coffee"></i>
+                      <span>Desayuno</span>
+                    </li>
+                    <li class="hbt-amenity">
+                      <i class="fas fa-bath"></i>
+                      <span>Baño Privado</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button class="hbt-reserve-button">RESERVAR AHORA</button>
+            </div>
+          </div>
+
+          <!-- Versión móvil (swiper) -->
+          <div class="hbt-swiper-container">
+            <div class="hbt-swiper swiper">
+              <div class="swiper-wrapper">
+                <!-- Slide 1 - Individual -->
+                <div class="swiper-slide">
+                  <div class="hbt-room-wrapper">
+                    <div class="hbt-room-card">
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752759984/12bf2a33-41e1-40c9-ab70-37520f919773.png"
+                          alt="Habitación Individual"
+                        />
+                        <div class="hbt-room-type-button">Individual</div>
+                      </div>
+                      <div class="hbt-room-details">
+                        <h3>Habitación Individual</h3>
+                        <p>
+                          Espacio práctico y bien equipado, pensado para una
+                          estancia individual tranquila y confortable.
+                        </p>
+                        <ul class="hbt-amenities-list">
+                          <li class="hbt-amenity">
+                            <i class="fas fa-hotel"></i>
+                            <span>Vista al Interior del Hotel</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wifi</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-tv"></i>
+                            <span>TV de pantalla plana</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-key"></i>
+                            <span>Acceso con llave</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <button class="hbt-reserve-button">RESERVAR AHORA</button>
+                  </div>
+                </div>
+
+                <!-- Slide 2 - Triple -->
+                <div class="swiper-slide">
+                  <div class="hbt-room-wrapper">
+                    <div class="hbt-room-card">
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752760002/b1153e07-9203-4089-944d-49cb78cf145c.png"
+                          alt="Habitación Triple"
+                        />
+                        <div class="hbt-room-type-button">Triple</div>
+                      </div>
+                      <div class="hbt-room-details">
+                        <h3>Habitación Triple</h3>
+                        <p>
+                          Espacio clásico y práctico, ideal para tres huéspedes
+                          en busca de una opción accesible y confortable.
+                        </p>
+                        <ul class="hbt-amenities-list">
+                          <li class="hbt-amenity">
+                            <i class="fas fa-city"></i>
+                            <span>Vista Hacia la Ciudad</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wifi</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-tv"></i>
+                            <span>TV Smart</span>
+                          </li>
+                          <li class="hbt-amenity">
+                            <i class="fas fa-users"></i>
+                            <span>3 Camas individuales</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <button class="hbt-reserve-button">RESERVAR AHORA</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paginación personalizada  -->
+              <div class="hbt-swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Segunda sección (hbi-section) con vectores invertidos -->
+      <section class="hbi-section">
+        <!-- Vector superior (antes el inferior) -->
+        <div class="hbi-vector-top">
+          <svg
+            width="784"
+            height="477"
+            viewBox="0 0 784 477"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
+              fill="url(#paint0_linear_bottom)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_bottom"
+                x1="0"
+                y1="0"
+                x2="1"
+                y2="1"
+                gradientUnits="objectBoundingBox"
+              >
+                <stop offset="2%" stop-color="#012555" />
+                <stop offset="15%" stop-color="#012555" />
+                <stop offset="50%" stop-color="#712B8D" />
+                <stop offset="70%" stop-color="#BF7EEB" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Vector inferior (antes el superior) -->
+        <div class="hbi-vector-bottom">
+          <svg
+            width="784"
+            height="477"
+            viewBox="0 0 784 477"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
+              fill="url(#paint0_linear_top)"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_top"
+                x1="847.931"
+                y1="1606.99"
+                x2="-602.388"
+                y2="1978.5"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#202B60" />
+                <stop offset="0.225962" stop-color="#712B8D" />
+                <stop offset="0.398536" stop-color="#BF7EEB" />
+                <stop offset="0.658654" stop-color="#012555" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Contenido -->
+        <div class="hbi-content">
+          <div class="hbi-container">
+            <div class="hbi-header">
+              <h1 class="hbi-title">Nuestras Habitaciones</h1>
+              <p class="hbi-subtitle">
+                Espacios diseñados para tu máximo confort y disfrute
+              </p>
+            </div>
+
+            <!-- Galería principal (desktop) -->
+            <div class="hbi-gallery hbi-section-single">
+              <div class="hbi-gallery-items">
+                <!-- Habitación Individual -->
+                <div class="hbi-gallery-item" data-section="single">
+                  <h2 class="hbi-item-title">Individual</h2>
+
+                  <a href="#" class="hbi-more-link"
+                    >Detalles <i class="fas fa-chevron-right"></i
+                  ></a>
+
+                  <div class="hbi-info-overlay">
+                    <div class="hbi-info-content">
+                      <h2 class="hbi-room-name">Habitación Individual</h2>
+                      <p class="hbi-room-desc">
+                        Pensado para una estancia individual tranquila y
+                        confortable.
+                      </p>
+                      <button class="hbi-btn">Reservar Ahora</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Habitación Twin -->
+                <div class="hbi-gallery-item" data-section="twin">
+                  <h2 class="hbi-item-title">Twin</h2>
+
+                  <a href="#" class="hbi-more-link"
+                    >Detalles <i class="fas fa-chevron-right"></i
+                  ></a>
+
+                  <div class="hbi-info-overlay">
+                    <div class="hbi-info-content">
+                      <h2 class="hbi-room-name">Habitación Twin</h2>
+                      <p class="hbi-room-desc">
+                        Dos camas individuales en un espacio cómodo.
+                      </p>
+                      <button class="hbi-btn">Reservar Ahora</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Habitación Triple -->
+                <div class="hbi-gallery-item" data-section="triple">
+                  <h2 class="hbi-item-title">Triple</h2>
+
+                  <a href="#" class="hbi-more-link"
+                    >Detalles <i class="fas fa-chevron-right"></i
+                  ></a>
+
+                  <div class="hbi-info-overlay">
+                    <div class="hbi-info-content">
+                      <h2 class="hbi-room-name">Habitación Triple</h2>
+                      <p class="hbi-room-desc">
+                        Ideal para tres huéspedes en busca de una opción
+                        accesible y confortable.
+                      </p>
+                      <button class="hbi-btn">Reservar Ahora</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Habitación Matrimonial Deluxe -->
+                <div class="hbi-gallery-item" data-section="deluxe">
+                  <h2 class="hbi-item-title">Deluxe</h2>
+
+                  <a href="#" class="hbi-more-link"
+                    >Detalles <i class="fas fa-chevron-right"></i
+                  ></a>
+
+                  <div class="hbi-info-overlay">
+                    <div class="hbi-info-content">
+                      <h2 class="hbi-room-name">
+                        Habitación Matrimonial Deluxe
+                      </h2>
+                      <p class="hbi-room-desc">
+                        Diseño refinado y un ambiente pensado para el descanso
+                        en pareja.
+                      </p>
+                      <button class="hbi-btn">Reservar Ahora</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Habitación Familiar Deluxe -->
+                <div class="hbi-gallery-item" data-section="family">
+                  <h2 class="hbi-item-title">Familiar</h2>
+
+                  <a href="#" class="hbi-more-link"
+                    >Detalles <i class="fas fa-chevron-right"></i
+                  ></a>
+
+                  <div class="hbi-info-overlay">
+                    <div class="hbi-info-content">
+                      <h2 class="hbi-room-name">Habitación Familiar Deluxe</h2>
+                      <p class="hbi-room-desc">
+                        Perfecta para compartir en familia, con amplias camas,
+                        muebles modernos y detalles acogedores.
+                      </p>
+                      <button class="hbi-btn">Reservar Ahora</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slider para móviles y tablets -->
+            <div class="hbi-mobile-slider">
+              <div class="hbi-slider-wrapper">
+                <div class="hbi-slider-track">
+                  <!-- Slide 1 - Individual -->
+                  <div class="hbi-slide">
+                    <img
+                      src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170663/01_qvqijt.png"
+                      alt="Habitación Individual"
+                      class="hbi-slide-img"
+                    />
+                    <div class="hbi-slide-content">
+                      <h2 class="hbi-slide-title">Habitación Individual</h2>
+                      <p class="hbi-slide-desc">
+                        Pensado para una estancia individual tranquila y
+                        confortable.
+                      </p>
+                      <div class="hbi-slide-btn-container">
+                        <button class="hbi-btn">Reservar Ahora</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Slide 2 - Twin -->
+                  <div class="hbi-slide">
+                    <img
+                      src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png"
+                      alt="Habitación Twin"
+                      class="hbi-slide-img"
+                    />
+                    <div class="hbi-slide-content">
+                      <h2 class="hbi-slide-title">Habitación Twin</h2>
+                      <p class="hbi-slide-desc">
+                        Dos camas individuales en un espacio cómodo.
+                      </p>
+                      <div class="hbi-slide-btn-container">
+                        <button class="hbi-btn">Reservar Ahora</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Slide 3 - Triple -->
+                  <div class="hbi-slide">
+                    <img
+                      src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png"
+                      alt="Habitación Triple"
+                      class="hbi-slide-img"
+                    />
+                    <div class="hbi-slide-content">
+                      <h2 class="hbi-slide-title">Habitación Triple</h2>
+                      <p class="hbi-slide-desc">
+                        Ideal para tres huéspedes en busca de una opción
+                        accesible.
+                      </p>
+                      <div class="hbi-slide-btn-container">
+                        <button class="hbi-btn">Reservar Ahora</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Slide 4 - Deluxe -->
+                  <div class="hbi-slide">
+                    <img
+                      src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
+                      alt="Habitación Deluxe"
+                      class="hbi-slide-img"
+                    />
+                    <div class="hbi-slide-content">
+                      <h2 class="hbi-slide-title">Habitación Deluxe</h2>
+                      <p class="hbi-slide-desc">
+                        Un habiente pensando para el descanso en pareja.
+                      </p>
+                      <div class="hbi-slide-btn-container">
+                        <button class="hbi-btn">Reservar Ahora</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Slide 5 - Familiar -->
+                  <div class="hbi-slide">
+                    <img
+                      src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                      alt="Habitación Familiar"
+                      class="hbi-slide-img"
+                    />
+                    <div class="hbi-slide-content">
+                      <h2 class="hbi-slide-title">Habitación Familiar</h2>
+                      <p class="hbi-slide-desc">
+                        Perfecta para compartir en familia.
+                      </p>
+                      <div class="hbi-slide-btn-container">
+                        <button class="hbi-btn">Reservar Ahora</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navegación del slider -->
+              <div class="hbi-slider-nav">
+                <div class="hbi-slider-dots">
+                  <div class="hbi-slider-dot active" data-index="0"></div>
+                  <div class="hbi-slider-dot" data-index="1"></div>
+                  <div class="hbi-slider-dot" data-index="2"></div>
+                  <div class="hbi-slider-dot" data-index="3"></div>
+                  <div class="hbi-slider-dot" data-index="4"></div>
+                </div>
+                <div class="hbi-slider-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Footer -->
       <footer class="ft-footer-section">
-        <!-- Sección superior (con fondo de imagen) -->
         <div class="ft-top-section">
           <div class="ft-content-wrapper">
             <!-- Logo central -->
@@ -198,5 +749,7 @@
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/assets/script.js"></script>
+    <script src="/assets/scripthab.js"></script>
+    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   </body>
 </html>
