@@ -58,18 +58,40 @@
       <div class="menu-overlay" id="menuOverlay">
         <div class="close-menu" id="closeMenu">&times;</div>
         <ul>
-          <li>
+          <li id="logo-menu-img">
             <img
               src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
               alt=""
             />
           </li>
-          <li>Inicio</li>
-          <li>Habitaciones</li>
-          <li>Servicios</li>
-          <li>Desayuno Ejecutivo</li>
-          <li>Paquetes</li>
-          <li>Reservar</li>
+          <li id="logo-menu">
+            <a href="../index.html"><i class="fas fa-home"></i> Inicio</a>
+          </li>
+          <li>
+            <a href="../index.html#info-section-main"
+              ><i class="fas fa-info-circle"></i> Información</a
+            >
+          </li>
+          <li>
+            <a href="../index.html#habitaciones-section"
+              ><i class="fas fa-bed"></i> Habitaciones</a
+            >
+          </li>
+          <li>
+            <a href="../index.html#paquetes-especiales-container"
+              ><i class="fas fa-box-open"></i> Paquetes</a
+            >
+          </li>
+          <li>
+            <a href="../index.html#dtn-breakfast-section"
+              ><i class="fas fa-coffee"></i> Desayunos</a
+            >
+          </li>
+          <li>
+            <a href="../index.html#ubi-location-section"
+              ><i class="fas fa-map-marker-alt"></i> Ubicación</a
+            >
+          </li>
         </ul>
       </div>
     </header>
@@ -113,7 +135,7 @@
       </section>
       <!-- SECCION DE INFORMACION -->
 
-      <section class="info-section-main">
+      <section class="info-section-main" id="info-section-main">
         <div class="info-section">
           <div class="info-rect">
             <h2>DIAMANTE AZUL</h2>
@@ -157,7 +179,7 @@
       </section>
 
       <!-- SECCION DE HABITACIONES -->
-      <section class="habitaciones-section">
+      <section class="habitaciones-section" id="habitaciones-section">
         <div class="habitaciones-header">
           <h2>Habitaciones</h2>
           <p>
@@ -270,7 +292,10 @@
         </div>
       </section>
       <!-- SECCION DE PAQUETES -->
-      <section class="paquetes-especiales-container">
+      <section
+        class="paquetes-especiales-container"
+        id="paquetes-especiales-container"
+      >
         <div class="ps-bg-overlay" id="psBackgroundOverlay"></div>
         <div class="ps-gradient-overlay"></div>
         <div class="ps-floating-hearts" id="psFloatingHearts"></div>
@@ -384,7 +409,7 @@
         </div>
       </section>
       <!-- SECCION DE desayuno -->
-      <section class="dtn-breakfast-section">
+      <section class="dtn-breakfast-section" id="dtn-breakfast-section">
         <div class="dtn-main-container">
           <div class="dtn-breakfast-card">
             <h2 class="dtn-breakfast-title">Desayunos a tu Estilo</h2>
@@ -507,7 +532,7 @@
         </div>
       </section>
       <!--Ubicación Actual-->
-      <section class="ubi-location-section">
+      <section class="ubi-location-section" id="ubi-location-section">
         <div class="ubi-content-wrapper">
           <!-- Contenido de texto -->
           <div class="ubi-text-content">

@@ -28,7 +28,14 @@ openMenus.forEach((button) => {
 closeMenu.addEventListener("click", () => {
   menuOverlay.classList.remove("active");
 });
+// Cerrar menú al hacer clic en un enlace dentro del overlay
+const menuLinks = menuOverlay.querySelectorAll("a");
 
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+  });
+});
 const navbar = document.getElementById("navbar");
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
@@ -78,17 +85,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Configuración de breakpoints
     breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        centeredSlides: true,
+      },
+      480: {
+        slidesPerView: 1,
+        spaceBetween: 15,
+        centeredSlides: true,
+      },
       768: {
         slidesPerView: 1.2,
         spaceBetween: 20,
+        centeredSlides: true,
       },
       1024: {
         slidesPerView: 1.5,
         spaceBetween: 25,
+        centeredSlides: true,
       },
       1200: {
         slidesPerView: 1.8,
         spaceBetween: 30,
+        centeredSlides: true,
       },
     },
 

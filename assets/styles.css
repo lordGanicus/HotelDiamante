@@ -66,6 +66,7 @@ header {
   width: 100%;
 }
 /***************HERO***************/
+
 .hero-section {
   position: relative;
   height: 100vh;
@@ -184,7 +185,7 @@ header {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  text-align: center;
+  /*text-align: center;*/
   user-select: none;
 }
 .menu-overlay.active {
@@ -196,6 +197,8 @@ header {
   max-width: 400px;
   padding: 0;
   margin: 0 auto;
+  position: relative;
+  bottom: 10%;
 }
 .menu-overlay li {
   font-size: 28px;
@@ -203,10 +206,22 @@ header {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+.menu-overlay a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  position: relative;
+  left: 20%;
+}
+.menu-overlay a i {
+  margin-right: 20px;
+}
 .menu-overlay li img {
-  width: 80%;
-  text-align: center;
+  max-width: 80%;
+  height: auto;
   border-radius: 5px;
+  display: block;
+  object-fit: cover;
 }
 .menu-overlay li:hover {
   color: var(--boton-fondo-hover);
@@ -215,7 +230,7 @@ header {
   position: absolute;
   top: 30px;
   right: 30px;
-  font-size: 40px;
+  font-size: 60px;
   cursor: pointer;
   color: white;
 }
@@ -249,6 +264,48 @@ header {
   text-decoration: none;
   margin-left: 30px;
 }
+@media (min-width: 1501px) {
+  .menu-overlay li {
+    font-size: 36px;
+  }
+  .menu-overlay li img {
+    width: 80%;
+    left: 10%;
+    position: relative;
+  }
+  .close-menu,
+  .btn-reservar-top,
+  .menu-button {
+    transform: scale(1.4);
+  }
+  .hero-content h1 {
+    font-size: 52px;
+  }
+  .hero-content p {
+    font-size: 36px;
+  }
+}
+@media (max-width: 1500px) {
+  .menu-overlay {
+    width: 100vw;
+    height: 100vh;
+    justify-content: flex-end;
+  }
+  .menu-overlay ul {
+    height: auto;
+  }
+  .menu-overlay li img {
+    width: 70%;
+    left: 10%;
+    position: relative;
+  }
+  .menu-overlay #logo-menu {
+    margin-top: 0;
+  }
+  .menu-overlay #logo-menu-img {
+    margin: 0;
+  }
+}
 /* ========== TABLETS (768px - 1024px) ========== */
 @media (max-width: 1024px) {
   .hero-section {
@@ -280,14 +337,18 @@ header {
     top: 25px;
     left: 20px;
   }
-
-  .menu-button img {
-    width: 35px;
+  .close-menu,
+  .btn-reservar-top,
+  .menu-button {
+    transform: scale(1.2); /* Reduce ligeramente estos elementos */
   }
 }
 
 /* ========== MÓVILES GRANDES (481px - 767px) ========== */
 @media (max-width: 768px) {
+  .menu-overlay ul {
+    bottom: 20%;
+  }
   .hero-section {
     height: 100vh;
     position: relative;
@@ -328,12 +389,27 @@ header {
 
   .btn-reservar-top,
   .menu-button {
-    transform: scale(0.9); /* Reduce ligeramente estos elementos */
+    transform: scale(1.3); /* Reduce ligeramente estos elementos */
   }
 }
 
 /* Ajustes extra para móviles pequeños (hasta 480px) */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
+  .btn-reservar-top,
+  .menu-button {
+    transform: scale(0.9); /* Reduce ligeramente estos elementos */
+  }
+  .menu-overlay ul {
+    bottom: 10%;
+  }
+  .menu-overlay li {
+    font-size: 20px;
+  }
+  .menu-overlay li img {
+    width: 60%;
+    left: 10%;
+    position: relative;
+  }
   .hero-section {
     height: 100vh;
   }
@@ -348,7 +424,7 @@ header {
   }
 
   .hero-content h1 {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .hero-content p {
@@ -519,6 +595,20 @@ header {
   object-fit: cover;
   border-radius: 8px;
 }
+@media (max-width: 1300px) {
+  .info-rect {
+    width: 720px;
+    height: 600px;
+    left: 70px;
+  }
+  .slider-container {
+    position: absolute;
+    top: 271px;
+    left: 560px;
+    width: 600px;
+    height: 571px;
+  }
+}
 /* Para pantallas medianas como laptops */
 @media (max-width: 768px) {
   .info-section {
@@ -548,26 +638,31 @@ header {
   .info-rect {
     position: static;
     width: 100%;
-    max-width: 90%;
+    /* max-width: 90%;*/
     height: auto;
     margin-bottom: 20px;
+    padding: 30px;
   }
 
   .info-rect h2 {
     font-size: 32px;
+    width: auto;
   }
 
   .info-rect h3 {
     font-size: 20px;
+    width: auto;
   }
 
   .info-rect p {
-    font-size: 22px;
+    font-size: 18px;
     width: auto;
+    left: 0;
   }
 
   .icons-container {
     gap: 12px;
+    right: -20%;
   }
 
   .icons-container i {
@@ -596,6 +691,26 @@ header {
 
   .swiper-slide img {
     height: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .info-rect {
+    padding: 20px;
+  }
+  .info-rect h2 {
+    font-size: 28px;
+  }
+  .info-rect h3 {
+    font-size: 18px;
+  }
+  .info-rect p {
+    font-size: 16px;
+    width: auto;
+    left: 0;
+  }
+  .icons-container {
+    gap: 12px;
+    right: -5%;
   }
 }
 /******************************Habitaciones*****************************/
@@ -746,37 +861,187 @@ header {
 }
 
 /* === RESPONSIVE === */
+/* Media Queries para Responsive Design */
+@media (max-width: 1200px) {
+  .habitaciones-section {
+    padding: 30px 0 150px;
+  }
+
+  .habitaciones-header h2 {
+    font-size: 48px;
+  }
+
+  .habitaciones-header p {
+    font-size: 24px;
+  }
+
+  .habitaciones-swiper .swiper-slide {
+    width: 700px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .habitaciones-section {
+    padding: 25px 0 130px;
+  }
+
+  .habitaciones-swiper .swiper-slide {
+    width: 600px;
+    height: 450px;
+  }
+
+  .habitacion-card {
+    width: 400px !important;
+  }
+
+  .habitacion-card h3 {
+    font-size: 28px !important;
+  }
+
+  .habitacion-card p {
+    font-size: 20px !important;
+  }
+
+  .btn-reservar {
+    font-size: 20px !important;
+  }
+}
+
+/* Tablet */
 @media (max-width: 768px) {
+  .habitaciones-section {
+    padding: 20px 0 120px;
+  }
+
   .habitaciones-header h2 {
     font-size: 36px;
+    margin-bottom: 12px;
   }
 
   .habitaciones-header p {
     font-size: 20px;
+    padding: 0 20px;
   }
 
   .habitaciones-swiper .swiper-slide {
-    width: 100%;
-    height: 350px;
+    width: 500px;
+    height: 380px;
   }
 
-  .habitaciones-swiper .habitacion-card {
-    width: 90%;
-    padding: 20px;
+  .habitacion-card-container {
+    bottom: -80px !important;
   }
 
-  .habitaciones-swiper .btn-reservar {
-    font-size: 20px;
+  .habitacion-card {
+    width: 350px !important;
+    padding: 20px 25px !important;
   }
 
-  .habitaciones-swiper .habitaciones-nav {
-    width: 300px;
+  .habitacion-card h3 {
+    font-size: 26px !important;
   }
 
-  .habitaciones-swiper .habitacion-nav-btn {
-    width: 50px;
-    height: 50px;
+  .habitacion-card p {
+    font-size: 18px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .habitaciones-nav {
+    width: 400px !important;
+  }
+}
+
+/* Mobile Grande */
+@media (max-width: 576px) {
+  .habitaciones-section {
+    padding: 15px 0 110px;
+  }
+
+  .habitaciones-header h2 {
+    font-size: 32px;
+  }
+
+  .habitaciones-header p {
     font-size: 18px;
+  }
+
+  .habitaciones-swiper .swiper-slide {
+    width: 90%;
+    height: 300px;
+  }
+
+  .habitacion-card-container {
+    bottom: -70px !important;
+  }
+
+  .habitacion-card {
+    width: 300px !important;
+    padding: 15px 20px !important;
+  }
+
+  .habitacion-card h3 {
+    font-size: 24px !important;
+  }
+
+  .habitacion-card p {
+    font-size: 16px !important;
+  }
+
+  .btn-reservar {
+    font-size: 18px !important;
+    padding: 8px 25px !important;
+  }
+
+  .habitaciones-nav {
+    width: 300px !important;
+  }
+
+  .habitacion-nav-btn {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 18px !important;
+  }
+}
+
+/* Mobile Pequeño */
+@media (max-width: 400px) {
+  .habitaciones-header h2 {
+    font-size: 28px;
+  }
+
+  .habitaciones-header p {
+    font-size: 16px;
+  }
+
+  .habitaciones-swiper .swiper-slide {
+    height: 250px;
+  }
+
+  .habitacion-card {
+    width: 260px !important;
+    padding: 12px 15px !important;
+  }
+
+  .habitacion-card h3 {
+    font-size: 22px !important;
+  }
+
+  .habitacion-card p {
+    font-size: 15px !important;
+  }
+
+  .btn-reservar {
+    font-size: 16px !important;
+  }
+
+  .habitaciones-nav {
+    width: 260px !important;
+  }
+
+  .habitacion-nav-btn {
+    width: 45px !important;
+    height: 45px !important;
   }
 }
 /*********************PAQUETES*********************/
