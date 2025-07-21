@@ -595,22 +595,36 @@ header {
   object-fit: cover;
   border-radius: 8px;
 }
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
   .info-rect {
-    width: 720px;
+    width: 620px;
+    height: 620px;
+    left: 90px;
+  }
+  .slider-container {
+    position: absolute;
+    top: 251px;
+    left: 560px;
+    width: 620px;
+    height: 620px;
+  }
+}
+@media (max-width: 1200px) {
+  .info-rect {
+    width: 520px;
     height: 600px;
-    left: 70px;
+    left: 10px;
   }
   .slider-container {
     position: absolute;
     top: 271px;
-    left: 560px;
-    width: 600px;
-    height: 571px;
+    left: 460px;
+    width: 50%;
+    height: 471px;
   }
 }
 /* Para pantallas medianas como laptops */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .info-section {
     height: auto;
     padding-bottom: 40px;
@@ -626,7 +640,7 @@ header {
   }
 }
 /* SOLO para móviles y tablets */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .info-section {
     display: flex;
     flex-direction: column;
@@ -909,9 +923,10 @@ header {
 }
 
 /* Tablet */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .habitaciones-section {
     padding: 20px 0 120px;
+    height: 80vh;
   }
 
   .habitaciones-header h2 {
@@ -950,12 +965,22 @@ header {
   .habitaciones-nav {
     width: 400px !important;
   }
+  .habitaciones-swiper .swiper-wrapper {
+    height: 70%;
+  }
+  .habitaciones-swiper {
+    width: 50% !important;
+  }
+  .habitaciones-swiper .habitacion-nav-btn {
+    display: none;
+  }
 }
 
 /* Mobile Grande */
 @media (max-width: 576px) {
   .habitaciones-section {
     padding: 15px 0 110px;
+    height: 90vh;
   }
 
   .habitaciones-header h2 {
@@ -972,7 +997,7 @@ header {
   }
 
   .habitacion-card-container {
-    bottom: -70px !important;
+    bottom: -90px !important;
   }
 
   .habitacion-card {
@@ -1002,10 +1027,16 @@ header {
     height: 50px !important;
     font-size: 18px !important;
   }
+  .habitaciones-swiper .swiper-wrapper {
+    height: 70%;
+  }
+  .habitaciones-swiper {
+    width: 60% !important;
+  }
 }
 
 /* Mobile Pequeño */
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .habitaciones-header h2 {
     font-size: 28px;
   }
@@ -1141,10 +1172,11 @@ header {
 /* Encabezado */
 .ps-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 40px;
   margin-bottom: 50px;
   padding: 0 30px;
+  justify-content: center;
 }
 
 .ps-main-title {
@@ -1154,8 +1186,7 @@ header {
   text-transform: uppercase;
   line-height: 1.2;
   flex-shrink: 0;
-  font-weight: 400;
-  margin-right: 10%;
+  font-weight: 600;
 }
 
 .ps-description {
@@ -1186,7 +1217,7 @@ header {
 
 .ps-package-content {
   width: 580px;
-  background: var(--ps-card-bg);
+  background: rgba(255, 255, 255, 0.699);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
@@ -1229,6 +1260,7 @@ header {
   font-size: 16px;
   padding-bottom: 3px;
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .ps-detail-link:hover {
@@ -1282,7 +1314,6 @@ header {
   font-family: "Cinzel", serif;
   white-space: nowrap;
   z-index: 15;
-  opacity: 0.8;
   transition: opacity 0.3s;
   pointer-events: none;
 }
@@ -1317,11 +1348,11 @@ header {
   }
 
   .ps-name-left {
-    left: 30px;
+    display: none;
   }
 
   .ps-name-right {
-    right: 30px;
+    display: none;
   }
 }
 
@@ -1472,13 +1503,13 @@ header {
 
   .dtn-breakfast-title {
     font-size: 24px;
-    left: 25%;
+    left: 0;
   }
 }
 
 @media (max-width: 480px) {
   .dtn-breakfast-title {
-    left: 20%;
+    left: 0;
     width: auto;
   }
 
@@ -1966,7 +1997,7 @@ header {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 678px) {
   .trm-tourism-section {
     padding: 60px 20px;
   }
@@ -1977,8 +2008,27 @@ header {
 
   .trm-tourism-description {
     font-size: 16px;
+    margin-bottom: 2px;
   }
-
+  .trm-tourism-subtitle {
+    font-family: "Prata", serif;
+    font-size: 28px;
+    font-weight: 400;
+    background: linear-gradient(
+      180deg,
+      var(--azul-principal) 0%,
+      var(--azul-terciario) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 25px;
+  }
+  .trm-tourism-rectangle {
+    top: 21%;
+    height: 300px;
+  }
   .trm-slider-container {
     width: 280px;
     height: 280px;
@@ -2101,6 +2151,7 @@ header {
 
   .ubi-title {
     font-size: 36px;
+    text-align: center;
   }
 
   .ubi-description {
@@ -2122,7 +2173,7 @@ header {
 
 @media (max-width: 576px) {
   .ubi-title {
-    font-size: 28px;
+    font-size: 32px;
   }
 
   .ubi-description {
@@ -2508,6 +2559,7 @@ header {
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease;
   position: relative;
+  top: 10%;
 }
 
 .ps-paquetes .ps-btn-reservar:hover {
@@ -2538,9 +2590,8 @@ header {
 @media (min-width: 481px) {
   .ps-rectangule-img-movil {
     position: relative;
-    left: 10%;
     width: 100%;
-    max-width: 620px;
+    margin: 0 auto;
   }
 }
 @media (max-width: 1440px) {
@@ -2572,7 +2623,7 @@ header {
   .ps-rectangule-img-movil {
     display: block;
     width: 100%;
-    max-width: 620px;
+    max-width: 920px;
     margin: auto 0;
     padding: 20px 20px;
   }
@@ -2650,20 +2701,6 @@ header {
     background-position: top center;
   }
 
-  .ps-paquetes .ps-circle-img {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    top: 0;
-    left: 0;
-    border-radius: 0;
-    margin-top: -50px;
-  }
-
-  .ps-paquetes .ps-circle-img img {
-    border-radius: 0;
-  }
-
   .ps-paquetes .ps-title {
     font-size: 36px;
     top: 20px;
@@ -2709,27 +2746,22 @@ header {
   }
 
   /* Ajustes específicos para pantallas muy pequeñas */
-  @media (max-width: 480px) {
-    .ps-paquetes .ps-hero {
-      height: 50vh;
-    }
+}
+@media (max-width: 480px) {
+  .ps-paquetes .ps-hero {
+    height: 50vh;
+  }
 
-    .ps-paquetes .ps-circle-img {
-      height: 250px;
-      margin-top: -30px;
-    }
+  .ps-paquetes .ps-title {
+    font-size: 32px;
+  }
 
-    .ps-paquetes .ps-title {
-      font-size: 32px;
-    }
+  .ps-paquetes .ps-card-services {
+    padding: 20px;
+  }
 
-    .ps-paquetes .ps-card-services {
-      padding: 20px;
-    }
-
-    .ps-paquetes .ps-service-item {
-      font-size: 16px;
-    }
+  .ps-paquetes .ps-service-item {
+    font-size: 16px;
   }
 }
 /****************************Paquetes redireccion**************************/
@@ -3046,7 +3078,7 @@ header {
 /* Contenedor de habitaciones (desktop) */
 .hbt-rooms-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
   margin-bottom: 40px;
@@ -3131,7 +3163,7 @@ header {
   width: 40px;
   height: 40px;
   margin-right: 15px;
-  color: #563e9c;
+  color: var(--azul-principal);
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -3277,7 +3309,16 @@ header {
 }
 @media (max-width: 576px) {
   .hbt-main-title {
-    font-size: 32px;
+    font-size: 2rem !important;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1); /* fondo translúcido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* compatibilidad Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* borde sutil */
+    color: rgb(0, 0, 0); /* mejora la legibilidad */
+    border-radius: 10px;
   }
 
   .hbt-room-image-container {
@@ -3373,6 +3414,8 @@ header {
   letter-spacing: 1px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   color: #000;
+  z-index: 90;
+  position: relative;
 }
 
 .hbi-subtitle {
@@ -3572,7 +3615,11 @@ header {
 
 .hbi-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.062);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* soporte Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hbi-gallery-item:hover .hbi-info-overlay {
@@ -3618,7 +3665,7 @@ header {
 
 .hbi-slide-content {
   padding: 25px 20px;
-  background: rgba(20, 25, 40, 0.95);
+  background: rgba(2, 17, 61, 0.95);
   color: white;
 }
 
@@ -3645,7 +3692,7 @@ header {
   display: flex;
   justify-content: center;
   padding: 20px 0 15px;
-  background: rgba(15, 20, 35, 0.9);
+  background: rgba(35, 46, 80, 0.918);
   position: relative;
 }
 
@@ -3740,8 +3787,17 @@ header {
   }
 
   .hbi-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 15px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1); /* fondo translúcido */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* compatibilidad Safari */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* borde sutil */
+    color: rgb(0, 0, 0); /* mejora la legibilidad */
+    border-radius: 10px;
+    display: inline-block;
   }
 
   .hbi-subtitle {
@@ -3765,11 +3821,12 @@ header {
     font-size: 1rem;
   }
 }
-@media (min-width: 1025px) {
+@media (max-width: 1025px) {
   .hbi-gallery {
-    height: 400px;
-    max-width: 700px; /* Ancho máximo */
+    height: 30rem;
+    max-width: 70%; /* Ancho máximo */
     margin: 0 auto; /* Centrado */
+    max-height: 35rem;
   }
 
   .hbi-room-name {
@@ -3792,21 +3849,68 @@ header {
   }
 }
 /* Ajustes para pantallas muy grandes (más de 1600px) */
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
   .hbi-gallery {
     height: 400px;
-    max-width: 750px; /* Ancho máximo */
+    max-width: 950px; /* Ancho máximo */
     margin: 0 auto; /* Centrado */
+    height: 40rem;
+  }
+  .hbi-room-name {
+    font-size: 1.3rem;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  .hbi-btn {
+    padding: 16px 42px; /* Botón más grande */
+    font-size: 1rem;
+  }
+  .hbi-room-desc {
+    font-size: 1rem;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .hbi-item-title {
+    font-size: 1.2rem; /* Títulos más grandes */
   }
 }
 
 /* Para pantallas EXTRA grandes (más de 2000px) */
-@media (min-width: 1500px) {
+@media (min-width: 1201px) {
   .hbi-gallery {
-    height: 70rem;
-    width: 1500px;
-    max-width: 1500px; /* Ancho máximo */
-    max-height: 50rem;
+    width: 70% !important;
+    max-width: 1000px; /* Ancho máximo */
+    height: 60vh !important;
+    max-height: 30rem;
+    margin: 0 auto; /* Centrado */
+  }
+
+  .hbi-room-name {
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+  }
+
+  .hbi-room-desc {
+    font-size: 1rem; /* Texto más legible */
+    line-height: 1.8;
+  }
+
+  .hbi-btn {
+    padding: 16px 42px; /* Botón más grande */
+    font-size: 1.2rem;
+  }
+
+  .hbi-item-title {
+    font-size: 1.2rem; /* Títulos más grandes */
+  }
+}
+@media (min-width: 1300px) {
+  .hbi-gallery {
+    height: 40rem;
+    width: 1300px;
+    max-width: 1300px; /* Ancho máximo */
+    height: 50rem;
+    max-height: 40rem;
     margin: 0 auto; /* Centrado */
   }
 
@@ -3825,6 +3929,33 @@ header {
   }
 
   .hbi-item-title {
-    font-size: 2rem; /* Títulos más grandes */
+    font-size: 1.5rem; /* Títulos más grandes */
+  }
+}
+@media (min-width: 1800px) {
+  .hbi-gallery {
+    height: 40rem !important;
+    width: 90% !important;
+    max-width: 1300px; /* Ancho máximo */
+    max-height: 40rem !important;
+    margin: 0 auto; /* Centrado */
+  }
+
+  .hbi-room-name {
+    font-size: 1.5rem; /* Tamaño de fuente más grande */
+  }
+
+  .hbi-room-desc {
+    font-size: 1rem; /* Texto más legible */
+    line-height: 1.8;
+  }
+
+  .hbi-btn {
+    padding: 16px 42px; /* Botón más grande */
+    font-size: 1.2rem;
+  }
+
+  .hbi-item-title {
+    font-size: 1.5rem; /* Títulos más grandes */
   }
 }

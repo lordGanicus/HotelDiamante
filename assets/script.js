@@ -65,7 +65,7 @@ const swiper1 = new Swiper(".mySwiper1", {
 /*******************************Habitaciones ***** */
 document.addEventListener("DOMContentLoaded", () => {
   const habitacionesSwiper = new Swiper(".habitaciones-swiper", {
-    loop: false, // Desactivamos el loop infinito
+    loop: true,
     initialSlide: 1, // Comenzamos en el segundo slide (índice 1)
     spaceBetween: 30,
     slidesPerView: 1,
@@ -86,12 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configuración de breakpoints
     breakpoints: {
       320: {
-        slidesPerView: 1,
+        slidesPerView: 0.9,
         spaceBetween: 10,
         centeredSlides: true,
       },
       480: {
-        slidesPerView: 1,
+        slidesPerView: 0.95,
         spaceBetween: 15,
         centeredSlides: true,
       },
