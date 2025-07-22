@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Diamante Azul - Cargando</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- loader.html -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="bars-container">
+        <div class="vertical-bar top-bar"></div>
+        <div class="vertical-bar bottom-bar"></div>
+        <div class="intersection-point"></div>
+        <div class="particles" id="particles"></div>
+      </div>
+
+      <div class="logo-container">
+        <div class="loading-logo"></div>
+      </div>
+
+      <div class="loading-percentage" id="percentage">0%</div>
+      <div class="loading-text">Cargando...</div>
+    </div>
+
+    <div class="welcome-screen" id="welcomeScreen">
+      <h1 class="welcome-text">HOTEL DIAMANTE AZUL</h1>
+      <p class="welcome-subtext">Donde el lujo se encuentra con el confort</p>
+    </div>
+
+    <!-- Esto carga el script que controla la animación -->
+    <script src="assets/loader.js"></script>
+  </body>
+</html>

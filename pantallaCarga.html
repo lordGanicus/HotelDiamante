@@ -3,16 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pantalla de Carga</title>
+    <title>Hotel Diamante Azul - Cargando</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* Estilos encapsulados */
+      :root {
+        --primary-color: #012555;
+        --secondary-color: #0077ff;
+        --accent-color: #00f7ff;
+        --text-color: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Pantalla de carga principal */
       .loading-screen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #012555;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #001a3a 100%
+        );
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -21,105 +47,266 @@
         overflow: hidden;
       }
 
+      /* Efecto de partículas */
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* Contenedor del logo */
+      .logo-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 40px;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Logo animado */
       .loading-logo {
-        width: 120px;
-        height: 120px;
-        margin-top: 120px; /* Logo más abajo */
-        z-index: 2;
-        /* Logo de ejemplo - reemplaza con el tuyo */
+        width: 150px;
+        height: 150px;
         background-image: url("assets/img/logo/image.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
+        filter: drop-shadow(0 0 15px rgba(0, 247, 255, 0.5));
+        animation: pulse 2s infinite alternate;
       }
 
-      .progress-container {
+      /* Anillo exterior */
+      .outer-ring {
         position: absolute;
-        width: 3px; /* Línea un poco más gruesa */
+        width: 100%;
         height: 100%;
-        left: 50%;
-        transform: translateX(-50%);
+        border: 3px solid transparent;
+        border-top-color: var(--accent-color);
+        border-radius: 50%;
+        animation: spin 3s linear infinite;
       }
 
-      .progress-bar-top {
+      /* Anillo interior */
+      .inner-ring {
         position: absolute;
-        width: 100%;
-        height: 0;
+        width: 80%;
+        height: 80%;
+        border: 2px solid transparent;
+        border-bottom-color: var(--secondary-color);
+        border-radius: 50%;
+        animation: spinReverse 2.5s linear infinite;
+      }
+
+      /* Barra de progreso moderna */
+      .progress-container {
+        width: 300px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 30px;
+        box-shadow: 0 0 10px rgba(0, 119, 255, 0.3);
+        z-index: 3;
+      }
+
+      .progress-bar {
+        height: 100%;
+        width: 0;
         background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(0, 71, 135, 1) 100%
-        ); /* Degradado blanco a azul fuerte */
+          90deg,
+          var(--secondary-color) 0%,
+          var(--accent-color) 100%
+        );
+        border-radius: 10px;
+        transition: width 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
         top: 0;
-        animation: fillTop 2s ease-in-out forwards;
-      }
-
-      .progress-bar-bottom {
-        position: absolute;
-        width: 100%;
-        height: 0;
-        background: linear-gradient(
-          to top,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(0, 71, 135, 1) 100%
-        ); /* Degradado blanco a azul fuerte */
+        left: 0;
+        right: 0;
         bottom: 0;
-        animation: fillBottom 2s ease-in-out forwards;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.5),
+          transparent
+        );
+        animation: shine 2s infinite;
       }
 
+      /* Porcentaje */
       .loading-percentage {
-        position: absolute;
-        color: white;
-        font-family: "Arial", sans-serif;
-        font-size: 1.5rem;
-        bottom: 30%;
+        color: var(--text-color);
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
         z-index: 3;
       }
 
-      .welcome-text {
-        position: absolute;
-        top: 20%;
-        color: white;
-        font-family: "Arial", sans-serif;
-        font-size: 2rem;
+      /* Texto de carga */
+      .loading-text {
+        color: var(--text-color);
+        font-size: 1.2rem;
+        opacity: 0.8;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         z-index: 3;
       }
 
+      /* Efecto de olas */
+      .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="rgba(0, 247, 255, 0.1)"/></svg>');
+        background-size: cover;
+        background-repeat: repeat-x;
+        animation: wave 15s linear infinite;
+        z-index: 2;
+      }
+
+      /* Pantalla de bienvenida */
       .welcome-screen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #012555;
-        color: white;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #001a3a 100%
+        );
+        color: var(--text-color);
         display: none;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        font-family: "Arial", sans-serif;
-        font-size: 3rem;
+        font-family: "Montserrat", sans-serif;
         z-index: 10000;
       }
 
-      @keyframes fillTop {
+      .welcome-text {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .welcome-subtext {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      /* Diamantes flotantes */
+      .diamonds {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .diamond {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: rgba(0, 247, 255, 0.5);
+        transform: rotate(45deg);
+        animation: float 8s infinite ease-in-out;
+      }
+
+      /* Animaciones */
+      @keyframes spin {
         0% {
-          height: 0;
-          opacity: 1;
+          transform: rotate(0deg);
         }
         100% {
-          height: 50%;
-          opacity: 1;
+          transform: rotate(360deg);
         }
       }
 
-      @keyframes fillBottom {
+      @keyframes spinReverse {
         0% {
-          height: 0;
-          opacity: 1;
+          transform: rotate(0deg);
         }
         100% {
-          height: 50%;
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      @keyframes wave {
+        0% {
+          background-position-x: 0;
+        }
+        100% {
+          background-position-x: 1440px;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: rotate(45deg) translateY(0);
+        }
+        50% {
+          transform: rotate(45deg) translateY(-20px);
+        }
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
           opacity: 1;
+          transform: translateY(0);
         }
       }
     </style>
@@ -127,58 +314,151 @@
   <body>
     <!-- Pantalla de carga -->
     <div class="loading-screen" id="loadingScreen">
-      <div class="progress-container">
-        <div class="progress-bar-top"></div>
-        <div class="progress-bar-bottom"></div>
+      <div class="particles" id="particles"></div>
+      <div class="waves"></div>
+
+      <div class="logo-container">
+        <div class="outer-ring"></div>
+        <div class="inner-ring"></div>
+        <div class="loading-logo"></div>
       </div>
-      <div class="loading-logo"></div>
+
       <div class="loading-percentage" id="percentage">0%</div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="loading-text">Gracias por su paciencia...</div>
     </div>
 
-    <!-- Pantalla Welcome (oculta inicialmente) -->
-    <div class="welcome-screen" id="welcomeScreen">Welcome</div>
+    <!-- Pantalla de bienvenida -->
+    <div class="welcome-screen" id="welcomeScreen">
+      <div class="diamonds" id="diamonds"></div>
+      <h1 class="welcome-text">Hotel Diamante Azul</h1>
+    </div>
 
     <script>
       (function () {
-        // Animación del porcentaje
+        // Crear partículas
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Tamaño aleatorio entre 1px y 3px
+          const size = Math.random() * 2 + 1;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+
+          // Posición aleatoria
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+
+          // Opacidad aleatoria
+          particle.style.opacity = Math.random() * 0.5 + 0.1;
+
+          // Animación de movimiento
+          const duration = Math.random() * 20 + 10;
+          particle.style.animation = `float ${duration}s infinite ease-in-out`;
+
+          particlesContainer.appendChild(particle);
+        }
+
+        // Crear diamantes para la pantalla de bienvenida
+        const diamondsContainer = document.getElementById("diamonds");
+        const diamondCount = 15;
+
+        for (let i = 0; i < diamondCount; i++) {
+          const diamond = document.createElement("div");
+          diamond.classList.add("diamond");
+
+          // Tamaño aleatorio
+          const size = Math.random() * 10 + 5;
+          diamond.style.width = `${size}px`;
+          diamond.style.height = `${size}px`;
+
+          // Posición aleatoria
+          diamond.style.left = `${Math.random() * 100}%`;
+          diamond.style.top = `${Math.random() * 100}%`;
+
+          // Opacidad aleatoria
+          diamond.style.opacity = Math.random() * 0.5 + 0.3;
+
+          // Retraso de animación
+          diamond.style.animationDelay = `${Math.random() * 5}s`;
+
+          diamondsContainer.appendChild(diamond);
+        }
+
+        // Animación del porcentaje y barra de progreso
         let percentage = 0;
         const percentageElement = document.getElementById("percentage");
+        const progressBar = document.getElementById("progressBar");
+        const loadingMessages = [
+          "Encendiendo luces de bienvenida...",
+          "Organizando su espacio...",
+          "Sincronizando su experiencia...",
+          "Listando los servicios incluidos...",
+          "Gracias por su paciencia...",
+        ];
+        const loadingText = document.querySelector(".loading-text");
+
+        // Cambiar mensajes durante la carga
+        let messageIndex = 0;
+        const messageInterval = setInterval(() => {
+          if (messageIndex < loadingMessages.length - 1) {
+            messageIndex++;
+          } else {
+            messageIndex = 0;
+          }
+          loadingText.textContent = loadingMessages[messageIndex];
+        }, 2000);
+
         const percentageInterval = setInterval(() => {
           percentage += 1;
-          percentageElement.textContent = percentage + "%";
+          percentageElement.textContent = `${percentage}%`;
+          progressBar.style.width = `${percentage}%`;
+
+          // Cambiar color cuando esté cerca de completar
+          if (percentage > 90) {
+            progressBar.style.background =
+              "linear-gradient(90deg, var(--secondary-color) 0%, #00ff88 100%)";
+          }
 
           if (percentage >= 100) {
             clearInterval(percentageInterval);
+            clearInterval(messageInterval);
 
-            // Mostrar pantalla Welcome después de completar
-            setTimeout(function () {
+            // Mostrar pantalla de bienvenida
+            setTimeout(() => {
               document.getElementById("loadingScreen").style.display = "none";
-              document.getElementById("welcomeScreen").style.display = "flex";
+              const welcomeScreen = document.getElementById("welcomeScreen");
+              welcomeScreen.style.display = "flex";
 
-              // Ocultar pantalla Welcome después de 1 segundo
-              setTimeout(function () {
-                document.getElementById("welcomeScreen").style.display = "none";
-              }, 1000);
-            }, 200);
+              // Animación de entrada del texto
+              const welcomeText = document.querySelector(".welcome-text");
+              const welcomeSubtext = document.querySelector(".welcome-subtext");
+
+              welcomeText.style.animation = "fadeInUp 0.8s forwards 0.3s";
+              welcomeSubtext.style.animation = "fadeInUp 0.8s forwards 0.6s";
+
+              // Ocultar pantalla de bienvenida después de 2 segundos
+              setTimeout(() => {
+                welcomeScreen.style.opacity = "1";
+
+                setTimeout(() => {
+                  welcomeScreen.style.opacity = "0";
+                  welcomeScreen.style.transition = "opacity 0.8s ease";
+
+                  setTimeout(() => {
+                    welcomeScreen.style.display = "none";
+                  }, 800);
+                }, 1500);
+              }, 100);
+            }, 500);
           }
-        }, 30); // Ajusta este valor para cambiar la velocidad del porcentaje
-
-        // Asegurar que las barras lleguen exactamente al logo
-        const logo = document.querySelector(".loading-logo");
-        const logoPosition = logo.offsetTop + logo.offsetHeight / 2;
-        const screenHeight = window.innerHeight;
-
-        document.styleSheets[0].insertRule(
-          `@keyframes fillTop { 0% { height: 0; } 100% { height: ${logoPosition}px; } }`,
-          document.styleSheets[0].cssRules.length
-        );
-
-        document.styleSheets[0].insertRule(
-          `@keyframes fillBottom { 0% { height: 0; } 100% { height: ${
-            screenHeight - logoPosition - logo.offsetHeight / 2
-          }px; } }`,
-          document.styleSheets[0].cssRules.length
-        );
+        }, 30);
       })();
     </script>
   </body>

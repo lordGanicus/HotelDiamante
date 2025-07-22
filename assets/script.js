@@ -406,3 +406,161 @@ document.addEventListener("DOMContentLoaded", function () {
   // Iniciar la primera rotación después de un breve retraso
   setTimeout(rotateCoin, 1000);
 });
+/**************************separador de secciones***********************/
+document.addEventListener("DOMContentLoaded", function () {
+  // Configuración
+  const sections = document.querySelectorAll("section");
+  const sectionCount = sections.length;
+  let currentActiveSection = 0;
+  let isScrolling = false;
+  let scrollTimeout;
+  let diamondPositions = [];
+
+  // Elementos del indicador
+  const diamondsContainer = document.getElementById("diamondsContainer");
+  const progressLine = document.getElementById("progressLine");
+  const intersectionEffect = document.getElementById("intersectionEffect");
+  const particlesContainer = document.getElementById("particles");
+
+  // Crear diamantes y calcular sus posiciones
+  sections.forEach((section, index) => {
+    const diamond = document.createElement("div");
+    diamond.className = "diamond";
+    diamond.dataset.section = index;
+
+    diamond.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToSection(index);
+    });
+
+    diamondsContainer.appendChild(diamond);
+  });
+
+  // Calcular posiciones de los diamantes
+  setTimeout(() => {
+    const diamonds = document.querySelectorAll(".diamond");
+    const containerRect = diamondsContainer.getBoundingClientRect();
+
+    diamonds.forEach((diamond) => {
+      const rect = diamond.getBoundingClientRect();
+      const position =
+        (rect.top + rect.height / 2 - containerRect.top) / containerRect.height;
+      diamondPositions.push(position);
+    });
+
+    // Inicializar
+    updateProgress(0);
+    setActiveSection(0);
+  }, 100);
+
+  // Evento de scroll mejorado
+  window.addEventListener("scroll", function () {
+    if (!isScrolling) {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(handleScroll, 50);
+    }
+  });
+
+  // Manejar scroll
+  function handleScroll() {
+    const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+    // Determinar sección actual
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        if (currentActiveSection !== index) {
+          currentActiveSection = index;
+          setActiveSection(index);
+        }
+
+        // Calcular progreso dentro de la sección
+        const progressInSection =
+          (scrollPosition - sectionTop) / section.offsetHeight;
+        updateProgress(index, progressInSection);
+      }
+    });
+  }
+
+  // Scroll a sección específica
+  function scrollToSection(index) {
+    isScrolling = true;
+    currentActiveSection = index;
+
+    window.scrollTo({
+      top: sections[index].offsetTop,
+      behavior: "smooth",
+    });
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 1000);
+  }
+
+  // Actualizar progreso de la línea
+  function updateProgress(sectionIndex, progress = 1) {
+    if (diamondPositions.length === 0) return;
+
+    // Calcular altura de la línea de progreso
+    let targetHeight;
+
+    if (sectionIndex === sections.length - 1) {
+      targetHeight = 100;
+    } else {
+      const currentPos = diamondPositions[sectionIndex];
+      const nextPos = diamondPositions[sectionIndex + 1];
+      targetHeight = (currentPos + (nextPos - currentPos) * progress) * 100;
+    }
+
+    progressLine.style.height = `${targetHeight}%`;
+
+    // Efecto al cambiar de sección
+    if (progress === 1 && sectionIndex !== currentActiveSection) {
+      intersectionEffect.style.top = `${diamondPositions[sectionIndex] * 100}%`;
+      intersectionEffect.classList.add("active");
+      setTimeout(() => {
+        intersectionEffect.classList.remove("active");
+      }, 800);
+
+      createParticles();
+    }
+  }
+
+  // Establecer sección activa
+  function setActiveSection(index) {
+    const diamonds = document.querySelectorAll(".diamond");
+    diamonds.forEach((d) => d.classList.remove("active"));
+    diamonds[index].classList.add("active");
+  }
+
+  // Crear partículas
+  function createParticles() {
+    particlesContainer.innerHTML = "";
+
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = Math.random() * 40 + 20;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+
+      particle.style.setProperty("--random-x", `${x}px`);
+      particle.style.setProperty("--random-y", `${y}px`);
+
+      const delay = Math.random() * 0.3;
+      const duration = Math.random() * 0.8 + 0.4;
+
+      particle.style.animation = `floatParticle ${duration}s ease-out ${delay}s forwards`;
+      particlesContainer.appendChild(particle);
+    }
+  }
+
+  // Ajustar inicialmente
+  window.addEventListener("load", () => {
+    updateProgress(0);
+  });
+});

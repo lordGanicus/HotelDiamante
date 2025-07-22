@@ -45,6 +45,24 @@
     />
   </head>
   <body>
+    <!-- Contenedor donde se cargará el loader -->
+    <div id="loader-container"></div>
+    <link rel="stylesheet" href="../../assets/loader.css" />
+    <script>
+      fetch("../../loader.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const container = document.getElementById("loader-container");
+          container.innerHTML = html;
+
+          const script = document.createElement("script");
+          script.src = "../../assets/loader.js";
+          document.body.appendChild(script);
+        })
+        .catch((err) => {
+          console.error("Error cargando loader.html", err);
+        });
+    </script>
     <header>
       <div class="navbar" id="navbar">
         <img
