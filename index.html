@@ -64,6 +64,13 @@
     </script>
     <header>
       <div class="navbar" id="navbar">
+        <div class="menu-button openMenu" id="menuHamburger">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+            alt="Menu"
+          />
+          <a>menu</a>
+        </div>
         <img
           class="logo-navbar"
           src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
@@ -73,12 +80,13 @@
         <a href="../index.html#info-section-main">Informacion</a>
         <a href="../index.html#habitaciones-section">Habitaciones</a>
         <a href="../index.html#paquetes-especiales-container">Paquetes</a>
-        <a href="../index.html#dtn-breakfast-section">Desayunos</a>
+
         <a
           href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
           target="_blank"
+          id="btn-reservar-navbar"
         >
-          📞 reservar
+          <i class="fa-solid fa-bell"></i> Reservar
         </a>
       </div>
       <div class="menu-overlay" id="menuOverlay">
@@ -143,6 +151,7 @@
             src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
             alt="Menu"
           />
+          <a>menu</a>
         </div>
 
         <a
@@ -150,9 +159,8 @@
           target="_blank"
           class="btn-reservar-top"
         >
-          Reservar</a
-        >
-
+          <i class="fa-solid fa-bell"></i> Reservar
+        </a>
         <div class="hero-content">
           <h1>Hotel Diamante Azul</h1>
           <p>Tu descanso, nuestra prioridad</p>
@@ -175,39 +183,35 @@
         </div>
       </div>
       <!-- SECCION DE INFORMACION -->
-
-      <section class="info-section-main" id="info-section-main">
-        <div class="info-section">
-          <div class="info-rect">
-            <h2>DIAMANTE AZUL</h2>
-            <h3>Elegancia que reluce en el corazón de La Paz</h3>
-            <p>
-              Céntrico, acogedor y con todo lo que necesitas para una gran
-              estadía.
-            </p>
-
-            <div class="icons-container">
-              <i class="fas fa-wifi"></i>
-              <i class="fas fa-stopwatch"></i>
-              <i class="fas fa-car"></i>
-              <i class="fas fa-utensils"></i>
-              <i class="fas fa-bed"></i>
-              <i class="fas fa-concierge-bell"></i>
-
-              <!-- Segunda línea vertical -->
-              <div class="line-vertical"></div>
+      <section class="info-group">
+        <div class="info-overlap-group-wrapper">
+          <div class="info-overlap-group">
+            <!-- Galería tradicional para desktop -->
+            <div class="info-image-gallery">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753110522/b612aac3-8a0e-4988-adb7-f25ae183d5ec.png"
+                alt="Areas del Hotel"
+                class="info-city-experience"
+              />
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/interior_Diamante_Azul_f1s1su.webp"
+                alt="Interior Diamante Azul"
+                class="info-city-experience-2"
+              />
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170633/02_ppawcv.png"
+                alt="Habitacion Deluxe"
+                class="info-city-experience-3"
+              />
             </div>
 
-            <div class="line-divider"></div>
-          </div>
-
-          <div class="slider-container">
-            <div class="swiper mySwiper1">
+            <!-- Swiper para móviles/tablets - Mantenemos las clases que Swiper necesita -->
+            <div class="swiper info-swiper">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753110522/b612aac3-8a0e-4988-adb7-f25ae183d5ec.png"
-                    alt="Areas del Hotel"
+                    src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170633/02_ppawcv.png"
+                    alt="Habitacion Deluxe"
                   />
                 </div>
                 <div class="swiper-slide">
@@ -218,12 +222,27 @@
                 </div>
                 <div class="swiper-slide">
                   <img
-                    src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170633/02_ppawcv.png"
-                    alt="Habitacion Deluxe"
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753110522/b612aac3-8a0e-4988-adb7-f25ae183d5ec.png"
+                    alt="Areas del Hotel"
                   />
                 </div>
               </div>
+              <!-- Paginación -->
+              <div class="swiper-pagination"></div>
+              <!-- Botones de navegación -->
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
             </div>
+
+            <article class="info-hotel-description">
+              <h1 class="info-hotel-name">— Hotel Diamante Azul</h1>
+              <p class="info-hotel-info">
+                El punto de partida perfecto para tu viaje. Disfruta de
+                instalaciones modernas y una ubicación estratégica que te
+                conecta con lo mejor de la ciudad, haciendo de tu estancia una
+                experiencia inolvidable.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -480,7 +499,7 @@
                       </p>
                       <button
                         class="hbi-btn"
-                        onclick="location.href='habIndividual.html'"
+                        onclick="location.href='/pages/habitaciones/habIndividual.html'"
                       >
                         Ver más
                       </button>
@@ -504,7 +523,7 @@
                       </p>
                       <button
                         class="hbi-btn"
-                        onclick="location.href='habTwin.html'"
+                        onclick="location.href='/pages/habitaciones/habTwin.html'"
                       >
                         Ver más
                       </button>
@@ -529,7 +548,7 @@
                       </p>
                       <button
                         class="hbi-btn"
-                        onclick="location.href='habTriple.html'"
+                        onclick="location.href='/pages/habitaciones/habTriple.html'"
                       >
                         Ver más
                       </button>
@@ -556,7 +575,7 @@
                       </p>
                       <button
                         class="hbi-btn"
-                        onclick="location.href='habMatri.html'"
+                        onclick="location.href='/pages/habitaciones/habMatri.html'"
                       >
                         Ver más
                       </button>
@@ -581,7 +600,7 @@
                       </p>
                       <button
                         class="hbi-btn"
-                        onclick="location.href='habFamiliar.html'"
+                        onclick="location.href='/pages/habitaciones/habFamiliar.html'"
                       >
                         Ver más
                       </button>
@@ -611,7 +630,7 @@
                       <div class="hbi-slide-btn-container">
                         <button
                           class="hbi-btn"
-                          onclick="location.href='habIndividual.html'"
+                          onclick="location.href='/pages/habitaciones/habIndividual.html'"
                         >
                           Ver más
                         </button>
@@ -634,7 +653,7 @@
                       <div class="hbi-slide-btn-container">
                         <button
                           class="hbi-btn"
-                          onclick="location.href='habTwin.html'"
+                          onclick="location.href='/pages/habitaciones/habTwin.html'"
                         >
                           Ver más
                         </button>
@@ -658,7 +677,7 @@
                       <div class="hbi-slide-btn-container">
                         <button
                           class="hbi-btn"
-                          onclick="location.href='habTriple.html'"
+                          onclick="location.href='/pages/habitaciones/habTriple.html'"
                         >
                           Ver más
                         </button>
@@ -681,7 +700,7 @@
                       <div class="hbi-slide-btn-container">
                         <button
                           class="hbi-btn"
-                          onclick="location.href='habMatri.html'"
+                          onclick="location.href='/pages/habitaciones/habMatri.html'"
                         >
                           Ver más
                         </button>
@@ -704,7 +723,7 @@
                       <div class="hbi-slide-btn-container">
                         <button
                           class="hbi-btn"
-                          onclick="location.href='habFamiliar.html'"
+                          onclick="location.href='/pages/habitaciones/habFamiliar.html'"
                         >
                           Ver más
                         </button>
@@ -750,7 +769,7 @@
                   <div
                     class="ps-package-image"
                     style="
-                      background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1752154193/e61e1a27-df09-4a8a-9128-2442bbec2e25.png');
+                      background-image: url('https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg');
                     "
                   ></div>
                   <div class="ps-package-details">

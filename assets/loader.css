@@ -179,7 +179,17 @@ body {
   opacity: 0;
   transform: translateY(20px);
 }
+.top-bar,
+.bottom-bar {
+  animation: none; /* Evita que se animen solas */
+}
+.top-bar.top-bar-animate {
+  animation: extendDown 2s ease-out forwards;
+}
 
+.bottom-bar.bottom-bar-animate {
+  animation: extendUp 2s ease-out forwards;
+}
 /* Animaciones */
 @keyframes extendDown {
   0% {

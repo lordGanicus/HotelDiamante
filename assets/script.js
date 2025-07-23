@@ -29,38 +29,117 @@ closeMenu.addEventListener("click", () => {
   menuOverlay.classList.remove("active");
 });
 // Cerrar menú al hacer clic en un enlace dentro del overlay
-const menuLinks = menuOverlay.querySelectorAll("a");
-
-menuLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    menuOverlay.classList.remove("active");
-  });
-});
 const navbar = document.getElementById("navbar");
+const reservarBtn = document.querySelector(".btn-reservar-top");
+
 window.addEventListener("scroll", () => {
   if (window.scrollY > 50) {
     navbar.classList.add("show");
-    document.querySelector(".btn-reservar-top").style.display = "none";
+    reservarBtn.style.display = "none";
   } else {
     navbar.classList.remove("show");
-    document.querySelector(".btn-reservar-top").style.display = "block";
+    reservarBtn.style.display = "block";
   }
 });
 /********************slider de informacion**********************/
-const swiper1 = new Swiper(".mySwiper1", {
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  loop: true,
-  coverflowEffect: {
-    rotate: 20,
-    stretch: 0,
-    depth: 200,
-    modifier: 1,
-    slideShadows: false,
-  },
-  autoplay: { delay: 3500 },
+document.addEventListener("DOMContentLoaded", function () {
+  // Configuración para las imágenes hover en desktop
+  const images = document.querySelectorAll(
+    ".info-city-experience, .info-city-experience-2, .info-city-experience-3"
+  );
+
+  const config = {
+    scale: 1.05,
+    movement: 0.03,
+    transition: "all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+    perspective: 1000,
+    rotate: 1,
+  };
+
+  images.forEach((img) => {
+    img.style.transition = config.transition;
+    img.style.willChange = "transform";
+    img.style.transformStyle = "preserve-3d";
+
+    img.addEventListener("mouseenter", function () {
+      this.style.transform = `scale(${config.scale}) rotateZ(0)`;
+      this.style.zIndex = "20";
+      this.style.boxShadow = "0 25px 50px rgba(0, 0, 0, 0.2)";
+    });
+
+    img.addEventListener("mousemove", function (e) {
+      if (window.innerWidth <= 768) return;
+
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = x - rect.width / 2;
+      const centerY = y - rect.height / 2;
+
+      const moveX = (centerX / rect.width) * 15;
+      const moveY = (centerY / rect.height) * 15;
+
+      const rotateY = (centerX / rect.width) * config.rotate;
+      const rotateX = -(centerY / rect.height) * config.rotate;
+
+      this.style.transform = `
+              scale(${config.scale})
+              translate(${moveX}px, ${moveY}px)
+              rotateX(${rotateX}deg)
+              rotateY(${rotateY}deg)
+            `;
+    });
+
+    img.addEventListener("mouseleave", function () {
+      this.style.transform = "scale(1) translate(0, 0) rotateX(0) rotateY(0)";
+      this.style.zIndex = "1";
+      this.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.1)";
+    });
+  });
+
+  // Inicialización de Swiper para móviles/tablets
+  if (window.innerWidth <= 768) {
+    const swiper = new Swiper(".info-swiper", {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+
+  // Re-inicializar Swiper al cambiar el tamaño de la ventana
+  window.addEventListener("resize", function () {
+    if (
+      window.innerWidth <= 768 &&
+      !document.querySelector(".info-swiper").swiper
+    ) {
+      const swiper = new Swiper(".info-swiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    }
+  });
 });
 /*******************************Habitaciones ***** */
 document.addEventListener("DOMContentLoaded", () => {
@@ -172,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".ps-package-card");
   const totalSlides = slides.length;
   const backgroundImages = [
-    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752154193/e61e1a27-df09-4a8a-9128-2442bbec2e25.png",
+    "https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg",
     "https://res.cloudinary.com/ds9subkxg/image/upload/v1752179988/Miel1_sjyclt.jpg",
   ];
 

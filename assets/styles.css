@@ -258,6 +258,28 @@ header {
   z-index: 100;
   user-select: none;
 }
+.navbar #btn-reservar-navbar {
+  border: 1px solid var(--trm-gris-claro);
+  border-radius: 8px;
+  padding: 8px 16px;
+
+  background-color: transparent;
+  color: white;
+  box-shadow: 0 0 8px rgba(0, 247, 255, 0.747);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar #btn-reservar-navbar:hover {
+  background-color: #ffffffad;
+  color: #000000;
+  box-shadow: 0 0 12px rgba(0, 247, 255, 0.747);
+}
+.navbar #btn-reservar-navbar::after {
+  display: none !important;
+  content: none;
+}
+
 .navbar.show {
   top: 0;
 }
@@ -267,10 +289,48 @@ header {
   margin-right: auto;
 }
 .navbar a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 10px 16px;
+  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  font-weight: 500;
+  border: none;
+}
+.menu-button a {
   color: white;
   font-size: 18px;
   text-decoration: none;
-  margin-left: 30px;
+  position: absolute;
+  top: 20%;
+  margin-left: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Posiciona el centro del elemento */
+  transform: translateX(
+    -50%
+  ); /* Centra el elemento con respecto a su propio ancho */
+  height: 1.5px;
+  width: 0%;
+  background-color: white;
+  transition: width 0.5s ease;
+  bottom: 10%;
+}
+
+.navbar a:hover {
+  color: var(--boton-fondo-hover);
+  transform: scale(1.2);
+}
+
+.navbar a:hover::after {
+  width: 75%; /* Se expandirá desde el centro */
+}
+.navbar #menuHamburger {
+  display: none;
 }
 @media (min-width: 1501px) {
   .menu-overlay li {
@@ -284,7 +344,7 @@ header {
   .close-menu,
   .btn-reservar-top,
   .menu-button {
-    transform: scale(1.4);
+    transform: scale(1.2);
   }
   .hero-content h1 {
     font-size: 52px;
@@ -350,6 +410,19 @@ header {
   .menu-button {
     transform: scale(1.2); /* Reduce ligeramente estos elementos */
   }
+  .navbar a {
+    display: none;
+  }
+  .navbar #btn-reservar-navbar {
+    display: block;
+  }
+  .navbar #menuHamburger {
+    display: block;
+  }
+  .navbar img.logo-navbar {
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 /* ========== MÓVILES GRANDES (481px - 767px) ========== */
@@ -365,7 +438,7 @@ header {
   .swiper,
   .swiper-slide,
   .swiper-slide img {
-    height: 100% !important;
+    height: 100%;
     min-height: 100% !important;
   }
 
@@ -396,8 +469,10 @@ header {
   }
 
   .btn-reservar-top,
-  .menu-button {
-    transform: scale(1.3); /* Reduce ligeramente estos elementos */
+  .menu-button,
+  .logo-navbar,
+  .btn-reservar-navbar {
+    transform: scale(0.9); /* Reduce ligeramente estos elementos */
   }
 }
 
@@ -448,7 +523,32 @@ header {
   html {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+  }
+  .btn-reservar-top,
+  .menu-button {
+    transform: scale(0.9);
+    /* Reduce ligeramente estos elementos */
+  }
+
+  .btn-reservar-navbar {
+    transform: scale(0.7);
+    /* Reduce ligeramente estos elementos */
+  }
+  .logo-navbar {
+    position: relative;
+    left: 6%;
+    transform: scale(0.9);
+  }
+  .navbar {
+    padding: 0 10px 0 20px;
+  }
+  .diamonds-container {
+    display: none !important;
+  }
+  .section-indicator {
+    left: 0 !important;
+    height: 95vh !important;
+    top: 53% !important;
   }
 }
 
@@ -459,280 +559,219 @@ header {
   }
 }
 /************************************section info ********************************/
-.info-section {
+
+/* Grupo principal */
+.info-group {
+  position: relative;
   width: 100%;
-  height: auto;
-  background-color: #000;
-}
-.info-section {
-  position: relative;
-  max-width: 1588px;
-  margin: 0 auto;
-  height: 886px;
-  background: #fff;
-  overflow: hidden;
+  height: 100%;
+  background-color: #e5ecfc;
+  border: 1px solid #ffffffd9;
+  border-radius: 8px;
 }
 
-.info-rect {
-  position: absolute;
-  top: 81px;
-  left: 120px;
-  width: 720px;
-  height: 620px;
-  background: var(--azul-principal);
-  border: 2px solid #000;
-  padding: 40px;
-  box-sizing: border-box;
-  color: #ececec;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), 16px 16px 32px rgba(0, 0, 0, 0.3);
-}
-
-.info-rect h2 {
-  font-family: "Prata", sans-serif;
-  font-size: 38px;
-  text-align: center;
-  margin-bottom: 5px;
-  color: #ececec;
-}
-
-.info-rect h3 {
-  font-family: "Lora", serif;
-  font-size: 22px;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #ececec;
-  font-weight: 100;
-}
-
-.info-rect h2,
-.info-rect h3 {
-  display: block;
-  width: 23rem;
-  margin: 0 auto;
-  margin-top: 20px; /* margen superior */
-  text-align: center;
-}
-
-.info-rect p {
-  position: relative;
-  font-family: "Garamond", serif;
-  font-size: 32px;
-  text-align: center;
-  margin: 20px auto;
-  width: 371px;
-  color: white;
-  left: -12%;
-  top: 8%;
-}
-
-.icons-container {
+/* Contenedor del contenido */
+.info-overlap-group-wrapper {
   position: relative;
   width: 90%;
-  max-width: 360px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  top: 10%;
-  right: -10%;
+  max-width: 1423px;
+  height: auto;
+  margin: 5% auto 0;
+  padding-bottom: 5%;
 }
 
-/* Íconos estilo */
-.icons-container i {
-  font-size: clamp(30px, 5vw, 65px);
-  color: var(--icon-color);
+.info-overlap-group {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Galería de imágenes - diseño para desktop */
+.info-image-gallery {
+  position: relative;
+  width: 70%;
+  height: 70vh;
+  perspective: 1000px;
+}
+
+/* Estilos para las imágenes en desktop */
+.info-city-experience,
+.info-city-experience-2,
+.info-city-experience-3 {
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.info-city-experience {
+  width: 30%;
+  height: 37%;
+  bottom: 18%;
+  left: 50%;
+  transform-origin: center center;
+}
+
+.info-city-experience-2 {
+  width: 35%;
+  height: 40%;
+  top: 2%;
+  left: 50%;
+  transform-origin: left center;
+}
+
+.info-city-experience-3 {
+  width: 50%;
+  height: 80%;
+  top: 15%;
+  left: -2%;
+  transform-origin: right center;
+}
+
+/* Efecto hover para las imágenes */
+.info-city-experience:hover,
+.info-city-experience-2:hover,
+.info-city-experience-3:hover {
+  z-index: 20;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Descripción del hotel */
+.info-hotel-description {
+  position: absolute;
+  width: 30%;
+  top: 15%;
+  right: 5%;
+}
+
+.info-hotel-info {
+  width: 100%;
+  margin-top: 5%;
+  font-family: "Garamond", serif;
+  font-weight: 700;
+  color: #000000;
+  font-size: clamp(16px, 2vw, 28px);
+  text-align: center;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.info-hotel-name {
+  width: 100%;
+  margin-left: 0;
+  font-family: "Prata", serif;
+  font-weight: 400;
+  color: #000000;
+  font-size: clamp(32px, 5vw, 48px);
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.3s ease;
+}
+
+/* SWIPER - Mantenemos las clases que Swiper necesita pero con nuestro contenedor info- */
+.info-swiper {
+  display: none !important;
+  width: 100%;
+  height: 60vh;
+  margin: 5% 0;
+}
+
+/* Sobreescribimos estilos de Swiper con selectores más específicos */
+.info-swiper .swiper-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.info-swiper .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: clamp(50px, 10vw, 80px);
-  background: transparent;
-  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-/* Línea horizontal debajo de la primera fila */
-.icons-container::before {
-  content: "";
-  position: absolute;
-  top: calc(50% - 10px + 2%);
-  left: 0;
+.info-swiper .swiper-slide img {
   width: 100%;
-  height: 1px;
-  background-color: var(--icon-border-color);
-  pointer-events: none;
-}
-
-/* Primera línea vertical */
-.icons-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(33.333% - 10px);
-  width: 2px;
-  background-color: var(--icon-border-color);
-  pointer-events: none;
-}
-
-/* Segunda línea vertical (elemento extra) */
-.icons-container .line-vertical {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(66.666% - 10px);
-  width: 2px;
-  background-color: var(--icon-border-color);
-  pointer-events: none;
-}
-
-.slider-container {
-  position: absolute;
-  top: 271px;
-  left: 700px;
-  width: 680px;
-  height: 571px;
-  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), 16px 16px 32px rgba(0, 0, 0, 0.3);
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide img {
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
 }
-@media (max-width: 1500px) {
-  .info-rect {
-    width: 620px;
-    height: 620px;
-    left: 90px;
-  }
-  .slider-container {
-    position: absolute;
-    top: 251px;
-    left: 560px;
-    width: 620px;
-    height: 620px;
-  }
+
+.info-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 10px;
 }
+
+.info-swiper .swiper-button-next,
+.info-swiper .swiper-button-prev {
+  color: #000;
+}
+.info-swiper .swiper-button-next,
+.info-swiper .swiper-button-prev {
+  color: #fff;
+}
+/* Media Queries para diseño responsive */
 @media (max-width: 1200px) {
-  .info-rect {
-    width: 520px;
-    height: 600px;
-    left: 10px;
+  .info-image-gallery {
+    width: 60%;
   }
-  .slider-container {
-    position: absolute;
-    top: 271px;
-    left: 460px;
-    width: 50%;
-    height: 471px;
+  .info-hotel-description {
+    width: 30%;
+    top: 0;
   }
 }
-/* Para pantallas medianas como laptops */
-@media (max-width: 800px) {
-  .info-section {
-    height: auto;
-    padding-bottom: 40px;
-  }
-  .info-rect,
-  .slider-container {
-    position: static;
-    width: 90%;
-    margin: 20px auto;
-  }
-  .line-divider {
-    display: none;
-  }
-}
-/* SOLO para móviles y tablets */
-@media (max-width: 800px) {
-  .info-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    padding: 20px;
-  }
 
-  .info-rect {
-    position: static;
+@media (max-width: 768px) {
+  .info-group {
     width: 100%;
-    /* max-width: 90%;*/
     height: auto;
-    margin-bottom: 20px;
-    padding: 30px;
+  }
+  /* Ocultamos la galería tradicional */
+  .info-image-gallery {
+    display: none !important;
   }
 
-  .info-rect h2 {
-    font-size: 32px;
-    width: auto;
+  /* Mostramos el swiper */
+  .info-swiper {
+    display: block !important;
   }
 
-  .info-rect h3 {
-    font-size: 20px;
-    width: auto;
+  .info-hotel-description {
+    position: relative;
+    width: 90%;
+    margin: 5% auto;
+    padding-bottom: 10%;
   }
 
-  .info-rect p {
-    font-size: 18px;
-    width: auto;
-    left: 0;
+  .info-hotel-info {
+    font-size: clamp(14px, 4vw, 22px);
   }
 
-  .icons-container {
-    gap: 12px;
-    right: -20%;
-  }
-
-  .icons-container i {
-    font-size: clamp(20px, 9vw, 50px);
-    height: clamp(36px, 14vw, 70px);
-  }
-
-  .icons-container::before {
-    top: calc(50% - 6px);
-    height: 1.5px;
-  }
-
-  .icons-container::after {
-    left: calc(33.333% - 6px);
-    width: 1.5px;
-  }
-
-  .icons-container .line-vertical {
-    left: calc(66.666% - 6px);
-    width: 1.5px;
-  }
-
-  .swiper {
-    height: 300px;
-  }
-
-  .swiper-slide img {
-    height: 100%;
+  .info-hotel-name {
+    font-size: clamp(24px, 6vw, 48px);
   }
 }
+
 @media (max-width: 480px) {
-  .info-rect {
-    padding: 20px;
+  .info-swiper {
+    height: 50vh;
   }
-  .info-rect h2 {
-    font-size: 28px;
+
+  .info-hotel-info {
+    line-height: 1.4;
   }
-  .info-rect h3 {
-    font-size: 18px;
-  }
-  .info-rect p {
-    font-size: 16px;
-    width: auto;
-    left: 0;
-  }
-  .icons-container {
-    gap: 12px;
-    right: -5%;
+}
+@media (min-width: 1025px) {
+  .info-hotel-description {
+    position: relative !important;
   }
 }
 /******************************Habitaciones*****************************/
@@ -1447,7 +1486,7 @@ header {
 .dtn-breakfast-section {
   position: relative;
   padding: 80px 0;
-  background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752155548/88636be3-0e7b-4134-895d-68834d37d678.png");
+  background-image: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1753203531/455bb74c-dede-40ee-acc6-49d9472b0bc9_rxbjpa.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
