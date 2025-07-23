@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const habitacionesSwiper = new Swiper(".habitaciones-swiper", {
     loop: true,
-    initialSlide: 1, // Comenzamos en el segundo slide (índice 1)
+    initialSlide: window.innerWidth >= 768 ? 1 : 1, // Segundo slide en desktop, primero en móviles
     spaceBetween: 30,
     slidesPerView: 1,
     centeredSlides: true,
@@ -155,27 +155,28 @@ document.addEventListener("DOMContentLoaded", () => {
     touchAngle: 45,
     slideToClickedSlide: true,
     watchSlidesProgress: true,
+    centerInsufficientSlides: true,
 
-    // Configuración de navegación
+    // Navegación
     navigation: {
       nextEl: ".habitacion-next",
       prevEl: ".habitacion-prev",
     },
 
-    // Configuración de breakpoints
+    // Breakpoints
     breakpoints: {
       320: {
-        slidesPerView: 0.9,
+        slidesPerView: 1.1, // Mostrar un poco más que 100%
         spaceBetween: 10,
         centeredSlides: true,
       },
       480: {
-        slidesPerView: 0.95,
+        slidesPerView: 1.01,
         spaceBetween: 15,
         centeredSlides: true,
       },
       768: {
-        slidesPerView: 1.2,
+        slidesPerView: 1.04,
         spaceBetween: 20,
         centeredSlides: true,
       },
@@ -191,10 +192,9 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
 
-    // Eventos personalizados
+    // Eventos
     on: {
       init: function () {
-        // Deshabilitar el botón "siguiente" si estamos en el último slide
         if (this.isEnd) {
           document.querySelector(".habitacion-next").style.opacity = "0.5";
           document.querySelector(".habitacion-next").style.pointerEvents =
@@ -202,17 +202,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       },
       reachEnd: function () {
-        // Deshabilitar el botón "siguiente" cuando llegamos al final
         document.querySelector(".habitacion-next").style.opacity = "0.5";
         document.querySelector(".habitacion-next").style.pointerEvents = "none";
       },
       fromEdge: function () {
-        // Habilitar el botón "siguiente" cuando no estamos al final
         document.querySelector(".habitacion-next").style.opacity = "1";
         document.querySelector(".habitacion-next").style.pointerEvents = "auto";
       },
       slideChange: function () {
-        // Habilitar/deshabilitar botones según posición
         if (this.isBeginning) {
           document.querySelector(".habitacion-prev").style.opacity = "0.5";
           document.querySelector(".habitacion-prev").style.pointerEvents =
@@ -235,6 +232,11 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+
+  // Refrescar Swiper para asegurar layout correcto (especialmente en móviles)
+  setTimeout(() => {
+    habitacionesSwiper.update();
+  }, 300);
 });
 /*******************************paquetes************************* */
 document.addEventListener("DOMContentLoaded", function () {

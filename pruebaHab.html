@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Servicios del Hotel</title>
+    <style>
+      /* Reset y estilos base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Prata", serif;
+        background-color: #edf3ff;
+      }
+
+      /* Contenedor principal */
+      .info-box {
+        width: 100%;
+        max-width: 1606px;
+        height: 323px;
+        margin: 0 auto;
+      }
+
+      /* Grupo principal */
+      .info-group {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #edf3ff;
+      }
+
+      /* Contenedor del contenido */
+      .info-overlap-group {
+        position: relative;
+        max-width: 1313px;
+        height: 256px;
+        margin: 27px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Items de servicio */
+      .info-service-item {
+        position: relative;
+        width: 200px;
+        height: 242px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .info-ico {
+        transition: filter 0.3s ease;
+      }
+      /* Efecto hover */
+      .info-service-item:hover {
+        border: 1px solid #012555;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
+        width: 260px;
+        height: 242px;
+        color: #012555;
+      }
+      .info-service-item:hover .info-ico {
+        filter: saturate(3) brightness(1.2) contrast(1.2);
+        transition: filter 0.3s ease;
+      }
+      /* Item destacado (como en el diseño original) */
+      .info-service-item.highlighted {
+        border: 1px solid #012555;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
+        width: 260px;
+        height: 242px;
+      }
+
+      .info-service-item.highlighted .info-service-title {
+        color: #012555;
+      }
+
+      /* Iconos */
+      .info-ico {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-bottom: 20px;
+      }
+
+      .info-service-item.highlighted .info-ico {
+        width: 90px;
+        height: 92px;
+      }
+
+      /* Títulos */
+      .info-service-title {
+        font-family: "Prata", serif;
+        font-weight: 400;
+
+        font-size: 32px;
+        text-align: center;
+        line-height: normal;
+        margin: 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .info-overlap-group {
+          flex-wrap: wrap;
+          justify-content: center;
+          height: auto;
+          gap: 20px;
+          padding: 20px 0;
+        }
+
+        .info-service-item,
+        .info-service-item.highlighted {
+          width: 180px;
+          height: 200px;
+          margin: 10px;
+        }
+
+        .info-service-title {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .info-service-item,
+        .info-service-item.highlighted {
+          width: 150px;
+          height: 180px;
+        }
+
+        .info-ico {
+          width: 80px;
+          height: 80px;
+        }
+
+        .info-service-title {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="info-box">
+      <section class="info-group">
+        <div class="info-overlap-group">
+          <!-- WiFi gratis -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305465/afabcd65-14c5-4a73-9d71-2fb1acbdf65b.png"
+              alt="Ícono de WiFi"
+            />
+            <h2 class="info-service-title">WiFi gratis</h2>
+          </div>
+
+          <!-- Habitaciones familiares -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305478/76d1d11c-e9c6-4a88-98c8-835bd5b189a2.png"
+              alt="Ícono de familia"
+            />
+            <h2 class="info-service-title">Habitaciones familiares</h2>
+          </div>
+
+          <!-- Recepción 24 horas (destacado) -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305837/8ced6dee-b7d5-4542-abd9-19f45b9302c0.png"
+              alt="Ícono de recepción"
+            />
+            <h2 class="info-service-title">Recepción 24 horas</h2>
+          </div>
+
+          <!-- Traslado aeropuerto -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305646/cc5d3d70-3874-414a-9772-73178e8a9863.png"
+              alt="Ícono de coche"
+            />
+            <h2 class="info-service-title">Traslado aeropuerto</h2>
+          </div>
+
+          <!-- Habitaciones sin humo -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305671/a2ede4de-d34d-4fca-bf98-1550cf38c773.png"
+              alt="Ícono de no fumar"
+            />
+            <h2 class="info-service-title">Habitaciones sin humo</h2>
+          </div>
+
+          <!-- Desayuno -->
+          <div class="info-service-item">
+            <img
+              class="info-ico"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305698/b7183f4f-2eb1-4e46-957b-17ba538531d8.png"
+              alt="Ícono de café"
+            />
+            <h2 class="info-service-title">Desayuno</h2>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

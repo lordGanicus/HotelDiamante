@@ -374,10 +374,10 @@ header {
     margin: 0;
   }
 }
-/* ========== TABLETS (768px - 1024px) ========== */
+/* ========== TABLETS (768px - 1024px) ========== 
 @media (max-width: 1024px) {
   .hero-section {
-    height: 90vh; /* Ajuste para tablets en horizontal */
+    height: 90vh; 
   }
 
   .hero-content h1 {
@@ -408,7 +408,7 @@ header {
   .close-menu,
   .btn-reservar-top,
   .menu-button {
-    transform: scale(1.2); /* Reduce ligeramente estos elementos */
+    transform: scale(1.2); 
   }
   .navbar a {
     display: none;
@@ -424,8 +424,8 @@ header {
     display: block;
   }
 }
-
-/* ========== MÓVILES GRANDES (481px - 767px) ========== */
+*/
+/* ========== MÓVILES GRANDES (481px - 767px) ========== 
 @media (max-width: 768px) {
   .menu-overlay ul {
     bottom: 20%;
@@ -443,7 +443,7 @@ header {
   }
 
   .swiper-slide img {
-    object-position: center center; /* Asegura que la imagen se centre */
+    object-position: center center; 
   }
 
   .hero-content {
@@ -472,10 +472,10 @@ header {
   .menu-button,
   .logo-navbar,
   .btn-reservar-navbar {
-    transform: scale(0.9); /* Reduce ligeramente estos elementos */
+    transform: scale(0.9); 
   }
 }
-
+*/
 /* Ajustes extra para móviles pequeños (hasta 480px) */
 @media (max-width: 580px) {
   .btn-reservar-top,
@@ -564,10 +564,8 @@ header {
 .info-group {
   position: relative;
   width: 100%;
-  height: 100%;
-  background-color: #e5ecfc;
-  border: 1px solid #ffffffd9;
-  border-radius: 8px;
+  height: 90vh;
+  background-color: #e5edfd;
 }
 
 /* Contenedor del contenido */
@@ -774,11 +772,132 @@ header {
     position: relative !important;
   }
 }
+/************Iconos flotantes***************/
+
+/* Grupo principal */
+.info-group-ico {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #edf3ff;
+}
+
+/* Contenedor del contenido */
+.info-overlap-group {
+  position: relative;
+  max-width: 1313px;
+  height: 256px;
+  margin: 27px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Items de servicio */
+.info-service-item {
+  position: relative;
+  width: 200px;
+  height: 242px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.info-ico {
+  transition: filter 0.3s ease;
+}
+/* Efecto hover */
+.info-service-item:hover {
+  border: 1px solid #012555;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
+  width: 260px;
+  height: 242px;
+  color: #012555;
+}
+.info-service-item:hover .info-ico {
+  filter: saturate(3) brightness(1.2) contrast(1.2);
+  transition: filter 0.3s ease;
+}
+/* Item destacado (como en el diseño original) */
+.info-service-item.highlighted {
+  border: 1px solid #012555;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
+  width: 260px;
+  height: 242px;
+}
+
+.info-service-item.highlighted .info-service-title {
+  color: #012555;
+}
+
+/* Iconos */
+.info-ico {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.info-service-item.highlighted .info-ico {
+  width: 90px;
+  height: 92px;
+}
+
+/* Títulos */
+.info-service-title {
+  font-family: "Prata", serif;
+  font-weight: 400;
+
+  font-size: 32px;
+  text-align: center;
+  line-height: normal;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .info-overlap-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    gap: 20px;
+    padding: 20px 0;
+  }
+
+  .info-service-item,
+  .info-service-item.highlighted {
+    width: 180px;
+    height: 200px;
+    margin: 10px;
+  }
+
+  .info-service-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-service-item,
+  .info-service-item.highlighted {
+    width: 150px;
+    height: 180px;
+  }
+
+  .info-ico {
+    width: 80px;
+    height: 80px;
+  }
+
+  .info-service-title {
+    font-size: 20px;
+  }
+}
 /******************************Habitaciones*****************************/
 .habitaciones-section {
   position: relative;
   padding: 40px 0 180px; /* antes: 80px 0 180px */
-  background: #0e1c36;
+  background: var(--ps-card-bg);
   font-family: "Prata", serif;
   overflow: hidden;
 }
@@ -786,7 +905,7 @@ header {
 .habitaciones-header {
   text-align: center;
   margin-bottom: 40px; /* antes: 60px */
-  color: #fff;
+  color: #000000;
 }
 
 .habitaciones-header h2 {
@@ -825,13 +944,13 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 2px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .habitaciones-swiper .habitacion-card-container {
   position: absolute;
-  bottom: -90px;
+  bottom: -110px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -841,7 +960,7 @@ header {
   background: #f2f2f2;
   padding: 25px 30px;
   width: 469px;
-  border-radius: 20px;
+  border-radius: 2px;
   text-align: center;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   transform: perspective(400px) rotateX(-90deg);
@@ -952,10 +1071,6 @@ header {
     height: 450px;
   }
 
-  .habitacion-card {
-    width: 400px !important;
-  }
-
   .habitacion-card h3 {
     font-size: 28px !important;
   }
@@ -995,11 +1110,6 @@ header {
     bottom: -80px !important;
   }
 
-  .habitacion-card {
-    width: 350px !important;
-    padding: 20px 25px !important;
-  }
-
   .habitacion-card h3 {
     font-size: 26px !important;
   }
@@ -1013,77 +1123,25 @@ header {
     width: 400px !important;
   }
   .habitaciones-swiper .swiper-wrapper {
-    height: 70%;
+    height: 80%;
   }
   .habitaciones-swiper {
-    width: 50% !important;
+    width: 80% !important;
   }
   .habitaciones-swiper .habitacion-nav-btn {
     display: none;
   }
-}
-
-/* Mobile Grande */
-@media (max-width: 576px) {
-  .habitaciones-section {
-    padding: 15px 0 110px;
-    height: 90vh;
-  }
-
-  .habitaciones-header h2 {
-    font-size: 32px;
-  }
-
-  .habitaciones-header p {
-    font-size: 18px;
-  }
-
-  .habitaciones-swiper .swiper-slide {
-    width: 90%;
-    height: 300px;
-  }
-
-  .habitacion-card-container {
-    bottom: -90px !important;
-  }
-
-  .habitacion-card {
-    width: 300px !important;
-    padding: 15px 20px !important;
-  }
-
-  .habitacion-card h3 {
-    font-size: 24px !important;
-  }
-
-  .habitacion-card p {
-    font-size: 16px !important;
-  }
-
-  .btn-reservar {
-    font-size: 18px !important;
-    padding: 8px 25px !important;
-  }
-
-  .habitaciones-nav {
-    width: 300px !important;
-  }
-
-  .habitacion-nav-btn {
-    width: 50px !important;
-    height: 50px !important;
-    font-size: 18px !important;
-  }
-  .habitaciones-swiper .swiper-wrapper {
-    height: 70%;
-  }
-  .habitaciones-swiper {
-    width: 60% !important;
+  .habitaciones-swiper .habitacion-card-container {
+    bottom: -110px !important;
   }
 }
 
 /* Mobile Pequeño */
-@media (max-width: 500px) {
+@media (max-width: 576px) {
+  .habitaciones-section {
+    padding: 20px 0 120px;
+    height: 90vh;
+  }
   .habitaciones-header h2 {
     font-size: 28px;
   }
@@ -1093,7 +1151,7 @@ header {
   }
 
   .habitaciones-swiper .swiper-slide {
-    height: 250px;
+    height: 275px;
   }
 
   .habitacion-card {
@@ -1102,15 +1160,15 @@ header {
   }
 
   .habitacion-card h3 {
-    font-size: 22px !important;
+    font-size: 18px !important;
   }
 
   .habitacion-card p {
-    font-size: 15px !important;
+    font-size: 13px !important;
   }
 
   .btn-reservar {
-    font-size: 16px !important;
+    font-size: 13px !important;
   }
 
   .habitaciones-nav {
@@ -1120,6 +1178,12 @@ header {
   .habitacion-nav-btn {
     width: 45px !important;
     height: 45px !important;
+  }
+  .habitaciones-swiper .habitacion-card-container {
+    bottom: -110px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
   }
 }
 /*********************PAQUETES*********************/
