@@ -10,10 +10,10 @@ function initSwiper() {
         disableOnInteraction: false,
       },
       pagination: {
-        el: ".hbt-swiper-pagination", // ✅ corregido aquí
+        el: ".hbt-swiper-pagination",
         clickable: true,
-        bulletClass: "hbt-swiper-pagination-bullet", // usa tu clase personalizada
-        bulletActiveClass: "hbt-swiper-pagination-bullet-active", // usa tu clase activa
+        bulletClass: "hbt-swiper-pagination-bullet",
+        bulletActiveClass: "hbt-swiper-pagination-bullet-active",
       },
     });
   }

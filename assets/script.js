@@ -151,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     centeredSlides: true,
     grabCursor: true,
     speed: 800,
-    resistanceRatio: 0.5,
     touchAngle: 45,
     slideToClickedSlide: true,
     watchSlidesProgress: true,
@@ -239,70 +238,119 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 300);
 });
 /*******************************paquetes************************* */
-document.addEventListener("DOMContentLoaded", function () {
-  // Elementos específicos de esta sección
-  const container = document.querySelector(".paquetes-especiales-container");
-  const slider = document.getElementById("psSlider");
-  const prevBtn = document.getElementById("psPrevBtn");
-  const nextBtn = document.getElementById("psNextBtn");
-  const bgOverlay = document.getElementById("psBackgroundOverlay");
-  const floatingHearts = document.getElementById("psFloatingHearts");
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".ps-romantic-slide");
+  const dots = document.querySelectorAll(".ps-romantic-slider-dot");
+  const nextArrow = document.getElementById("ps-arrow-next");
+  const sliderContainer = document.querySelector(".ps-romantic-slider");
 
-  // Configuración del slider
   let currentSlide = 0;
-  const slides = document.querySelectorAll(".ps-package-card");
-  const totalSlides = slides.length;
-  const backgroundImages = [
-    "https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg",
-    "https://res.cloudinary.com/ds9subkxg/image/upload/v1752179988/Miel1_sjyclt.jpg",
-  ];
+  let autoSlideInterval;
 
-  // Función para actualizar el slider
-  function updateSlider() {
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    bgOverlay.style.backgroundImage = `url(${backgroundImages[currentSlide]})`;
+  // Variables para touch
+  let startX = 0;
+  let endX = 0;
+
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+
+    slides[currentSlide].classList.remove("active");
+    dots[currentSlide].classList.remove("active");
+
+    currentSlide = index;
+    slides[currentSlide].classList.add("active");
+    dots[currentSlide].classList.add("active");
+
+    resetAnimations(slides[currentSlide]);
+    resetAutoSlide();
   }
 
-  // Eventos para los botones
-  prevBtn.addEventListener("click", function () {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSlider();
+  function resetAnimations(slide) {
+    const elements = slide.querySelectorAll(
+      ".ps-romantic-content-line, .ps-romantic-package-title, .ps-romantic-package-description, .ps-romantic-cta-button, .ps-romantic-arrow-line, .ps-romantic-arrow-point"
+    );
+
+    elements.forEach((el) => {
+      el.style.animation = "none";
+      void el.offsetHeight;
+
+      setTimeout(() => {
+        if (el.classList.contains("ps-romantic-content-line")) {
+          el.style.animation = "ps-scaleIn 0.6s ease-out forwards";
+        } else if (el.classList.contains("ps-romantic-package-title")) {
+          el.style.animation = "ps-slideInRight 0.8s ease-out 0.2s forwards";
+        } else if (el.classList.contains("ps-romantic-package-description")) {
+          el.style.animation = "ps-fadeInUp 0.8s ease-out 0.4s forwards";
+        } else if (el.classList.contains("ps-romantic-cta-button")) {
+          el.style.animation = "ps-fadeInUp 0.8s ease-out 0.6s forwards";
+        } else if (el.classList.contains("ps-romantic-arrow-line")) {
+          el.style.animation = "ps-slideInArrow 0.8s ease-out 0.3s forwards";
+        } else if (el.classList.contains("ps-romantic-arrow-point")) {
+          el.style.animation = "ps-rotateToRombo 0.8s ease-out 0.5s forwards";
+        }
+      }, 50);
+    });
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      goToSlide(currentSlide + 1);
+    }, 3000); // velocidad del slider: cada 3 segundos
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideInterval);
+    startAutoSlide();
+  }
+
+  // Botón de siguiente
+  nextArrow.addEventListener("click", () => {
+    goToSlide(currentSlide + 1);
   });
 
-  nextBtn.addEventListener("click", function () {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlider();
+  // Dots
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      goToSlide(parseInt(dot.dataset.index));
+    });
   });
 
-  // Crear corazones flotantes
-  function createHearts() {
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement("div");
-      heart.className = "ps-heart";
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.animationDuration = `${12 + Math.random() * 8}s`;
-      heart.style.animationDelay = `${Math.random() * 5}s`;
-      heart.style.opacity = `${0.2 + Math.random() * 0.3}`;
-      heart.style.width = `${10 + Math.random() * 20}px`;
-      heart.style.height = heart.style.width;
-      floatingHearts.appendChild(heart);
+  // Autoplay pausa/reanuda al pasar mouse
+  sliderContainer.addEventListener("mouseenter", () => {
+    clearInterval(autoSlideInterval);
+  });
+
+  sliderContainer.addEventListener("mouseleave", () => {
+    startAutoSlide();
+  });
+
+  // Touch Swipe
+  sliderContainer.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  sliderContainer.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  sliderContainer.addEventListener("touchend", () => {
+    const threshold = 50;
+    const distance = startX - endX;
+
+    if (distance > threshold) {
+      goToSlide(currentSlide + 1); // izquierda
+    } else if (distance < -threshold) {
+      goToSlide(currentSlide - 1); // derecha
     }
-  }
+  });
 
-  // Inicialización
-  updateSlider();
-  createHearts();
+  // Iniciar primer slide y animaciones
+  resetAnimations(slides[0]);
 
-  // Cambio automático cada 8 segundos
-  setInterval(function () {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlider();
-  }, 8000);
-
-  // Ajustar tamaño para encapsulación
-  container.style.width = "100%";
-  container.style.maxWidth = "1920px";
-  container.style.margin = "0 auto";
+  setTimeout(() => {
+    startAutoSlide();
+  }, 1000); // espera 1 segundo tras la primera animación
 });
 /*****************desayunos ****************/
 // Namespace para evitar conflictos

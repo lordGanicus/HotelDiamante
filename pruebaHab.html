@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <title>Servicios del Hotel</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escapada Romántica</title>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Garamond:wght@400&family=Prata&display=swap"
+      rel="stylesheet"
+    />
     <style>
       /* Reset y estilos base */
       * {
@@ -13,204 +18,635 @@
       }
 
       body {
-        font-family: "Prata", serif;
-        background-color: #edf3ff;
+        font-family: "Garamond", serif;
+        color: #000000;
+        background-color: #ffffff;
+        overflow-x: hidden;
       }
 
-      /* Contenedor principal */
-      .info-box {
+      /* Contenedor principal con prefijo ps- */
+      .ps-romantic-container {
         width: 100%;
-        max-width: 1606px;
-        height: 323px;
+        max-width: 1590px;
         margin: 0 auto;
+        padding: 20px;
+        position: relative;
       }
 
-      /* Grupo principal */
-      .info-group {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-color: #edf3ff;
+      /* Encabezado */
+      .ps-romantic-header {
+        text-align: center;
+        margin-bottom: 60px;
       }
 
-      /* Contenedor del contenido */
-      .info-overlap-group {
-        position: relative;
-        max-width: 1313px;
-        height: 256px;
-        margin: 27px auto;
-        display: flex;
-        justify-content: space-between;
+      .ps-romantic-title-row {
+        display: inline-flex;
         align-items: center;
-      }
-
-      /* Items de servicio */
-      .info-service-item {
-        position: relative;
-        width: 200px;
-        height: 242px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        gap: 16px;
         justify-content: center;
-        transition: all 0.3s ease;
-      }
-      .info-ico {
-        transition: filter 0.3s ease;
-      }
-      /* Efecto hover */
-      .info-service-item:hover {
-        border: 1px solid #012555;
-        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
-        width: 260px;
-        height: 242px;
-        color: #012555;
-      }
-      .info-service-item:hover .info-ico {
-        filter: saturate(3) brightness(1.2) contrast(1.2);
-        transition: filter 0.3s ease;
-      }
-      /* Item destacado (como en el diseño original) */
-      .info-service-item.highlighted {
-        border: 1px solid #012555;
-        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.81);
-        width: 260px;
-        height: 242px;
-      }
-
-      .info-service-item.highlighted .info-service-title {
-        color: #012555;
-      }
-
-      /* Iconos */
-      .info-ico {
-        width: 100px;
-        height: 100px;
-        object-fit: contain;
         margin-bottom: 20px;
       }
 
-      .info-service-item.highlighted .info-ico {
-        width: 90px;
-        height: 92px;
+      .ps-romantic-decorative-line {
+        width: 60px;
+        height: 3px;
+        background-color: #000;
+        opacity: 0;
+        transform-origin: left;
+        transform: scaleX(0);
+        animation: ps-scaleIn 0.8s ease-out 0.8s forwards;
+        flex-shrink: 0;
+        margin-top: 2rem;
       }
 
-      /* Títulos */
-      .info-service-title {
+      .ps-romantic-main-title {
         font-family: "Prata", serif;
+        font-size: 64px;
         font-weight: 400;
-
-        font-size: 32px;
-        text-align: center;
-        line-height: normal;
+        color: #000000;
+        line-height: 1.2;
         margin: 0;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: ps-fadeInUp 1s ease-out 0.3s forwards;
       }
 
-      /* Responsive */
+      .ps-romantic-main-description {
+        font-size: 24px;
+        color: #000000;
+        max-width: 663px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: ps-fadeInUp 1s ease-out 1s forwards;
+      }
+
+      /* Slider personalizado sin Swiper */
+      .ps-romantic-slider {
+        width: 100%;
+        max-width: 1500px;
+        margin: 80px auto 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ps-romantic-slides {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transition: transform 0.8s ease;
+      }
+
+      .ps-romantic-slide {
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .ps-romantic-slide.active {
+        opacity: 1;
+        position: relative;
+      }
+
+      /* Contenedor de imagen */
+      .ps-romantic-image-container {
+        flex: 1;
+        position: relative;
+        max-width: 817px;
+      }
+
+      .ps-romantic-main-image {
+        width: 100%;
+        height: 654px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .ps-romantic-image-border {
+        position: absolute;
+        top: 33px;
+        left: 49px;
+        right: 49px;
+        bottom: 62px;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        pointer-events: none;
+      }
+
+      /* Flecha decorativa */
+      .ps-romantic-arrow-container {
+        position: absolute;
+        right: -12%;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      .ps-romantic-arrow-line {
+        width: 163px;
+        height: 4px;
+        background-color: #000;
+        transform: translateX(8px);
+        opacity: 0;
+        animation: ps-slideInArrow 0.8s ease-out 1.5s forwards;
+      }
+
+      .ps-romantic-arrow-point {
+        width: 16px;
+        height: 17px;
+        background-color: #000;
+        transform: rotate(0deg) translateX(0);
+        opacity: 0;
+        animation: ps-rotateToRombo 0.8s ease-out 1.7s forwards;
+      }
+
+      /* Sección de contenido */
+      .ps-romantic-content-section {
+        flex: 1;
+        max-width: 600px;
+        padding-left: 10%;
+      }
+
+      .ps-romantic-content-title-row {
+        display: inline-flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+
+      .ps-romantic-content-line {
+        width: 60px !important;
+        height: 1em;
+        border-bottom: 2px solid #000;
+        flex-shrink: 0;
+        margin-top: 6px;
+        transform-origin: left;
+        transform: scaleX(0);
+        animation: growLine 0.5s ease-out forwards;
+      }
+
+      .ps-romantic-package-title {
+        font-family: "Prata", serif;
+        font-size: 48px;
+        font-weight: 400;
+        color: #000000;
+        line-height: 1.2;
+        margin: 0;
+        opacity: 0;
+        transform: translateX(30px);
+        animation: slideInTitle 0.6s ease-out 0.3s forwards;
+        flex-grow: 1;
+      }
+
+      .ps-romantic-package-description {
+        font-size: 24px;
+        color: #000000;
+        line-height: 1.5;
+        margin-bottom: 40px;
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      .ps-romantic-cta-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #2c3e50, #34495e);
+        color: white;
+        padding: 15px 35px;
+        text-decoration: none;
+        font-size: 24px;
+        font-family: "Garamond", serif;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .ps-romantic-cta-button:hover {
+        background: linear-gradient(45deg, #34495e, #2c3e50);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Animaciones para contenido activo */
+      .ps-romantic-slide.active .ps-romantic-content-line {
+        animation: ps-scaleIn 0.6s ease-out 0.3s forwards;
+      }
+
+      .ps-romantic-slide.active .ps-romantic-package-title {
+        animation: ps-slideInRight 0.8s ease-out 0.5s forwards;
+      }
+
+      .ps-romantic-slide.active .ps-romantic-package-description {
+        animation: ps-fadeInUp 0.8s ease-out 0.7s forwards;
+      }
+
+      .ps-romantic-slide.active .ps-romantic-cta-button {
+        animation: ps-fadeInUp 0.8s ease-out 0.9s forwards;
+      }
+
+      /* Controles del slider */
+      .ps-romantic-slider-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 15px;
+      }
+
+      .ps-romantic-slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .ps-romantic-slider-dot.active {
+        background-color: #000;
+      }
+
+      /* Keyframes de animaciones */
+      @keyframes ps-fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes ps-slideInRight {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes ps-scaleIn {
+        to {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes ps-slideInArrow {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes ps-rotateToRombo {
+        0% {
+          transform: rotate(0deg) translateX(0);
+          opacity: 0;
+        }
+        50% {
+          transform: rotate(22.5deg) translateX(0);
+          opacity: 0.5;
+        }
+        100% {
+          transform: rotate(45deg) translateX(-1px);
+          opacity: 1;
+        }
+      }
+
+      @keyframes growLine {
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes slideInTitle {
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Estilos responsive */
       @media (max-width: 1200px) {
-        .info-overlap-group {
-          flex-wrap: wrap;
+        .ps-romantic-main-title {
+          font-size: 48px;
+        }
+
+        .ps-romantic-main-description {
+          font-size: 20px;
+        }
+
+        .ps-romantic-package-title {
+          font-size: 36px;
+        }
+
+        .ps-romantic-package-description {
+          font-size: 20px;
+        }
+
+        .ps-romantic-arrow-container {
+          right: -8%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .ps-romantic-slide {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .ps-romantic-image-container {
+          max-width: 100%;
+        }
+
+        .ps-romantic-content-section {
+          max-width: 100%;
+          padding-left: 0;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        .ps-romantic-content-title-row {
           justify-content: center;
-          height: auto;
-          gap: 20px;
-          padding: 20px 0;
         }
 
-        .info-service-item,
-        .info-service-item.highlighted {
-          width: 180px;
-          height: 200px;
-          margin: 10px;
+        .ps-romantic-arrow-container {
+          display: none;
         }
 
-        .info-service-title {
-          font-size: 24px;
+        .ps-romantic-main-image {
+          height: 500px;
         }
       }
 
       @media (max-width: 768px) {
-        .info-service-item,
-        .info-service-item.highlighted {
-          width: 150px;
-          height: 180px;
+        .ps-romantic-container {
+          padding: 20px 15px;
         }
 
-        .info-ico {
-          width: 80px;
-          height: 80px;
+        .ps-romantic-main-title {
+          font-size: 36px;
         }
 
-        .info-service-title {
+        .ps-romantic-decorative-line {
+          margin-top: 1rem;
+        }
+
+        .ps-romantic-main-description {
+          font-size: 18px;
+        }
+
+        .ps-romantic-package-title {
+          font-size: 28px;
+        }
+
+        .ps-romantic-package-description {
+          font-size: 18px;
+        }
+
+        .ps-romantic-cta-button {
+          padding: 12px 25px;
           font-size: 20px;
+        }
+
+        .ps-romantic-main-image {
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .ps-romantic-main-title {
+          font-size: 28px;
+        }
+
+        .ps-romantic-decorative-line {
+          width: 40px;
+        }
+
+        .ps-romantic-main-image {
+          height: 300px;
         }
       }
     </style>
   </head>
   <body>
-    <main class="info-box">
-      <section class="info-group">
-        <div class="info-overlap-group">
-          <!-- WiFi gratis -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305465/afabcd65-14c5-4a73-9d71-2fb1acbdf65b.png"
-              alt="Ícono de WiFi"
-            />
-            <h2 class="info-service-title">WiFi gratis</h2>
+    <div class="ps-romantic-container">
+      <header class="ps-romantic-header">
+        <div class="ps-romantic-title-row">
+          <div class="ps-romantic-decorative-line"></div>
+          <h1 class="ps-romantic-main-title">
+            Tu Experiencia Completa<br />
+            en un Solo Paquete
+          </h1>
+        </div>
+        <p class="ps-romantic-main-description">
+          Disfruta de paquetes que combinan comodidad y lujo, ideales para
+          aniversarios, lunas de miel o momentos especiales con tu pareja
+        </p>
+      </header>
+
+      <!-- Slider personalizado sin Swiper -->
+      <div class="ps-romantic-slider">
+        <div class="ps-romantic-slides">
+          <!-- Slide 1: Escapada Romántica -->
+          <div class="ps-romantic-slide active">
+            <div class="ps-romantic-image-container">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg"
+                alt="Escapada Romántica"
+                class="ps-romantic-main-image"
+              />
+              <div class="ps-romantic-image-border"></div>
+              <div class="ps-romantic-arrow-container" id="ps-arrow-next">
+                <div class="ps-romantic-arrow-line"></div>
+                <div class="ps-romantic-arrow-point"></div>
+              </div>
+            </div>
+            <div class="ps-romantic-content-section">
+              <div class="ps-romantic-content-title-row">
+                <div class="ps-romantic-content-line"></div>
+                <h2 class="ps-romantic-package-title">ESCAPADA ROMÁNTICA</h2>
+              </div>
+              <p class="ps-romantic-package-description">
+                Una experiencia que lo tiene todo para enamorarse.<br />
+                Desde la bienvenida hasta el último suspiro, cada momento está
+                pensado para ustedes.
+              </p>
+              <a href="escapada-romantica.html" class="ps-romantic-cta-button"
+                >Ver Detalle</a
+              >
+            </div>
           </div>
 
-          <!-- Habitaciones familiares -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305478/76d1d11c-e9c6-4a88-98c8-835bd5b189a2.png"
-              alt="Ícono de familia"
-            />
-            <h2 class="info-service-title">Habitaciones familiares</h2>
-          </div>
-
-          <!-- Recepción 24 horas (destacado) -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305837/8ced6dee-b7d5-4542-abd9-19f45b9302c0.png"
-              alt="Ícono de recepción"
-            />
-            <h2 class="info-service-title">Recepción 24 horas</h2>
-          </div>
-
-          <!-- Traslado aeropuerto -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305646/cc5d3d70-3874-414a-9772-73178e8a9863.png"
-              alt="Ícono de coche"
-            />
-            <h2 class="info-service-title">Traslado aeropuerto</h2>
-          </div>
-
-          <!-- Habitaciones sin humo -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305671/a2ede4de-d34d-4fca-bf98-1550cf38c773.png"
-              alt="Ícono de no fumar"
-            />
-            <h2 class="info-service-title">Habitaciones sin humo</h2>
-          </div>
-
-          <!-- Desayuno -->
-          <div class="info-service-item">
-            <img
-              class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305698/b7183f4f-2eb1-4e46-957b-17ba538531d8.png"
-              alt="Ícono de café"
-            />
-            <h2 class="info-service-title">Desayuno</h2>
+          <!-- Slide 2: Velada Romántica -->
+          <div class="ps-romantic-slide">
+            <div class="ps-romantic-image-container">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/decorado_Hotel_Diamante1_mz2ttf.jpg"
+                alt="Velada Romántica"
+                class="ps-romantic-main-image"
+              />
+              <div class="ps-romantic-image-border"></div>
+              <div class="ps-romantic-arrow-container" id="ps-arrow-next">
+                <div class="ps-romantic-arrow-line"></div>
+                <div class="ps-romantic-arrow-point"></div>
+              </div>
+            </div>
+            <div class="ps-romantic-content-section">
+              <div class="ps-romantic-content-title-row">
+                <div class="ps-romantic-content-line"></div>
+                <h2 class="ps-romantic-package-title">VELADA ROMÁNTICA</h2>
+              </div>
+              <p class="ps-romantic-package-description">
+                Una velada creada para enamorar sin límites,<br />
+                con detalles que hablan por sí solos. Tu cita ideal comienza
+                aquí.
+              </p>
+              <a href="velada-romantica.html" class="ps-romantic-cta-button"
+                >Ver Detalle</a
+              >
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+
+        <!-- Controles del slider -->
+        <div class="ps-romantic-slider-controls">
+          <div class="ps-romantic-slider-dot active" data-index="0"></div>
+          <div class="ps-romantic-slider-dot" data-index="1"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".ps-romantic-slide");
+        const dots = document.querySelectorAll(".ps-romantic-slider-dot");
+        const nextArrow = document.getElementById("ps-arrow-next");
+        const sliderContainer = document.querySelector(".ps-romantic-slider");
+
+        let currentSlide = 0;
+        let autoSlideInterval;
+
+        // Variables para touch
+        let startX = 0;
+        let endX = 0;
+
+        function goToSlide(index) {
+          if (index < 0) index = slides.length - 1;
+          if (index >= slides.length) index = 0;
+
+          slides[currentSlide].classList.remove("active");
+          dots[currentSlide].classList.remove("active");
+
+          currentSlide = index;
+          slides[currentSlide].classList.add("active");
+          dots[currentSlide].classList.add("active");
+
+          resetAnimations(slides[currentSlide]);
+          resetAutoSlide();
+        }
+
+        function resetAnimations(slide) {
+          const elements = slide.querySelectorAll(
+            ".ps-romantic-content-line, .ps-romantic-package-title, .ps-romantic-package-description, .ps-romantic-cta-button, .ps-romantic-arrow-line, .ps-romantic-arrow-point"
+          );
+
+          elements.forEach((el) => {
+            el.style.animation = "none";
+            void el.offsetHeight;
+
+            setTimeout(() => {
+              if (el.classList.contains("ps-romantic-content-line")) {
+                el.style.animation = "ps-scaleIn 0.6s ease-out forwards";
+              } else if (el.classList.contains("ps-romantic-package-title")) {
+                el.style.animation =
+                  "ps-slideInRight 0.8s ease-out 0.2s forwards";
+              } else if (
+                el.classList.contains("ps-romantic-package-description")
+              ) {
+                el.style.animation = "ps-fadeInUp 0.8s ease-out 0.4s forwards";
+              } else if (el.classList.contains("ps-romantic-cta-button")) {
+                el.style.animation = "ps-fadeInUp 0.8s ease-out 0.6s forwards";
+              } else if (el.classList.contains("ps-romantic-arrow-line")) {
+                el.style.animation =
+                  "ps-slideInArrow 0.8s ease-out 0.3s forwards";
+              } else if (el.classList.contains("ps-romantic-arrow-point")) {
+                el.style.animation =
+                  "ps-rotateToRombo 0.8s ease-out 0.5s forwards";
+              }
+            }, 50);
+          });
+        }
+
+        function startAutoSlide() {
+          autoSlideInterval = setInterval(() => {
+            goToSlide(currentSlide + 1);
+          }, 3000); // velocidad del slider: cada 3 segundos
+        }
+
+        function resetAutoSlide() {
+          clearInterval(autoSlideInterval);
+          startAutoSlide();
+        }
+
+        // Botón de siguiente
+        nextArrow.addEventListener("click", () => {
+          goToSlide(currentSlide + 1);
+        });
+
+        // Dots
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            goToSlide(parseInt(dot.dataset.index));
+          });
+        });
+
+        // Autoplay pausa/reanuda al pasar mouse
+        sliderContainer.addEventListener("mouseenter", () => {
+          clearInterval(autoSlideInterval);
+        });
+
+        sliderContainer.addEventListener("mouseleave", () => {
+          startAutoSlide();
+        });
+
+        // Touch Swipe
+        sliderContainer.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+        });
+
+        sliderContainer.addEventListener("touchmove", (e) => {
+          endX = e.touches[0].clientX;
+        });
+
+        sliderContainer.addEventListener("touchend", () => {
+          const threshold = 50;
+          const distance = startX - endX;
+
+          if (distance > threshold) {
+            goToSlide(currentSlide + 1); // izquierda
+          } else if (distance < -threshold) {
+            goToSlide(currentSlide - 1); // derecha
+          }
+        });
+
+        // Iniciar primer slide y animaciones
+        resetAnimations(slides[0]);
+
+        // 🔥 Iniciar autoplay un poco después (para no cortar la primera animación)
+        setTimeout(() => {
+          startAutoSlide();
+        }, 1000); // espera 1 segundo tras la primera animación
+      });
+    </script>
   </body>
 </html>
