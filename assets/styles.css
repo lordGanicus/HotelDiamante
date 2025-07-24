@@ -1323,7 +1323,7 @@ header {
   width: 163px;
   height: 4px;
   background-color: #000;
-  transform: translateX(8px);
+  transform: translateX(15px);
   opacity: 0;
   animation: ps-slideInArrow 0.8s ease-out 1.5s forwards;
 }
@@ -1332,7 +1332,7 @@ header {
   width: 16px;
   height: 17px;
   background-color: #000;
-  transform: rotate(0deg) translateX(0);
+  transform: rotate(0deg) translateX(10px);
   opacity: 0;
   animation: ps-rotateToRombo 0.8s ease-out 1.7s forwards;
 }
@@ -1386,7 +1386,7 @@ header {
 
 .ps-romantic-cta-button {
   display: inline-block;
-  background: linear-gradient(45deg, #2c3e50, #34495e);
+  background-color: var(--boton-color);
   color: white;
   padding: 15px 35px;
   text-decoration: none;
@@ -1441,6 +1441,36 @@ header {
 
 .ps-romantic-slider-dot.active {
   background-color: #000;
+}
+/* Navegación del slider */
+.ps-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.ps-nav-btn {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #000;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.ps-nav-btn:hover {
+  background-color: var(--boton-color);
+  color: white;
+}
+
+.ps-nav-btn.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* Keyframes de animaciones */
@@ -1607,6 +1637,7 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  height: auto;
 }
 
 .dtn-btn {
@@ -1616,7 +1647,7 @@ header {
   background-color: var(--boton-color);
   color: var(--boton-texto);
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 2px;
   font-weight: 500;
   transition: all 0.3s ease;
   border: 2px solid var(--boton-color);
@@ -1641,7 +1672,7 @@ header {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  min-height: 50vh;
+  min-height: 60vh;
 }
 
 .dtn-breakfast-section::before {
@@ -1658,10 +1689,10 @@ header {
 .dtn-breakfast-card {
   position: relative;
   z-index: 2;
-  max-width: 450px;
-  margin: 0 auto;
+  max-width: 750px;
+  margin: 4rem auto 0 auto; /* ← agrega margen arriba */
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
+  border-radius: 2px;
   padding: 35px;
   text-align: center;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -2034,7 +2065,6 @@ header {
   }
 }
 /*******************TURISMO********************/
-
 .hbi-content {
   width: 100%;
   padding: 60px 20px;
@@ -2368,7 +2398,6 @@ header {
   z-index: 10;
 }
 
-/* Footer */
 .hbi-footer {
   text-align: center;
   padding: 30px 0 0;
@@ -2377,8 +2406,6 @@ header {
   margin-top: 50px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-
-/* Responsive */
 
 @media (max-width: 1024px) {
   .hbi-gallery {
@@ -2394,7 +2421,7 @@ header {
   }
 
   .hbi-btn {
-    padding: 16px 42px; /* Botón más grande */
+    padding: 16px 42px;
     font-size: 1rem;
   }
   .hbi-room-desc {
@@ -2402,7 +2429,7 @@ header {
     padding: 17px;
   }
   .hbi-item-title {
-    font-size: 1.2rem; /* Títulos más grandes */
+    font-size: 1.2rem;
   }
 }
 
@@ -2602,6 +2629,7 @@ header {
   }
 }
 /*******************UBICACION********************/
+/* Sección de ubicación */
 .ubi-location-section {
   position: relative;
   width: 100%;
@@ -2622,6 +2650,7 @@ header {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Contenido de texto a la izquierda */
 .ubi-text-content {
   position: relative;
   width: 50%;
@@ -2631,6 +2660,7 @@ header {
   background-color: var(--icon-color);
 }
 
+/* Mapa a la derecha */
 .ubi-map-container {
   position: relative;
   width: 50%;
@@ -2642,7 +2672,13 @@ header {
   width: 100%;
   height: 100%;
   background-color: var(--trm-gris-claro);
-  right: 0;
+}
+
+.ubi-map-iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .ubi-title {
@@ -2651,7 +2687,7 @@ header {
   font-weight: 400;
   background: linear-gradient(
     180deg,
-    var(--azul-principal) 0%,
+    var(--azul-secundario) 0%,
     var(--azul-terciario) 100%
   );
   -webkit-background-clip: text;
@@ -2661,43 +2697,86 @@ header {
   margin-bottom: 40px;
 }
 
-.ubi-description {
-  font-family: "Garamond", serif;
+/* Estilos del acordeón */
+.ubi-accordion {
+  width: 100%;
+}
+
+.ubi-accordion-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--trm-gris-claro);
+}
+
+.ubi-accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.ubi-accordion-button {
+  font-family: "Prata", serif;
   font-size: 28px;
+  font-weight: 400;
   color: var(--texto-color);
-  margin-bottom: 40px;
-  line-height: 1.3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.ubi-accordion-button:hover {
+  color: var(--boton-texto-hover);
+}
+
+.ubi-accordion-icon {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+  color: var(--azul-secundario);
+}
+
+.ubi-accordion-button.active + .ubi-accordion-icon {
+  transform: rotate(45deg);
+}
+
+.ubi-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 45px;
+}
+
+.ubi-accordion-content.active {
+  max-height: 500px;
+  padding-bottom: 20px;
 }
 
 .ubi-info-item {
   position: relative;
   font-family: "Garamond", serif;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--texto-color);
-  margin-bottom: 25px;
-  padding-left: 70px;
+  margin-bottom: 15px;
+  padding-left: 40px;
   display: flex;
   align-items: center;
-  min-height: 60px;
+  min-height: 40px;
 }
 
 .ubi-icon {
   position: absolute;
   left: 0;
-  font-size: 36px;
-  width: 60px;
+  font-size: 24px;
+  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--azul-principal);
-}
-
-/* Estilos específicos para el mapa */
-.ubi-map-iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: none;
+  color: var(--azul-secundario);
 }
 
 /* Responsive */
@@ -2721,20 +2800,8 @@ header {
     text-align: center;
   }
 
-  .ubi-description {
-    font-size: 22px;
-  }
-
-  .ubi-info-item {
-    font-size: 18px;
-  }
-
-  .ubi-gps-label {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin-bottom: 20px;
-    text-align: right;
+  .ubi-accordion-button {
+    font-size: 24px;
   }
 }
 
@@ -2743,20 +2810,19 @@ header {
     font-size: 32px;
   }
 
-  .ubi-description {
-    font-size: 18px;
-    margin-bottom: 30px;
+  .ubi-accordion-button {
+    font-size: 20px;
   }
 
   .ubi-info-item {
     font-size: 16px;
-    padding-left: 50px;
-    min-height: 50px;
+    padding-left: 35px;
+    min-height: 30px;
   }
 
   .ubi-icon {
-    font-size: 28px;
-    width: 40px;
+    font-size: 20px;
+    width: 30px;
   }
 }
 /**********************fotter*********************/
@@ -2791,7 +2857,7 @@ header {
 }
 
 .ft-logo {
-  max-width: 250px;
+  max-width: 320px;
   height: auto;
 }
 
@@ -2871,22 +2937,24 @@ header {
 }
 
 .ft-social-icon {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border: 1px solid var(--icon-border-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--icon-color);
   font-size: 16px;
   transition: all 0.3s;
-  background-color: transparent;
+  background-color: var(--icon-color);
+  color: var(--azul-principal);
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .ft-social-icon:hover {
-  background-color: var(--icon-color);
-  color: var(--azul-principal);
+  color: var(--icon-color);
+  background-color: transparent;
 }
 
 .ft-divider {

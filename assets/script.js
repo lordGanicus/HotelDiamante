@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-/*******************************Habitaciones ***** */
+/*******************************Habitaciones *****************************************/
 document.addEventListener("DOMContentLoaded", () => {
   const habitacionesSwiper = new Swiper(".habitaciones-swiper", {
     loop: true,
@@ -237,11 +237,13 @@ document.addEventListener("DOMContentLoaded", () => {
     habitacionesSwiper.update();
   }, 300);
 });
-/*******************************paquetes************************* */
+/*************************************paquetes******************************/
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".ps-romantic-slide");
   const dots = document.querySelectorAll(".ps-romantic-slider-dot");
   const nextArrow = document.getElementById("ps-arrow-next");
+  const prevButton = document.querySelector(".ps-prev");
+  const nextButton = document.querySelector(".ps-next");
   const sliderContainer = document.querySelector(".ps-romantic-slider");
 
   let currentSlide = 0;
@@ -296,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function startAutoSlide() {
     autoSlideInterval = setInterval(() => {
       goToSlide(currentSlide + 1);
-    }, 3000); // velocidad del slider: cada 3 segundos
+    }, 3000);
   }
 
   function resetAutoSlide() {
@@ -304,19 +306,30 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
   }
 
-  // Botón de siguiente
-  nextArrow.addEventListener("click", () => {
-    goToSlide(currentSlide + 1);
-  });
+  if (nextArrow) {
+    nextArrow.addEventListener("click", () => {
+      goToSlide(currentSlide + 1);
+    });
+  }
 
-  // Dots
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      goToSlide(currentSlide - 1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      goToSlide(currentSlide + 1);
+    });
+  }
+
   dots.forEach((dot) => {
     dot.addEventListener("click", () => {
       goToSlide(parseInt(dot.dataset.index));
     });
   });
 
-  // Autoplay pausa/reanuda al pasar mouse
   sliderContainer.addEventListener("mouseenter", () => {
     clearInterval(autoSlideInterval);
   });
@@ -325,7 +338,6 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
   });
 
-  // Touch Swipe
   sliderContainer.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
   });
@@ -339,20 +351,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const distance = startX - endX;
 
     if (distance > threshold) {
-      goToSlide(currentSlide + 1); // izquierda
+      goToSlide(currentSlide + 1);
     } else if (distance < -threshold) {
-      goToSlide(currentSlide - 1); // derecha
+      goToSlide(currentSlide - 1);
     }
   });
 
-  // Iniciar primer slide y animaciones
   resetAnimations(slides[0]);
 
   setTimeout(() => {
     startAutoSlide();
-  }, 1000); // espera 1 segundo tras la primera animación
+  }, 1000);
 });
-/*****************desayunos ****************/
+/**************************************** desayunos **********************************/
 // Namespace para evitar conflictos
 const dyGallery = {
   init: function () {
@@ -691,5 +702,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // Ajustar inicialmente
   window.addEventListener("load", () => {
     updateProgress(0);
+  });
+});
+/**********************************Ubicacion******************************/
+// Funcionalidad del acordeón
+document.querySelectorAll(".ubi-accordion-header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const item = header.parentElement;
+    const content = header.nextElementSibling;
+    const icon = header.querySelector(".ubi-accordion-icon");
+
+    // Cerrar otros items abiertos
+    document.querySelectorAll(".ubi-accordion-item").forEach((otherItem) => {
+      if (otherItem !== item) {
+        otherItem
+          .querySelector(".ubi-accordion-content")
+          .classList.remove("active");
+        otherItem
+          .querySelector(".ubi-accordion-icon")
+          .classList.remove("fa-minus");
+        otherItem.querySelector(".ubi-accordion-icon").classList.add("fa-plus");
+      }
+    });
+
+    // Alternar el item actual
+    content.classList.toggle("active");
+
+    // Cambiar icono
+    if (content.classList.contains("active")) {
+      icon.classList.remove("fa-plus");
+      icon.classList.add("fa-minus");
+    } else {
+      icon.classList.remove("fa-minus");
+      icon.classList.add("fa-plus");
+    }
   });
 });

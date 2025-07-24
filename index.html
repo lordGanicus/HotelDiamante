@@ -687,9 +687,8 @@
       <section class="ps-romantic-container">
         <header class="ps-romantic-header">
           <div class="ps-romantic-title-row">
-            <div class="ps-romantic-decorative-line"></div>
             <h1 class="ps-romantic-main-title">
-              Tu Experiencia Completa<br />
+              —Tu Experiencia Completa<br />
               en un Solo Paquete
             </h1>
           </div>
@@ -769,17 +768,25 @@
             <div class="ps-romantic-slider-dot" data-index="1"></div>
           </div>
         </div>
+        <!-- Navigation -->
+        <div class="ps-navigation">
+          <button class="ps-nav-btn ps-prev">‹</button>
+          <button class="ps-nav-btn ps-next">›</button>
+        </div>
       </section>
 
       <!-- SECCION DE desayuno -->
       <section class="dtn-breakfast-section" id="dtn-breakfast-section">
         <div class="dtn-main-container">
           <div class="dtn-breakfast-card">
-            <h2 class="dtn-breakfast-title">Desayunos a tu Estilo</h2>
+            <h2 class="dtn-breakfast-title">
+              Descubre por qué hospedarte en Diamante Azul
+            </h2>
             <p class="dtn-breakfast-description">
-              Cada mañana en Diamante Azul te espera un desayuno variado con
-              frutas frescas, panes artesanales, jugos naturales y opciones
-              calientes para comenzar bien el día.
+              Cada mañana te espera un delicioso desayuno continental para
+              empezar el día, acompañado de la comodidad de hospedarte en un
+              lugar céntrico, donde tendrás a tu alcance restaurantes, mercados,
+              senderos y miradores para disfrutar cada momento de tu estancia..
             </p>
             <button class="dtn-btn" id="dyOpenBtn">Ver más</button>
           </div>
@@ -895,42 +902,90 @@
         </div>
       </div>
 
-      <!--Ubicación Actual-->
+      <!-- Sección de Ubicación -->
       <section class="ubi-location-section" id="ubi-location-section">
         <div class="ubi-content-wrapper">
-          <!-- Contenido de texto -->
+          <!-- Contenido de texto a la izquierda -->
           <div class="ubi-text-content">
-            <h1 class="ubi-title">Ubicación Actual</h1>
+            <h1 class="ubi-title">DONDE ESTAMOS UBICADOS</h1>
 
-            <p class="ubi-description">
-              Hotel Diamante Azul, con una ubicación céntrica en la ciudad de La
-              Paz
-            </p>
-
-            <!-- Información de ubicación -->
-            <div class="ubi-info-item">
-              <div class="ubi-icon">
-                <i class="fas fa-walking"></i>
+            <!-- Acordeón de información -->
+            <div class="ubi-accordion">
+              <!-- Primer elemento - Cómo llegar -->
+              <div class="ubi-accordion-item">
+                <div class="ubi-accordion-header">
+                  <button class="ubi-accordion-button">
+                    <i class="fas fa-map-marker-alt"></i> COMO LLEGAR
+                  </button>
+                  <i class="fas fa-plus ubi-accordion-icon"></i>
+                </div>
+                <div class="ubi-accordion-content">
+                  <div class="ubi-info-item">
+                    <div class="ubi-icon">
+                      <i class="fas fa-map-pin"></i>
+                    </div>
+                    <span>Av. Illampu, Pasaje Aroma #40, La Paz, Bolivia</span>
+                  </div>
+                </div>
               </div>
-              <span>19 min a pie de Estación Teleférico Cementerio</span>
-            </div>
 
-            <div class="ubi-info-item">
-              <div class="ubi-icon">
-                <i class="fas fa-subway"></i>
+              <!-- Segundo elemento - Aeropuerto -->
+              <div class="ubi-accordion-item">
+                <div class="ubi-accordion-header">
+                  <button class="ubi-accordion-button">
+                    <i class="fas fa-plane"></i> AEROPUERTO
+                  </button>
+                  <i class="fas fa-plus ubi-accordion-icon"></i>
+                </div>
+                <div class="ubi-accordion-content">
+                  <div class="ubi-info-item">
+                    <div class="ubi-icon">
+                      <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <span
+                      >El aeropuerto (Aeropuerto internacional El Alto) está a 6
+                      km</span
+                    >
+                  </div>
+                </div>
               </div>
-              <span>3 km de Estación Teleférico Buenos Aires</span>
-            </div>
 
-            <div class="ubi-info-item">
-              <div class="ubi-icon">
-                <i class="fas fa-car"></i>
+              <!-- Tercer elemento - Transporte local -->
+              <div class="ubi-accordion-item">
+                <div class="ubi-accordion-header">
+                  <button class="ubi-accordion-button">
+                    <i class="fas fa-bus"></i> TRANSPORTE LOCAL
+                  </button>
+                  <i class="fas fa-plus ubi-accordion-icon"></i>
+                </div>
+                <div class="ubi-accordion-content">
+                  <div class="ubi-info-item">
+                    <div class="ubi-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <span
+                      >Cobertura operativa 24/7 con disponibilidad permanente de
+                      taxis públicos y privados.</span
+                    >
+                  </div>
+                  <div class="ubi-info-item">
+                    <div class="ubi-icon">
+                      <i class="fas fa-walking"></i>
+                    </div>
+                    <span>19 min a pie de Estación Teleférico Cementerio</span>
+                  </div>
+                  <div class="ubi-info-item">
+                    <div class="ubi-icon">
+                      <i class="fas fa-subway"></i>
+                    </div>
+                    <span>3 km de Estación Teleférico Buenos Aires</span>
+                  </div>
+                </div>
               </div>
-              <span>Disposición de Vehículo las 24 hrs</span>
             </div>
           </div>
 
-          <!-- Mapa -->
+          <!-- Mapa a la derecha -->
           <div class="ubi-map-container">
             <div class="ubi-map-background"></div>
             <iframe
@@ -939,7 +994,8 @@
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+            >
+            </iframe>
           </div>
         </div>
       </section>
@@ -994,7 +1050,6 @@
 
             <!-- Columna central - Iconos -->
             <div class="ft-column ft-column-center">
-              <h3 class="ft-title">HOTEL</h3>
               <div class="ft-social-icons">
                 <a
                   href="https://www.facebook.com/HDiamanteAzul"
@@ -1023,12 +1078,8 @@
               <h3 class="ft-title">Contacto</h3>
               <div class="ft-phone-container">
                 <div class="ft-contact-icon">
-                  <a
-                    href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="fas fa-phone-alt"></i>
+                  <a rel="noopener noreferrer">
+                    <i class="fas fa-phone"></i>
                   </a>
                 </div>
                 <div>(+591) 69951699</div>
