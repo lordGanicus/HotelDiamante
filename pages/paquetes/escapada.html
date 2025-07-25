@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/assets/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
     />
+
     <!-- Google Fonts prata -->
 
     <link
@@ -127,12 +128,6 @@
       <!-- Contenedor principal de paquetes -->
       <section class="ps-paquetes">
         <div class="ps-hero">
-          <div class="ps-circle-img">
-            <img
-              src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg"
-              alt="Habitación Decorada"
-            />
-          </div>
           <div class="swiper-pagination"></div>
           <div class="menu-button openMenu" id="openMenu">
             <img
@@ -155,166 +150,156 @@
             </p>
           </div>
         </div>
-
-        <div class="ps-main-paquetes">
-          <div class="ps-rectangule-img-movil">
-            <img
-              src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg"
-              alt="Habitación Decorada"
-            />
-          </div>
-          <h1 class="ps-title">Servicio Incluidos</h1>
-
-          <div class="ps-content">
-            <div class="ps-card-services">
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752504941/ae241ed6-12b9-49d2-8a0a-35cc8a69d3d2.png"
-                  alt="Icono Matrimonial"
-                  class="service-icon"
-                />
-                Habitación Matrimonial
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752504951/457d56e7-b44f-4bb4-b221-476c18dcc3ac.png"
-                  alt="Icono Rosa"
-                  class="service-icon"
-                />
-                Pétalos de Rosa
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752504960/4fffcc39-24f5-4544-9ac5-2da1d81d736e.png"
-                  alt="Icono decorado de toalla"
-                  class="service-icon"
-                />
-                Decorado de toallas
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752504972/102fc9cc-fe74-47b3-9901-fc51f86f42fb.png"
-                  alt="Icono velas"
-                  class="service-icon"
-                />
-                Velas
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752504982/e8c52f44-8d22-4d75-9e29-7ee05bdb18ca.png"
-                  alt="Icono vino"
-                  class="service-icon"
-                />
-                Vino
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752505006/65af5fd1-c8fe-426c-9e00-8351b2d33a66.png"
-                  alt="Icono baño privado"
-                  class="service-icon"
-                />
-                Baño Privado
-              </div>
-
-              <div class="ps-service-item">
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752505021/414390da-f801-47fb-8d13-2f6603ae9f29.png"
-                  alt="Icono 2 horas"
-                  class="service-icon"
-                />
-                2 Horas
-              </div>
-            </div>
-          </div>
-          <a href="#" class="ps-btn-reservar">Reservar</a>
-        </div>
       </section>
-      <!-- seccion redireccionar paquetes -->
-      <section class="prd-romantic-escape-section">
-        <!-- Fondo con imagen y overlay -->
-        <div class="prd-background-image"></div>
-        <div class="prd-background-overlay"></div>
+      <section>
+        <div class="ps-info-container">
+          <!-- Header Section -->
+          <div class="ps-info-header">
+            <h1 class="ps-info-main-title">— Servicios Incluidos</h1>
+            <div class="ps-info-title-line"></div>
+          </div>
+        </div>
 
-        <!-- Contenedor de tarjetas -->
-        <div class="prd-cards-container">
-          <!-- Tarjeta 1 -->
-          <div class="prd-romantic-card">
-            <div class="prd-card-image-container">
-              <img
-                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752584996/a5a37794-214f-4cbc-b964-8f9875816a47.png"
-                alt="Escapada Romántica"
-                class="prd-card-circle-image"
-              />
-              <div class="prd-view-detail">
-                <a
-                  href="../paquetes/escapada.html"
-                  style="
-                    text-decoration: none;
-                    color: inherit;
-                    display: flex;
-                    align-items: center;
-                  "
-                >
-                  Ver más
-                  <img
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTUgMTJoMTRNOSA1bDcgNy03IDd6Ii8+PC9zdmc+"
-                    class="prd-arrow-icon"
-                    alt="flecha"
-                    style="margin-left: 4px"
-                  />
-                </a>
+        <!-- Services Slider Section (full width) -->
+        <div class="ps-info-services-section">
+          <div class="ps-info-services-container">
+            <div class="swiper ps-info-services-swiper">
+              <div class="swiper-wrapper">
+                <!-- Habitación Matrimonial -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393128/15f5c6a7-c857-483a-a54c-653f088e8a19.png"
+                      alt="Habitación Matrimonial"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Habitación<br />Matrimonial
+                    </h4>
+                  </div>
+                </div>
+
+                <!-- Pétalos de Rosa -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393150/6ed05d6e-2a52-4340-b8fa-ae79f52d4ee3.png"
+                      alt="Pétalos de Rosa"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">Pétalos de<br />Rosa</h4>
+                  </div>
+                </div>
+
+                <!-- Decorado de toallas -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item ps-info-active">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393182/d4775826-7d68-4012-9cf2-f9c0d756d700.png"
+                      alt="Decorado de toallas"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Decorado de<br />toallas
+                    </h4>
+                  </div>
+                </div>
+
+                <!-- Velas -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393285/70b9dc33-5b48-4b81-a66a-e7c329cb8e18.png"
+                      alt="Velas"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">iluminacion con velas</h4>
+                  </div>
+                </div>
+
+                <!-- Vino -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393270/b7b032c6-abde-4f8d-9ac7-67365361ad44.png"
+                      alt="Vino"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title"><br />Vino</h4>
+                  </div>
+                </div>
+
+                <!-- Baño Privado -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393315/018444c3-96e8-4b65-a789-86214ec3162e.png"
+                      alt="Baño Privado"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">Baño<br />Privado</h4>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="prd-card-content">
-              <h2 class="prd-card-title">Paquete Escapada Romántica</h2>
-              <p class="prd-card-description">
-                Haz de tu escapada un recuerdo inolvidable con el amor de tu
-                vida
-              </p>
+
+            <!-- Navigation buttons -->
+            <div class="ps-info-services-navigation">
+              <button class="ps-info-services-prev">‹</button>
+              <button class="ps-info-services-next">›</button>
             </div>
           </div>
+        </div>
 
-          <!-- Tarjeta 2 -->
-          <div class="prd-romantic-card">
-            <div class="prd-card-image-container">
-              <img
-                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752585275/00ec77d5-64dd-4cbb-9976-db4ae52f1615.png"
-                alt="Velada Romántica"
-                class="prd-card-circle-image"
-              />
-              <div class="prd-view-detail">
-                <a
-                  href="velada.html"
-                  style="
-                    text-decoration: none;
-                    color: inherit;
-                    display: flex;
-                    align-items: center;
-                  "
+        <div class="ps-info-container">
+          <!-- Main Content Section -->
+          <div class="ps-info-main-content">
+            <!-- Reservation Section -->
+            <section class="ps-info-reservation-section">
+              <h2 class="ps-info-reservation-title">Reservar Ahora</h2>
+
+              <div class="ps-info-date-container">
+                <input
+                  type="date"
+                  class="ps-info-date-input"
+                  id="ps-info-reservation-date"
+                />
+                <svg
+                  class="ps-info-calendar-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
                 >
-                  Ver más
-                  <img
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTUgMTJoMTRNOSA1bDcgNy03IDd6Ii8+PC9zdmc+"
-                    class="prd-arrow-icon"
-                    alt="flecha"
-                    style="margin-left: 4px"
-                  />
-                </a>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
               </div>
-            </div>
-            <div class="prd-card-content">
-              <h2 class="prd-card-title">
-                Velada Romántica con tu Persona Especial
-              </h2>
-              <p class="prd-card-description">
-                Haz de esta velada un recuerdo que vivirá para siempre.
+
+              <button
+                class="ps-info-reservation-btn"
+                onclick="sendWhatsAppMessage(this)"
+                data-paquete="Escapada Romántica"
+              >
+                Consultar Tarifa
+              </button>
+            </section>
+
+            <!-- Divider -->
+            <div class="ps-info-divider"></div>
+
+            <!-- Moments Section -->
+            <section class="ps-info-moments-section">
+              <h2 class="ps-info-moments-title">Momentos que Enamoran</h2>
+              <p class="ps-info-moments-description">
+                Sumérjanse en una experiencia romántica que combina privacidad,
+                comodidad y la posibilidad de explorar juntos un entorno lleno
+                de encanto. Una escapada ideal para renovar su amor y crear
+                nuevas historias juntos.
               </p>
-            </div>
+            </section>
           </div>
         </div>
       </section>
@@ -436,7 +421,9 @@
       />
     </a>
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="/assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="../../assets/scriptPaquete.js"></script>
+    <!-- JS 
+     <script src="/assets/script.js"></script>-->
   </body>
 </html>

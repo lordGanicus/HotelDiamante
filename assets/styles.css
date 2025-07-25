@@ -3033,9 +3033,9 @@ header {
 
 .ps-paquetes .ps-hero {
   width: 100%;
-  height: 120vh;
+  height: 70vh;
   background: url("https://res.cloudinary.com/ds9subkxg/image/upload/v1752496911/811d58fa-8f0b-4cbe-9466-2b2f231b3b4a.png")
-    no-repeat center center;
+    no-repeat center 90%;
   background-size: cover;
   position: relative;
 }
@@ -3047,356 +3047,387 @@ header {
   background-position: center center;
   position: relative;
 }
+/****************Paquetess/Info*******************/
+.ps-info-container {
+  max-width: 1645px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+}
 
-.ps-paquetes .ps-circle-img {
-  position: absolute;
-  top: 90%;
-  left: -150px;
-  width: 1080px;
-  height: 1200px;
-  border-radius: 55%;
+/* Header Section */
+.ps-info-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ps-info-main-title {
+  font-family: "Merriweather", serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: ps-info-fadeInUp 1s ease-out 0.3s forwards;
+}
+
+/* Services Slider Section */
+.ps-info-services-section {
+  background-color: #04224ae6;
+  padding: 50px 0;
+  margin-bottom: 60px;
+  border-radius: 8px;
+  position: relative;
   overflow: hidden;
-  z-index: 3;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.ps-paquetes .ps-circle-img img {
+.ps-info-services-container {
+  max-width: 1645px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ps-info-services-swiper {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  padding: 20px 0;
 }
 
-.ps-paquetes .ps-title {
+.ps-info-service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.ps-info-service-item:hover {
+  background-color: #012555;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.ps-info-service-item.ps-info-active {
+  background-color: #012555;
+  border: 1px solid #031158;
+  box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+.ps-info-service-icon {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.ps-info-service-item:hover .ps-info-service-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.ps-info-service-title {
+  font-family: "EB Garamond", serif;
+  font-size: 28px;
+  color: #ffffff;
   text-align: center;
   font-weight: 400;
-  font-family: "Prata", serif;
-  font-size: 60px;
-  color: #fff;
-  -webkit-text-stroke: 1px #00000099;
-  position: relative;
-  z-index: 5;
-  top: 40px;
-  left: 5%;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  margin-top: auto;
 }
 
-.ps-paquetes .ps-content {
-  display: flex;
-  justify-content: center;
-  max-width: 1400px;
-  margin: 50px auto;
-  position: relative;
-  z-index: 5;
-  padding-right: 40px;
-  left: 30%;
+.ps-info-service-item:hover .ps-info-service-title,
+.ps-info-service-item.ps-info-active .ps-info-service-title {
+  opacity: 1;
+  font-weight: 500;
 }
 
-.ps-paquetes .ps-card-services {
-  background: var(--azul-principal);
-  border-radius: 30px;
-  padding: 50px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 -4px 16px rgba(0, 0, 0, 0.35),
-    8px 0 24px rgba(0, 0, 0, 0.45), -8px 0 24px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  width: 480px;
-  transition: all 0.5s ease;
-  overflow: hidden;
-  position: relative;
-}
-
-/* HOVER efecto glass mejorado */
-.ps-paquetes .ps-card-services:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7), 0 -8px 24px rgba(0, 0, 0, 0.4),
-    12px 0 36px rgba(0, 0, 0, 0.5), -12px 0 36px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(20px) brightness(1.2);
-  -webkit-backdrop-filter: blur(20px) brightness(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transform: translateY(-4px) scale(1.02);
-}
-
-/* Pequeño destello decorativo opcional */
-.ps-paquetes .ps-card-services::after {
-  content: "";
+/* Navigation buttons */
+.ps-info-services-navigation {
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.05) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
   pointer-events: none;
 }
 
-.ps-paquetes .ps-card-services:hover::after {
-  opacity: 1;
-}
-.ps-paquetes .ps-service-item {
+.ps-info-services-prev,
+.ps-info-services-next {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  margin-bottom: 22px;
-  font-size: 26px;
-  color: #ffffff;
-
-  border-radius: 16px;
-  padding: 14px 20px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  transition: all 0.4s ease;
-  cursor: pointer;
+  justify-content: center;
 }
 
-.ps-paquetes .ps-service-item:hover {
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
+.ps-info-services-prev:hover,
+.ps-info-services-next:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
 }
 
-/* Efecto a cada imagen-icono */
-.ps-paquetes .ps-service-item .service-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 6px;
-  margin-right: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s ease;
+/* Main Content Section */
+.ps-info-main-content {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
 }
 
-/* Hover individual en cada imagen */
-.ps-paquetes .ps-service-item:hover .service-icon {
-  transform: scale(1.15) rotate(-8deg);
-  box-shadow: 0 0 18px rgba(255, 215, 0, 0.6); /* glow dorado */
-  background: rgba(255, 255, 255, 0.16);
+.ps-info-reservation-section {
+  flex: 1;
+  max-width: 400px;
 }
 
-.ps-paquetes .ps-btn-reservar {
-  display: block;
-  width: 250px;
-  margin: 40px auto 80px;
-  padding: 20px;
+.ps-info-reservation-title {
+  font-family: "Prata", serif;
+  font-size: 48px;
+  color: #000000;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: ps-info-slideInLeft 1s ease-out 1.2s forwards;
+}
+
+.ps-info-date-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 2px solid #f0f0f0;
+  border-radius: 8px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.ps-info-date-container:focus-within {
+  border-color: #04224ae6;
+  box-shadow: 0 0 10px rgba(4, 34, 74, 0.2);
+}
+
+.ps-info-date-input {
+  flex: 1;
+  padding: 10px;
+  font-family: "Verdana", sans-serif;
+  font-size: 20.5px;
+  color: #060c2c;
+  border: none;
+  background: transparent;
+  letter-spacing: 0.52px;
   text-align: center;
-  background-color: var(--boton-color);
-  color: #fff;
-  font-size: 36px;
-  border-radius: 20px;
-  border: 2px solid #000;
-  text-decoration: none;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.65);
-  z-index: 5;
-  transition: background-color 0.3s ease, color 0.3s ease,
-    border-color 0.3s ease;
+}
+
+.ps-info-date-input:focus {
+  outline: none;
+}
+
+.ps-info-calendar-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ps-info-calendar-icon:hover {
+  transform: scale(1.1);
+}
+
+.ps-info-reservation-btn {
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #04224ae6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Prata", serif;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ps-info-reservation-btn:hover {
+  background-color: #012555;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ps-info-divider {
+  width: 3px;
+  height: 400px;
+  background-color: #ddd;
+  align-self: stretch;
+}
+
+.ps-info-moments-section {
+  flex: 2;
+  padding-left: 40px;
+}
+
+.ps-info-moments-title {
+  font-family: "Prata", serif;
+  font-size: 48px;
+  color: #000000;
+  margin-bottom: 20px;
   position: relative;
-  top: 10%;
+  opacity: 0;
+  transform: translateX(30px);
+  animation: ps-info-slideInRight 1s ease-out 1.4s forwards;
 }
 
-.ps-paquetes .ps-btn-reservar:hover {
-  background-color: var(--boton-fondo-hover);
-  color: var(--boton-texto-hover);
-  border-color: var(--boton-borde-hover);
+.ps-info-moments-title::before {
+  content: "";
+  position: absolute;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 78px;
+  height: 3px;
+  background-color: #000;
 }
 
-.ps-paquetes .ps-main-paquetes {
-  background: linear-gradient(
-    180deg,
-    #9f0a0b 0%,
-    #bd585a9d 44%,
-    #cb80807c 72%,
-    #ddadad73 86%,
-    #fff9f93a 100%
-  );
+.ps-info-moments-description {
+  font-family: "EB Garamond", serif;
+  font-size: 32px;
+  color: #000000;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: ps-info-fadeInUp 1s ease-out 1.6s forwards;
 }
-.service-icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 8px;
-  vertical-align: middle;
+
+/* Animaciones */
+@keyframes ps-info-fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.ps-rectangule-img-movil {
-  display: none;
+
+@keyframes ps-info-slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-@media (min-width: 481px) {
-  .ps-rectangule-img-movil {
-    position: relative;
+
+@keyframes ps-info-slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ps-info-scaleIn {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .ps-info-main-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ps-info-divider {
     width: 100%;
-    margin: 0 auto;
+    height: 3px;
+  }
+
+  .ps-info-moments-section {
+    padding-left: 0;
+  }
+
+  .ps-info-moments-title::before {
+    left: -90px;
   }
 }
-@media (max-width: 1440px) {
-  .ps-paquetes .ps-card-services {
-    width: 400px;
-    padding: 40px;
+
+@media (max-width: 992px) {
+  .ps-info-service-icon {
+    width: 70px;
+    height: 70px;
   }
 
-  .ps-paquetes .ps-circle-img {
-    width: 900px;
-    height: 1000px;
-    left: -200px;
-  }
-  .ps-paquetes .ps-content {
-    left: 22%;
-  }
-}
-/* Versión para tablets (768px - 1024px) */
-@media (max-width: 1023px) {
-  .ps-paquetes .ps-hero-2 {
-    background-position: 65% center;
-    height: 90vh;
-  }
-
-  .ps-paquetes .ps-circle-img {
-    display: none;
-  }
-
-  .ps-rectangule-img-movil {
-    display: block;
-    width: 100%;
-    max-width: 920px;
-    margin: auto 0;
-    padding: 20px 20px;
-  }
-
-  .ps-rectangule-img-movil img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    display: block;
-    border-radius: 18px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-  }
-  .ps-paquetes .ps-hero {
-    height: 80vh;
-  }
-
-  .ps-paquetes .ps-circle-img {
-    width: 500px;
-    height: 500px;
-    top: 75%;
-    left: -100px;
-  }
-
-  .ps-paquetes .ps-title {
-    font-size: 48px;
-    top: 30px;
-    left: 0;
-  }
-
-  .ps-paquetes .ps-content {
-    left: 5%;
-    padding-right: 20px;
-  }
-
-  .ps-paquetes .ps-card-services {
-    width: 380px;
-    padding: 30px;
-  }
-
-  .ps-paquetes .ps-service-item {
+  .ps-info-service-title {
     font-size: 22px;
-    margin-bottom: 18px;
-    padding: 12px 16px;
-  }
-
-  .ps-paquetes .ps-service-item .service-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 12px;
-  }
-
-  .ps-paquetes .ps-btn-reservar {
-    width: 220px;
-    font-size: 30px;
-    padding: 16px;
   }
 }
 
-/* Versión para móviles (hasta 767px) */
-@media (max-width: 767px) {
-  #tittle-desayuno {
-    left: 0;
-    text-align: center;
+@media (max-width: 768px) {
+  .ps-info-container {
+    padding: 20px 15px;
   }
-  .ps-paquetes .ps-hero-2 {
-    background-position: 62% center;
-    height: 70vh;
+
+  .ps-info-main-title {
+    font-size: 48px;
   }
-  .hero-content p {
+
+  .ps-info-reservation-title,
+  .ps-info-moments-title {
+    font-size: 36px;
+  }
+
+  .ps-info-moments-description {
+    font-size: 24px;
+  }
+
+  .ps-info-moments-title::before {
     display: none;
   }
-  .ps-paquetes .ps-hero {
-    height: 60vh;
-    background-position: top center;
-  }
 
-  .ps-paquetes .ps-title {
-    font-size: 36px;
-    top: 20px;
-    -webkit-text-stroke: 0.5px #00000099;
-    padding: 0 20px;
+  .ps-info-services-navigation {
+    display: none;
   }
-
-  .ps-paquetes .ps-content {
-    left: 0;
-    padding-right: 0;
-    margin: 30px auto;
-    justify-content: center;
-  }
-
-  .ps-paquetes .ps-card-services {
-    width: 90%;
-    max-width: 350px;
-    padding: 25px;
-    margin: 0 auto;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .ps-paquetes .ps-service-item {
-    font-size: 18px;
-    margin-bottom: 15px;
-    padding: 10px 14px;
-    backdrop-filter: none;
-  }
-
-  .ps-paquetes .ps-service-item .service-icon {
-    width: 36px;
-    height: 36px;
-    margin-right: 10px;
-  }
-
-  .ps-paquetes .ps-btn-reservar {
-    width: 180px;
-    font-size: 24px;
-    padding: 12px;
-    margin: 30px auto 60px;
-  }
-
-  /* Ajustes específicos para pantallas muy pequeñas */
 }
+
+@media (max-width: 576px) {
+  .ps-info-service-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ps-info-service-title {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 480px) {
-  .ps-paquetes .ps-hero {
-    height: 50vh;
+  .ps-info-main-title {
+    font-size: 36px;
   }
 
-  .ps-paquetes .ps-title {
-    font-size: 32px;
+  .ps-info-reservation-title,
+  .ps-info-moments-title {
+    font-size: 28px;
   }
 
-  .ps-paquetes .ps-card-services {
-    padding: 20px;
-  }
-
-  .ps-paquetes .ps-service-item {
-    font-size: 16px;
+  .ps-info-moments-description {
+    font-size: 20px;
   }
 }
 /****************************Paquetes redireccion**************************/
