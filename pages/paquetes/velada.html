@@ -126,7 +126,7 @@
     <main>
       <!-- Contenedor principal de paquetes -->
       <section class="ps-paquetes">
-        <div class="ps-hero">
+        <div class="ps-hero-2">
           <div class="swiper-pagination"></div>
           <div class="menu-button openMenu" id="openMenu">
             <img
@@ -141,13 +141,6 @@
           >
             <i class="fa-solid fa-bell"></i> Reservar
           </a>
-          <div class="hero-content" id="heroContent">
-            <h1>Escapada Romantica</h1>
-            <p>
-              “Vive una experiencia única con quien amas, en un ambiente
-              acogedor y lleno de detalles que enamoran.”
-            </p>
-          </div>
         </div>
       </section>
       <!-- seccion redireccionar paquetes -->
@@ -240,6 +233,70 @@
                     <h4 class="ps-info-service-title">Baño<br />Privado</h4>
                   </div>
                 </div>
+
+                <!-- Fresas o uvas (a elección) -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753705930/57ddb7af-316c-402b-a1e2-b0d5e262945c.png"
+                      alt="Fresas o uvas"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Fresas o<br />uvas (a elección)
+                    </h4>
+                  </div>
+                </div>
+                <!-- Música ambiente -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753705975/98f20f09-ad18-4454-ab09-55da2077740f.png"
+                      alt="Música ambiente"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">Música<br />ambiente</h4>
+                  </div>
+                </div>
+                <!-- Letras Led "LOVE" o luces LED -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753706025/f8687453-de1b-4a73-88e9-f12b40014ec3.png"
+                      alt='Letras Led "LOVE" o luces LED'
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Letras Led<br />"LOVE" o luces LED
+                    </h4>
+                  </div>
+                </div>
+                <!-- Desayuno al día siguiente en cafetería -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753706088/86925585-33fa-4160-a6c0-f0200e51308d.png"
+                      alt="Desayuno al día siguiente en cafetería"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Desayuno al día<br />siguiente en cafetería
+                    </h4>
+                  </div>
+                </div>
+                <!-- Excelente vista a la ciudad -->
+                <div class="swiper-slide">
+                  <div class="ps-info-service-item">
+                    <img
+                      src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753706115/c6d576cc-d00b-46ae-8292-2c312673d80a.png"
+                      alt="Excelente vista a la ciudad"
+                      class="ps-info-service-icon"
+                    />
+                    <h4 class="ps-info-service-title">
+                      Excelente vista<br />a la ciudad
+                    </h4>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -281,7 +338,7 @@
               <button
                 class="ps-info-reservation-btn"
                 onclick="sendWhatsAppMessage(this)"
-                data-paquete="Escapada Romántica"
+                data-paquete="Velada Romántica"
               >
                 Consultar Tarifa
               </button>
@@ -294,10 +351,10 @@
             <section class="ps-info-moments-section">
               <h2 class="ps-info-moments-title">Momentos que Enamoran</h2>
               <p class="ps-info-moments-description">
-                Sumérjanse en una experiencia romántica que combina privacidad,
-                comodidad y la posibilidad de explorar juntos un entorno lleno
-                de encanto. Una escapada ideal para renovar su amor y crear
-                nuevas historias juntos.
+                Haz que esta noche sea el escenario perfecto para tu historia de
+                amor, en un ambiente elegante y privado diseñado para crear
+                recuerdos inolvidables. No pierdas la oportunidad de disfrutar
+                una experiencia romántica única.
               </p>
             </section>
           </div>
@@ -319,7 +376,7 @@
                   alt="Romantic dinner setup with wine and candles"
                 />
                 <div class="ps-other-hover-overlay">
-                  <a href="#details" class="ps-other-detail-button">
+                  <a href="escapada.html" class="ps-other-detail-button">
                     Ver Detalle
                     <svg
                       class="ps-other-arrow"
@@ -350,7 +407,7 @@
                   alt="Luxury hotel room with romantic ambiance"
                 />
                 <div class="ps-other-hover-overlay">
-                  <a href="#details" class="ps-other-detail-button">
+                  <a href="velada.html" class="ps-other-detail-button">
                     Ver Detalle
                     <svg
                       class="ps-other-arrow"
@@ -427,7 +484,6 @@
 
             <!-- Columna central - Iconos -->
             <div class="ft-column ft-column-center">
-              <h3 class="ft-title">HOTEL</h3>
               <div class="ft-social-icons">
                 <a
                   href="https://www.facebook.com/HDiamanteAzul"
@@ -456,12 +512,8 @@
               <h3 class="ft-title">Contacto</h3>
               <div class="ft-phone-container">
                 <div class="ft-contact-icon">
-                  <a
-                    href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i class="fas fa-phone-alt"></i>
+                  <a rel="noopener noreferrer">
+                    <i class="fas fa-phone"></i>
                   </a>
                 </div>
                 <div>(+591) 69951699</div>
