@@ -141,102 +141,189 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-/*******************************Habitaciones *****************************************/
-document.addEventListener("DOMContentLoaded", () => {
-  const habitacionesSwiper = new Swiper(".habitaciones-swiper", {
-    loop: true,
-    initialSlide: window.innerWidth >= 768 ? 1 : 1, // Segundo slide en desktop, primero en móviles
-    spaceBetween: 30,
-    slidesPerView: 1,
-    centeredSlides: true,
-    grabCursor: true,
-    speed: 800,
-    touchAngle: 45,
-    slideToClickedSlide: true,
-    watchSlidesProgress: true,
-    centerInsufficientSlides: true,
+/*******************nuevo turismo****************/
+let swiperInstance;
 
-    // Navegación
-    navigation: {
-      nextEl: ".habitacion-next",
-      prevEl: ".habitacion-prev",
-    },
+function initSwiper() {
+  // Solo inicializar si es menor a 768px y no se ha creado ya
+  if (window.innerWidth <= 768 && !swiperInstance) {
+    swiperInstance = new Swiper(".swiper", {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".hbt-swiper-pagination",
+        clickable: true,
+        bulletClass: "hbt-swiper-pagination-bullet",
+        bulletActiveClass: "hbt-swiper-pagination-bullet-active",
+      },
+    });
+  }
+}
 
-    // Breakpoints
-    breakpoints: {
-      320: {
-        slidesPerView: 1.1, // Mostrar un poco más que 100%
-        spaceBetween: 10,
-        centeredSlides: true,
-      },
-      480: {
-        slidesPerView: 1.01,
-        spaceBetween: 15,
-        centeredSlides: true,
-      },
-      768: {
-        slidesPerView: 1.04,
-        spaceBetween: 20,
-        centeredSlides: true,
-      },
-      1024: {
-        slidesPerView: 1.5,
-        spaceBetween: 25,
-        centeredSlides: true,
-      },
-      1200: {
-        slidesPerView: 1.8,
-        spaceBetween: 30,
-        centeredSlides: true,
-      },
-    },
+// Iniciar al cargar la página y si redimensionan la ventana
+window.addEventListener("load", initSwiper);
+window.addEventListener("resize", initSwiper);
 
-    // Eventos
-    on: {
-      init: function () {
-        if (this.isEnd) {
-          document.querySelector(".habitacion-next").style.opacity = "0.5";
-          document.querySelector(".habitacion-next").style.pointerEvents =
-            "none";
-        }
-      },
-      reachEnd: function () {
-        document.querySelector(".habitacion-next").style.opacity = "0.5";
-        document.querySelector(".habitacion-next").style.pointerEvents = "none";
-      },
-      fromEdge: function () {
-        document.querySelector(".habitacion-next").style.opacity = "1";
-        document.querySelector(".habitacion-next").style.pointerEvents = "auto";
-      },
-      slideChange: function () {
-        if (this.isBeginning) {
-          document.querySelector(".habitacion-prev").style.opacity = "0.5";
-          document.querySelector(".habitacion-prev").style.pointerEvents =
-            "none";
-        } else {
-          document.querySelector(".habitacion-prev").style.opacity = "1";
-          document.querySelector(".habitacion-prev").style.pointerEvents =
-            "auto";
-        }
-
-        if (this.isEnd) {
-          document.querySelector(".habitacion-next").style.opacity = "0.5";
-          document.querySelector(".habitacion-next").style.pointerEvents =
-            "none";
-        } else {
-          document.querySelector(".habitacion-next").style.opacity = "1";
-          document.querySelector(".habitacion-next").style.pointerEvents =
-            "auto";
-        }
-      },
-    },
+// Animación de botones de reserva
+document.addEventListener("DOMContentLoaded", function () {
+  const reserveButtons = document.querySelectorAll(".hbt-reserve-button");
+  reserveButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      this.classList.add("clicked");
+      setTimeout(() => {
+        this.classList.remove("clicked");
+      }, 300);
+      alert(
+        "¡Gracias por su interés! Será redirigido a la página de reservas."
+      );
+    });
   });
-
-  // Refrescar Swiper para asegurar layout correcto (especialmente en móviles)
-  setTimeout(() => {
-    habitacionesSwiper.update();
-  }, 300);
 });
+/************Efecto de imagenes fuisionadas **********/
+document.addEventListener("DOMContentLoaded", function () {
+  // Efecto para desktop
+  const hbiGalleryItems = document.querySelectorAll(".hbi-gallery-item");
+  const hbiGallery = document.querySelector(".hbi-gallery");
+
+  if (hbiGalleryItems.length > 0) {
+    hbiGalleryItems.forEach((item) => {
+      item.addEventListener("mouseenter", function () {
+        const section = this.getAttribute("data-section");
+        hbiGallery.className = "hbi-gallery";
+        hbiGallery.classList.add(`hbi-section-${section}`);
+
+        this.classList.add("active");
+      });
+
+      item.addEventListener("mouseleave", function () {
+        this.classList.remove("active");
+        hbiGallery.className = "hbi-gallery hbi-section-single";
+      });
+    });
+  }
+
+  // Slider para móviles
+  const hbiSliderTrack = document.querySelector(".hbi-slider-track");
+  const hbiSlides = document.querySelectorAll(".hbi-slide");
+  const hbiDots = document.querySelectorAll(".hbi-slider-dot");
+  const hbiLine = document.querySelector(".hbi-slider-line");
+
+  if (hbiSliderTrack && hbiSlides.length > 0) {
+    let currentIndex = 0;
+    let slideWidth = hbiSlides[0].clientWidth;
+    const totalSlides = hbiSlides.length;
+
+    // Actualizar dimensiones al cambiar tamaño de ventana
+    function updateDimensions() {
+      slideWidth = hbiSlides[0].clientWidth;
+      hbiSliderTrack.style.transform = `translateX(-${
+        currentIndex * slideWidth
+      }px)`;
+      updateLine();
+    }
+
+    // Actualizar línea indicadora
+    function updateLine() {
+      const lineWidth = 100 / totalSlides;
+      hbiLine.style.width = `${lineWidth}%`;
+      hbiLine.style.left = `${currentIndex * lineWidth}%`;
+    }
+
+    // Mover al slide específico
+    function goToSlide(index) {
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      currentIndex = index;
+      hbiSliderTrack.style.transform = `translateX(-${
+        currentIndex * slideWidth
+      }px)`;
+
+      // Actualizar dots
+      hbiDots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+
+      updateLine();
+    }
+
+    // Configurar dots
+    hbiDots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+
+    // Configurar línea inicial
+    updateLine();
+
+    // Auto-desplazamiento
+    let sliderInterval = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 5000);
+
+    // Pausar auto-desplazamiento al interactuar
+    hbiSliderTrack.addEventListener("mouseenter", () =>
+      clearInterval(sliderInterval)
+    );
+    hbiSliderTrack.addEventListener("mouseleave", () => {
+      sliderInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 5000);
+    });
+
+    // Touch events para móviles
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+
+    hbiSliderTrack.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      currentX = startX;
+      isDragging = true;
+      clearInterval(sliderInterval);
+    });
+
+    hbiSliderTrack.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+      hbiSliderTrack.style.transform = `translateX(calc(-${
+        currentIndex * slideWidth
+      }px - ${diff}px))`;
+    });
+
+    hbiSliderTrack.addEventListener("touchend", () => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const diff = startX - currentX;
+      // Si el desplazamiento es significativo, cambiar de slide
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          goToSlide(currentIndex + 1); // Deslizar izquierda
+        } else {
+          goToSlide(currentIndex - 1); // Deslizar derecha
+        }
+      } else {
+        // Volver a la posición actual si no hay suficiente desplazamiento
+        goToSlide(currentIndex);
+      }
+
+      // Reanudar auto-desplazamiento
+      sliderInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 5000);
+    });
+
+    // Actualizar dimensiones al cambiar tamaño de ventana
+    window.addEventListener("resize", updateDimensions);
+  }
+});
+
+/*******************************Habitaciones *****************************************/
+
 /*************************************paquetes******************************/
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".ps-romantic-slide");
@@ -736,5 +823,116 @@ document.querySelectorAll(".ubi-accordion-header").forEach((header) => {
       icon.classList.remove("fa-minus");
       icon.classList.add("fa-plus");
     }
+  });
+});
+/**************Habitacion normal ****************/
+document.addEventListener("DOMContentLoaded", function () {
+  // Configuración del Swiper con efecto 3D mejorado
+  const swiper = new Swiper(".hbt-swiper", {
+    loop: true,
+    effect: "creative",
+    creativeEffect: {
+      prev: {
+        shadow: true,
+        translate: ["-20%", 0, -200],
+        rotate: [0, 0, -5],
+      },
+      next: {
+        shadow: true,
+        translate: ["20%", 0, -200],
+        rotate: [0, 0, 5],
+      },
+    },
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    spaceBetween: 40,
+    speed: 800,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      nextEl: ".hbt-swiper-button-next",
+      prevEl: ".hbt-swiper-button-prev",
+    },
+    pagination: {
+      el: ".hbt-swiper-pagination",
+      clickable: true,
+    },
+    on: {
+      init: function () {
+        // Animación inicial con zoom y difuminado
+        const slides = this.slides;
+        slides.forEach((slide, index) => {
+          const img = slide.querySelector(".hbt-room-image");
+          slide.style.opacity = "0";
+          slide.style.transform = "scale(0.8) translateY(50px)";
+          slide.style.filter = "blur(5px)";
+
+          if (img) {
+            img.style.transform = "scale(1.2)";
+            img.style.filter = "brightness(0.7)";
+          }
+
+          setTimeout(() => {
+            slide.style.transition =
+              "all 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease";
+            slide.style.opacity = "1";
+            slide.style.transform = "scale(1) translateY(0)";
+            slide.style.filter = "blur(0)";
+
+            if (img) {
+              img.style.transition =
+                "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease";
+              img.style.transform = "scale(1.1)";
+              img.style.filter = "brightness(0.9)";
+            }
+          }, index * 150);
+        });
+      },
+      slideChange: function () {
+        // Efecto de zoom en la imagen activa
+        const activeSlide = this.slides[this.activeIndex];
+        const activeImage = activeSlide.querySelector(".hbt-room-image");
+
+        // Resetear todas las imágenes
+        this.slides.forEach((slide) => {
+          const img = slide.querySelector(".hbt-room-image");
+          if (img) {
+            img.style.transform = "scale(1.1)";
+            img.style.filter = "brightness(0.9)";
+          }
+        });
+
+        // Aplicar zoom a la imagen activa
+        if (activeImage) {
+          setTimeout(() => {
+            activeImage.style.transform = "scale(1.15)";
+            activeImage.style.filter = "brightness(1)";
+          }, 300);
+        }
+      },
+    },
+  });
+
+  // Efecto hover para zoom manual
+  const slides = document.querySelectorAll(".hbt-swiper-slide");
+  slides.forEach((slide) => {
+    slide.addEventListener("mouseenter", () => {
+      const img = slide.querySelector(".hbt-room-image");
+      if (img) {
+        img.style.transform = "scale(1.15)";
+        img.style.filter = "brightness(1)";
+      }
+    });
+    slide.addEventListener("mouseleave", () => {
+      const img = slide.querySelector(".hbt-room-image");
+      if (img && !slide.classList.contains("swiper-slide-active")) {
+        img.style.transform = "scale(1.1)";
+        img.style.filter = "brightness(0.9)";
+      }
+    });
   });
 });

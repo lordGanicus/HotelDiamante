@@ -1,9 +1,30 @@
 /**************************Paquetes/ dentro / *******************/
 // Inicializar Swiper para los servicios
+// Inicializar el slider principal
+const romanticSwiper = new Swiper(".romantic-slider", {
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+
+// Inicializar el slider de servicios (tu código original)
 const servicesSwiper = new Swiper(".ps-info-services-swiper", {
-  slidesPerView: "auto",
+  slidesPerView: 1,
   spaceBetween: 20,
-  centeredSlides: true,
   loop: true,
   autoplay: {
     delay: 3000,
@@ -14,108 +35,60 @@ const servicesSwiper = new Swiper(".ps-info-services-swiper", {
     prevEl: ".ps-info-services-prev",
   },
   breakpoints: {
-    320: {
-      slidesPerView: 1.5,
-      spaceBetween: 15,
-    },
-    480: {
-      slidesPerView: 2,
-      spaceBetween: 15,
-    },
     576: {
-      slidesPerView: 3,
-      spaceBetween: 15,
+      slidesPerView: 2,
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 20,
     },
     992: {
       slidesPerView: 4,
-      spaceBetween: 25,
     },
     1200: {
-      slidesPerView: 6,
-      spaceBetween: 20,
-    },
-  },
-  on: {
-    slideChange: function () {
-      document
-        .querySelectorAll(".ps-info-service-item")
-        .forEach((item) => item.classList.remove("ps-info-active"));
-
-      const activeSlide = this.slides[this.activeIndex];
-      if (activeSlide) {
-        const serviceItem = activeSlide.querySelector(".ps-info-service-item");
-        if (serviceItem) {
-          serviceItem.classList.add("ps-info-active");
-        }
-      }
-    },
-    init: function () {
-      const activeSlide = this.slides[this.activeIndex];
-      if (activeSlide) {
-        const serviceItem = activeSlide.querySelector(".ps-info-service-item");
-        if (serviceItem) {
-          serviceItem.classList.add("ps-info-active");
-        }
-      }
+      slidesPerView: 5,
     },
   },
 });
 
-// Función para enviar mensaje por WhatsApp personalizado por paquete
-function sendWhatsAppMessage(button) {
-  const dateInput = document.getElementById("ps-info-reservation-date");
-  const selectedDate = dateInput.value;
-
-  if (!selectedDate) {
-    alert("Por favor, selecciona una fecha");
-    return;
-  }
-
-  const paquete = button.dataset.paquete || "paquete personalizado";
-
-  const date = new Date(selectedDate);
-  const formattedDate = date.toLocaleDateString("es-ES", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
-  const message = `Hola! Me gustaría consultar si tienen disponibilidad para el ${formattedDate} en el paquete *${paquete}*. ¿Podrían confirmarme tarifas y disponibilidad? Gracias!`;
-  const whatsappUrl = `https://wa.me/59163051699?text=${encodeURIComponent(
-    message
-  )}`;
-
-  window.open(whatsappUrl, "_blank");
-}
-
-// Evento para ícono del calendario
+// Función para manejar el click del calendario
 document
   .querySelector(".ps-info-calendar-icon")
   .addEventListener("click", function () {
-    document.getElementById("ps-info-reservation-date").showPicker();
+    document.querySelector(".ps-info-date-input").showPicker();
   });
 
-// Detener autoplay del swiper al hacer hover en ítems
-document.querySelectorAll(".ps-info-service-item").forEach((item) => {
-  item.addEventListener("mouseenter", function () {
-    if (!this.classList.contains("ps-info-active")) {
-      servicesSwiper.autoplay.stop();
+// Función para WhatsApp (placeholder)
+function sendWhatsAppMessage(button) {
+  const paquete = button.getAttribute("data-paquete");
+  const fecha = document.querySelector(".ps-info-date-input").value;
+  const mensaje = `Hola, me interesa el paquete "${paquete}"${
+    fecha ? ` para la fecha ${fecha}` : ""
+  }. ¿Podrían darme más información?`;
+  const url = `https://wa.me/1234567890?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+}
+
+// Animaciones de entrada para los elementos del grid
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.opacity = "1";
+        entry.target.style.transform = "translateY(0)";
+      }, index * 100);
     }
   });
+}, observerOptions);
 
-  item.addEventListener("mouseleave", function () {
-    servicesSwiper.autoplay.start();
-  });
-  const dateInput = document.getElementById("ps-info-reservation-date");
-  const today = new Date();
-  const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const dd = String(today.getDate()).padStart(2, "0");
-  const formattedDate = `${yyyy}-${mm}-${dd}`;
-  dateInput.value = formattedDate;
+// Aplicar animación a los elementos del grid
+document.querySelectorAll(".service-item").forEach((item, index) => {
+  item.style.opacity = "0";
+  item.style.transform = "translateY(30px)";
+  item.style.transition = "all 0.6s ease";
+  observer.observe(item);
 });

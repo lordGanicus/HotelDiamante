@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Diamante Azul - Habitación Familiar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Cambié a la versión completa de CSS de Splide -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide-core.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prata:wght@400&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --azul-principal: #012555;
+        --azul-oscuro: #001a3f;
+        --accent-color: #00a8ff;
+        --gris-claro: #f5f7fa;
+        --gris-borde: #e1e5ee;
+        --texto-oscuro: #2a2a2a;
+        --texto-gris: #6b7280;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--texto-oscuro);
+        background-color: #fff;
+      }
+
+      .hbt-section {
+        padding: 80px 0;
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hbt-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 40px;
+      }
+
+      .hbt-main-title {
+        font-family: "Prata", serif;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 60px;
+        color: var(--azul-oscuro);
+        position: relative;
+      }
+
+      .hbt-main-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--accent-color);
+      }
+
+      /* Layout moderno ajustado */
+      .hbt-room-layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+
+      /* Sección de Amenities más estrecha */
+      .hbt-amenities-section {
+        flex: 0 0 350px;
+        background: var(--gris-claro);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 20px;
+      }
+
+      .hbt-amenities-title {
+        font-family: "Prata", serif;
+        font-size: 1.8rem;
+        color: var(--azul-oscuro);
+        margin-bottom: 15px;
+      }
+
+      .hbt-amenities-subtitle {
+        font-size: 1rem;
+        color: var(--texto-gris);
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+
+      .hbt-amenities-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .hbt-amenity-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .hbt-amenity-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .hbt-amenity-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--azul-principal);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .hbt-amenity-text {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      /* Sección del Slider más ancha */
+      .hbt-slider-section {
+        flex: 1;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Contenedor principal del slider - Splide */
+      .hbt-splide-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding: 20px 0;
+        flex-grow: 1;
+      }
+
+      .hbt-splide {
+        width: 100%;
+        height: 100%;
+        min-height: 550px;
+      }
+
+      /* Slides más anchas y altas - Splide */
+      .hbt-splide .splide__slide {
+        width: 95%;
+        max-width: 1000px;
+        height: 550px;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0.7;
+        filter: blur(2px) brightness(0.8);
+        transform: scale(0.9);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .hbt-room-image-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hbt-room-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.8s ease;
+        transform-origin: center center;
+        filter: brightness(0.9);
+        transform: scale(1.1);
+      }
+
+      .hbt-room-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--azul-principal);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .hbt-room-details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        padding: 25px;
+        transform: translateY(100%);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .hbt-room-title {
+        font-family: "Prata", serif;
+        font-size: 1.5rem;
+        color: var(--azul-oscuro);
+        margin-bottom: 15px;
+      }
+
+      .hbt-room-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .hbt-feature {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.4s ease;
+      }
+
+      .hbt-feature i {
+        color: var(--accent-color);
+        margin-right: 8px;
+        font-size: 1rem;
+      }
+
+      /* Slide activo - Efectos mejorados */
+      .hbt-splide .splide__slide.is-active {
+        transform: scale(1.05);
+        z-index: 10;
+        opacity: 1;
+        filter: blur(0) brightness(1);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-room-image {
+        transform: scale(1.15);
+        filter: brightness(1.1) saturate(1.1);
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-room-details {
+        transform: translateY(0);
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-room-badge {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-feature {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-feature:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-feature:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-feature:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      .hbt-splide .splide__slide.is-active .hbt-feature:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      /* Slides vecinos - Efectos 3D */
+      .hbt-splide .splide__slide.is-prev {
+        transform: translateX(-30%) scale(0.85);
+        opacity: 0.6;
+        filter: blur(1px) brightness(0.7);
+      }
+
+      .hbt-splide .splide__slide.is-next {
+        transform: translateX(30%) scale(0.85);
+        opacity: 0.6;
+        filter: blur(1px) brightness(0.7);
+      }
+
+      /* Descripción añadida debajo del slider */
+      .hbt-room-description {
+        margin-top: 30px;
+        padding: 0 20px;
+        text-align: center;
+        color: var(--texto-gris);
+        line-height: 1.6;
+        font-size: 1.1rem;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Botón de reserva debajo de la descripción */
+      .hbt-reserve-container {
+        text-align: center;
+        margin-top: 30px;
+        padding: 0 20px;
+      }
+
+      .hbt-reserve-button {
+        padding: 16px 50px;
+        background: var(--azul-principal);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(1, 37, 85, 0.2);
+      }
+
+      .hbt-reserve-button:hover {
+        background: var(--azul-oscuro);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(1, 37, 85, 0.3);
+      }
+
+      /* Controles personalizados del slider */
+      .hbt-splide-controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 20;
+      }
+
+      .hbt-splide-button {
+        width: 50px;
+        height: 50px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: none;
+        color: var(--azul-principal);
+      }
+
+      .hbt-splide-button:hover {
+        background: var(--azul-principal);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      /* Ocultar controles por defecto de Splide */
+      .splide__arrows {
+        display: none;
+      }
+
+      /* Paginación personalizada */
+      .hbt-splide-pagination {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
+
+      .hbt-pagination-bullet {
+        width: 40px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .hbt-pagination-bullet.is-active {
+        background: var(--azul-principal);
+        transform: scaleX(1.2);
+      }
+
+      /* Ocultar paginación por defecto de Splide */
+      .splide__pagination {
+        display: none;
+      }
+
+      /* ------------------------- */
+      /* RESPONSIVE DESIGN MEJORADO */
+      /* ------------------------- */
+
+      /* Tablets (768px - 992px) */
+      @media (max-width: 992px) {
+        .hbt-container {
+          padding: 0 30px;
+        }
+
+        .hbt-main-title {
+          font-size: 2.5rem;
+        }
+
+        .hbt-room-layout {
+          flex-direction: column;
+        }
+
+        .hbt-slider-section {
+          order: 1; /* Slider primero */
+          margin-bottom: 40px;
+        }
+
+        .hbt-amenities-section {
+          order: 2; /* Amenities después */
+          position: static;
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+
+        .hbt-splide .splide__slide {
+          height: 500px;
+          width: 95%;
+        }
+
+        .hbt-room-features {
+          grid-template-columns: 1fr;
+        }
+
+        .hbt-room-description {
+          font-size: 1rem;
+        }
+      }
+
+      /* Tablets pequeñas (600px - 768px) */
+      @media (max-width: 768px) {
+        .hbt-section {
+          padding: 60px 0;
+        }
+
+        .hbt-main-title {
+          font-size: 2.2rem;
+          margin-bottom: 40px;
+        }
+
+        .hbt-splide .splide__slide {
+          height: 450px;
+        }
+
+        .hbt-room-details {
+          padding: 20px;
+        }
+
+        /* Amenities en 2 columnas para tablets */
+        .hbt-amenities-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Móviles (hasta 600px) */
+      @media (max-width: 600px) {
+        .hbt-container {
+          padding: 0 20px;
+        }
+
+        .hbt-main-title {
+          font-size: 1.8rem;
+        }
+
+        .hbt-amenities-title {
+          font-size: 1.5rem;
+        }
+
+        .hbt-splide .splide__slide {
+          height: 350px;
+        }
+
+        .hbt-reserve-button {
+          padding: 14px 40px;
+          width: 100%;
+          font-size: 1rem;
+        }
+
+        .hbt-room-description {
+          padding: 0 10px;
+          font-size: 0.95rem;
+        }
+
+        /* Amenities en 2 columnas para móviles */
+        .hbt-amenities-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hbt-amenity-item {
+          padding: 12px;
+        }
+
+        .hbt-amenity-icon {
+          width: 36px;
+          height: 36px;
+          font-size: 0.9rem;
+          margin-right: 12px;
+        }
+
+        .hbt-amenity-text {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Móviles muy pequeños (hasta 400px) */
+      @media (max-width: 400px) {
+        /* Amenities en 1 columna para móviles muy pequeños */
+        .hbt-amenities-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hbt-splide .splide__slide {
+          transform: scale(0.95);
+        }
+
+        .hbt-splide .splide__slide.is-active {
+          transform: scale(1);
+        }
+      }
+
+      /* Pantallas muy grandes (más de 1600px) */
+      @media (min-width: 1600px) {
+        .hbt-container {
+          max-width: 1800px;
+        }
+
+        .hbt-splide .splide__slide {
+          max-width: 1200px;
+          height: 600px;
+        }
+
+        .hbt-room-layout {
+          justify-content: center;
+        }
+
+        .hbt-room-description {
+          max-width: 1200px;
+          font-size: 1.2rem;
+        }
+
+        .hbt-reserve-button {
+          padding: 18px 60px;
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Animaciones de entrada */
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .hbt-amenities-section {
+        animation: slideInUp 0.8s ease-out 0.2s both;
+      }
+
+      .hbt-main-title {
+        animation: slideInUp 0.8s ease-out both;
+      }
+
+      .hbt-splide-container {
+        animation: fadeInScale 1s ease-out 0.4s both;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hbt-section">
+      <div class="hbt-container">
+        <h2 class="hbt-main-title">Habitación Familiar</h2>
+
+        <div class="hbt-room-layout">
+          <!-- Sección del Slider (primero en móviles) -->
+          <div class="hbt-slider-section">
+            <div class="hbt-splide-container">
+              <div class="splide hbt-splide">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <!-- Slide 1 -->
+                    <li class="splide__slide">
+                      <div class="hbt-room-badge">Familiar</div>
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                          alt="Habitación Familiar"
+                        />
+                      </div>
+                      <div class="hbt-room-details">
+                        <h4 class="hbt-room-title">Habitación Familiar</h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
+                            <i class="fas fa-users"></i>
+                            <span>Hasta 4 personas</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>35 m² de espacio</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-bath"></i>
+                            <span>Baño privado completo</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-snowflake"></i>
+                            <span>Aire acondicionado</span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!-- Slide 2 -->
+                    <li class="splide__slide">
+                      <div class="hbt-room-badge">Familiar</div>
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                          alt="Habitación Familiar"
+                        />
+                      </div>
+                      <div class="hbt-room-details">
+                        <h4 class="hbt-room-title">Habitación Familiar</h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>WiFi 100 Mbps</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-tv"></i>
+                            <span>Smart TV 55"</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-coffee"></i>
+                            <span>Cafetera eléctrica</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-phone"></i>
+                            <span>Teléfono directo</span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+
+                    <!-- Slide 3 -->
+                    <li class="splide__slide">
+                      <div class="hbt-room-badge">Familiar</div>
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                          alt="Habitación Familiar"
+                        />
+                      </div>
+                      <div class="hbt-room-details">
+                        <h4 class="hbt-room-title">Habitación Familiar</h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
+                            <i class="fas fa-lock"></i>
+                            <span>Caja de seguridad</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Toallas de playa</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Servicio a la habitación</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Estacionamiento gratuito</span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Controles personalizados -->
+                <div class="splide__arrows">
+                  <button class="splide__arrow splide__arrow--prev">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="splide__arrow splide__arrow--next">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+
+                <!-- Paginación personalizada -->
+                <div class="hbt-splide-pagination splide__pagination"></div>
+              </div>
+            </div>
+
+            <!-- Descripción añadida debajo del slider -->
+            <div class="hbt-room-description">
+              <p>
+                Nuestra habitación familiar ofrece el máximo confort con amplio
+                espacio para hasta 4 personas, equipada con todas las
+                comodidades modernas para hacer de su estancia una experiencia
+                inolvidable en el corazón de la ciudad.
+              </p>
+            </div>
+
+            <!-- Botón de reserva -->
+            <div class="hbt-reserve-container">
+              <button
+                class="hbt-reserve-button"
+                onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+estoy+interesado+en+reservar+la+habitaci%C3%B3n+Familiar+Deluxe.&type=phone_number&app_absent=0', '_blank')"
+              >
+                RESERVAR AHORA
+              </button>
+            </div>
+          </div>
+
+          <!-- Sección de Amenities -->
+          <div class="hbt-amenities-section">
+            <h3 class="hbt-amenities-title">Comodidades Incluidas</h3>
+            <p class="hbt-amenities-subtitle">
+              Todo lo que necesitas para una estancia perfecta
+            </p>
+
+            <div class="hbt-amenities-grid">
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-city"></i>
+                </div>
+                <span class="hbt-amenity-text">Vista Hacia la Ciudad</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-wifi"></i>
+                </div>
+                <span class="hbt-amenity-text">Wifi de alta velocidad</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-key"></i>
+                </div>
+                <span class="hbt-amenity-text"
+                  >Acceso con llave electrónica</span
+                >
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-tv"></i>
+                </div>
+                <span class="hbt-amenity-text">TV Smart 55"</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-soap"></i>
+                </div>
+                <span class="hbt-amenity-text">Artículos de aseo premium</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-suitcase-rolling"></i>
+                </div>
+                <span class="hbt-amenity-text">Guarda equipaje espacioso</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-bed"></i>
+                </div>
+                <span class="hbt-amenity-text">Cama matrimonial king size</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-bed"></i>
+                </div>
+                <span class="hbt-amenity-text">2 camas individuales</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Inicializar Splide
+        const splide = new Splide(".splide", {
+          type: "loop",
+          perPage: 1,
+          perMove: 1,
+          gap: "2rem",
+          focus: "center",
+          trimSpace: false,
+          autoplay: true,
+          interval: 5000,
+          pauseOnHover: true,
+          pauseOnFocus: true,
+          speed: 1000,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          arrows: false,
+          pagination: false,
+          drag: true,
+          snap: true,
+          keyboard: true,
+          wheel: true,
+          wheelSleep: 1000,
+          breakpoints: {
+            992: { gap: "1rem" },
+            768: { gap: "0.5rem", speed: 800 },
+            600: { gap: "0.5rem", speed: 600 },
+          },
+        });
+
+        // Personalizar botones
+        const prevBtn = document.querySelector(".splide__arrow--prev");
+        const nextBtn = document.querySelector(".splide__arrow--next");
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => splide.go("-1"));
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => splide.go("+1"));
+        }
+
+        // Función de animación por slide
+        function animateSlideContent(slide) {
+          const badge = slide.querySelector(".hbt-room-badge");
+          const details = slide.querySelector(".hbt-room-details");
+          const features = slide.querySelectorAll(".hbt-feature");
+          const image = slide.querySelector(".hbt-room-image");
+
+          if (badge) {
+            badge.style.opacity = "0";
+            badge.style.transform = "translateY(-20px)";
+          }
+
+          if (details) {
+            details.style.transform = "translateY(100%)";
+          }
+
+          features.forEach((feature) => {
+            feature.style.opacity = "0";
+            feature.style.transform = "translateX(-20px)";
+          });
+
+          if (image) {
+            image.style.transform = "scale(1.1)";
+            image.style.filter = "brightness(0.9)";
+          }
+
+          // Animaciones en cadena
+          setTimeout(() => {
+            if (badge) {
+              badge.style.transition =
+                "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+              badge.style.opacity = "1";
+              badge.style.transform = "translateY(0)";
+            }
+
+            if (image) {
+              image.style.transition =
+                "transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 0.8s ease";
+              image.style.transform = "scale(1.15)";
+              image.style.filter = "brightness(1.1) saturate(1.1)";
+            }
+
+            setTimeout(() => {
+              if (details) {
+                details.style.transition =
+                  "all 0.8s cubic-bezier(0.22, 1, 0.36, 1)";
+                details.style.transform = "translateY(0)";
+              }
+
+              features.forEach((feature, index) => {
+                setTimeout(() => {
+                  feature.style.transition = "all 0.4s ease";
+                  feature.style.opacity = "1";
+                  feature.style.transform = "translateX(0)";
+                }, index * 100);
+              });
+            }, 300);
+          }, 200);
+        }
+
+        // Aplicar clases prev/next/active en evento `active`
+        splide.on("active", (slide) => {
+          const allSlides = document.querySelectorAll(".splide__slide");
+          allSlides.forEach((s) =>
+            s.classList.remove("is-active", "is-prev", "is-next")
+          );
+
+          const index = slide.index;
+          const total = allSlides.length;
+
+          allSlides[index].classList.add("is-active");
+          allSlides[(index - 1 + total) % total].classList.add("is-prev");
+          allSlides[(index + 1) % total].classList.add("is-next");
+
+          animateSlideContent(allSlides[index]);
+        });
+
+        // Hover solo en slide activo
+        const allSlides = document.querySelectorAll(".splide__slide");
+        allSlides.forEach((slide) => {
+          const image = slide.querySelector(".hbt-room-image");
+
+          slide.addEventListener("mouseenter", () => {
+            if (image && slide.classList.contains("is-active")) {
+              image.style.transform = "scale(1.2)";
+              image.style.filter = "brightness(1.2) saturate(1.2)";
+            }
+          });
+
+          slide.addEventListener("mouseleave", () => {
+            if (image && slide.classList.contains("is-active")) {
+              image.style.transform = "scale(1.15)";
+              image.style.filter = "brightness(1.1) saturate(1.1)";
+            }
+          });
+        });
+
+        // Montar el slider
+        splide.mount();
+
+        // Animar el primer slide
+        const firstSlide = document.querySelector(".splide__slide.is-active");
+        if (firstSlide) {
+          animateSlideContent(firstSlide);
+        }
+
+        console.log("✅ Splide.js cargado correctamente para Diamante Azul");
+      });
+    </script>
+  </body>
+</html>

@@ -40,6 +40,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
     <!-- Contenedor donde se cargará el loader -->
@@ -69,7 +70,7 @@
             src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
             alt="Menu"
           />
-          <a>menu</a>
+          <a>Menú</a>
         </div>
         <img
           class="logo-navbar"
@@ -89,42 +90,80 @@
           <i class="fa-solid fa-bell"></i> Reservar
         </a>
       </div>
+
       <div class="menu-overlay" id="menuOverlay">
         <div class="close-menu" id="closeMenu">&times;</div>
-        <ul>
-          <li id="logo-menu-img">
-            <img
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
-              alt=""
-            />
-          </li>
+        <h2 class="menu-title">Menú</h2>
+
+        <span id="logo-menu-img">
+          <img
+            src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
+            alt=""
+          />
+        </span>
+
+        <ul id="menu-principal">
           <li id="logo-menu">
-            <a href="../index.html"><i class="fas fa-home"></i> Inicio</a>
+            <a href="../index.html" class="menu-link">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886418/32657347-694c-4788-813c-165d713a6708.png"
+                alt="Inicio"
+                class="menu-icon"
+              />
+              Inicio
+              <!-- <i class="fas fa-home"></i> -->
+            </a>
           </li>
+          <!-- <li>
+            <a href="../index.html#info-section-main" class="menu-link">
+
+              Información
+            </a>
+          </li> -->
+
           <li>
-            <a href="../index.html#info-section-main"
-              ><i class="fas fa-info-circle"></i> Información</a
-            >
+            <a href="../index.html#habitaciones-section" class="menu-link">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886459/5c43545f-50a0-48de-ad60-bae138395a91.png"
+                alt="Habitaciones"
+                class="menu-icon"
+              />
+              Habitaciones
+              <!-- <i class="fas fa-bed"></i> -->
+            </a>
           </li>
+
           <li>
-            <a href="../index.html#habitaciones-section"
-              ><i class="fas fa-bed"></i> Habitaciones</a
+            <a
+              href="../index.html#paquetes-especiales-container"
+              class="menu-link"
             >
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886481/c73d3d10-f6a6-4454-8a78-8946e6e7fd3a.png"
+                alt="Paquetes"
+                class="menu-icon"
+              />
+              Paquetes
+              <!-- <i class="fas fa-box-open"></i> -->
+            </a>
           </li>
+          <!-- <li>
+            <a href="../index.html#dtn-breakfast-section" class="menu-link">
+
+              Desayunos
+            </a>
+          </li>-->
+
           <li>
-            <a href="../index.html#paquetes-especiales-container"
-              ><i class="fas fa-box-open"></i> Paquetes</a
-            >
-          </li>
-          <li>
-            <a href="../index.html#dtn-breakfast-section"
-              ><i class="fas fa-coffee"></i> Desayunos</a
-            >
-          </li>
-          <li>
-            <a href="../index.html#ubi-location-section"
-              ><i class="fas fa-map-marker-alt"></i> Ubicación</a
-            >
+            <a href="../index.html#ubi-location-section" class="menu-link">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886537/af729f15-f197-4c2b-8c47-228d4668a92c.png"
+                alt="Ubicación"
+                class="menu-icon"
+              />
+              Ubicación
+              <!-- <i class="fas fa-map-marker-alt"></i> -->
+            </a>
           </li>
         </ul>
       </div>
@@ -151,7 +190,7 @@
             src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
             alt="Menu"
           />
-          <a>menu</a>
+          <a>Menú</a>
         </div>
 
         <a
@@ -186,24 +225,16 @@
       <section class="info-group">
         <div class="info-overlap-group-wrapper">
           <div class="info-overlap-group">
+            <article class="info-hotel-description">
+              <h1 class="info-hotel-name">— Hotel Diamante Azul</h1>
+              <p class="info-hotel-info">
+                El punto de partida perfecto para tu viaje. Disfruta de
+                instalaciones modernas y una ubicación estratégica que te
+                conecta con lo mejor de la ciudad, haciendo de tu estancia una
+                experiencia inolvidable.
+              </p>
+            </article>
             <!-- Galería tradicional para desktop -->
-            <div class="info-image-gallery">
-              <img
-                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753110522/b612aac3-8a0e-4988-adb7-f25ae183d5ec.png"
-                alt="Areas del Hotel"
-                class="info-city-experience"
-              />
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/interior_Diamante_Azul_f1s1su.webp"
-                alt="Interior Diamante Azul"
-                class="info-city-experience-2"
-              />
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170633/02_ppawcv.png"
-                alt="Habitacion Deluxe"
-                class="info-city-experience-3"
-              />
-            </div>
 
             <!-- Swiper para móviles/tablets - Mantenemos las clases que Swiper necesita -->
             <div class="swiper info-swiper">
@@ -233,16 +264,23 @@
               <div class="swiper-button-next"></div>
               <div class="swiper-button-prev"></div>
             </div>
-
-            <article class="info-hotel-description">
-              <h1 class="info-hotel-name">— Hotel Diamante Azul</h1>
-              <p class="info-hotel-info">
-                El punto de partida perfecto para tu viaje. Disfruta de
-                instalaciones modernas y una ubicación estratégica que te
-                conecta con lo mejor de la ciudad, haciendo de tu estancia una
-                experiencia inolvidable.
-              </p>
-            </article>
+            <div class="info-image-gallery">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753110522/b612aac3-8a0e-4988-adb7-f25ae183d5ec.png"
+                alt="Areas del Hotel"
+                class="info-city-experience"
+              />
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/interior_Diamante_Azul_f1s1su.webp"
+                alt="Interior Diamante Azul"
+                class="info-city-experience-2"
+              />
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170633/02_ppawcv.png"
+                alt="Habitacion Deluxe"
+                class="info-city-experience-3"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -252,63 +290,64 @@
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305465/afabcd65-14c5-4a73-9d71-2fb1acbdf65b.png"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753884836/10397439-828a-4007-9dda-61179d215eb4.png"
               alt="Ícono de WiFi"
             />
-            <h2 class="info-service-title">WiFi gratis</h2>
+            <h2 class="info-service-title">WiFi</h2>
           </div>
 
-          <!-- Habitaciones familiares -->
+          <!-- Ascensor -->
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305478/76d1d11c-e9c6-4a88-98c8-835bd5b189a2.png"
-              alt="Ícono de familia"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753884880/771652a8-4f21-4dde-9b88-67ecf6c09f20.png"
+              alt="Ícono de ascensor"
             />
-            <h2 class="info-service-title">Habitaciones familiares</h2>
+            <h2 class="info-service-title">Ascensor</h2>
           </div>
 
-          <!-- Recepción 24 horas (destacado) -->
+          <!-- Recepción 24 horas -->
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305837/8ced6dee-b7d5-4542-abd9-19f45b9302c0.png"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753884892/1ae9eb0e-234e-46d4-990d-3e5c63b31968.png"
               alt="Ícono de recepción"
             />
-            <h2 class="info-service-title">Recepción 24 horas</h2>
+            <h2 class="info-service-title">Recepción 24 hrs</h2>
           </div>
 
           <!-- Traslado aeropuerto -->
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305646/cc5d3d70-3874-414a-9772-73178e8a9863.png"
-              alt="Ícono de coche"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753885241/4c33462b-4f6e-44ec-b45d-053714f9a95c.png"
+              alt="Ícono traslado"
             />
             <h2 class="info-service-title">Traslado aeropuerto</h2>
           </div>
 
-          <!-- Habitaciones sin humo -->
+          <!-- Check-in 14:00 -->
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305671/a2ede4de-d34d-4fca-bf98-1550cf38c773.png"
-              alt="Ícono de no fumar"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753884902/aa6e1fe7-8e6d-4df7-b54e-a4ba730f156f.png"
+              alt="Ícono check-in"
             />
-            <h2 class="info-service-title">Habitaciones sin humo</h2>
+            <h2 class="info-service-title">Check-in 14:00</h2>
           </div>
 
-          <!-- Desayuno -->
+          <!-- Check-out -->
           <div class="info-service-item">
             <img
               class="info-ico"
-              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753305698/b7183f4f-2eb1-4e46-957b-17ba538531d8.png"
-              alt="Ícono de café"
+              src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753885010/96d4c4eb-46bd-40b3-b312-8732c7841dd0.png"
+              alt="Ícono check-out"
             />
-            <h2 class="info-service-title">Desayuno</h2>
+            <h2 class="info-service-title">Check-out</h2>
           </div>
         </div>
       </section>
+
       <!-- SECCION DE HABITACIONES -->
       <section class="habitaciones-section" id="habitaciones-section">
         <div class="habitaciones-header">
@@ -321,22 +360,22 @@
 
         <div class="habitaciones-swiper swiper">
           <div class="swiper-wrapper">
-            <!-- Habitación Twin -->
+            <!-- Habitación Triple -->
             <div class="swiper-slide">
               <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png"
-                alt="Habitación Twin"
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png"
+                alt="Habitación Triple"
               />
               <div class="habitacion-card-container">
                 <div class="habitacion-card">
-                  <h3>Habitación Twin</h3>
+                  <h3>Habitación Triple</h3>
                   <p>
-                    Dos camas individuales en un espacio cómodo, todo lo
-                    necesario para tu descanso.
+                    Espacio cálido y práctico, ideal para tres huéspedes en
+                    busca de una opción accesible y confortable.
                   </p>
                   <button
                     class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habTwin.html'"
+                    onclick="location.href='../pages/habitaciones/habTriple.html'"
                   >
                     Ver más
                   </button>
@@ -409,6 +448,28 @@
                 </div>
               </div>
             </div>
+            <!-- Habitación Twin -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png"
+                alt="Habitación Twin"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Twin</h3>
+                  <p>
+                    Dos camas individuales en un espacio cómodo, todo lo
+                    necesario para tu descanso.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='../pages/habitaciones/habTwin.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
             <!-- Habitación Familiar -->
             <div class="swiper-slide">
               <img
@@ -420,33 +481,11 @@
                   <h3>Habitación Familiar Deluxe</h3>
                   <p>
                     Perfecta para compartir en familia, con amplias camas,
-                    muebles modernos y detalles acogedores..
+                    muebles modernos y detalles acogedores.
                   </p>
                   <button
                     class="btn-reservar"
                     onclick="location.href='../pages/habitaciones/habFamiliar.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Triple -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png"
-                alt="Habitación Triple"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Triple</h3>
-                  <p>
-                    Espacio cálido y práctico, ideal para tres huéspedes en
-                    busca de una opción accesible y confortable.
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habTriple.html'"
                   >
                     Ver más
                   </button>
@@ -471,7 +510,7 @@
         <div class="hbi-content">
           <div class="hbi-container">
             <div class="hbi-header">
-              <h2 class="ps-romantic-main-title">
+              <h2 class="info-hotel-name">
                 — Hospédate cerca de las mejores experiencias turísticas
               </h2>
               <p class="ps-romantic-main-description">..</p>
@@ -501,7 +540,7 @@
 
                 <!-- Habitación Twin -->
                 <div class="hbi-gallery-item" data-section="twin">
-                  <h2 class="hbi-item-title">Mercado de las brujas</h2>
+                  <h2 class="hbi-item-title">Calle Linares</h2>
 
                   <a href="#" class="hbi-more-link"
                     >Detalles <i class="fas fa-chevron-right"></i
@@ -509,7 +548,7 @@
 
                   <div class="hbi-info-overlay">
                     <div class="hbi-info-content">
-                      <h2 class="hbi-room-name">Mercado de las brujas</h2>
+                      <h2 class="hbi-room-name">Calle Linares</h2>
                       <p class="hbi-room-desc">
                         Descubre la magia ancestral en el corazón de La Paz.
                       </p>
@@ -538,7 +577,7 @@
 
                 <!-- Habitación Matrimonial Deluxe -->
                 <div class="hbi-gallery-item" data-section="deluxe">
-                  <h2 class="hbi-item-title">Jardín Botánico</h2>
+                  <h2 class="hbi-item-title">Parque de las Culturas</h2>
 
                   <a href="#" class="hbi-more-link"
                     >Detalles <i class="fas fa-chevron-right"></i
@@ -546,10 +585,10 @@
 
                   <div class="hbi-info-overlay">
                     <div class="hbi-info-content">
-                      <h2 class="hbi-room-name">Jardín Botánico</h2>
+                      <h2 class="hbi-room-name">Parque de las Culturas</h2>
                       <p class="hbi-room-desc">
-                        Espacio natural en La Paz con diversidad de plantas,
-                        ideal para disfrutar y conectar con la naturaleza.
+                        Parque cultural y recreativo en La Paz, con áreas para
+                        eventos, juegos y conexión con la naturaleza.
                       </p>
                     </div>
                   </div>
@@ -557,7 +596,7 @@
 
                 <!-- Habitación Familiar Deluxe -->
                 <div class="hbi-gallery-item" data-section="family">
-                  <h2 class="hbi-item-title">Parque de CotaCota</h2>
+                  <h2 class="hbi-item-title">Valle de la Luna</h2>
 
                   <a href="#" class="hbi-more-link"
                     >Detalles <i class="fas fa-chevron-right"></i
@@ -565,10 +604,11 @@
 
                   <div class="hbi-info-overlay">
                     <div class="hbi-info-content">
-                      <h2 class="hbi-room-name">Parque de CotaCota</h2>
+                      <h2 class="hbi-room-name">Valle de la Luna</h2>
                       <p class="hbi-room-desc">
-                        Parque verde con laguna para paseos y puente colgante
-                        ideal para fotos.
+                        El Valle de la Luna en La Paz es un paisaje único con
+                        formaciones rocosas erosionadas que parecen de otro
+                        mundo.
                       </p>
                     </div>
                   </div>
@@ -716,14 +756,15 @@
               <div class="ps-romantic-content-section">
                 <div class="ps-romantic-content-title-row">
                   <div class="ps-romantic-content-line"></div>
-                  <h2 class="ps-romantic-package-title">ESCAPADA ROMÁNTICA</h2>
+                  <h2 class="ps-romantic-package-title">Escapada Romántica</h2>
                 </div>
                 <p class="ps-romantic-package-description">
-                  Una experiencia que lo tiene todo para enamorarse.<br />
-                  Desde la bienvenida hasta el último suspiro, cada momento está
-                  pensado para ustedes.
+                  Paquete especial de 2 horas en nuestra habitación matrimonial
+                  decorada con pétalos, toallas, velas y vino.
                 </p>
-                <a href="escapada-romantica.html" class="ps-romantic-cta-button"
+                <a
+                  href="pages/paquetes/escapada.html"
+                  class="ps-romantic-cta-button"
                   >Ver Detalle</a
                 >
               </div>
@@ -746,14 +787,15 @@
               <div class="ps-romantic-content-section">
                 <div class="ps-romantic-content-title-row">
                   <div class="ps-romantic-content-line"></div>
-                  <h2 class="ps-romantic-package-title">VELADA ROMÁNTICA</h2>
+                  <h2 class="ps-romantic-package-title">Velada Romántica</h2>
                 </div>
                 <p class="ps-romantic-package-description">
-                  Una velada creada para enamorar sin límites,<br />
-                  con detalles que hablan por sí solos. Tu cita ideal comienza
-                  aquí.
+                  Disfruta toda la noche en habitación matrimonial deluxe con
+                  vista, vino, frutas, velas y desayuno.
                 </p>
-                <a href="velada-romantica.html" class="ps-romantic-cta-button"
+                <a
+                  href="pages/paquetes/velada.html"
+                  class="ps-romantic-cta-button"
                   >Ver Detalle</a
                 >
               </div>
@@ -781,12 +823,13 @@
               Descubre por qué hospedarte en Diamante Azul
             </h2>
             <p class="dtn-breakfast-description">
-              Cada mañana te espera un delicioso desayuno continental para
-              empezar el día, acompañado de la comodidad de hospedarte en un
-              lugar céntrico, donde tendrás a tu alcance restaurantes, mercados,
-              senderos y miradores para disfrutar cada momento de tu estancia..
+              Ubicación céntrica a pasos de las principales atracciones de La
+              Paz, habitaciones limpias y cómodas, desayuno buffet incluido y
+              atención amable que hará que tu estancia sea inolvidable.
             </p>
-            <button class="dtn-btn" id="dyOpenBtn">Ver más</button>
+            <button class="dtn-btn" id="dyOpenBtn">
+              <i class="fas fa-hotel" style="margin-right: 8px"></i> Ver más
+            </button>
           </div>
         </div>
       </section>
@@ -908,6 +951,7 @@
             <h1 class="ubi-title">DONDE ESTAMOS UBICADOS</h1>
 
             <!-- Acordeón de información -->
+
             <div class="ubi-accordion">
               <!-- Primer elemento - Cómo llegar -->
               <div class="ubi-accordion-item">
@@ -940,9 +984,27 @@
                     <div class="ubi-icon">
                       <i class="fas fa-map-marked-alt"></i>
                     </div>
+                    <span>
+                      El aeropuerto (Aeropuerto internacional El Alto) está a 6
+                      km
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Nuevo elemento - Terminal -->
+              <div class="ubi-accordion-item">
+                <div class="ubi-accordion-header">
+                  <button class="ubi-accordion-button">
+                    <i class="fas fa-car"></i> TERMINAL
+                  </button>
+                  <i class="fas fa-plus ubi-accordion-icon"></i>
+                </div>
+                <div class="ubi-accordion-content">
+                  <div class="ubi-info-item">
                     <span
-                      >El aeropuerto (Aeropuerto internacional El Alto) está a 6
-                      km</span
+                      >A solo 15–20 minutos de la Terminal de Buses de La Paz
+                      (Terminal Challapampa)</span
                     >
                   </div>
                 </div>
@@ -957,15 +1019,6 @@
                   <i class="fas fa-plus ubi-accordion-icon"></i>
                 </div>
                 <div class="ubi-accordion-content">
-                  <div class="ubi-info-item">
-                    <div class="ubi-icon">
-                      <i class="fas fa-clock"></i>
-                    </div>
-                    <span
-                      >Cobertura operativa 24/7 con disponibilidad permanente de
-                      taxis públicos y privados.</span
-                    >
-                  </div>
                   <div class="ubi-info-item">
                     <div class="ubi-icon">
                       <i class="fas fa-walking"></i>
@@ -1014,7 +1067,7 @@
 
             <!-- Columna izquierda - Dirección -->
             <div class="ft-column ft-column-left">
-              <h3 class="ft-title">Direction</h3>
+              <h3 class="ft-title">Direccion</h3>
               <div class="ft-contact-info">
                 <div class="ft-contact-item">
                   <div class="ft-contact-icon-container">
