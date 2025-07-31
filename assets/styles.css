@@ -111,7 +111,6 @@ header {
   pointer-events: none;
 }
 
-/* Pantallas grandes: asegura que cubra completamente */
 @media (min-width: 1200px) {
   .video-background iframe {
     width: 140vw;
@@ -133,46 +132,32 @@ header {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hero-content-portada h1 {
+.hero-title-logo {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #fff;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-.hero-content-portada p {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-}
-@media (max-width: 768px) {
-  .hero-content-portada p {
-    display: none;
-  }
-  .hero-content-portada h1 {
-    font-size: 1.5rem;
-  }
-}
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 30px;
-  background-color: rgba(255, 255, 255, 0.85); /* blanco con transparencia */
-  color: #333; /* gris oscuro para mejor contraste */
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* sombra para destacar */
+.hero-logo-img {
+  width: 280px;
+  max-width: 80%;
+  filter: brightness(0) invert(1); /* para que el logo PNG sea blanco si es oscuro */
+  position: relative;
+  top: 20%;
 }
 
-.cta-button:hover {
-  background-color: #fff;
-  color: #000;
-  transform: scale(1.05);
+@media (max-width: 768px) {
+  .hero-title-logo {
+    font-size: 1.8rem;
+  }
+
+  .hero-logo-img {
+    width: 120px;
+  }
 }
+
 /***************HERO***************/
 
 .hero-section {
@@ -305,8 +290,9 @@ header {
   max-width: 400px;
   padding: 0;
   margin: 0 auto;
-  position: relative;
+  /* position: relative;*/
   bottom: 10%;
+  margin-top: 10px;
 }
 .menu-overlay li {
   font-size: 28px;
@@ -331,9 +317,19 @@ header {
   display: block;
   object-fit: cover;
   margin-bottom: 20px;
+  align-items: center;
 }
 .menu-overlay li:hover {
   color: var(--boton-fondo-hover);
+}
+.menu-overlay #logo-menu-img {
+  margin: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  position: relative;
+  top: 10%;
 }
 #menu-principal li a.menu-link {
   display: flex;
@@ -367,9 +363,9 @@ header {
   margin: 20px 0 30px 40px;
   color: white;
   text-align: left;
-  align-self: flex-start;
+  align-self: center;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .menu-title::after {
@@ -472,13 +468,13 @@ header {
 .navbar #menuHamburger {
   display: none;
 }
-@media (min-width: 1501px) {
+@media (min-width: 1401px) {
   .menu-overlay li {
     font-size: 36px;
   }
   .menu-overlay span img {
     width: 80%;
-    left: 20%;
+
     position: relative;
   }
   .close-menu,
@@ -493,18 +489,42 @@ header {
     font-size: 36px;
   }
 }
+@media (min-width: 1901px) {
+  .menu-overlay li {
+    font-size: 52px;
+  }
+  .menu-overlay span img {
+    width: 100%;
+
+    position: relative;
+  }
+  .close-menu,
+  .btn-reservar-top,
+  .menu-button {
+    transform: scale(1.2);
+  }
+  .hero-content h1 {
+    font-size: 52px;
+  }
+  .hero-content p {
+    font-size: 36px;
+  }
+  .menu-title {
+    font-size: 58px;
+  }
+}
 @media (max-width: 1500px) {
   .menu-overlay {
     width: 100vw;
     height: 100vh;
-    justify-content: flex-end;
+    /* justify-content: flex-end;*/
   }
   .menu-overlay ul {
     height: auto;
   }
-  .menu-overlay li img {
-    width: 70%;
-    left: 10%;
+  .menu-overlay span img {
+    width: 35%;
+    /* left: 10%;*/
     position: relative;
   }
   .menu-overlay #logo-menu {
@@ -578,8 +598,8 @@ header {
   .swiper,
   .swiper-slide,
   .swiper-slide img {
-    height: 100%;
-    min-height: 100% !important;
+    height: 50%;
+    min-height: 50% !important;
   }
 
   .swiper-slide img {
@@ -630,7 +650,7 @@ header {
   }
   .menu-overlay li img {
     width: 60%;
-    left: 10%;
+
     position: relative;
   }
   .hero-section {
@@ -1263,7 +1283,7 @@ header {
 @media (max-width: 800px) {
   .habitaciones-section {
     padding: 20px 0 120px;
-    height: 90vh;
+    height: auto;
   }
 
   .habitaciones-header h2 {
@@ -2695,6 +2715,9 @@ header {
   }
   .hbi-item-title {
     font-size: 1.2rem; /* Títulos más grandes */
+  }
+  .hbi-room-desc {
+    display: none;
   }
 }
 /* Ajustes para pantallas muy grandes (más de 1600px) */
