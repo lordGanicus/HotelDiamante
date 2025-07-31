@@ -41,24 +41,6 @@
     />
   </head>
   <body>
-    <!-- Contenedor donde se cargará el loader -->
-    <div id="loader-container"></div>
-    <link rel="stylesheet" href="../../assets/loader.css" />
-    <script>
-      fetch("../../loader.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const container = document.getElementById("loader-container");
-          container.innerHTML = html;
-
-          const script = document.createElement("script");
-          script.src = "../../assets/loader.js";
-          document.body.appendChild(script);
-        })
-        .catch((err) => {
-          console.error("Error cargando loader.html", err);
-        });
-    </script>
     <main>
       <header>
         <div class="navbar" id="navbar">
@@ -186,7 +168,89 @@
           <h2 class="hbt-main-title">Habitación Familiar</h2>
 
           <div class="hbt-room-layout">
-            <!-- Sección del Slider (primera en móviles) -->
+            <!-- Sección de Amenidades (primera en desktop) -->
+            <div class="hbt-amenities-section">
+              <h3 class="hbt-amenities-title">Comodidades Incluidas</h3>
+              <p class="hbt-amenities-subtitle">
+                Todo lo que necesitas para una estancia perfecta
+              </p>
+
+              <div class="hbt-amenities-grid">
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-city"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Vista Hacia la Ciudad</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Check in 14:00</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Check out 11:00</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon" id="icon-dy">
+                    <i class="fas fa-coffee"></i>
+                  </div>
+                  <span class="hbt-amenity-text"
+                    >Desayuno Continental estilo buffet</span
+                  >
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-bath"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Baño privado</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-tv"></i>
+                  </div>
+                  <span class="hbt-amenity-text">TV cable</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-wifi"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Wifi</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-elevator"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Ascensor</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-suitcase-rolling"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Guarda equipaje gratis</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-concierge-bell"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Recepción 24 horas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sección del Slider (segunda en desktop, primera en móviles) -->
             <div class="hbt-slider-section">
               <div class="hbt-swiper-container">
                 <div class="hbt-swiper swiper">
@@ -326,91 +390,10 @@
                 </button>
               </div>
             </div>
-
-            <!-- Sección de Amenidades (segunda en móviles) -->
-            <div class="hbt-amenities-section">
-              <h3 class="hbt-amenities-title">Comodidades Incluidas</h3>
-              <p class="hbt-amenities-subtitle">
-                Todo lo que necesitas para una estancia perfecta
-              </p>
-
-              <div class="hbt-amenities-grid">
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-city"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Vista Hacia la Ciudad</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-clock"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Check in 14:00</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-clock"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Check out 11:00</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-coffee"></i>
-                  </div>
-                  <span class="hbt-amenity-text"
-                    >Desayuno Continental estilo buffet</span
-                  >
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-bath"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Baño privado</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-tv"></i>
-                  </div>
-                  <span class="hbt-amenity-text">TV cable</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-wifi"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Wifi</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-elevator"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Ascensor</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-suitcase-rolling"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Guarda equipaje gratis</span>
-                </div>
-
-                <div class="hbt-amenity-item">
-                  <div class="hbt-amenity-icon">
-                    <i class="fas fa-concierge-bell"></i>
-                  </div>
-                  <span class="hbt-amenity-text">Recepción 24 horas</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
       <!-- SECCION DE HABITACIONES -->
       <section class="habitaciones-section" id="habitaciones-section">
         <div class="habitaciones-header">
@@ -468,7 +451,7 @@
               </div>
             </div>
 
-            <!-- Habitación Individual Deluxe -->
+            <!-- repetir la misma -->
             <div class="swiper-slide">
               <img
                 src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752760002/b1153e07-9203-4089-944d-49cb78cf145c.png"
@@ -633,7 +616,7 @@
 
             <!-- Columna izquierda - Dirección -->
             <div class="ft-column ft-column-left">
-              <h3 class="ft-title">Direction</h3>
+              <h3 class="ft-title">Direccion</h3>
               <div class="ft-contact-info">
                 <div class="ft-contact-item">
                   <div class="ft-contact-icon-container">
@@ -732,6 +715,5 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/assets/scripthab.js"></script>
     <script src="/assets/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>
 </html>

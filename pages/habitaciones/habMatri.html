@@ -39,30 +39,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-    />
   </head>
   <body>
-    <!-- Contenedor donde se cargará el loader -->
-    <div id="loader-container"></div>
-    <link rel="stylesheet" href="../../assets/loader.css" />
-    <script>
-      fetch("../../loader.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const container = document.getElementById("loader-container");
-          container.innerHTML = html;
-
-          const script = document.createElement("script");
-          script.src = "../../assets/loader.js";
-          document.body.appendChild(script);
-        })
-        .catch((err) => {
-          console.error("Error cargando loader.html", err);
-        });
-    </script>
     <main>
       <header>
         <div class="navbar" id="navbar">
@@ -185,284 +163,247 @@
       </section>
       <!-- informacionde la habitacion -->
       <!-- Primera sección (hbt-section) -->
+
+      <!-- SECCION DE HABITACIONES -->
       <section class="hbt-section">
-        <!-- Vector superior -->
-        <div class="hbt-vector-top">
-          <svg
-            width="784"
-            height="477"
-            viewBox="0 0 784 477"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
-              fill="url(#paint0_linear_top)"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_top"
-                x1="847.931"
-                y1="1606.99"
-                x2="-602.388"
-                y2="1978.5"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stop-color="#202B60" />
-                <stop offset="0.225962" stop-color="#712B8D" />
-                <stop offset="0.398536" stop-color="#BF7EEB" />
-                <stop offset="0.658654" stop-color="#012555" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <!-- Vector inferior -->
-        <div class="hbt-vector-bottom">
-          <svg
-            width="784"
-            height="477"
-            viewBox="0 0 784 477"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M23.6039 0.828872C-2.83224 0.829652 -0.404891 0.59772 -0.349513 6.32032L-0.347917 476.5C-4.06668 71.3138 768.296 1.0695 783.636 0.828866L23.6039 0.828872Z"
-              fill="url(#paint0_linear_bottom)"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_bottom"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-                gradientUnits="objectBoundingBox"
-              >
-                <stop offset="2%" stop-color="#012555" />
-                <stop offset="15%" stop-color="#012555" />
-                <stop offset="50%" stop-color="#712B8D" />
-                <stop offset="70%" stop-color="#BF7EEB" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <!-- Contenido de habitacion -->
         <div class="hbt-container">
-          <h2 class="hbt-main-title">Habitacíon Matrimonial</h2>
+          <h2 class="hbt-main-title">Habitación Matrimonial Estándar</h2>
 
-          <!-- Versión desktop/tablet -->
-          <div class="hbt-rooms-container">
-            <!-- Habitación Matrimonial estandar -->
-            <div class="hbt-room-wrapper">
-              <div class="hbt-room-card">
-                <div class="hbt-room-image-container">
-                  <img
-                    class="hbt-room-image"
-                    src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
-                    alt="Habitación Matrimonial"
-                  />
-                  <div class="hbt-room-type-button">Estandar</div>
-                </div>
-                <div class="hbt-room-details">
-                  <h3>Habitación Matrimonial Estandar</h3>
+          <div class="hbt-room-layout">
+            <!-- Amenidades -->
+            <div class="hbt-amenities-section">
+              <h3 class="hbt-amenities-title">Comodidades Incluidas</h3>
+              <p class="hbt-amenities-subtitle">
+                Todo lo que necesitas para una estancia perfecta
+              </p>
 
-                  <ul class="hbt-amenities-list">
-                    <li class="hbt-amenity">
-                      <i class="fas fa-hotel"></i>
-                      <span>Vista al Interior del Hotel</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-wifi"></i>
-                      <span>Wifi</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-key"></i>
-                      <span>Acceso con llave</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-soap"></i>
-                      <span>Artículos de aseo gratuitos</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-tv"></i>
-                      <span>TV Plana</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-suitcase-rolling"></i>
-                      <span>Guarda equipaje</span>
-                    </li>
-                  </ul>
+              <div class="hbt-amenities-grid">
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-hotel"></i>
+                  </div>
+                  <span class="hbt-amenity-text"
+                    >Vista al Interior del Hotel</span
+                  >
                 </div>
-              </div>
-              <button
-                class="hbt-reserve-button"
-                onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+quiero+reservar+la+habitaci%C3%B3n+Matrimonial+Est%C3%A1ndar.', '_blank')"
-              >
-                RESERVAR AHORA
-              </button>
-            </div>
 
-            <!-- Habitación Matrimonialdeluxe -->
-            <div class="hbt-room-wrapper">
-              <div class="hbt-room-card">
-                <div class="hbt-room-image-container">
-                  <img
-                    class="hbt-room-image"
-                    src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
-                    alt="Habitación Matrimonial deluxe"
-                  />
-                  <div class="hbt-room-type-button">Deluxe</div>
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Check in 14:00</span>
                 </div>
-                <div class="hbt-room-details">
-                  <h3>Habitacíon Matrimonial Deluxe</h3>
-                  <ul class="hbt-amenities-list">
-                    <li class="hbt-amenity">
-                      <i class="fas fa-city"></i>
-                      <span>Vista Hacia la Ciudad</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-wifi"></i>
-                      <span>Wifi</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-key"></i>
-                      <span>Acceso con llave</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-tv"></i>
-                      <span>TV Smart</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-soap"></i>
-                      <span>Artículos de aseo gratuitos</span>
-                    </li>
-                    <li class="hbt-amenity">
-                      <i class="fas fa-suitcase-rolling"></i>
-                      <span>Guarda equipaje</span>
-                    </li>
-                  </ul>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Check out 11:00</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon" id="icon-dy">
+                    <i class="fas fa-coffee"></i>
+                  </div>
+                  <span class="hbt-amenity-text"
+                    >Desayuno Continental estilo buffet</span
+                  >
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-bath"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Baño privado</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-tv"></i>
+                  </div>
+                  <span class="hbt-amenity-text">TV cable</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-wifi"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Wifi</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-elevator"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Ascensor</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-suitcase-rolling"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Guarda equipaje gratis</span>
+                </div>
+
+                <div class="hbt-amenity-item">
+                  <div class="hbt-amenity-icon">
+                    <i class="fas fa-concierge-bell"></i>
+                  </div>
+                  <span class="hbt-amenity-text">Recepción 24 horas</span>
                 </div>
               </div>
-              <button
-                class="hbt-reserve-button"
-                onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+quiero+reservar+la+habitaci%C3%B3n+Matrimonial+Deluxe.', '_blank')"
-              >
-                RESERVAR AHORA
-              </button>
             </div>
-          </div>
 
-          <!-- Versión móvil (swiper) -->
-          <div class="hbt-swiper-container">
-            <div class="hbt-swiper swiper">
-              <div class="swiper-wrapper">
-                <!-- Slide 1 - Individual -->
-                <div class="swiper-slide">
-                  <div class="hbt-room-wrapper">
-                    <div class="hbt-room-card">
+            <!-- Slider -->
+            <div class="hbt-slider-section">
+              <div class="hbt-swiper-container">
+                <div class="hbt-swiper swiper">
+                  <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide hbt-swiper-slide">
+                      <div class="hbt-room-badge">Matrimonial</div>
                       <div class="hbt-room-image-container">
                         <img
                           class="hbt-room-image"
                           src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
-                          alt="Habitación Matrimonial"
+                          alt="Habitación Matrimonial Estándar"
                         />
-                        <div class="hbt-room-type-button">Estandar</div>
                       </div>
                       <div class="hbt-room-details">
-                        <ul class="hbt-amenities-list">
-                          <li class="hbt-amenity">
-                            <i class="fas fa-hotel"></i>
-                            <span>Vista al Interior del Hotel</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-wifi"></i>
-                            <span>Wifi</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-key"></i>
-                            <span>Acceso con llave</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-soap"></i>
-                            <span>Artículos de aseo gratuitos</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-tv"></i>
-                            <span>TV Plana</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-suitcase-rolling"></i>
-                            <span>Guarda equipaje</span>
-                          </li>
-                        </ul>
+                        <h4 class="hbt-room-title">
+                          Habitación Matrimonial Estándar
+                        </h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
+                            <i class="fas fa-users"></i>
+                            <span>Hasta 2 personas</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>25 m² de espacio</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-bath"></i>
+                            <span>Baño privado completo</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-snowflake"></i>
+                            <span>Aire acondicionado</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <button
-                      class="hbt-reserve-button"
-                      onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+quiero+reservar+la+habitaci%C3%B3n+Matrimonial+Est%C3%A1ndar.', '_blank')"
-                    >
-                      RESERVAR AHORA
-                    </button>
-                  </div>
-                </div>
 
-                <!-- Slide 2 - Deluxe -->
-                <div class="swiper-slide">
-                  <div class="hbt-room-wrapper">
-                    <div class="hbt-room-card">
+                    <!-- Slide 2 (misma imagen) -->
+                    <div class="swiper-slide hbt-swiper-slide">
+                      <div class="hbt-room-badge">Matrimonial</div>
                       <div class="hbt-room-image-container">
                         <img
                           class="hbt-room-image"
-                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
-                          alt="Habitación Matrimonial deluxe"
+                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
+                          alt="Habitación Matrimonial Estándar"
                         />
-                        <div class="hbt-room-type-button">Deluxe</div>
                       </div>
                       <div class="hbt-room-details">
-                        <ul class="hbt-amenities-list">
-                          <li class="hbt-amenity">
-                            <i class="fas fa-city"></i>
-                            <span>Vista Hacia la Ciudad</span>
-                          </li>
-                          <li class="hbt-amenity">
+                        <h4 class="hbt-room-title">
+                          Habitación Matrimonial Estándar
+                        </h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
                             <i class="fas fa-wifi"></i>
-                            <span>Wifi</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-key"></i>
-                            <span>Acceso con llave</span>
-                          </li>
-                          <li class="hbt-amenity">
+                            <span>WiFi 100 Mbps</span>
+                          </div>
+                          <div class="hbt-feature">
                             <i class="fas fa-tv"></i>
-                            <span>TV Smart</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-soap"></i>
-                            <span>Artículos de aseo gratuitos</span>
-                          </li>
-                          <li class="hbt-amenity">
-                            <i class="fas fa-suitcase-rolling"></i>
-                            <span>Guarda equipaje</span>
-                          </li>
-                        </ul>
+                            <span>TV Plana 40"</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-coffee"></i>
+                            <span>Cafetera eléctrica</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-phone"></i>
+                            <span>Teléfono directo</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <button
-                      class="hbt-reserve-button"
-                      onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+quiero+reservar+la+habitaci%C3%B3n+Matrimonial+Deluxe.', '_blank')"
-                    >
-                      RESERVAR AHORA
+
+                    <!-- Slide 3 (misma imagen) -->
+                    <div class="swiper-slide hbt-swiper-slide">
+                      <div class="hbt-room-badge">Matrimonial</div>
+                      <div class="hbt-room-image-container">
+                        <img
+                          class="hbt-room-image"
+                          src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
+                          alt="Habitación Matrimonial Estándar"
+                        />
+                      </div>
+                      <div class="hbt-room-details">
+                        <h4 class="hbt-room-title">
+                          Habitación Matrimonial Estándar
+                        </h4>
+                        <div class="hbt-room-features">
+                          <div class="hbt-feature">
+                            <i class="fas fa-lock"></i>
+                            <span>Caja de seguridad</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-umbrella-beach"></i>
+                            <span>Toallas de playa</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Servicio a la habitación</span>
+                          </div>
+                          <div class="hbt-feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Estacionamiento gratuito</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Controles -->
+                  <div class="hbt-swiper-controls">
+                    <button class="hbt-swiper-button hbt-swiper-button-prev">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="hbt-swiper-button hbt-swiper-button-next">
+                      <i class="fas fa-chevron-right"></i>
                     </button>
                   </div>
+
+                  <!-- Paginación -->
+                  <div class="hbt-swiper-pagination swiper-pagination"></div>
                 </div>
               </div>
 
-              <!-- Paginación personalizada  -->
-              <div class="hbt-swiper-pagination"></div>
+              <!-- Descripción -->
+              <div class="hbt-room-description">
+                <p>
+                  Ideal para parejas o viajeros que buscan comodidad y
+                  privacidad, nuestra habitación matrimonial estándar ofrece un
+                  ambiente acogedor con todos los servicios esenciales para una
+                  estadía tranquila.
+                </p>
+              </div>
+
+              <!-- Botón de reserva -->
+              <div class="hbt-reserve-container">
+                <button
+                  class="hbt-reserve-button"
+                  onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+estoy+interesado+en+reservar+la+habitaci%C3%B3n+Matrimonial+Est%C3%A1ndar.&type=phone_number&app_absent=0', '_blank')"
+                >
+                  RESERVAR AHORA
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
       <!-- SECCION DE HABITACIONES -->
       <section class="habitaciones-section" id="habitaciones-section">
         <div class="habitaciones-header">
@@ -475,117 +416,7 @@
 
         <div class="habitaciones-swiper swiper">
           <div class="swiper-wrapper">
-            <!-- Habitación Twin -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767188/03_chjtbn.png"
-                alt="Habitación Twin"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Twin</h3>
-                  <p>
-                    Dos camas individuales en un espacio cómodo, todo lo
-                    necesario para tu descanso.
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habTwin.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Individual -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170663/01_qvqijt.png"
-                alt="Individual"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Individual</h3>
-                  <p>
-                    Espacio práctico y bien equipado, pensado para una estancia
-                    individual tranquila y confortable.
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habIndividual.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Matrimonial Estándar -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
-                alt="Habitación Matrimonial Estandar"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Matrimonial Estandar</h3>
-                  <p>
-                    Cama matrimonial, diseño refinado y un ambiente pensado para
-                    el descanso en pareja.
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habMatri.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Matrimonial Deluxe -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
-                alt="Habitación Matrimonial Deluxe"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Matrimonial Deluxe</h3>
-                  <p>
-                    Ambiente armonioso que combina comodidad y estilo en un
-                    espacio acogedor y sofisticado.
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habMatri.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Familiar -->
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
-                alt="Habitación Familiar"
-              />
-              <div class="habitacion-card-container">
-                <div class="habitacion-card">
-                  <h3>Habitación Familiar Deluxe</h3>
-                  <p>
-                    Perfecta para compartir en familia, con amplias camas,
-                    muebles modernos y detalles acogedores..
-                  </p>
-                  <button
-                    class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habFamiliar.html'"
-                  >
-                    Ver más
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!-- Habitación Triple -->
+            <!-- Habitación Triple  -->
             <div class="swiper-slide">
               <img
                 src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170587/03_rkpznz.png"
@@ -600,7 +431,166 @@
                   </p>
                   <button
                     class="btn-reservar"
-                    onclick="location.href='../pages/habitaciones/habTriple.html'"
+                    onclick="location.href='/pages/habitaciones/habTriple.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Habitación Individual Estándar -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752759984/12bf2a33-41e1-40c9-ab70-37520f919773.png"
+                alt="Habitación Individual"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Individual Estándar</h3>
+                  <p>
+                    Espacio práctico y bien equipado, pensado para una estancia
+                    individual tranquila con vista interior.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habIndividual.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Individual Deluxe -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752760002/b1153e07-9203-4089-944d-49cb78cf145c.png"
+                alt="Habitación Individual Deluxe"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Individual Deluxe</h3>
+                  <p>
+                    Espacio funcional con vista a la ciudad, ideal para una
+                    estancia cómoda y tranquila.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habIndividual.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Habitación Matrimonial Estándar -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170654/04_f8hroi.png"
+                alt="Habitación Matrimonial Estándar"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Matrimonial Estándar</h3>
+                  <p>
+                    Cama matrimonial, diseño refinado y un ambiente pensado para
+                    el descanso en pareja con vista interior.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habMatri.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Matrimonial Deluxe -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170637/01_h4trhs.png"
+                alt="Habitación Matrimonial Deluxe"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Matrimonial Deluxe</h3>
+                  <p>
+                    Ambiente armonioso con cama matrimonial y vista a la ciudad,
+                    que combina comodidad y estilo.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habMatri.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Twin Estándar -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767186/04_jh8hws.png"
+                alt="Habitación Twin"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Twin Estándar</h3>
+                  <p>
+                    Dos camas individuales en un espacio cómodo, con vista
+                    interior y todas las comodidades básicas.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habTwin.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Twin Deluxe -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752767171/01_yuoj0i.png"
+                alt="Habitación Twin Deluxe"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Twin Deluxe</h3>
+                  <p>
+                    Dos camas individuales y vista a la ciudad, perfecta para
+                    compartir con estilo y comodidad.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habTwin.html'"
+                  >
+                    Ver más
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Habitación Familiar  -->
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                alt="Habitación Familiar Estándar"
+              />
+              <div class="habitacion-card-container">
+                <div class="habitacion-card">
+                  <h3>Habitación Familiar</h3>
+                  <p>
+                    Perfecta para compartir en familia, con amplias camas,
+                    muebles modernos y detalles acogedores.
+                  </p>
+                  <button
+                    class="btn-reservar"
+                    onclick="location.href='/pages/habitaciones/habFamiliar.html'"
                   >
                     Ver más
                   </button>
@@ -609,6 +599,7 @@
             </div>
           </div>
 
+          <!-- Navegación -->
           <div class="habitaciones-nav">
             <button class="habitacion-nav-btn habitacion-prev">
               <i class="fas fa-chevron-left"></i>
@@ -619,6 +610,7 @@
           </div>
         </div>
       </section>
+
       <!-- Footer -->
       <footer class="ft-footer-section">
         <!-- Sección superior (con fondo de imagen) -->
@@ -635,7 +627,7 @@
 
             <!-- Columna izquierda - Dirección -->
             <div class="ft-column ft-column-left">
-              <h3 class="ft-title">Direction</h3>
+              <h3 class="ft-title">Direccion</h3>
               <div class="ft-contact-info">
                 <div class="ft-contact-item">
                   <div class="ft-contact-icon-container">
@@ -732,8 +724,7 @@
     </a>
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="/assets/script.js"></script>
     <script src="/assets/scripthab.js"></script>
-    <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+    <script src="/assets/script.js"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@
     <!-- Swiper CSS -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
 
     <!-- Google Fonts -->
@@ -16,8 +16,67 @@
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Prata&family=EB+Garamond:wght@400;500&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
+      :root {
+        --azul-principal: #012555;
+        --boton-color: #012555;
+        --boton-texto: white;
+        --boton-borde-hover: #012555;
+        --boton-fondo-hover: white;
+        --boton-texto-hover: #012555;
+        --icon-color: white;
+        --icon-border-color: white;
+        --azul-secundario: #0140a3;
+        --azul-terciario: #0251bb;
+        --azul-oscuro: #001a3f;
+        --gris-borde: #e1e5ee;
+        --texto-oscuro: #2a2a2a;
+        --texto-gris: #6b7280;
+
+        --texto-color: #000;
+        --text-color-white: white;
+
+        --trm-gris-claro: #d9d9d9;
+        --trm-gris-oscuro: #737373;
+
+        --ps-bg-color: #000;
+        --ps-text-color: #fff;
+        --ps-card-bg: #fff;
+        --ps-card-text: #333;
+        --ps-link-color: #012555;
+        --ps-accent-color: #4d0c0c;
+
+        --dy-glass-bg: rgba(255, 255, 255, 0.15);
+        --dy-glass-border: rgba(255, 255, 255, 0.2);
+        --dy-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        --dy-text-color: #fff;
+        --dy-btn-bg: rgba(255, 255, 255, 0.8);
+        --dy-btn-color: #333;
+        --dy-image-size: 90vh; /* Imagen casi altura total */
+        --dy-reflect-height: 40vh; /* Reflejo proporcional */
+        --dy-frame-size: 100px;
+        --background-gradient: linear-gradient(
+          75deg,
+          rgba(1, 37, 85, 1) 0%,
+          rgba(1, 48, 111, 1) 41%,
+          rgba(2, 59, 136, 1) 57%,
+          rgba(34, 115, 222, 1) 88%
+        );
+        --primary-color: #012555;
+        --accent-color: #00f7ff;
+        --inactive-diamond: rgba(255, 255, 255, 0.3);
+        --active-diamond: #00f7ff;
+        --bar-width: 3px;
+        --diamond-size: 18px;
+        --diamond-margin: 22px;
+        --animation-duration: 0.6s;
+
+        --gris-claro: #edeff3;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -29,1026 +88,878 @@
         background-color: #f8f9fa;
       }
 
-      /* Slider de Imágenes Principal */
-      .romantic-slider-container {
+      .hbt-section {
+        padding: 80px 0;
+        background-color: #fff;
         position: relative;
-        width: 100%;
-        height: 70vh;
-        min-height: 500px;
         overflow: hidden;
-        border-radius: 20px;
-        margin: 40px auto;
-        max-width: 1200px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
-      .romantic-slider {
-        width: 100%;
-        height: 100%;
+      .hbt-container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 40px;
       }
 
-      .romantic-slide {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .romantic-slide::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0.2)
-        );
-        z-index: 1;
-      }
-
-      .romantic-slide-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-        z-index: 2;
-        padding: 20px;
-      }
-
-      .romantic-slide-title {
+      .hbt-main-title {
         font-family: "Prata", serif;
-        font-size: 3.5rem;
-        font-weight: 400;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-        opacity: 0;
-        transform: translateY(30px);
-        animation: slideInUp 1s ease-out 0.5s forwards;
-      }
-
-      .romantic-slide-subtitle {
-        font-family: "EB Garamond", serif;
-        font-size: 1.5rem;
-        opacity: 0.9;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transform: translateY(20px);
-        animation: slideInUp 1s ease-out 0.8s forwards;
-      }
-
-      /* Navegación del Slider */
-      .swiper-button-next,
-      .swiper-button-prev {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        width: 60px !important;
-        height: 60px !important;
-        margin-top: -30px !important;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-      }
-
-      .swiper-button-next:after,
-      .swiper-button-prev:after {
-        font-size: 20px !important;
-        color: white;
-      }
-
-      .swiper-button-next:hover,
-      .swiper-button-prev:hover {
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(1.1);
-      }
-
-      .swiper-pagination-bullet {
-        background: rgba(255, 255, 255, 0.5) !important;
-        width: 12px !important;
-        height: 12px !important;
-        margin: 0 8px !important;
-      }
-
-      .swiper-pagination-bullet-active {
-        background: white !important;
-        transform: scale(1.3);
-      }
-
-      /* Título Principal */
-      .main-title-section {
-        text-align: center;
-        padding: 60px 20px 40px;
-      }
-
-      .main-title {
-        font-family: "Prata", serif;
-        font-size: 2.8rem;
-        color: #2c3e50;
-        margin-bottom: 20px;
-        position: relative;
-      }
-
-      .main-title::before,
-      .main-title::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        width: 80px;
-        height: 2px;
-        background: #2c3e50;
-      }
-
-      .main-title::before {
-        left: -100px;
-      }
-
-      .main-title::after {
-        right: -100px;
-      }
-
-      /* Servicios Incluidos */
-      .services-grid-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-        margin-bottom: 60px;
-      }
-
-      .service-item {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .service-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.6),
-          transparent
-        );
-        transition: left 0.6s;
-      }
-
-      .service-item:hover::before {
-        left: 100%;
-      }
-
-      .service-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .service-icon {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        background: #f8f9fa;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        color: #2c3e50;
-        transition: all 0.3s ease;
-      }
-
-      .service-item:hover .service-icon {
-        background: #2c3e50;
-        color: white;
-        transform: rotateY(360deg);
-      }
-
-      .service-title {
-        font-family: "EB Garamond", serif;
-        font-size: 1.4rem;
-        color: #2c3e50;
-        font-weight: 500;
-        margin-bottom: 15px;
-      }
-
-      .service-description {
-        font-family: "Merriweather", sans-serif;
-        font-size: 0.95rem;
-        color: #666;
-        line-height: 1.6;
-      }
-
-      /* Animaciones */
-      @keyframes slideInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Tu código original desde aquí */
-      .ps-info-container {
-        max-width: 1645px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        position: relative;
-      }
-
-      /* Header Section */
-      .ps-info-header {
+        font-size: 3rem;
         text-align: center;
         margin-bottom: 60px;
-      }
-
-      .ps-info-main-title {
-        font-family: "Merriweather", serif;
-        font-size: 64px;
-        font-weight: 400;
-        color: #000000;
-        margin-bottom: 15px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: ps-info-fadeInUp 1s ease-out 0.3s forwards;
-      }
-
-      /* Services Slider Section */
-      .ps-info-services-section {
-        background-color: #04224ae6;
-        padding: 50px 0;
-        margin-bottom: 60px;
-        border-radius: 8px;
+        color: var(--azul-oscuro);
         position: relative;
-        overflow: hidden;
-        width: 100vw;
-        left: 50%;
-        transform: translateX(-50%);
       }
 
-      .ps-info-services-container {
-        max-width: 1645px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      .ps-info-services-swiper {
-        width: 100%;
-        padding: 20px 0;
-      }
-
-      .ps-info-service-item {
+      /* Layout moderno ajustado */
+      .hbt-room-layout {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        cursor: pointer;
-        border-radius: 12px;
-        height: 100%;
-      }
-
-      .ps-info-service-item:hover {
-        background-color: #012555;
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      }
-
-      .ps-info-service-item.ps-info-active {
-        background-color: #012555;
-        border: 1px solid #031158;
-        box-shadow: 10px 10px 24px rgba(0, 0, 0, 0.6);
-        transform: scale(1.05);
-      }
-
-      .ps-info-service-icon {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 20px;
-        object-fit: contain;
-        transition: all 0.3s ease;
-      }
-
-      .ps-info-service-item:hover .ps-info-service-icon {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-      }
-
-      .ps-info-service-title {
-        font-family: "EB Garamond", serif;
-        font-size: 28px;
-        color: #ffffff;
-        text-align: center;
-        font-weight: 400;
-        opacity: 0.8;
-        transition: all 0.3s ease;
-        margin-top: auto;
-      }
-
-      .ps-info-service-item:hover .ps-info-service-title,
-      .ps-info-service-item.ps-info-active .ps-info-service-title {
-        opacity: 1;
-        font-weight: 500;
-      }
-
-      /* Navigation buttons */
-      .ps-info-services-navigation {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 20px;
-        z-index: 10;
-        pointer-events: none;
-      }
-
-      .ps-info-services-prev,
-      .ps-info-services-next {
-        background: rgba(255, 255, 255, 0.2);
-        border: none;
-        color: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 24px;
-        cursor: pointer;
-        pointer-events: all;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .ps-info-services-prev:hover,
-      .ps-info-services-next:hover {
-        background: rgba(255, 255, 255, 0.4);
-        transform: scale(1.1);
-      }
-
-      /* Main Content Section */
-      .ps-info-main-content {
-        display: flex;
-        gap: 60px;
+        gap: 30px;
         align-items: flex-start;
       }
 
-      .ps-info-reservation-section {
-        flex: 1;
-        max-width: 400px;
+      /* Sección de Amenities más estrecha */
+      .hbt-amenities-section {
+        flex: 0 0 500px;
+        background: var(--gris-claro);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 20px;
       }
 
-      .ps-info-reservation-title {
+      .hbt-amenities-title {
         font-family: "Prata", serif;
-        font-size: 48px;
-        color: #000000;
-        margin-bottom: 30px;
-        opacity: 0;
-        transform: translateX(-30px);
-        animation: ps-info-slideInLeft 1s ease-out 1.2s forwards;
+        font-size: 1.8rem;
+        color: var(--azul-oscuro);
+        margin-bottom: 15px;
       }
 
-      .ps-info-date-container {
+      .hbt-amenities-subtitle {
+        font-size: 1rem;
+        color: var(--texto-gris);
+        margin-bottom: 30px;
+        line-height: 1.5;
+      }
+
+      .hbt-amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          2,
+          1fr
+        ); /* 2 columnas en pantallas grandes */
+        gap: 15px;
+      }
+
+      .hbt-amenity-item {
         display: flex;
         align-items: center;
-        gap: 15px;
-        margin-bottom: 30px;
         padding: 15px;
-        border: 2px solid #f0f0f0;
+        background: white;
         border-radius: 8px;
-        background: #fafafa;
         transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       }
 
-      .ps-info-date-container:focus-within {
-        border-color: #04224ae6;
-        box-shadow: 0 0 10px rgba(4, 34, 74, 0.2);
+      .hbt-amenity-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
-      .ps-info-date-input {
+      .hbt-amenity-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--azul-principal);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: white;
+        font-size: 1rem;
+      }
+
+      .hbt-amenity-text {
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      /* Sección del Slider más ancha */
+      .hbt-slider-section {
         flex: 1;
-        padding: 10px;
-        font-family: "Verdana", sans-serif;
-        font-size: 20.5px;
-        color: #060c2c;
-        border: none;
-        background: transparent;
-        letter-spacing: 0.52px;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        order: 2; /* Por defecto va a la derecha */
+      }
+
+      /* Contenedor principal del slider más ancho */
+      .hbt-swiper-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding: 20px 0;
+        flex-grow: 1;
+      }
+
+      .hbt-swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Slides más anchas y altas */
+      .hbt-swiper-slide {
+        width: 95%;
+        max-width: 1000px;
+        height: 550px;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity: 0;
+        filter: blur(2px);
+        transform: scale(0.9);
+      }
+
+      .hbt-room-image-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hbt-room-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+          filter 0.6s ease;
+        transform-origin: center center;
+        filter: brightness(0.9);
+      }
+
+      .hbt-room-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--azul-principal);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        z-index: 2;
+      }
+
+      .hbt-room-details {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        transform: translateY(100%);
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .hbt-room-title {
+        font-family: "Prata", serif;
+        font-size: 1.5rem;
+        color: var(--azul-oscuro);
+        margin-bottom: 15px;
+      }
+
+      .hbt-room-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .hbt-feature {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+      }
+
+      .hbt-feature i {
+        color: var(--accent-color);
+        margin-right: 8px;
+        font-size: 1rem;
+      }
+
+      /* Descripción añadida debajo del slider */
+      .hbt-room-description {
+        margin-top: 30px;
+        padding: 0 20px;
         text-align: center;
+        color: var(--texto-gris);
+        line-height: 1.6;
+        font-size: 1.1rem;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .ps-info-date-input:focus {
-        outline: none;
+      /* Botón de reserva debajo de la descripción */
+      .hbt-reserve-container {
+        text-align: center;
+        margin-top: 30px;
+        padding: 0 20px;
       }
 
-      .ps-info-calendar-icon {
-        width: 24px;
-        height: 24px;
+      .hbt-reserve-button {
+        padding: 16px 50px;
+        background: var(--azul-principal);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(1, 37, 85, 0.2);
       }
 
-      .ps-info-calendar-icon:hover {
+      .hbt-reserve-button:hover {
+        background: var(--azul-oscuro);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(1, 37, 85, 0.3);
+      }
+
+      /* Efecto 3D y zoom */
+      .hbt-swiper-slide-active {
+        transform: scale(1.05) translateZ(20px);
+        z-index: 10;
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      .hbt-swiper-slide-active .hbt-room-image {
+        transform: scale(1.15);
+        filter: brightness(1);
+      }
+
+      .hbt-swiper-slide-active .hbt-room-details {
+        transform: translateY(0);
+      }
+
+      .hbt-swiper-slide-prev {
+        transform: translateX(-30%) scale(0.9) rotateY(15deg);
+        opacity: 0.8;
+        filter: blur(1px);
+      }
+
+      .hbt-swiper-slide-next {
+        transform: translateX(30%) scale(0.9) rotateY(-15deg);
+        opacity: 0.8;
+        filter: blur(1px);
+      }
+
+      /* Controles del slider */
+      .hbt-swiper-controls {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 20;
+      }
+
+      .hbt-swiper-button {
+        width: 50px;
+        height: 50px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: none;
+        color: var(--azul-principal);
+      }
+
+      .hbt-swiper-button:hover {
+        background: var(--azul-principal);
+        color: white;
         transform: scale(1.1);
       }
 
-      .ps-info-reservation-btn {
-        width: 100%;
-        padding: 15px 30px;
-        background-color: #04224ae6;
-        color: #ffffff;
-        border: none;
-        border-radius: 8px;
-        font-family: "Prata", serif;
-        font-size: 24px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .ps-info-reservation-btn:hover {
-        background-color: #012555;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .ps-info-divider {
-        width: 3px;
-        height: 400px;
-        background-color: #ddd;
-        align-self: stretch;
-      }
-
-      .ps-info-moments-section {
-        flex: 2;
-        padding-left: 40px;
-      }
-
-      .ps-info-moments-title {
-        font-family: "Prata", serif;
-        font-size: 48px;
-        color: #000000;
-        margin-bottom: 20px;
-        position: relative;
-        opacity: 0;
-        transform: translateX(30px);
-        animation: ps-info-slideInRight 1s ease-out 1.4s forwards;
-      }
-
-      .ps-info-moments-title::before {
-        content: "";
+      /* Paginación */
+      .hbt-swiper-pagination {
         position: absolute;
-        left: -100px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 78px;
-        height: 3px;
-        background-color: #000;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
       }
 
-      .ps-info-moments-description {
-        font-family: "EB Garamond", serif;
-        font-size: 32px;
-        color: #000000;
-        line-height: 1.6;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: ps-info-fadeInUp 1s ease-out 1.6s forwards;
+      .hbt-swiper-pagination .swiper-pagination-bullet {
+        width: 40px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        opacity: 1;
       }
 
-      /* Animaciones */
-      @keyframes ps-info-fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .hbt-swiper-pagination .swiper-pagination-bullet-active {
+        background: var(--azul-principal);
+        transform: scaleX(1.2);
       }
 
-      @keyframes ps-info-slideInLeft {
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes ps-info-slideInRight {
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes ps-info-scaleIn {
-        to {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1200px) {
-        .main-title::before,
-        .main-title::after {
-          display: none;
-        }
-
-        .services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .ps-info-main-content {
+      /* Responsive - Tablets (768px - 992px) */
+      @media (min-width: 768px) and (max-width: 992px) {
+        .hbt-room-layout {
           flex-direction: column;
-          gap: 40px;
         }
 
-        .ps-info-divider {
+        .hbt-amenities-section {
+          order: 2;
+          position: static;
+          margin-top: 40px;
+          flex: 0 0 auto;
           width: 100%;
-          height: 3px;
+          padding: 30px;
         }
 
-        .ps-info-moments-section {
-          padding-left: 0;
+        .hbt-slider-section {
+          order: 1;
         }
 
-        .ps-info-moments-title::before {
-          left: -90px;
+        .hbt-amenities-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+
+        .hbt-swiper-slide {
+          height: 500px;
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .hbt-room-description {
+          font-size: 1rem;
         }
       }
 
-      @media (max-width: 992px) {
-        .romantic-slide-title {
+      /* Responsive - Móviles (576px - 768px) */
+      @media (min-width: 576px) and (max-width: 767px) {
+        .hbt-container {
+          padding: 0 30px;
+        }
+
+        .hbt-room-layout {
+          flex-direction: column;
+        }
+
+        .hbt-amenities-section {
+          order: 2;
+          position: static;
+          margin-top: 40px;
+          flex: 0 0 auto;
+          width: 100%;
+          padding: 25px;
+        }
+
+        .hbt-slider-section {
+          order: 1;
+        }
+
+        .hbt-amenities-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+
+        .hbt-amenity-item {
+          padding: 12px;
+        }
+
+        .hbt-amenity-icon {
+          width: 35px;
+          height: 35px;
+          margin-right: 12px;
+        }
+
+        .hbt-swiper-slide {
+          height: 400px;
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .hbt-main-title {
           font-size: 2.5rem;
         }
+      }
 
-        .services-grid {
-          grid-template-columns: 1fr;
-          gap: 30px;
+      /* Responsive - Móviles pequeños (hasta 576px) */
+      @media (max-width: 575px) {
+        .hbt-section {
+          padding: 60px 0;
         }
 
-        .ps-info-service-icon {
-          width: 70px;
-          height: 70px;
+        .hbt-container {
+          padding: 0 20px;
         }
 
-        .ps-info-service-title {
-          font-size: 22px;
+        .hbt-room-layout {
+          flex-direction: column;
+        }
+
+        .hbt-amenities-section {
+          order: 2;
+          position: static;
+          margin-top: 30px;
+          flex: 0 0 auto;
+          width: 100%;
+          padding: 20px;
+        }
+
+        .hbt-slider-section {
+          order: 1;
+        }
+
+        .hbt-amenities-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+
+        .hbt-amenity-item {
+          padding: 10px;
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .hbt-amenity-icon {
+          width: 30px;
+          height: 30px;
+          margin-right: 0;
+          margin-bottom: 8px;
+          font-size: 0.9rem;
+        }
+
+        .hbt-amenity-text {
+          font-size: 0.85rem;
+        }
+
+        .hbt-swiper-slide {
+          height: 300px;
+          width: 90%;
+          margin: 0 auto;
+        }
+
+        .hbt-main-title {
+          font-size: 2rem;
+          margin-bottom: 40px;
+        }
+
+        .hbt-amenities-title {
+          font-size: 1.5rem;
+        }
+
+        .hbt-amenities-subtitle {
+          font-size: 0.9rem;
+          margin-bottom: 20px;
+        }
+
+        .hbt-room-description {
+          font-size: 0.95rem;
+          padding: 0 10px;
+        }
+
+        .hbt-reserve-button {
+          padding: 14px 40px;
+          font-size: 1rem;
         }
       }
 
-      @media (max-width: 768px) {
-        .romantic-slider-container {
-          height: 50vh;
-          min-height: 400px;
-          margin: 20px;
-          border-radius: 15px;
+      /* Pantallas muy grandes */
+      @media (min-width: 1600px) {
+        .hbt-container {
+          max-width: 1850px;
         }
 
-        .romantic-slide-title {
-          font-size: 2rem;
+        .hbt-swiper-slide {
+          max-width: 1200px;
+          height: 600px;
         }
 
-        .romantic-slide-subtitle {
+        .hbt-room-layout {
+          justify-content: center;
+        }
+
+        .hbt-room-description {
+          max-width: 1200px;
           font-size: 1.2rem;
         }
 
-        .main-title {
-          font-size: 2rem;
-        }
-
-        .ps-info-container {
-          padding: 20px 15px;
-        }
-
-        .ps-info-main-title {
-          font-size: 48px;
-        }
-
-        .ps-info-reservation-title,
-        .ps-info-moments-title {
-          font-size: 36px;
-        }
-
-        .ps-info-moments-description {
-          font-size: 24px;
-        }
-
-        .ps-info-moments-title::before {
-          display: none;
-        }
-
-        .ps-info-services-navigation {
-          display: none;
+        .hbt-reserve-button {
+          padding: 18px 60px;
+          font-size: 1.2rem;
         }
       }
-
-      @media (max-width: 576px) {
-        .romantic-slide-title {
-          font-size: 1.8rem;
-        }
-
-        .ps-info-service-icon {
+      @media (min-width: 993px) {
+        #icon-dy {
           width: 60px;
-          height: 60px;
-        }
-
-        .ps-info-service-title {
-          font-size: 18px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .romantic-slider-container {
-          margin: 10px;
-        }
-
-        .ps-info-main-title {
-          font-size: 36px;
-        }
-
-        .ps-info-reservation-title,
-        .ps-info-moments-title {
-          font-size: 28px;
-        }
-
-        .ps-info-moments-description {
-          font-size: 20px;
         }
       }
     </style>
   </head>
   <body>
-    <section>
-      <!-- Slider Principal de Imágenes -->
-      <div class="romantic-slider-container">
-        <div class="swiper romantic-slider">
-          <div class="swiper-wrapper">
-            <div
-              class="swiper-slide romantic-slide"
-              style="
-                background-image: url('https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/decorado_Hotel_Diamante1_mz2ttf.jpg');
-              "
-            >
-              <div class="romantic-slide-content">
-                <h2 class="romantic-slide-title">Velada Romántica</h2>
-                <p class="romantic-slide-subtitle">con tu Persona Especial</p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide romantic-slide"
-              style="
-                background-image: url('https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/decorado_Hotel_Diamante1_mz2ttf.jpg');
-              "
-            >
-              <div class="romantic-slide-content">
-                <h2 class="romantic-slide-title">Momentos Únicos</h2>
-                <p class="romantic-slide-subtitle">que Enamoran</p>
-              </div>
-            </div>
-            <div
-              class="swiper-slide romantic-slide"
-              style="
-                background-image: url('https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/decorado_Hotel_Diamante1_mz2ttf.jpg');
-              "
-            >
-              <div class="romantic-slide-content">
-                <h2 class="romantic-slide-title">Experiencia</h2>
-                <p class="romantic-slide-subtitle">Romántica Completa</p>
-              </div>
-            </div>
-          </div>
-          <!-- Navegación -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
+    <section class="hbt-section">
+      <div class="hbt-container">
+        <h2 class="hbt-main-title">Habitación Familiar</h2>
 
-      <!-- Título Principal -->
-      <div class="main-title-section">
-        <h1 class="main-title">Servicios Incluidos</h1>
-      </div>
-
-      <!-- Grid de Servicios -->
-      <div class="services-grid-container">
-        <div class="services-grid">
-          <div class="service-item">
-            <div class="service-icon">🛏️</div>
-            <h3 class="service-title">Habitación Matrimonial</h3>
-            <p class="service-description">
-              Ambiente íntimo y acogedor diseñado para su comodidad
+        <div class="hbt-room-layout">
+          <!-- Sección de Amenidades (primera en desktop) -->
+          <div class="hbt-amenities-section">
+            <h3 class="hbt-amenities-title">Comodidades Incluidas</h3>
+            <p class="hbt-amenities-subtitle">
+              Todo lo que necesitas para una estancia perfecta
             </p>
-          </div>
 
-          <div class="service-item">
-            <div class="service-icon">🌹</div>
-            <h3 class="service-title">Pétalos de Rosa</h3>
-            <p class="service-description">
-              Decoración romántica con pétalos frescos de rosa
-            </p>
-          </div>
-
-          <div class="service-item">
-            <div class="service-icon">🏨</div>
-            <h3 class="service-title">Decorado de Toallas</h3>
-            <p class="service-description">
-              Presentación especial y elegante de amenidades
-            </p>
-          </div>
-
-          <div class="service-item">
-            <div class="service-icon">🕯️</div>
-            <h3 class="service-title">Iluminación con Velas</h3>
-            <p class="service-description">
-              Ambiente cálido y romántico con velas aromáticas
-            </p>
-          </div>
-
-          <div class="service-item">
-            <div class="service-icon">🍷</div>
-            <h3 class="service-title">Vino</h3>
-            <p class="service-description">
-              Selección especial para brindar por su amor
-            </p>
-          </div>
-
-          <div class="service-item">
-            <div class="service-icon">🛁</div>
-            <h3 class="service-title">Baño Privado</h3>
-            <p class="service-description">
-              Espacio privado y confortable para su relajación
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tu código original desde aquí (sin modificar) -->
-      <div class="ps-info-container">
-        <!-- Header Section -->
-        <div class="ps-info-header">
-          <h1 class="ps-info-main-title">— Servicios Incluidos</h1>
-          <div class="ps-info-title-line"></div>
-        </div>
-      </div>
-
-      <!-- Services Slider Section (full width) -->
-      <div class="ps-info-services-section">
-        <div class="ps-info-services-container">
-          <div class="swiper ps-info-services-swiper">
-            <div class="swiper-wrapper">
-              <!-- Habitación Matrimonial -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393128/15f5c6a7-c857-483a-a54c-653f088e8a19.png"
-                    alt="Habitación Matrimonial"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title">
-                    Habitación<br />Matrimonial
-                  </h4>
+            <div class="hbt-amenities-grid">
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-city"></i>
                 </div>
+                <span class="hbt-amenity-text">Vista Hacia la Ciudad</span>
               </div>
 
-              <!-- Pétalos de Rosa -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393150/6ed05d6e-2a52-4340-b8fa-ae79f52d4ee3.png"
-                    alt="Pétalos de Rosa"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title">Pétalos de<br />Rosa</h4>
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-clock"></i>
                 </div>
+                <span class="hbt-amenity-text">Check in 14:00</span>
               </div>
 
-              <!-- Decorado de toallas -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item ps-info-active">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393182/d4775826-7d68-4012-9cf2-f9c0d756d700.png"
-                    alt="Decorado de toallas"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title">
-                    Decorado de<br />toallas
-                  </h4>
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-clock"></i>
                 </div>
+                <span class="hbt-amenity-text">Check out 11:00</span>
               </div>
 
-              <!-- Velas -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393285/70b9dc33-5b48-4b81-a66a-e7c329cb8e18.png"
-                    alt="Velas"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title">iluminacion con velas</h4>
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon" id="icon-dy">
+                  <i class="fas fa-coffee"></i>
                 </div>
+                <span class="hbt-amenity-text"
+                  >Desayuno Continental estilo buffet</span
+                >
               </div>
 
-              <!-- Vino -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393270/b7b032c6-abde-4f8d-9ac7-67365361ad44.png"
-                    alt="Vino"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title"><br />Vino</h4>
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-bath"></i>
                 </div>
+                <span class="hbt-amenity-text">Baño privado</span>
               </div>
 
-              <!-- Baño Privado -->
-              <div class="swiper-slide">
-                <div class="ps-info-service-item">
-                  <img
-                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753393315/018444c3-96e8-4b65-a789-86214ec3162e.png"
-                    alt="Baño Privado"
-                    class="ps-info-service-icon"
-                  />
-                  <h4 class="ps-info-service-title">Baño<br />Privado</h4>
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-tv"></i>
                 </div>
+                <span class="hbt-amenity-text">TV cable</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-wifi"></i>
+                </div>
+                <span class="hbt-amenity-text">Wifi</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-elevator"></i>
+                </div>
+                <span class="hbt-amenity-text">Ascensor</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-suitcase-rolling"></i>
+                </div>
+                <span class="hbt-amenity-text">Guarda equipaje gratis</span>
+              </div>
+
+              <div class="hbt-amenity-item">
+                <div class="hbt-amenity-icon">
+                  <i class="fas fa-concierge-bell"></i>
+                </div>
+                <span class="hbt-amenity-text">Recepción 24 horas</span>
               </div>
             </div>
           </div>
 
-          <!-- Navigation buttons -->
-          <div class="ps-info-services-navigation">
-            <button class="ps-info-services-prev">‹</button>
-            <button class="ps-info-services-next">›</button>
-          </div>
-        </div>
-      </div>
+          <!-- Sección del Slider (segunda en desktop, primera en móviles) -->
+          <div class="hbt-slider-section">
+            <div class="hbt-swiper-container">
+              <div class="hbt-swiper swiper">
+                <div class="swiper-wrapper">
+                  <!-- Slide 1 -->
+                  <div class="swiper-slide hbt-swiper-slide">
+                    <div class="hbt-room-badge">Familiar</div>
+                    <div class="hbt-room-image-container">
+                      <img
+                        class="hbt-room-image"
+                        src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                        alt="Habitación Familiar"
+                      />
+                    </div>
+                    <div class="hbt-room-details">
+                      <h4 class="hbt-room-title">Habitación Familiar</h4>
+                      <div class="hbt-room-features">
+                        <div class="hbt-feature">
+                          <i class="fas fa-users"></i>
+                          <span>Hasta 4 personas</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-ruler-combined"></i>
+                          <span>35 m² de espacio</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-bath"></i>
+                          <span>Baño privado completo</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-snowflake"></i>
+                          <span>Aire acondicionado</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-      <div class="ps-info-container">
-        <!-- Main Content Section -->
-        <div class="ps-info-main-content">
-          <!-- Reservation Section -->
-          <section class="ps-info-reservation-section">
-            <h2 class="ps-info-reservation-title">Reservar Ahora</h2>
+                  <!-- Slide 2 -->
+                  <div class="swiper-slide hbt-swiper-slide">
+                    <div class="hbt-room-badge">Familiar</div>
+                    <div class="hbt-room-image-container">
+                      <img
+                        class="hbt-room-image"
+                        src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                        alt="Habitación Familiar"
+                      />
+                    </div>
+                    <div class="hbt-room-details">
+                      <h4 class="hbt-room-title">Habitación Familiar</h4>
+                      <div class="hbt-room-features">
+                        <div class="hbt-feature">
+                          <i class="fas fa-wifi"></i>
+                          <span>WiFi 100 Mbps</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-tv"></i>
+                          <span>Smart TV 55"</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-coffee"></i>
+                          <span>Cafetera eléctrica</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-phone"></i>
+                          <span>Teléfono directo</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-            <div class="ps-info-date-container">
-              <input
-                type="date"
-                class="ps-info-date-input"
-                id="ps-info-reservation-date"
-              />
-              <svg
-                class="ps-info-calendar-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
+                  <!-- Slide 3 -->
+                  <div class="swiper-slide hbt-swiper-slide">
+                    <div class="hbt-room-badge">Familiar</div>
+                    <div class="hbt-room-image-container">
+                      <img
+                        class="hbt-room-image"
+                        src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170599/03_jr52b9.png"
+                        alt="Habitación Familiar"
+                      />
+                    </div>
+                    <div class="hbt-room-details">
+                      <h4 class="hbt-room-title">Habitación Familiar</h4>
+                      <div class="hbt-room-features">
+                        <div class="hbt-feature">
+                          <i class="fas fa-lock"></i>
+                          <span>Caja de seguridad</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-umbrella-beach"></i>
+                          <span>Toallas de playa</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-concierge-bell"></i>
+                          <span>Servicio a la habitación</span>
+                        </div>
+                        <div class="hbt-feature">
+                          <i class="fas fa-parking"></i>
+                          <span>Estacionamiento gratuito</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="hbt-swiper-controls">
+                  <button class="hbt-swiper-button hbt-swiper-button-prev">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="hbt-swiper-button hbt-swiper-button-next">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+
+                <!-- Paginación -->
+                <div class="hbt-swiper-pagination swiper-pagination"></div>
+              </div>
+            </div>
+
+            <!-- Descripción -->
+            <div class="hbt-room-description">
+              <p>
+                Nuestra habitación familiar ofrece el máximo confort con amplio
+                espacio para hasta 4 personas, equipada con todas las
+                comodidades modernas para hacer de su estancia una experiencia
+                inolvidable en el corazón de la ciudad.
+              </p>
+            </div>
+
+            <!-- Botón de reserva -->
+            <div class="hbt-reserve-container">
+              <button
+                class="hbt-reserve-button"
+                onclick="window.open('https://api.whatsapp.com/send/?phone=59163051699&text=Hola%2C+estoy+interesado+en+reservar+la+habitaci%C3%B3n+Familiar+Deluxe.&type=phone_number&app_absent=0', '_blank')"
               >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
+                RESERVAR AHORA
+              </button>
             </div>
-
-            <button
-              class="ps-info-reservation-btn"
-              onclick="sendWhatsAppMessage(this)"
-              data-paquete="Escapada Romántica"
-            >
-              Consultar Tarifa
-            </button>
-          </section>
-
-          <!-- Divider -->
-          <div class="ps-info-divider"></div>
-
-          <!-- Moments Section -->
-          <section class="ps-info-moments-section">
-            <h2 class="ps-info-moments-title">Momentos que Enamoran</h2>
-            <p class="ps-info-moments-description">
-              Sumérjanse en una experiencia romántica que combina privacidad,
-              comodidad y la posibilidad de explorar juntos un entorno lleno de
-              encanto. Una escapada ideal para renovar su amor y crear nuevas
-              historias juntos.
-            </p>
-          </section>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Swiper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-      // Inicializar el slider principal
-      const romanticSwiper = new Swiper(".romantic-slider", {
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        effect: "fade",
-        fadeEffect: {
-          crossFade: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Configuración del Swiper con efecto 3D mejorado
+        const swiper = new Swiper(".hbt-swiper", {
+          loop: true,
+          effect: "creative",
+          creativeEffect: {
+            prev: {
+              shadow: true,
+              translate: ["-20%", 0, -200],
+              rotate: [0, 0, -5],
+            },
+            next: {
+              shadow: true,
+              translate: ["20%", 0, -200],
+              rotate: [0, 0, 5],
+            },
+          },
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: "auto",
+          spaceBetween: 40,
+          speed: 800,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          navigation: {
+            nextEl: ".hbt-swiper-button-next",
+            prevEl: ".hbt-swiper-button-prev",
+          },
+          pagination: {
+            el: ".hbt-swiper-pagination",
+            clickable: true,
+          },
+          on: {
+            init: function () {
+              // Animación inicial con zoom y difuminado
+              const slides = this.slides;
+              slides.forEach((slide, index) => {
+                const img = slide.querySelector(".hbt-room-image");
+                slide.style.opacity = "0";
+                slide.style.transform = "scale(0.8) translateY(50px)";
+                slide.style.filter = "blur(5px)";
 
-      // Inicializar el slider de servicios (tu código original)
-      const servicesSwiper = new Swiper(".ps-info-services-swiper", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        navigation: {
-          nextEl: ".ps-info-services-next",
-          prevEl: ".ps-info-services-prev",
-        },
-        breakpoints: {
-          576: {
-            slidesPerView: 2,
-          },
-          768: {
-            slidesPerView: 3,
-          },
-          992: {
-            slidesPerView: 4,
-          },
-          1200: {
-            slidesPerView: 5,
-          },
-        },
-      });
+                if (img) {
+                  img.style.transform = "scale(1.2)";
+                  img.style.filter = "brightness(0.7)";
+                }
 
-      // Función para manejar el click del calendario
-      document
-        .querySelector(".ps-info-calendar-icon")
-        .addEventListener("click", function () {
-          document.querySelector(".ps-info-date-input").showPicker();
+                setTimeout(() => {
+                  slide.style.transition =
+                    "all 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease";
+                  slide.style.opacity = "1";
+                  slide.style.transform = "scale(1) translateY(0)";
+                  slide.style.filter = "blur(0)";
+
+                  if (img) {
+                    img.style.transition =
+                      "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease";
+                    img.style.transform = "scale(1.1)";
+                    img.style.filter = "brightness(0.9)";
+                  }
+                }, index * 150);
+              });
+            },
+            slideChange: function () {
+              // Efecto de zoom en la imagen activa
+              const activeSlide = this.slides[this.activeIndex];
+              const activeImage = activeSlide.querySelector(".hbt-room-image");
+
+              // Resetear todas las imágenes
+              this.slides.forEach((slide) => {
+                const img = slide.querySelector(".hbt-room-image");
+                if (img) {
+                  img.style.transform = "scale(1.1)";
+                  img.style.filter = "brightness(0.9)";
+                }
+              });
+
+              // Aplicar zoom a la imagen activa
+              if (activeImage) {
+                setTimeout(() => {
+                  activeImage.style.transform = "scale(1.15)";
+                  activeImage.style.filter = "brightness(1)";
+                }, 300);
+              }
+            },
+          },
         });
 
-      // Función para WhatsApp (placeholder)
-      function sendWhatsAppMessage(button) {
-        const paquete = button.getAttribute("data-paquete");
-        const fecha = document.querySelector(".ps-info-date-input").value;
-        const mensaje = `Hola, me interesa el paquete "${paquete}"${
-          fecha ? ` para la fecha ${fecha}` : ""
-        }. ¿Podrían darme más información?`;
-        const url = `https://wa.me/1234567890?text=${encodeURIComponent(
-          mensaje
-        )}`;
-        window.open(url, "_blank");
-      }
-
-      // Animaciones de entrada para los elementos del grid
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-            }, index * 100);
-          }
+        // Efecto hover para zoom manual
+        const slides = document.querySelectorAll(".hbt-swiper-slide");
+        slides.forEach((slide) => {
+          slide.addEventListener("mouseenter", () => {
+            const img = slide.querySelector(".hbt-room-image");
+            if (img) {
+              img.style.transform = "scale(1.15)";
+              img.style.filter = "brightness(1)";
+            }
+          });
+          slide.addEventListener("mouseleave", () => {
+            const img = slide.querySelector(".hbt-room-image");
+            if (img && !slide.classList.contains("swiper-slide-active")) {
+              img.style.transform = "scale(1.1)";
+              img.style.filter = "brightness(0.9)";
+            }
+          });
         });
-      }, observerOptions);
-
-      // Aplicar animación a los elementos del grid
-      document.querySelectorAll(".service-item").forEach((item, index) => {
-        item.style.opacity = "0";
-        item.style.transform = "translateY(30px)";
-        item.style.transition = "all 0.6s ease";
-        observer.observe(item);
       });
     </script>
   </body>

@@ -94,8 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     habitacionesSwiper.update();
   }, 300);
 });
-/*********************************************** */
-
+/************************hab/dentro*********************** */
 document.addEventListener("DOMContentLoaded", function () {
   // Configuración del Swiper con efecto 3D mejorado
   const swiper = new Swiper(".hbt-swiper", {
