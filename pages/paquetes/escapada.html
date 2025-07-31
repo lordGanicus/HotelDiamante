@@ -46,24 +46,6 @@
     />
   </head>
   <body>
-    <!-- Contenedor donde se cargará el loader -->
-    <div id="loader-container"></div>
-    <link rel="stylesheet" href="../../assets/loader.css" />
-    <script>
-      fetch("../../loader.html")
-        .then((res) => res.text())
-        .then((html) => {
-          const container = document.getElementById("loader-container");
-          container.innerHTML = html;
-
-          const script = document.createElement("script");
-          script.src = "../../assets/loader.js";
-          document.body.appendChild(script);
-        })
-        .catch((err) => {
-          console.error("Error cargando loader.html", err);
-        });
-    </script>
     <header>
       <div class="navbar" id="navbar">
         <img
@@ -154,30 +136,35 @@
     </header>
     <main>
       <!-- Contenedor principal de paquetes -->
-      <section class="ps-paquetes">
-        <div class="ps-hero">
-          <div class="swiper-pagination"></div>
-          <div class="menu-button openMenu" id="openMenu">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
-              alt="Menu"
-            />
+      <section class="hero-section">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img
+                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1753371630/nuevo_dise%C3%B1o_cak4vw.png"
+                alt="Habitaciones"
+              />
+            </div>
           </div>
-          <a
-            href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
-            target="_blank"
-            class="btn-reservar-top"
-          >
-            <i class="fa-solid fa-bell"></i> Reservar
-          </a>
-          <!--   <div class="hero-content" id="heroContent">
-            <h1>Escapada Romantica</h1>
-            <p>
-              “Vive una experiencia única con quien amas, en un ambiente
-              acogedor y lleno de detalles que enamoran.”
-            </p>
-          </div> -->
+          <div class="swiper-pagination"></div>
         </div>
+
+        <div class="menu-button openMenu" id="openMenu">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+            alt="Menu"
+          />
+        </div>
+
+        <a
+          href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
+          target="_blank"
+          class="btn-reservar-top"
+        >
+          <i class="fa-solid fa-bell"></i> Reservar
+        </a>
+
+        <div class="hero-content"></div>
       </section>
       <section>
         <!-- Slider Principal de Imágenes -->
@@ -329,7 +316,7 @@
 
             <!-- Moments Section -->
             <section class="ps-info-moments-section">
-              <h2 class="ps-info-moments-title">Momentos que Enamoran</h2>
+              <h2 class="ps-info-moments-title">— Momentos que Enamoran</h2>
               <p class="ps-info-moments-description">
                 Sumérjanse en una experiencia romántica que combina privacidad,
                 comodidad y la posibilidad de explorar juntos un entorno lleno
@@ -345,52 +332,18 @@
         <header class="ps-romantic-header">
           <div class="ps-romantic-title-row">
             <h1 class="ps-romantic-main-title">
-              —Tu Experiencia Completa<br />
-              en un Solo Paquete
+              — Descubre Nuestro Otro Paquete
             </h1>
           </div>
-          <p class="ps-romantic-main-description">
-            Disfruta de paquetes que combinan comodidad y lujo, ideales para
-            aniversarios, lunas de miel o momentos especiales con tu pareja
-          </p>
         </header>
 
         <!-- Slider personalizado sin Swiper -->
         <div class="ps-romantic-slider">
           <div class="ps-romantic-slides">
             <!-- Slide 1: Escapada Romántica -->
-            <div class="ps-romantic-slide active">
-              <div class="ps-romantic-image-container">
-                <img
-                  src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg"
-                  alt="Escapada Romántica"
-                  class="ps-romantic-main-image"
-                />
-                <div class="ps-romantic-image-border"></div>
-                <div class="ps-romantic-arrow-container" id="ps-arrow-next">
-                  <div class="ps-romantic-arrow-line"></div>
-                  <div class="ps-romantic-arrow-point"></div>
-                </div>
-              </div>
-              <div class="ps-romantic-content-section">
-                <div class="ps-romantic-content-title-row">
-                  <div class="ps-romantic-content-line"></div>
-                  <h2 class="ps-romantic-package-title">Escapada Romántica</h2>
-                </div>
-                <p class="ps-romantic-package-description">
-                  Paquete especial de 2 horas en nuestra habitación matrimonial
-                  decorada con pétalos, toallas, velas y vino.
-                </p>
-                <a
-                  href="pages/paquetes/escapada.html"
-                  class="ps-romantic-cta-button"
-                  >Ver Detalle</a
-                >
-              </div>
-            </div>
 
             <!-- Slide 2: Velada Romántica -->
-            <div class="ps-romantic-slide">
+            <div class="ps-romantic-slide active">
               <div class="ps-romantic-image-container">
                 <img
                   src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170572/decorado_Hotel_Diamante1_mz2ttf.jpg"
@@ -420,17 +373,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Controles del slider -->
-          <div class="ps-romantic-slider-controls">
-            <div class="ps-romantic-slider-dot active" data-index="0"></div>
-            <div class="ps-romantic-slider-dot" data-index="1"></div>
-          </div>
-        </div>
-        <!-- Navigation -->
-        <div class="ps-navigation">
-          <button class="ps-nav-btn ps-prev">‹</button>
-          <button class="ps-nav-btn ps-next">›</button>
         </div>
       </section>
       <!-- Footer -->
@@ -547,7 +489,7 @@
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
     <script src="../../assets/scriptPaquete.js"></script>
-    <!-- JS 
-     <script src="/assets/script.js"></script>-->
+
+    <script src="/assets/script.js"></script>
   </body>
 </html>
