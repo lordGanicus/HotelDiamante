@@ -514,10 +514,10 @@ header {
     margin: 0;
   }
 }
-/* ========== TABLETS (768px - 1024px) ========== 
+/*========== TABLETS (768px - 1024px) ========== */
 @media (max-width: 1024px) {
   .hero-section {
-    height: 90vh; 
+    height: 90vh;
   }
 
   .hero-content h1 {
@@ -548,7 +548,7 @@ header {
   .close-menu,
   .btn-reservar-top,
   .menu-button {
-    transform: scale(1.2); 
+    transform: scale(1.2);
   }
   .navbar a {
     display: none;
@@ -564,8 +564,8 @@ header {
     display: block;
   }
 }
-*/
-/* ========== MÓVILES GRANDES (481px - 767px) ========== 
+
+/* ========== MÓVILES GRANDES (481px - 767px) ========== */
 @media (max-width: 768px) {
   .menu-overlay ul {
     bottom: 20%;
@@ -583,7 +583,7 @@ header {
   }
 
   .swiper-slide img {
-    object-position: center center; 
+    object-position: center center;
   }
 
   .hero-content {
@@ -612,10 +612,10 @@ header {
   .menu-button,
   .logo-navbar,
   .btn-reservar-navbar {
-    transform: scale(0.9); 
+    transform: scale(0.9);
   }
 }
-*/
+
 /* Ajustes extra para móviles pequeños (hasta 480px) */
 @media (max-width: 580px) {
   .btn-reservar-top,
