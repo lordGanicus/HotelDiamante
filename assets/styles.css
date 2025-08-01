@@ -336,9 +336,9 @@ header {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: inherit; /* toma color del texto padre */
+  color: inherit;
   font-weight: 600;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Garamond", serif;
 }
 
 #menu-principal li a.menu-link .menu-icon {

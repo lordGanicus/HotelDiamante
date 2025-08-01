@@ -117,11 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
     slidesPerView: "auto",
     spaceBetween: 40,
     speed: 800,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+
     navigation: {
       nextEl: ".hbt-swiper-button-next",
       prevEl: ".hbt-swiper-button-prev",
@@ -203,5 +199,48 @@ document.addEventListener("DOMContentLoaded", function () {
         img.style.filter = "brightness(0.9)";
       }
     });
+  });
+});
+/****************Metodo de principal***************/
+document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar Swiper
+
+  /***************** menú ****************/
+  const openMenus = document.querySelectorAll(".openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  // Abrir menú
+  openMenus.forEach((button) => {
+    button.addEventListener("click", () => {
+      menuOverlay.classList.add("active");
+    });
+  });
+
+  // Cerrar menú con botón
+  closeMenu.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+  });
+
+  // 🔥 NUEVO: cerrar menú al hacer clic en cualquier enlace
+  const menuLinks = menuOverlay.querySelectorAll("a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuOverlay.classList.remove("active");
+    });
+  });
+
+  // Navbar flotante y botón reservar
+  const navbar = document.getElementById("navbar");
+  const reservarBtn = document.querySelector(".btn-reservar-top");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("show");
+      reservarBtn.style.display = "none";
+    } else {
+      navbar.classList.remove("show");
+      reservarBtn.style.display = "block";
+    }
   });
 });
