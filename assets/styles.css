@@ -468,6 +468,20 @@ header {
 .navbar #menuHamburger {
   display: none;
 }
+.hero-section-caratula {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-section-caratula img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 @media (min-width: 1401px) {
   .menu-overlay li {
     font-size: 36px;
@@ -1335,7 +1349,7 @@ header {
 @media (max-width: 576px) {
   .habitaciones-section {
     padding: 20px 0 120px;
-    height: 80vh;
+    /*height: 80vh;*/
   }
   .habitaciones-header h2 {
     font-size: 28px;
@@ -1531,6 +1545,8 @@ header {
   transform: rotate(0deg) translateX(10px);
   opacity: 0;
   animation: ps-rotateToRombo 0.8s ease-out 1.7s forwards;
+  position: relative;
+  left: -10%;
 }
 
 /* Sección de contenido */
@@ -1726,6 +1742,30 @@ header {
     transform: translateX(0);
     opacity: 1;
   }
+}
+.ps-romantic-slide {
+  pointer-events: none; /* ← Evita interacción por defecto */
+}
+
+.ps-romantic-slide.active {
+  pointer-events: auto; /* ← Solo el slide activo puede recibir clics */
+}
+.ps-romantic-slide-no-active {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1 !important;
+  position: relative;
+}
+#ps-opacity,
+#ps-opacity-buttom {
+  opacity: 1;
 }
 
 /* Estilos responsive */
@@ -3438,8 +3478,17 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
+  background-color: #f8f7f7;
 }
-
+#icons-container {
+  max-width: 1600px;
+}
+#grid-icon {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  margin-bottom: 60px;
+}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3507,7 +3556,7 @@ header {
   font-family: "EB Garamond", serif;
   font-size: 1.4rem;
   color: #2c3e50;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
@@ -3819,13 +3868,18 @@ header {
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+  #grid-icon {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
   .main-title::before,
   .main-title::after {
     display: none;
   }
 
   .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .ps-info-main-content {
@@ -3848,15 +3902,37 @@ header {
 }
 
 @media (max-width: 992px) {
+  #grid-icon {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
   .romantic-slide-title {
     font-size: 2.5rem;
   }
-
   .services-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
+  }
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
   }
 
+  .ps-romantic-slide-no-active {
+    display: block;
+  }
+  .romantic-slider-container {
+    height: 350px;
+    min-height: 350px;
+    margin: 20px;
+    border-radius: 15px;
+    width: 95%;
+  }
+
+  .service-item {
+    padding: 18px 14px;
+  }
   .ps-info-service-icon {
     width: 70px;
     height: 70px;
@@ -3868,11 +3944,31 @@ header {
 }
 
 @media (max-width: 768px) {
+  .services-grid {
+    gap: 20px;
+  }
+  .service-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+
+  .ps-romantic-slide-no-active {
+    display: block;
+  }
   .romantic-slider-container {
-    height: 50vh;
-    min-height: 400px;
+    height: 350px;
+    min-height: 350px;
     margin: 20px;
     border-radius: 15px;
+    width: 95%;
+  }
+  .service-item {
+    padding: 12px 10px;
+  }
+  #grid-icon {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 
   .romantic-slide-title {
@@ -3902,6 +3998,7 @@ header {
 
   .ps-info-moments-description {
     font-size: 24px;
+    margin-bottom: 20px;
   }
 
   .ps-info-moments-title::before {
@@ -3914,6 +4011,13 @@ header {
 }
 
 @media (max-width: 576px) {
+  .romantic-slider-container {
+    width: 90%;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
   .romantic-slide-title {
     font-size: 1.8rem;
   }
@@ -3925,6 +4029,19 @@ header {
 
   .ps-info-service-title {
     font-size: 18px;
+  }
+  .service-description {
+    font-family: "Merriweather", sans-serif;
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.6;
+  }
+  .service-title {
+    font-family: "EB Garamond", serif;
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 15px;
   }
 }
 

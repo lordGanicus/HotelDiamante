@@ -48,6 +48,13 @@
   <body>
     <header>
       <div class="navbar" id="navbar">
+        <div class="menu-button openMenu" id="menuHamburger">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/7710/7710488.png"
+            alt="Menu"
+          />
+          <a>Menú</a>
+        </div>
         <img
           class="logo-navbar"
           src="https://res.cloudinary.com/ds9subkxg/image/upload/v1752251591/cb45c08a-dfb4-46ea-a0fc-b0098da085c4.png"
@@ -57,7 +64,6 @@
         <a href="../../index.html#info-section-main">Informacion</a>
         <a href="../../index.html#habitaciones-section">Habitaciones</a>
         <a href="../../index.html#paquetes-especiales-container">Paquetes</a>
-        <a href="../../index.html#dtn-breakfast-section">Desayunos</a>
         <a
           href="https://wa.me/59163051699?text=Hola%2C%20estoy%20interesado%20en%20reservar%20una%20habitaci%C3%B3n!"
           target="_blank"
@@ -137,16 +143,11 @@
     <main>
       <!-- Contenedor principal de paquetes -->
       <section class="hero-section">
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slides">
-              <img
-                src="https://res.cloudinary.com/dvmov11mg/image/upload/v1753371611/nuevo_dise%C3%B1o_5_tqluz1.png"
-                alt="Habitaciones"
-              />
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
+        <div class="hero-section-caratula">
+          <img
+            src="https://res.cloudinary.com/dvmov11mg/image/upload/v1753371611/nuevo_dise%C3%B1o_5_tqluz1.png"
+            alt="Habitaciones"
+          />
         </div>
 
         <div class="menu-button openMenu" id="openMenu">
@@ -167,6 +168,7 @@
 
         <div class="hero-content"></div>
       </section>
+
       <section>
         <!-- Slider Principal de Imágenes -->
         <div class="romantic-slider-container">
@@ -220,8 +222,8 @@
 
         <!-- Grid de Servicios -->
 
-        <div class="services-grid-container">
-          <div class="services-grid">
+        <div class="services-grid-container" id="icons-container">
+          <div class="services-grid" id="grid-icon">
             <div class="service-item">
               <div class="service-icon"><i class="fas fa-hotel"></i></div>
               <h3 class="service-title">Habitación Matrimonial Deluxe</h3>
@@ -277,14 +279,6 @@
               <h3 class="service-title">Fresas o Uvas</h3>
               <p class="service-description">
                 Frutas frescas a elección para complementar su velada
-              </p>
-            </div>
-
-            <div class="service-item">
-              <div class="service-icon"><i class="fas fa-music"></i></div>
-              <h3 class="service-title">Música Ambiental</h3>
-              <p class="service-description">
-                Sonidos suaves para un ambiente romántico inolvidable
               </p>
             </div>
 
@@ -380,7 +374,7 @@
         <div class="ps-romantic-slider">
           <div class="ps-romantic-slides">
             <!-- Slide 1: Escapada Romántica -->
-            <div class="ps-romantic-slide active">
+            <div class="ps-romantic-slide-no-active">
               <div class="ps-romantic-image-container">
                 <img
                   src="https://res.cloudinary.com/dvmov11mg/image/upload/v1752170568/Decorado_Diamante_2_xayofb.jpg"
@@ -398,13 +392,14 @@
                   <div class="ps-romantic-content-line"></div>
                   <h2 class="ps-romantic-package-title">Escapada Romántica</h2>
                 </div>
-                <p class="ps-romantic-package-description">
+                <p class="ps-romantic-package-description" id="ps-opacity">
                   Paquete especial de 2 horas en nuestra habitación matrimonial
                   decorada con pétalos, toallas, velas y vino.
                 </p>
                 <a
-                  href="pages/paquetes/escapada.html"
+                  href="../escapada.html"
                   class="ps-romantic-cta-button"
+                  id="ps-opacity-buttom"
                   >Ver Detalle</a
                 >
               </div>
@@ -526,7 +521,5 @@
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
     <script src="../../assets/scriptPaquete.js"></script>
-
-    <script src="/assets/script.js"></script>
   </body>
 </html>

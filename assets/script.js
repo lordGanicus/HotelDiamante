@@ -19,14 +19,24 @@ const openMenus = document.querySelectorAll(".openMenu");
 const closeMenu = document.getElementById("closeMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 
+// Abrir menú
 openMenus.forEach((button) => {
   button.addEventListener("click", () => {
     menuOverlay.classList.add("active");
   });
 });
 
+// Cerrar menú con botón
 closeMenu.addEventListener("click", () => {
   menuOverlay.classList.remove("active");
+});
+
+// Cerrar menú al hacer clic en cualquier enlace dentro del overlay
+const menuLinks = menuOverlay.querySelectorAll("a");
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+  });
 });
 // Cerrar menú al hacer clic en un enlace dentro del overlay
 const navbar = document.getElementById("navbar");
@@ -328,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".ps-romantic-slide");
   const dots = document.querySelectorAll(".ps-romantic-slider-dot");
-  const nextArrow = document.getElementById("ps-arrow-next");
+  const nextArrows = document.querySelectorAll(".ps-arrow-next"); // ← CORREGIDO
   const prevButton = document.querySelector(".ps-prev");
   const nextButton = document.querySelector(".ps-next");
   const sliderContainer = document.querySelector(".ps-romantic-slider");
@@ -393,11 +403,12 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoSlide();
   }
 
-  if (nextArrow) {
-    nextArrow.addEventListener("click", () => {
+  // ← CORREGIDO: múltiples flechas internas
+  nextArrows.forEach((arrow) => {
+    arrow.addEventListener("click", () => {
       goToSlide(currentSlide + 1);
     });
-  }
+  });
 
   if (prevButton) {
     prevButton.addEventListener("click", () => {

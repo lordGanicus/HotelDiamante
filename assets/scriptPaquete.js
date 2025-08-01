@@ -1,12 +1,8 @@
 /**************************Paquetes/ dentro / *******************/
 // Inicializar Swiper para los servicios
 // Inicializar el slider principal
+
 const romanticSwiper = new Swiper(".romantic-slider", {
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
   effect: "fade",
   fadeEffect: {
     crossFade: true,
@@ -19,35 +15,16 @@ const romanticSwiper = new Swiper(".romantic-slider", {
     el: ".swiper-pagination",
     clickable: true,
   },
-});
-
-// Inicializar el slider de servicios (tu código original)
-const servicesSwiper = new Swiper(".ps-info-services-swiper", {
-  slidesPerView: 1,
-  spaceBetween: 20,
   loop: true,
   autoplay: {
     delay: 3000,
-    disableOnInteraction: false,
   },
-  navigation: {
-    nextEl: ".ps-info-services-next",
-    prevEl: ".ps-info-services-prev",
-  },
-  breakpoints: {
-    576: {
-      slidesPerView: 2,
-    },
-    768: {
-      slidesPerView: 3,
-    },
-    992: {
-      slidesPerView: 4,
-    },
-    1200: {
-      slidesPerView: 5,
-    },
-  },
+
+  centeredSlides: true,
+  grabCursor: true,
+  // Opcional: mejorar usabilidad en móvil
+  /*touchRatio: 1,
+   */
 });
 
 // Función para manejar el click del calendario
@@ -91,4 +68,48 @@ document.querySelectorAll(".service-item").forEach((item, index) => {
   item.style.transform = "translateY(30px)";
   item.style.transition = "all 0.6s ease";
   observer.observe(item);
+});
+
+/****************Metodo de principal***************/
+document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar Swiper
+
+  /***************** menú ****************/
+  const openMenus = document.querySelectorAll(".openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
+
+  // Abrir menú
+  openMenus.forEach((button) => {
+    button.addEventListener("click", () => {
+      menuOverlay.classList.add("active");
+    });
+  });
+
+  // Cerrar menú con botón
+  closeMenu.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+  });
+
+  // 🔥 NUEVO: cerrar menú al hacer clic en cualquier enlace
+  const menuLinks = menuOverlay.querySelectorAll("a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuOverlay.classList.remove("active");
+    });
+  });
+
+  // Navbar flotante y botón reservar
+  const navbar = document.getElementById("navbar");
+  const reservarBtn = document.querySelector(".btn-reservar-top");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("show");
+      reservarBtn.style.display = "none";
+    } else {
+      navbar.classList.remove("show");
+      reservarBtn.style.display = "block";
+    }
+  });
 });
