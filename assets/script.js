@@ -1,55 +1,58 @@
-/**************************************slider de portada */
-const swiper = new Swiper(".mySwiper", {
-  loop: true,
-  autoplay: {
-    delay: 3000,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  // Añade estas opciones clave:
-  slidesPerView: 1, // Muestra solo 1 slide
-  spaceBetween: 0, // Elimina espacios entre slides
-  centeredSlides: true, // Centra el slide activo (opcional)
-  setWrapperSize: false, // Evita que Swiper fuerce el ancho
-});
-/*****************menu ****************/
-const openMenus = document.querySelectorAll(".openMenu");
-const closeMenu = document.getElementById("closeMenu");
-const menuOverlay = document.getElementById("menuOverlay");
-
-// Abrir menú
-openMenus.forEach((button) => {
-  button.addEventListener("click", () => {
-    menuOverlay.classList.add("active");
+document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar Swiper
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    slidesPerView: 1, // Muestra solo 1 slide a la vez
+    spaceBetween: 0, // Elimina el espacio entre slides
+    centeredSlides: true, // Centra el slide activo
+    setWrapperSize: false, // Evita que Swiper calcule el ancho automáticamente
   });
-});
 
-// Cerrar menú con botón
-closeMenu.addEventListener("click", () => {
-  menuOverlay.classList.remove("active");
-});
+  /***************** menú ****************/
+  const openMenus = document.querySelectorAll(".openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuOverlay = document.getElementById("menuOverlay");
 
-// Cerrar menú al hacer clic en cualquier enlace dentro del overlay
-const menuLinks = menuOverlay.querySelectorAll("a");
-menuLinks.forEach((link) => {
-  link.addEventListener("click", () => {
+  // Abrir menú
+  openMenus.forEach((button) => {
+    button.addEventListener("click", () => {
+      menuOverlay.classList.add("active");
+    });
+  });
+
+  // Cerrar menú con botón
+  closeMenu.addEventListener("click", () => {
     menuOverlay.classList.remove("active");
   });
-});
-// Cerrar menú al hacer clic en un enlace dentro del overlay
-const navbar = document.getElementById("navbar");
-const reservarBtn = document.querySelector(".btn-reservar-top");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add("show");
-    reservarBtn.style.display = "none";
-  } else {
-    navbar.classList.remove("show");
-    reservarBtn.style.display = "block";
-  }
+  // 🔥 NUEVO: cerrar menú al hacer clic en cualquier enlace
+  const menuLinks = menuOverlay.querySelectorAll("a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuOverlay.classList.remove("active");
+    });
+  });
+
+  // Navbar flotante y botón reservar
+  const navbar = document.getElementById("navbar");
+  const reservarBtn = document.querySelector(".btn-reservar-top");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add("show");
+      reservarBtn.style.display = "none";
+    } else {
+      navbar.classList.remove("show");
+      reservarBtn.style.display = "block";
+    }
+  });
 });
 /********************slider de informacion**********************/
 document.addEventListener("DOMContentLoaded", function () {

@@ -4731,6 +4731,9 @@ header {
 
 /* Responsive - Tablets (768px - 992px) */
 @media (min-width: 768px) and (max-width: 992px) {
+  .hbt-room-image-container {
+    height: auto;
+  }
   .hbt-room-layout {
     flex-direction: column;
   }
@@ -4766,6 +4769,9 @@ header {
 
 /* Responsive - Móviles (576px - 768px) */
 @media (min-width: 576px) and (max-width: 767px) {
+  .hbt-room-image-container {
+    height: auto;
+  }
   .hbt-container {
     padding: 0 30px;
   }
@@ -4815,6 +4821,9 @@ header {
 
 /* Responsive - Móviles pequeños (hasta 576px) */
 @media (max-width: 575px) {
+  .hbt-room-image-container {
+    height: auto;
+  }
   .hbt-section {
     padding: 60px 0;
   }
